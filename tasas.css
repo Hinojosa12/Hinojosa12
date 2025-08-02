@@ -1,181 +1,344 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="tasas.css">
-   
-</head>
-<body>
-<section>
-    <div class="circle"></div>
-    <header>
-        <a href="#" class="logo"> <img src="logo.png" ></a>
-        <ul>
-            <li> <a href="#">Inicio</a></li>
-            <li> <a href="#">Diseños</a></li>
-            <li> <a href="#">Contacto</a></li>
-        </ul>
-    </header>
-    <div class="content">
-        <div class="textBox">
-            <h2> Puedes imaginarlo... tambien puedes <span>DISEÑARLO</span> </h2>
-            <p> "Transformamos tus ideas en tazas únicas. ¿Imaginas un diseño? Nosotros lo sublimamos. Crea la taza perfecta con tus fotos, 
-                 dibujos o mensajes especiales: para regalos inolvidables,
-                 momentos de oficina con estilo o ese detalle que solo tú puedes dar. ¡Tu inspiración, hecha arte!"</p>
-                 <a href="#">Enviar diseño</a>
-           </div>
-                 <div class="imgBox">
-            <img src="img1.png" class="starbucks">
-        
-        </div>
-        <ul class="thumb">
-           <li> <img src="img1.png"onclick="imgSlider('img1.png');changeCircleColor('#0857b1')" class="imagen1"></li>
-           <li> <img src="img2.png"onclick="imgSlider('img2.png');changeCircleColor('#70059b')" class="imagen2"></li>
-           <li> <img src="img3.png"onclick="imgSlider('img3.png');changeCircleColor('#9b0a0a')"class="imagen3"></li>
-        </ul>
-        
-    </div>
-</section>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo{
+    position: relative;
+    max-width: 80px;
+}
+
+header ul{
+    position:relative;
+    display: flex;
+
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul li a{
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 400;
+    margin-left: 40px;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: 0.5s;
+}
+header ul li a:hover{
+    transform: translateY(-15px);
+}
+.content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content .textBox{
+    position: relative;
+    max-width: 600px;
+
+}
+
+.content .textBox h2{
+    color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500;
+}
+.content .textBox h2 span{
+    color: #949796;
+    font-size: 1.2em;
+    font-weight: 900;
+     
+}
+.content .textBox p{
+    color: #333;
+}
+
+.content .textBox a{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: #017143;
+    color: #fff;
+    border-radius: 40px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.content .imgBox{
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+    margin-top: 50px;
+}
+
+.content .imgBox img{
+    max-width: 340px;
+}
+
+.thumb{
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.thumb li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.thumb li:hover{
+    transform: translateY(-15px);
+}
+
+.thumb li img{
+    max-width: 60px;
+}
 
 
 
-        <section class="diseños">
-            <div class="product" data-id="1">
-                <div class="product-image-container">
-                    <img src="img1.png" alt="Pullover Naruto" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Naruto</h3>
-                    <p class="product-price">$20.00</p>
-                    <p class="product-description">Pullover de poliéster con imagen de Naruto impresa. Tallas S a XL.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            
-            <div class="product" data-id="2">
-                <div class="product-image-container">
-                    <img src="img2.png" alt="Pullover Dragon Ball" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Dragon Ball</h3>
-                    <p class="product-price">$22.00</p>
-                    <p class="product-description">Pullover de algodón con estampado de Goku. Disponible en varios colores.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img3.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img2.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img1.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img3.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img1.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img3.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img2.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img3.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img1.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img2.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-        </section>
-    <script src="tasas.js"></script>
-</body>
-</html>
+.circle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0857b1;
+    clip-path: circle(900px at right 90px);
+}
+
+ul img{
+    transform: translateY(40px);
+}
+
+
+/* --- Productos --- */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    
+    margin: 15px;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product {
+    border: 1px solid #e1e1e1;
+    padding: 15px;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    color: #6c757d;
+    height: 100%;
+}
+
+.product-image-container {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: #f8f8f8;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s;
+}
+
+.product:hover img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    width: 100%;
+    padding-top: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 40px;
+    line-height: 1.3;
+}
+
+.product-price {
+    color: #B12704;
+    font-weight: bold;
+    margin-top: auto;
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+.product-description {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #666;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+}
+
+.product button {
+    background: #FF9900;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.product button:hover {
+    background: #1e7916;
+}
+
+
+
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .products {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+        padding: 0.8rem;
+        margin: 10px;
+    }
+    
+    .product-image-container {
+        height: 160px;
+    }
+    
+    .product {
+        padding: 8px;
+    }
+    
+    .product-title {
+        font-size: 13px;
+        min-height: 36px;
+    }
+    
+    .product-price {
+        font-size: 14px;
+    }
+
+    /* Estilos específicos para el modal en móviles */
+    .cart-content {
+        padding: 1rem;
+        width: 95%; /* Más ancho en móviles */
+        max-height: 85vh; /* Altura máxima */
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item div:last-child {
+        width: 100%;
+        margin-top: 5px;
+        align-items: flex-end;
+    }
+
+    .customer-data-form {
+        padding: 0.5rem;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    #checkout, #close-cart {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .products {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    .product-image-container {
+        height: 150px;
+    }
+    
+    .product-title {
+        font-size: 12px;
+    }
+    
+    .product button {
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+    }
