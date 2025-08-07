@@ -3,179 +3,711 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="tasas.css">
-   
+    <title>Tazas Personalizadas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        section{
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 100px;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        header{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        header .logo{
+            position: relative;
+            max-width: 80px;
+            z-index: 11;
+        }
+
+        header ul{
+            position: relative;
+            display: flex;
+        }
+
+        header ul li {
+            list-style: none;
+        }
+
+        header ul li a{
+            display: inline-block;
+            color: #ffffff;
+            font-weight: 400;
+            margin-left: 40px;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: 0.5s;
+        }
+        header ul li a:hover{
+            transform: translateY(-15px);
+        }
+        
+        .content{
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .content .textBox{
+            position: relative;
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .content .textBox h2{
+            color: #333;
+            font-size: 4em;
+            line-height: 1.4em;
+            font-weight: 500;
+        }
+        .content .textBox h2 span{
+            color: #949796;
+            font-size: 1.2em;
+            font-weight: 900;
+        }
+        .content .textBox p{
+            color: #333;
+            font-size: 1.1em;
+            margin: 20px 0;
+        }
+
+        .content .textBox a{
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #017143;
+            color: #fff;
+            border-radius: 40px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+        
+        .content .textBox a:hover {
+            background: #015c35;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .content .imgBox{
+            width: 600px;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50px;
+            margin-top: 50px;
+        }
+
+        .content .imgBox img{
+            max-width: 340px;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .thumb{
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 1;
+        }
+
+        .thumb li{
+            list-style: none;
+            display: inline-block;
+            margin: 0 20px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .thumb li:hover{
+            transform: translateY(-15px);
+        }
+
+        .thumb li img{
+            max-width: 60px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .circle{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0857b1;
+            clip-path: circle(900px at right 90px);
+            z-index: 0;
+        }
+
+        ul img{
+          transform: translateX(-90px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          }
+
+        /* --- Slider Section --- */
+        .slider-section {
+            position: relative;
+            width: 100%;
+            height: 50vw;
+            overflow: hidden;
+            background: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .slider-section {
+                height: 600px;
+            }
+        }
+
+        .slider-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70vw;
+            height: 50vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .slider-container {
+                width: 100%;
+                height: 600px;
+            }
+        }
+
+        .slider{
+            position: absolute;
+            inset: 80px 200px 80px 80px;
+            background: #ccc;
+        }
+
+        .slider .slides{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 240px;
+            height: 320px;
+            background: var(--img);
+            background-size: cover;
+            background-position: center;
+            transition: 0.5s;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+
+        .slider .slides:nth-child(1),
+        .slider .slides:nth-child(2){
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateY(0);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0);
+            background-size: cover;
+        }
+
+        .slider .slides:nth-child(3){
+            left: calc(50% + 240px);
+            background-size: cover;
+        }
+        .slider .slides:nth-child(4){
+            left: calc(50% + 500px);
+            background-size: cover;
+        }
+        .slider .slides:nth-child(5){
+            left: calc(50% + 760px);
+            background-size: cover;
+        }
+        .slider .slides:nth-child(6){
+            left: calc(50% + 1020px);
+            background-size: cover;
+            opacity: 0;
+        }
+
+        .slider-buttons{
+            position: absolute;
+            bottom: 15px;
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .slider-buttons span{
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: #111;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .slider-buttons span::before{
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-top: 4px solid #fff;
+            border-left: 4px solid #fff;
+            transform: rotate(315deg) translate(2px, 2px);
+        }
+
+        .slider-buttons span:nth-child(2)::before{
+            transform: rotate(135deg) translate(2px, 2px);
+        }
+
+        .slider-buttons span:active{
+            opacity: 0.5;
+        }
+
+        .slider .content{
+            position: relative;
+            padding: 40px;
+            max-width: 600px;
+            transition-delay: 0s;
+            transform: translateY(40px);
+            z-index: 10000;
+            opacity: 0;
+        }
+        .slider .content h2{
+            font-size: 4em;
+            color: #fff;
+        }
+        .slider .slides:nth-child(1) .content,
+        .slider .slides:nth-child(2) .content{
+            opacity: 1;
+            transform: translateY(0px);
+            transition-delay: 0.5s;
+        }
+
+        /*   MOVILES */
+
+        @media(max-width: 900px){
+            .slider{
+                position: absolute;
+                inset: 40px 40px 200px 40px;
+            }
+
+            .slider .slides{
+                width: 100px;
+                height: 100px;
+                top: initial;
+                bottom: -170px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+            }
+
+            .slider .slides:nth-child(1),
+            .slider .slides:nth-child(2){
+                top: initial;
+                bottom: 0px;
+            }
+            .slider .slides:nth-child(3){
+                left: 0;
+            }
+            .slider .slides:nth-child(4){
+                left: 120px;
+            }
+            .slider .slides:nth-child(5){
+                left: 240;
+            }
+            .slider .slides:nth-child(6){
+                left: 360;
+            }
+        }
+
+        /* Animación */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Botón de menú móvil */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            z-index: 1000;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .circle {
+                clip-path: circle(700px at right 90px);
+            }
+        }
+
+        @media (max-width: 992px) {
+            section {
+                padding: 80px 50px;
+            }
+            
+            header {
+                padding: 15px 50px;
+            }
+            
+            .content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .content .textBox {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+            
+            .content .imgBox {
+                width: 100%;
+                justify-content: center;
+                padding-right: 0;
+                margin-top: 30px;
+            }
+            
+            .circle {
+                clip-path: circle(500px at center);
+            }
+            
+            .thumb {
+                position: relative;
+                bottom: 30px;
+                margin-top: 30px;
+                
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 30px;
+            }
+            
+            header {
+                padding: 15px 30px;
+            }
+            
+            header ul {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(8, 87, 177, 0.95);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                z-index: 5;
+            }
+            
+            header ul.active {
+                left: 0;
+            }
+            
+            header ul li {
+                margin: 15px 0;
+            }
+            
+            header ul li a {
+                margin-left: 0;
+                font-size: 1.8em;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .content .textBox h2 {
+                font-size: 2.8em;
+                line-height: 1.2em;
+            }
+            
+            .content .imgBox img {
+                max-width: 280px;
+            }
+            
+            .circle {
+                clip-path: circle(400px at center);
+            }
+            
+            .thumb li img {
+                max-width: 50px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 20px;
+            }
+            
+            .content .textBox h2 {
+                font-size: 2.2em;
+            }
+            
+            .content .textBox p {
+                font-size: 1em;
+            }
+            
+            .content .textBox a {
+                padding: 10px 25px;
+                font-size: 1em;
+            }
+            
+            .circle {
+                clip-path: circle(350px at center);
+            }
+            
+            .thumb li {
+                margin: 0 10px;
+            }
+            
+            .thumb li img {
+                max-width: 40px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .content .textBox h2 {
+                font-size: 1.8em;
+            }
+            
+            .content .textBox p {
+                font-size: 0.9em;
+            }
+            
+            .circle {
+                clip-path: circle(300px at center);
+            }
+
+            .content .textBox p {
+  color: #ffffff;
+  font-size: 1.1em;
+  margin: 20px 0;
+}
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 15px;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #017143;
+            transform: translateY(-5px);
+        }
+        
+        .footer-links {
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+        
+        .fas{
+            color: #000;
+        }
+    </style>
 </head>
 <body>
 <section>
     <div class="circle"></div>
     <header>
-        <a href="#" class="logo"> <img src="logo.png" ></a>
+        <a href="#" class="logo"> <img src="logo.png" alt="Logo"></a>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
         <ul>
             <li> <a href="#">Inicio</a></li>
             <li> <a href="#">Diseños</a></li>
             <li> <a href="#">Contacto</a></li>
+            <li> <a href="#">Productos</a></li>
+            <li> <a href="#">Cómo funciona</a></li>
         </ul>
     </header>
     <div class="content">
         <div class="textBox">
-            <h2> Puedes imaginarlo... tambien puedes <span>DISEÑARLO</span> </h2>
-            <p> "Transformamos tus ideas en tazas únicas. ¿Imaginas un diseño? Nosotros lo sublimamos. Crea la taza perfecta con tus fotos, 
-                 dibujos o mensajes especiales: para regalos inolvidables,
-                 momentos de oficina con estilo o ese detalle que solo tú puedes dar. ¡Tu inspiración, hecha arte!"</p>
-                 <a href="#">Enviar diseño</a>
-           </div>
-                 <div class="imgBox">
-            <img src="img1.png" class="starbucks">
-        
+            <h2><span class="changing-text">Puedes imaginarlo... también puedes</span> <span>DISEÑARLO</span></h2>
+            <p>"Transformamos tus ideas en tazas únicas. ¿Imaginas un diseño? Nosotros lo sublimamos. Crea la taza perfecta con tus fotos, dibujos o mensajes especiales: para regalos inolvidables, momentos de oficina con estilo o ese detalle que solo tú puedes dar. ¡Tu inspiración, hecha arte!"</p>
+            <a href="#">Enviar diseño</a>
+        </div>
+        <div class="imgBox">
+            <img src="img1.png" class="starbucks" alt="Taza personalizada">
         </div>
         <ul class="thumb">
-           <li> <img src="img1.png"onclick="imgSlider('img1.png');changeCircleColor('#0857b1')" class="imagen1"></li>
-           <li> <img src="img2.png"onclick="imgSlider('img2.png');changeCircleColor('#70059b')" class="imagen2"></li>
-           <li> <img src="img3.png"onclick="imgSlider('img3.png');changeCircleColor('#9b0a0a')"class="imagen3"></li>
+           <li> <img src="img1.png" onclick="imgSlider('img1.png');changeCircleColor('#0857b1')" class="imagen1" alt="Taza azul"></li>
+           <li> <img src="img2.png" onclick="imgSlider('img2.png');changeCircleColor('#70059b')" class="imagen2" alt="Taza morada"></li>
+           <li> <img src="img3.png" onclick="imgSlider('img3.png');changeCircleColor('#9b0a0a')" class="imagen3" alt="Taza roja"></li>
         </ul>
-        
     </div>
 </section>
 
+<!-- Sección del Slider de Productos -->
+<section class="slider-section">
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slides" style="--img: url('img1.png')">
+               <div class="content"> <h2>ELEGIR</h2> </div>
+            </div>
+            <div class="slides" style="--img: url('img2.png')">
+               <div class="content"> <h2>ELEGIR</h2></div>
+            </div>
+            <div class="slides" style="--img: url('img3.png')">
+               <div class="content"> <h2>ELEGIR</h2></div>
+            </div>
+            <div class="slides" style="--img: url('Imagen1.jpg')">
+               <div class="content"> <h2>ELEGIR</h2></div>
+            </div>
+            <div class="slides" style="--img: url('Imagen2.jpg')">
+               <div class="content"> <h2>ELEGIR</h2></div>
+            </div>
+            <div class="slides" style="--img: url('Imagen3.jpg')">
+               <div class="content"> <h2>ELEGIR</h2></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slider-buttons">
+        <span class="prev"></span>
+        <span class="next"></span>
+    </div>
+</section>
 
+<footer>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+    </div>
+    <div class="footer-links">
+        <a href="#">Inicio</a>
+        <a href="#">Diseños</a>
+        <a href="#">Productos</a>
+        <a href="#">Contacto</a>
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+    </div>
+    <p class="copyright">© 2023 Tazas Personalizadas. Todos los derechos reservados.</p>
+</footer>
 
-        <section class="diseños">
-            <div class="product" data-id="1">
-                <div class="product-image-container">
-                    <img src="img1.png" alt="Pullover Naruto" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Naruto</h3>
-                    <p class="product-price">$20.00</p>
-                    <p class="product-description">Pullover de poliéster con imagen de Naruto impresa. Tallas S a XL.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            
-            <div class="product" data-id="2">
-                <div class="product-image-container">
-                    <img src="img2.png" alt="Pullover Dragon Ball" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Dragon Ball</h3>
-                    <p class="product-price">$22.00</p>
-                    <p class="product-description">Pullover de algodón con estampado de Goku. Disponible en varios colores.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img3.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img2.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img1.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img3.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img1.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img3.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img2.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img3.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img1.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-            <div class="product" data-id="3">
-                <div class="product-image-container">
-                    <img src="img2.png" alt="Pullover Attack on Titan" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Pullover Attack on Titan</h3>
-                    <p class="product-price">$24.00</p>
-                    <p class="product-description">Pullover de tejido grueso con símbolo de las alas de la libertad.</p>
-                    <button class="add-to-cart">Añadir al carrito</button>
-                </div>
-            </div>
-        </section>
-    <script src="tasas.js"></script>
+<script>
+    // Función para cambiar la imagen principal
+    function imgSlider(anything){
+        document.querySelector('.starbucks').src = anything;
+    }
+    
+    // Función para cambiar el color del círculo de fondo
+    function changeCircleColor(color){
+        const circle = document.querySelector('.circle');
+        circle.style.background = color;
+    }
+    
+    // Menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('header ul');
+    
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        menuToggle.innerHTML = navMenu.classList.contains('active') ? 
+            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('header ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+
+    // Slider de productos
+    let next = document.querySelector('.next');
+    let prev = document.querySelector('.prev');
+    let slider = document.querySelector('.slider');
+
+    next.addEventListener('click', function(){
+        let slides = document.querySelectorAll('.slides');
+        slider.appendChild(slides[0]);
+    });
+    
+    prev.addEventListener('click', function(){
+        let slides = document.querySelectorAll('.slides');
+        slider.prepend(slides[slides.length - 1]);
+    });
+</script>
 </body>
-</html>
+</html> fas fa-bars
