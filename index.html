@@ -324,6 +324,24 @@
             transition-delay: 0.5s;
         }
 
+        /* Botón de elegir en el slider */
+        .choose-btn {
+            background: #017143;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        .choose-btn:hover {
+            background: #015c35;
+            transform: translateY(-3px);
+        }
+
         /*   MOVILES */
 
         @media(max-width: 900px){
@@ -366,13 +384,207 @@
             100% { transform: translateY(0px); }
         }
 
-        /* Botón de menú móvil */
-        .menu-toggle {
+        /* Botón de menú móvil y carrito */
+        .menu-toggle, .cart-toggle {
             display: none;
             cursor: pointer;
             font-size: 24px;
             color: white;
             z-index: 1000;
+        }
+
+        /* Carrito de compras */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+            padding: 0 15px;
+        }
+        
+        .remove-item {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .cart-total {
+            font-weight: bold;
+            text-align: right;
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+        
+        .checkout-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .checkout-btn {
+            background: #017143;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        .checkout-btn:hover {
+            background: #015c35;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* Modal para subir diseño personalizado */
+        .custom-design-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1002;
+            display: none;
+        }
+        
+        .custom-design-modal.active {
+            display: flex;
+        }
+        
+        .custom-design-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .upload-area {
+            border: 2px dashed #017143;
+            padding: 30px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: #017143;
+            margin-bottom: 15px;
+        }
+        
+        #image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .add-custom-design-btn {
+            background: #017143;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        
+        .add-custom-design-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
         }
 
         /* Responsive */
@@ -457,7 +669,7 @@
                 font-size: 1.8em;
             }
             
-            .menu-toggle {
+            .menu-toggle, .cart-toggle {
                 display: block;
             }
             
@@ -466,16 +678,26 @@
                 line-height: 1.2em;
             }
             
+            .content .textBox p {
+                display: none; /* Ocultar párrafo en móviles */
+            }
+            
             .content .imgBox img {
                 max-width: 280px;
             }
             
             .circle {
-                clip-path: circle(400px at center);
+                clip-path: circle(100% at center); /* Círculo que ocupa toda la sección */
+                border-radius: 0;
             }
             
             .thumb li img {
                 max-width: 50px;
+            }
+            
+            .header-icons {
+                display: flex;
+                gap: 15px;
             }
         }
 
@@ -489,7 +711,7 @@
             }
             
             .content .textBox p {
-                font-size: 1em;
+                display: none; /* Asegurarse de que el párrafo esté oculto */
             }
             
             .content .textBox a {
@@ -498,7 +720,8 @@
             }
             
             .circle {
-                clip-path: circle(350px at center);
+                clip-path: circle(100% at center);
+                border-radius: 0;
             }
             
             .thumb li {
@@ -508,6 +731,10 @@
             .thumb li img {
                 max-width: 40px;
             }
+            
+            .cart-sidebar {
+                width: 300px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -515,19 +742,10 @@
                 font-size: 1.8em;
             }
             
-            .content .textBox p {
-                font-size: 0.9em;
-            }
-            
             .circle {
-                clip-path: circle(300px at center);
+                clip-path: circle(100% at center);
+                border-radius: 0;
             }
-
-            .content .textBox p {
-  color: #ffffff;
-  font-size: 1.1em;
-  margin: 20px 0;
-}
         }
 
         /* Footer */
@@ -587,8 +805,13 @@
     <div class="circle"></div>
     <header>
         <a href="#" class="logo"> <img src="logo.png" alt="Logo"></a>
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
+        <div class="header-icons">
+            <div class="cart-toggle">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
         <ul>
             <li> <a href="#">Inicio</a></li>
@@ -602,6 +825,7 @@
         <div class="textBox">
             <h2><span class="changing-text">Puedes imaginarlo... también puedes</span> <span>DISEÑARLO</span></h2>
             <p>"Transformamos tus ideas en tazas únicas. ¿Imaginas un diseño? Nosotros lo sublimamos. Crea la taza perfecta con tus fotos, dibujos o mensajes especiales: para regalos inolvidables, momentos de oficina con estilo o ese detalle que solo tú puedes dar. ¡Tu inspiración, hecha arte!"</p>
+            <a href="#" id="upload-design-btn">Subir diseño</a>
             <a href="#">Enviar diseño</a>
         </div>
         <div class="imgBox">
@@ -620,22 +844,40 @@
     <div class="slider-container">
         <div class="slider">
             <div class="slides" style="--img: url('img1.png')">
-               <div class="content"> <h2>ELEGIR</h2> </div>
+               <div class="content"> 
+                   <h2>ELEGIR</h2>
+                   <button class="choose-btn" data-product="Taza Azul" data-price="15.00" data-img="img1.png">Seleccionar</button>
+               </div>
             </div>
             <div class="slides" style="--img: url('img2.png')">
-               <div class="content"> <h2>ELEGIR</h2></div>
+               <div class="content"> 
+                   <h2>ELEGIR</h2>
+                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img2.png">Seleccionar</button>
+               </div>
             </div>
             <div class="slides" style="--img: url('img3.png')">
-               <div class="content"> <h2>ELEGIR</h2></div>
+               <div class="content"> 
+                   <h2>ELEGIR</h2>
+                   <button class="choose-btn" data-product="Taza Roja" data-price="15.00" data-img="img3.png">Seleccionar</button>
+               </div>
             </div>
             <div class="slides" style="--img: url('Imagen1.jpg')">
-               <div class="content"> <h2>ELEGIR</h2></div>
+               <div class="content"> 
+                   <h2>ELEGIR</h2>
+                   <button class="choose-btn" data-product="Taza Especial 1" data-price="18.00" data-img="Imagen1.jpg">Seleccionar</button>
+               </div>
             </div>
             <div class="slides" style="--img: url('Imagen2.jpg')">
-               <div class="content"> <h2>ELEGIR</h2></div>
+               <div class="content"> 
+                   <h2>ELEGIR</h2>
+                   <button class="choose-btn" data-product="Taza Especial 2" data-price="18.00" data-img="Imagen2.jpg">Seleccionar</button>
+               </div>
             </div>
             <div class="slides" style="--img: url('Imagen3.jpg')">
-               <div class="content"> <h2>ELEGIR</h2></div>
+               <div class="content"> 
+                   <h2>ELEGIR</h2>
+                   <button class="choose-btn" data-product="Taza Especial 3" data-price="18.00" data-img="Imagen3.jpg">Seleccionar</button>
+               </div>
             </div>
         </div>
     </div>
@@ -645,6 +887,50 @@
         <span class="next"></span>
     </div>
 </section>
+
+<!-- Modal para subir diseño personalizado -->
+<div class="custom-design-modal">
+    <div class="custom-design-content">
+        <span class="close-modal">&times;</span>
+        <h2>Sube tu diseño personalizado</h2>
+        <div class="upload-area" id="upload-area">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Haz clic o arrastra una imagen aquí</p>
+            <input type="file" id="design-upload" accept="image/*" style="display: none;">
+        </div>
+        <img id="image-preview" src="#" alt="Vista previa">
+        <button class="add-custom-design-btn" id="add-custom-design" disabled>Agregar al carrito</button>
+    </div>
+</div>
+
+<!-- Carrito de compras -->
+<div class="overlay"></div>
+<div class="cart-sidebar">
+    <div class="cart-header">
+        <h2>Tu Carrito</h2>
+        <button class="close-cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items">
+        <!-- Los elementos del carrito se añadirán aquí dinámicamente -->
+    </div>
+    <div class="cart-total">Total: $0.00</div>
+    <div class="checkout-form">
+        <h3>Información de envío</h3>
+        <div class="form-group">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Número de teléfono</label>
+            <input type="tel" id="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Dirección</label>
+            <input type="text" id="address" required>
+        </div>
+        <button class="checkout-btn">Enviar pedido por WhatsApp</button>
+    </div>
+</div>
 
 <footer>
     <div class="social-icons">
@@ -708,6 +994,346 @@
         let slides = document.querySelectorAll('.slides');
         slider.prepend(slides[slides.length - 1]);
     });
+
+    // Funcionalidad del carrito
+    const cartToggle = document.querySelector('.cart-toggle');
+    const closeCart = document.querySelector('.close-cart');
+    const cartSidebar = document.querySelector('.cart-sidebar');
+    const overlay = document.querySelector('.overlay');
+    const cartItems = document.querySelector('.cart-items');
+    const cartTotal = document.querySelector('.cart-total');
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    const chooseButtons = document.querySelectorAll('.choose-btn');
+    
+    let cart = [];
+    
+    // Abrir carrito
+    cartToggle.addEventListener('click', () => {
+        cartSidebar.classList.add('active');
+        overlay.classList.add('active');
+    });
+    
+    // Cerrar carrito
+    closeCart.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    
+    overlay.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    
+    // Añadir productos al carrito
+    chooseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const product = button.getAttribute('data-product');
+            const price = parseFloat(button.getAttribute('data-price'));
+            const img = button.getAttribute('data-img');
+            
+            // Verificar si el producto ya está en el carrito
+            const existingItem = cart.find(item => item.product === product);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    product,
+                    price,
+                    img,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            
+            // Mostrar mensaje de confirmación
+            alert(`${product} añadido al carrito`);
+        });
+    });
+    
+    // Actualizar carrito
+    function updateCart() {
+        cartItems.innerHTML = '';
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <img src="${item.img}" alt="${item.product}">
+                <div class="cart-item-details">
+                    <div>${item.product}</div>
+                    <div>$${item.price.toFixed(2)} x ${item.quantity}</div>
+                </div>
+                <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
+            `;
+            
+            cartItems.appendChild(cartItem);
+        });
+        
+        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        
+        // Añadir event listeners a los botones de eliminar
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                cart.splice(index, 1);
+                updateCart();
+            });
+        });
+    }
+    
+    // Enviar pedido por WhatsApp
+    checkoutBtn.addEventListener('click', () => {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        
+        // Validar formulario
+        if (!name || !phone || !address) {
+            alert('Por favor, completa todos los campos');
+            return;
+        }
+        
+        if (cart.length === 0) {
+            alert('Tu carrito está vacío');
+            return;
+        }
+        
+        // Crear mensaje para WhatsApp
+        let message = `¡Hola! Quiero hacer un pedido:%0A%0A`;
+        message += `*Nombre:* ${name}%0A`;
+        message += `*Teléfono:* ${phone}%0A`;
+        message += `*Dirección:* ${address}%0A%0A`;
+        message += `*Pedido:*%0A`;
+        
+        cart.forEach(item => {
+            message += `- ${item.product} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}%0A`;
+            
+            // Si es un diseño personalizado, añadir la URL de Drive
+            if (item.custom) {
+                message += `  🔗 Imagen: ${item.img}%0A`;
+            }
+        });
+        
+        message += `%0A*Total:* $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
+        
+        // Abrir WhatsApp con el mensaje (REEMPLAZA EL NÚMERO DE TELÉFONO)
+        window.open(`https://wa.me/1234567890?text=${message}`, '_blank');
+        
+        // Limpiar carrito y formulario
+        cart = [];
+        updateCart();
+        document.getElementById('name').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('address').value = '';
+        
+        // Cerrar carrito
+        cartSidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        
+        alert('¡Pedido enviado! Te contactaremos pronto.');
+    });
+    
+    // Funcionalidad para subir diseños personalizados
+    const uploadDesignBtn = document.getElementById('upload-design-btn');
+    const customDesignModal = document.querySelector('.custom-design-modal');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const uploadArea = document.getElementById('upload-area');
+    const designUpload = document.getElementById('design-upload');
+    const imagePreview = document.getElementById('image-preview');
+    const addCustomDesignBtn = document.getElementById('add-custom-design');
+    
+    // Abrir modal para subir diseño
+    uploadDesignBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        customDesignModal.classList.add('active');
+        overlay.classList.add('active');
+    });
+    
+    // Cerrar modal
+    closeModalBtn.addEventListener('click', () => {
+        customDesignModal.classList.remove('active');
+        overlay.classList.remove('active');
+        resetUploadForm();
+    });
+    
+    overlay.addEventListener('click', () => {
+        customDesignModal.classList.remove('active');
+        overlay.classList.remove('active');
+        resetUploadForm();
+    });
+    
+    // Subir imagen
+    uploadArea.addEventListener('click', () => {
+        designUpload.click();
+    });
+    
+    designUpload.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            
+            reader.addEventListener('load', function() {
+                imagePreview.src = reader.result;
+                imagePreview.style.display = 'block';
+                addCustomDesignBtn.disabled = false;
+            });
+            
+            reader.readAsDataURL(file);
+        }
+    });
+    
+    // Arrastrar y soltar imagen
+    uploadArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.style.borderColor = '#015c35';
+    });
+    
+    uploadArea.addEventListener('dragleave', function() {
+        this.style.borderColor = '#017143';
+    });
+    
+    uploadArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.style.borderColor = '#017143';
+        
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.includes('image')) {
+            designUpload.files = e.dataTransfer.files;
+            
+            const reader = new FileReader();
+            
+            reader.addEventListener('load', function() {
+                imagePreview.src = reader.result;
+                imagePreview.style.display = 'block';
+                addCustomDesignBtn.disabled = false;
+            });
+            
+            reader.readAsDataURL(file);
+        } else {
+            alert('Por favor, sube solo archivos de imagen');
+        }
+    });
+    
+    // Añadir diseño personalizado al carrito (VERSIÓN CON SUBIDA A GOOGLE APPS SCRIPT)
+    addCustomDesignBtn.addEventListener('click', async () => {
+        const file = designUpload.files[0];
+        if (!file) {
+            alert('Por favor, selecciona una imagen');
+            return;
+        }
+
+        // Mostrar mensaje de carga
+        addCustomDesignBtn.textContent = 'Subiendo...';
+        addCustomDesignBtn.disabled = true;
+
+        try {
+            // Convertir imagen a base64 para enviar a Google Apps Script
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            
+            reader.onload = async function() {
+                const base64Data = reader.result.split(',')[1]; // Remover el prefijo data:image/...
+                
+                // Preparar datos para enviar
+                const formData = new FormData();
+                formData.append('file', base64Data);
+                formData.append('name', 'diseño-' + Date.now() + '.png');
+                
+                // URL DE TU GOOGLE APPS SCRIPT
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxXbdqFRFSBYXMbulPkLyqveUL1nrPg_ndnHnJv9GBLbKqG2-xirmt1bH8CMssJRzfN/exec', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Error al subir la imagen al servidor');
+                }
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                // Añadir al carrito con la URL de Google Drive
+                cart.push({
+                    product: "Diseño Personalizado",
+                    price: 20.00,
+                    img: data.fileUrl, // URL de Google Drive
+                    quantity: 1,
+                    custom: true,
+                    fileId: data.fileId // ID del archivo en Drive
+                });
+                
+                updateCart();
+                customDesignModal.classList.remove('active');
+                overlay.classList.remove('active');
+                resetUploadForm();
+                alert('Diseño personalizado añadido al carrito');
+            };
+            
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al subir la imagen: ' + error.message);
+        } finally {
+            addCustomDesignBtn.textContent = 'Agregar al carrito';
+            addCustomDesignBtn.disabled = false;
+        }
+    });
+    
+    // Función para resetear el formulario de subida
+    function resetUploadForm() {
+        designUpload.value = '';
+        imagePreview.src = '#';
+        imagePreview.style.display = 'none';
+        addCustomDesignBtn.disabled = true;
+    }
+    
+    // Actualizar función updateCart para manejar diseños personalizados
+    const originalUpdateCart = updateCart;
+    updateCart = function() {
+        cartItems.innerHTML = '';
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            
+            // Manejar imágenes personalizadas (base64) vs imágenes normales
+            const imageSrc = item.custom ? item.img : item.img;
+            
+            cartItem.innerHTML = `
+                <img src="${imageSrc}" alt="${item.product}" style="${item.custom ? 'object-fit: contain;' : ''}">
+                <div class="cart-item-details">
+                    <div>${item.product}</div>
+                    <div>$${item.price.toFixed(2)} x ${item.quantity}</div>
+                </div>
+                <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
+            `;
+            
+            cartItems.appendChild(cartItem);
+        });
+        
+        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        
+        // Añadir event listeners a los botones de eliminar
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                cart.splice(index, 1);
+                updateCart();
+            });
+        });
+    };
 </script>
 </body>
-</html> fas fa-bars
+</html>
