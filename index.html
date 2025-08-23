@@ -1065,50 +1065,6 @@
             position: relative;
         }
 
-        /* MODIFICACIÓN: Contador de carrito posicionado encima */
-        .cart-toggle {
-            position: relative;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -25px;  /* Cambiado de -5px a -25px para posicionar encima */
-            right: -5px;
-            background: #ff4d4d;
-            color: white;
-            border-radius: 50%;
-            width: 25px;  /* Aumentado de 20px a 25px */
-            height: 25px; /* Aumentado de 20px a 25px */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px; /* Aumentado de 12px a 14px */
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            z-index: 1002;
-        }
-
-        /* Ajustes responsive para el nuevo posicionamiento */
-        @media (max-width: 768px) {
-            .cart-count {
-                top: -20px;
-                right: -8px;
-                width: 22px;
-                height: 22px;
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .cart-count {
-                top: -18px;
-                right: -10px;
-                width: 20px;
-                height: 20px;
-                font-size: 11px;
-            }
-        }
-
     </style>
 </head>
 <body>
