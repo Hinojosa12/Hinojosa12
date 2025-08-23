@@ -25,7 +25,7 @@
         }
 
         header{
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -33,7 +33,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            transition: background 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(8, 87, 177, 0.95);
+            padding: 15px 100px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         header .logo{
@@ -108,6 +116,7 @@
             text-decoration: none;
             font-size: 1.1em;
             transition: all 0.3s ease;
+            margin-right: 15px;
         }
         
         .content .textBox a:hover {
@@ -676,6 +685,11 @@
             .content .textBox h2 {
                 font-size: 2.8em;
                 line-height: 1.2em;
+                color: white !important;
+            }
+            
+            .content .textBox h2 span {
+                color: white !important;
             }
             
             .content .textBox p {
@@ -699,6 +713,10 @@
                 display: flex;
                 gap: 15px;
             }
+            
+            .menu-toggle i, .cart-toggle i {
+                color: white !important;
+            }
         }
 
         @media (max-width: 576px) {
@@ -708,6 +726,11 @@
             
             .content .textBox h2 {
                 font-size: 2.2em;
+                color: white !important;
+            }
+            
+            .content .textBox h2 span {
+                color: white !important;
             }
             
             .content .textBox p {
@@ -740,6 +763,11 @@
         @media (max-width: 400px) {
             .content .textBox h2 {
                 font-size: 1.8em;
+                color: white !important;
+            }
+            
+            .content .textBox h2 span {
+                color: white !important;
             }
             
             .circle {
@@ -798,27 +826,255 @@
         .fas{
             color: #000;
         }
+
+        .download-instructions {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #017143;
+        }
+        
+        .download-instructions h3 {
+            color: #017143;
+            margin-bottom: 10px;
+        }
+        
+        .download-instructions ol {
+            padding-left: 20px;
+        }
+        
+        .download-instructions li {
+            margin-bottom: 10px;
+        }
+        
+        .download-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Nueva sección de proceso de sublimación */
+        .sublimation-process {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f8f8f8 0%, #e0e0e0 100%);
+            text-align: center;
+        }
+        
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            color: #017143;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #0857b1;
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 120px;
+            font-weight: bold;
+            color: rgba(1, 113, 67, 0.08);
+            z-index: 1;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: #017143;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-description {
+            color: #666;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .process-image {
+            margin-top: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .process-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .process-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        @media (max-width: 768px) {
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .process-step {
+                min-width: 100%;
+            }
+            
+            .section-title {
+                font-size: 2.2em;
+            }
+            
+            .section-subtitle {
+                font-size: 1em;
+            }
+        }
+        
+        /* Notificación bonita */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #017143;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            z-index: 10000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .notification.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        /* Contador de carrito */
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4d4d;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-<section>
+<section id="inicio">
     <div class="circle"></div>
-    <header>
-        <a href="#" class="logo"> <img src="logo.png" alt="Logo"></a>
+    <header id="main-header">
+        <a href="#inicio" class="logo"> <img src="logo.png" alt="Logo"></a>
         <div class="header-icons">
             <div class="cart-toggle">
                 <i class="fas fa-shopping-cart"></i>
+                <div class="cart-count">0</div>
             </div>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
         <ul>
-            <li> <a href="#">Inicio</a></li>
-            <li> <a href="#">Diseños</a></li>
-            <li> <a href="#">Contacto</a></li>
-            <li> <a href="#">Productos</a></li>
-            <li> <a href="#">Cómo funciona</a></li>
+            <li> <a href="#inicio">Inicio</a></li>
+            <li> <a href="#productos">Diseños</a></li>
+            <li> <a href="#contacto">Contacto</a></li>
+            <li> <a href="#como-funciona">Cómo funciona</a></li>
         </ul>
     </header>
     <div class="content">
@@ -826,7 +1082,7 @@
             <h2><span class="changing-text">Puedes imaginarlo... también puedes</span> <span>DISEÑARLO</span></h2>
             <p>"Transformamos tus ideas en tazas únicas. ¿Imaginas un diseño? Nosotros lo sublimamos. Crea la taza perfecta con tus fotos, dibujos o mensajes especiales: para regalos inolvidables, momentos de oficina con estilo o ese detalle que solo tú puedes dar. ¡Tu inspiración, hecha arte!"</p>
             <a href="#" id="upload-design-btn">Subir diseño</a>
-            <a href="#">Enviar diseño</a>
+            <a href="#productos" id="choose-design-btn">Elegir diseño</a>
         </div>
         <div class="imgBox">
             <img src="img1.png" class="starbucks" alt="Taza personalizada">
@@ -840,114 +1096,39 @@
 </section>
 
 <!-- Sección del Slider de Productos -->
-<section class="slider-section">
+<section id="productos" class="slider-section">
     <div class="slider-container">
         <div class="slider">
             <div class="slides" style="--img: url('img1.png')">
                <div class="content"> 
-                   
                    <button class="choose-btn" data-product="Taza Azul" data-price="15.00" data-img="img1.png">Seleccionar</button>
                </div>
             </div>
             <div class="slides" style="--img: url('img2.png')">
                <div class="content"> 
-                   
                    <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img2.png">Seleccionar</button>
                </div>
             </div>
             <div class="slides" style="--img: url('img3.png')">
                <div class="content"> 
-                   
                    <button class="choose-btn" data-product="Taza Roja" data-price="15.00" data-img="img3.png">Seleccionar</button>
                </div>
             </div>
             <div class="slides" style="--img: url('img4.jpg')">
                <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Especial 1" data-price="18.00" data-img="Imagen4.jpg">Seleccionar</button>
+                   <button class="choose-btn" data-product="Taza Especial 1" data-price="18.00" data-img="img4.jpg">Seleccionar</button>
                </div>
             </div>
             <div class="slides" style="--img: url('img5.jpg')">
                <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Especial 2" data-price="18.00" data-img="Imagen5.jpg">Seleccionar</button>
+                   <button class="choose-btn" data-product="Taza Especial 2" data-price="18.00" data-img="img5.jpg">Seleccionar</button>
                </div>
             </div>
             <div class="slides" style="--img: url('img6.jpg')">
                <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Especial 3" data-price="18.00" data-img="Imagen6.jpg">Seleccionar</button>
+                   <button class="choose-btn" data-product="Taza Especial 3" data-price="18.00" data-img="img6.jpg">Seleccionar</button>
                </div>
             </div>
-             <div class="slides" style="--img: url('img7.jpg')">
-               <div class="content"> 
-                   <h2>ELEGIR</h2>
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img7.jpg">Seleccionar</button>
-               </div>
-            </div>
-             <div class="slides" style="--img: url('img8.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img8.jpg">Seleccionar</button>
-               </div>
-            </div>
-             <div class="slides" style="--img: url('img9.jpg')">
-               <div class="content"> 
-                  
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img9.jpg">Seleccionar</button>
-               </div>
-            </div>
-             <div class="slides" style="--img: url('img10.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img10.jpg">Seleccionar</button>
-               </div>
-            </div>
-             <div class="slides" style="--img: url('img11.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img11.jpg">Seleccionar</button>
-               </div>
-            </div>
-             <div class="slides" style="--img: url('img12.jpg')">
-               <div class="content"> 
-                   <h2>ELEGIR</h2>
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img12.jpg">Seleccionar</button>
-               </div>
-            </div>
-             <div class="slides" style="--img: url('img13.jpg')">
-               <div class="content"> 
-                  
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img13.jpg">Seleccionar</button>
-               </div>
-            </div>
-             <div class="slides" style="--img: url('img14.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img14.jpg">Seleccionar</button>
-               </div>
-            </div>
-             <div class="slides" style="--img: url('img15.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img15.jpg">Seleccionar</button>
-               </div>
-            </div>
-             <div class="slides" style="--img: url('img16.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img16.jpg">Seleccionar</button>
-               </div>
-            </div>
-
-             <div class="slides" style="--img: url('img17.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img17.jpg">Seleccionar</button>
-               </div>
-            </div>
-
-
         </div>
     </div>
     
@@ -956,6 +1137,86 @@
         <span class="next"></span>
     </div>
 </section>
+
+<!-- Nueva sección: Cómo funciona la sublimación -->
+<section id="como-funciona" class="sublimation-process">
+    <div class="process-container">
+        <h2 class="section-title">El Arte de la Sublimación</h2>
+        <p class="section-subtitle">Descubre cómo transformamos tus ideas en tazas únicas mediante el fascinante proceso de sublimación, donde la ciencia y el arte se unen para crear productos extraordinarios.</p>
+        
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-icon"><i class="fas fa-pencil-alt"></i></div>
+                <h3 class="step-title">Diseño Personalizado</h3>
+                <p class="step-description">Crea tu diseño desde cero o elige entre nuestras plantillas. Utilizamos tintas especiales de sublimación que se transformarán con el calor.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-icon"><i class="fas fa-print"></i></div>
+                <h3 class="step-title">Impresión en Papel Transfer</h3>
+                <p class="step-description">Imprimimos tu diseño en papel de sublimación de alta calidad. Este papel actúa como vehículo para transferir la imagen a la taza.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-icon"><i class="fas fa-cut"></i></div>
+                <h3 class="step-title">Preparación y Fijación</h3>
+                <p class="step-description">Recortamos el diseño y lo fijamos firmemente a la taza con cinta térmica especial, asegurando una transferencia perfecta sin burbujas.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-icon"><i class="fas fa-fire"></i></div>
+                <h3 class="step-title">Sublimación con Calor</h3>
+                <p class="step-description">Introducimos la taza en una prensa térmica a 200°C. Bajo esta temperatura, la tinta se convierte en gas y penetra permanentemente en el material.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-icon"><i class="fas fa-temperature-low"></i></div>
+                <h3 class="step-title">Enfriamiento y Revisión</h3>
+                <p class="step-description">Después del proceso térmico, dejamos enfriar la taza y retiramos el papel. Realizamos un control de calidad para garantizar la perfección.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">6</div>
+                <div class="step-icon"><i class="fas fa-gift"></i></div>
+                <h3 class="step-title">Empaque y Entrega</h3>
+                <p class="step-description">Embalamos tu taza personalizada con materiales protectores para que llegue a tus manos en perfectas condiciones, lista para sorprender.</p>
+            </div>
+        </div>
+        
+        <div class="process-image">
+            <img src="https://images.unsplash.com/photo-1580637250481-b5c6dfaab83d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Proceso de sublimación de tazas">
+        </div>
+    </div>
+</section>
+
+<footer id="contacto">
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+    </div>
+    <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Diseños</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+    </div>
+    <p class="copyright">© 2025 Tazas Personalizadas. Todos los derechos reservados.</p>
+</footer>
+
+<!-- Notificación bonita -->
+<div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notification-text">Producto añadido al carrito</span>
+</div>
 
 <!-- Modal para subir diseño personalizado -->
 <div class="custom-design-modal">
@@ -1002,24 +1263,6 @@
     </div>
 </div>
 
-<footer>
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-pinterest"></i></a>
-    </div>
-    <div class="footer-links">
-        <a href="#">Inicio</a>
-        <a href="#">Diseños</a>
-        <a href="#">Productos</a>
-        <a href="#">Contacto</a>
-        <a href="#">Términos y Condiciones</a>
-        <a href="#">Política de Privacidad</a>
-    </div>
-    <p class="copyright">© 2023 Tazas Personalizadas. Todos los derechos reservados.</p>
-</footer>
-
 <script>
     // Función para cambiar la imagen principal
     function imgSlider(anything){
@@ -1035,6 +1278,7 @@
     // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('header ul');
+    const header = document.getElementById('main-header');
     
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
@@ -1042,14 +1286,39 @@
             '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'
     });
     
-    // Cerrar menú al hacer clic en un enlace
-    document.querySelectorAll('header ul li a').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    // Header fijo y cambio de estilo al hacer scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Smooth scroll para navegación
+    document.querySelectorAll('header ul li a, .footer-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Cerrar menú en móviles
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
-
+    
     // Slider de productos
     let next = document.querySelector('.next');
     let prev = document.querySelector('.prev');
@@ -1074,6 +1343,7 @@
     const cartTotal = document.querySelector('.cart-total');
     const checkoutBtn = document.querySelector('.checkout-btn');
     const chooseButtons = document.querySelectorAll('.choose-btn');
+    const cartCount = document.querySelector('.cart-count');
     
     let cart = [];
     
@@ -1093,6 +1363,19 @@
         cartSidebar.classList.remove('active');
         overlay.classList.remove('active');
     });
+    
+    // Función para mostrar notificación
+    function showNotification(message) {
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notification-text');
+        
+        notificationText.textContent = message;
+        notification.classList.add('active');
+        
+        setTimeout(() => {
+            notification.classList.remove('active');
+        }, 3000);
+    }
     
     // Añadir productos al carrito
     chooseButtons.forEach(button => {
@@ -1117,8 +1400,8 @@
             
             updateCart();
             
-            // Mostrar mensaje de confirmación
-            alert(`${product} añadido al carrito`);
+            // Mostrar mensaje de confirmación bonito
+            showNotification(`¡${product} añadido al carrito! 🎉`);
         });
     });
     
@@ -1126,10 +1409,12 @@
     function updateCart() {
         cartItems.innerHTML = '';
         let total = 0;
+        let totalItems = 0;
         
         cart.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
+            totalItems += item.quantity;
             
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
@@ -1146,13 +1431,23 @@
         });
         
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        cartCount.textContent = totalItems;
+        
+        // Mostrar u ocultar el contador
+        if (totalItems > 0) {
+            cartCount.style.display = 'flex';
+        } else {
+            cartCount.style.display = 'none';
+        }
         
         // Añadir event listeners a los botones de eliminar
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', (e) => {
                 const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                const removedProduct = cart[index].product;
                 cart.splice(index, 1);
                 updateCart();
+                showNotification(`Se eliminó ${removedProduct} del carrito`);
             });
         });
     }
@@ -1206,11 +1501,12 @@
         cartSidebar.classList.remove('active');
         overlay.classList.remove('active');
         
-        alert('¡Pedido enviado! Te contactaremos pronto.');
+        showNotification('¡Pedido enviado! Te contactaremos pronto. 📦');
     });
     
     // Funcionalidad para subir diseños personalizados
     const uploadDesignBtn = document.getElementById('upload-design-btn');
+    const chooseDesignBtn = document.getElementById('choose-design-btn');
     const customDesignModal = document.querySelector('.custom-design-modal');
     const closeModalBtn = document.querySelector('.close-modal');
     const uploadArea = document.getElementById('upload-area');
@@ -1326,7 +1622,7 @@
             overlay.classList.remove('active');
             resetUploadForm();
             
-            alert('✅ Diseño personalizado añadido al carrito');
+            showNotification('✅ Diseño personalizado añadido al carrito');
             
         } catch (error) {
             console.error('Error:', error);
@@ -1349,7 +1645,7 @@
                     customDesignModal.classList.remove('active');
                     overlay.classList.remove('active');
                     resetUploadForm();
-                    alert('Diseño añadido al carrito (la imagen se incluirá en el pedido).');
+                    showNotification('Diseño añadido al carrito (la imagen se incluirá en el pedido).');
                 };
                 reader.readAsDataURL(file);
             }
@@ -1373,10 +1669,12 @@
     updateCart = function() {
         cartItems.innerHTML = '';
         let total = 0;
+        let totalItems = 0;
         
         cart.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
+            totalItems += item.quantity;
             
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
@@ -1397,16 +1695,26 @@
         });
         
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        cartCount.textContent = totalItems;
+        
+        // Mostrar u ocultar el contador
+        if (totalItems > 0) {
+            cartCount.style.display = 'flex';
+        } else {
+            cartCount.style.display = 'none';
+        }
         
         // Añadir event listeners a los botones de eliminar
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', (e) => {
                 const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                const removedProduct = cart[index].product;
                 cart.splice(index, 1);
                 updateCart();
+                showNotification(`Se eliminó ${removedProduct} del carrito`);
             });
         });
     };
 </script>
 </body>
-</html> img
+</html>
