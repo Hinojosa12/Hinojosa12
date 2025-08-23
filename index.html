@@ -1221,7 +1221,7 @@
         }
     });
     
-    // Añadir diseño personalizado al carrito (SOLUCIÓN CORREGIDA)
+    // Añadir diseño personalizado al carrito (VERSIÓN SIMPLIFICADA)
 addCustomDesignBtn.addEventListener('click', async () => {
     const file = designUpload.files[0];
     if (!file) {
@@ -1229,14 +1229,12 @@ addCustomDesignBtn.addEventListener('click', async () => {
         return;
     }
 
-    // Mostrar mensaje de carga
     addCustomDesignBtn.textContent = 'Subiendo...';
     addCustomDesignBtn.disabled = true;
 
     try {
         // Convertir imagen a base64
         const reader = new FileReader();
-        
         const fileData = await new Promise((resolve, reject) => {
             reader.onload = () => resolve(reader.result);
             reader.onerror = reject;
@@ -1245,27 +1243,13 @@ addCustomDesignBtn.addEventListener('click', async () => {
         
         const base64Data = fileData.split(',')[1];
         
-        // Preparar datos para enviar
+        // Preparar datos
         const payload = {
             file: base64Data,
             name: 'diseño-' + Date.now() + '.png'
         };
         
-        // URL DE TU GOOGLE APPS SCRIPT
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxXbdqFRFSBYXMbulPkLyqveUL1nrPg_ndnHnJv9GBLbKqG2-xirmt1bH8CMssJRzfN/exec';
-        
-        // Primero hacer una solicitud OPTIONS (preflight)
-        try {
-            await fetch(scriptURL, {
-                method: 'OPTIONS',
-                headers: {
-                    'Access-Control-Request-Method': 'POST',
-                    'Access-Control-Request-Headers': 'Content-Type'
-                }
-            });
-        } catch (preflightError) {
-            console.log('Preflight OPTIONS ignorado, continuando...');
-        }
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxQlxmsNj_gFNZ5y6Hj5QAZEGrcvpkHzGW5OdNB1-HKTCRq3cOWazAASeu-wyGO9zG1/exec';
         
         // Enviar solicitud POST
         const response = await fetch(scriptURL, {
@@ -1273,12 +1257,11 @@ addCustomDesignBtn.addEventListener('click', async () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(payload),
-            mode: 'cors' // Importantísimo para CORS
+            body: JSON.stringify(payload)
         });
         
         if (!response.ok) {
-            throw new Error(`Error HTTP: ${response.status}`);
+            throw new Error(`Error del servidor: ${response.status}`);
         }
         
         const data = await response.json();
@@ -1287,7 +1270,7 @@ addCustomDesignBtn.addEventListener('click', async () => {
             throw new Error(data.error);
         }
         
-        // Añadir al carrito con la URL de Google Drive
+        // Añadir al carrito
         cart.push({
             product: "Diseño Personalizado",
             price: 20.00,
@@ -1304,16 +1287,8 @@ addCustomDesignBtn.addEventListener('click', async () => {
         alert('✅ Diseño personalizado añadido al carrito');
         
     } catch (error) {
-        console.error('Error detallado:', error);
-        
-        // Mensaje de error más específico
-        if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
-            alert('Error de conexión. Intenta lo siguiente:\n\n1. Asegúrate de estar conectado a internet\n2. Prueba en modo incógnito\n3. O usa el método alternativo');
-            // Método alternativo
-            useAlternativeUploadMethod(file);
-        } else {
-            alert('Error al subir la imagen: ' + error.message);
-        }
+        console.error('Error:', error);
+        alert('Error al subir la imagen: ' + error.message);
     } finally {
         addCustomDesignBtn.textContent = 'Agregar al carrito';
         addCustomDesignBtn.disabled = false;
