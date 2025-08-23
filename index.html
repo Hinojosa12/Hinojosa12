@@ -6,6 +6,7 @@
     <title>Tazas Personalizadas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* [Todo el código CSS permanece igual] */
         *{
             margin: 0;
             padding: 0;
@@ -969,7 +970,7 @@
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         menuToggle.innerHTML = navMenu.classList.contains('active') ? 
-            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'
     });
     
     // Cerrar menú al hacer clic en un enlace
@@ -1235,48 +1236,55 @@
         try {
             // Convertir imagen a base64 para enviar a Google Apps Script
             const reader = new FileReader();
-            reader.readAsDataURL(file);
             
-            reader.onload = async function() {
-                const base64Data = reader.result.split(',')[1]; // Remover el prefijo data:image/...
-                
-                // Preparar datos para enviar
-                const formData = new FormData();
-                formData.append('file', base64Data);
-                formData.append('name', 'diseño-' + Date.now() + '.png');
-                
-                // URL DE TU GOOGLE APPS SCRIPT
-                const response = await fetch('https://script.google.com/macros/s/AKfycbxXbdqFRFSBYXMbulPkLyqveUL1nrPg_ndnHnJv9GBLbKqG2-xirmt1bH8CMssJRzfN/exec', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Error al subir la imagen al servidor');
-                }
-                
-                const data = await response.json();
-                
-                if (data.error) {
-                    throw new Error(data.error);
-                }
-                
-                // Añadir al carrito con la URL de Google Drive
-                cart.push({
-                    product: "Diseño Personalizado",
-                    price: 20.00,
-                    img: data.fileUrl, // URL de Google Drive
-                    quantity: 1,
-                    custom: true,
-                    fileId: data.fileId // ID del archivo en Drive
-                });
-                
-                updateCart();
-                customDesignModal.classList.remove('active');
-                overlay.classList.remove('active');
-                resetUploadForm();
-                alert('Diseño personalizado añadido al carrito');
-            };
+            // Usar promesa para manejar la lectura del archivo
+            const fileData = await new Promise((resolve, reject) => {
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+            
+            const base64Data = fileData.split(',')[1]; // Remover el prefijo data:image/...
+            
+            // Preparar datos para enviar (URL encoded, no FormData)
+            const params = new URLSearchParams();
+            params.append('file', base64Data);
+            params.append('name', 'diseño-' + Date.now() + '.png');
+            
+            // URL DE TU GOOGLE APPS SCRIPT
+            const response = await fetch('https://script.google.com/macros/s/AKfycbxXbdqFRFSBYXMbulPkLyqveUL1nrPg_ndnHnJv9GBLbKqG2-xirmt1bH8CMssJRzfN/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params
+            });
+            
+            if (!response.ok) {
+                throw new Error('Error al subir la imagen al servidor');
+            }
+            
+            const data = await response.json();
+            
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            
+            // Añadir al carrito con la URL de Google Drive
+            cart.push({
+                product: "Diseño Personalizado",
+                price: 20.00,
+                img: data.fileUrl, // URL de Google Drive
+                quantity: 1,
+                custom: true,
+                fileId: data.fileId // ID del archivo en Drive
+            });
+            
+            updateCart();
+            customDesignModal.classList.remove('active');
+            overlay.classList.remove('active');
+            resetUploadForm();
+            alert('Diseño personalizado añadido al carrito');
             
         } catch (error) {
             console.error('Error:', error);
