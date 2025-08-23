@@ -1221,7 +1221,7 @@
         }
     });
     
-    // Añadir diseño personalizado al carrito (SOLUCIÓN CON FORMULARIO)
+    // Añadir diseño personalizado al carrito (SOLUCIÓN CORREGIDA)
 addCustomDesignBtn.addEventListener('click', async () => {
     const file = designUpload.files[0];
     if (!file) {
@@ -1245,83 +1245,97 @@ addCustomDesignBtn.addEventListener('click', async () => {
         
         const base64Data = fileData.split(',')[1];
         
-        // Crear formulario invisible
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'https://script.google.com/macros/s/AKfycbxXbdqFRFSBYXMbulPkLyqveUL1nrPg_ndnHnJv9GBLbKqG2-xirmt1bH8CMssJRzfN/exec';
-        form.target = 'hiddenFrame';
+        // Preparar datos para enviar
+        const payload = {
+            file: base64Data,
+            name: 'diseño-' + Date.now() + '.png'
+        };
         
-        // Crear campos ocultos
-        const fileInput = document.createElement('input');
-        fileInput.type = 'hidden';
-        fileInput.name = 'file';
-        fileInput.value = base64Data;
+        // URL DE TU GOOGLE APPS SCRIPT
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxXbdqFRFSBYXMbulPkLyqveUL1nrPg_ndnHnJv9GBLbKqG2-xirmt1bH8CMssJRzfN/exec';
         
-        const nameInput = document.createElement('input');
-        nameInput.type = 'hidden';
-        nameInput.name = 'name';
-        nameInput.value = 'diseño-' + Date.now() + '.png';
-        
-        // Añadir campos al formulario
-        form.appendChild(fileInput);
-        form.appendChild(nameInput);
-        document.body.appendChild(form);
-        
-        // Crear iframe oculto para la respuesta
-        if (!document.getElementById('hiddenFrame')) {
-            const iframe = document.createElement('iframe');
-            iframe.name = 'hiddenFrame';
-            iframe.id = 'hiddenFrame';
-            iframe.style.display = 'none';
-            document.body.appendChild(iframe);
-            
-            // Manejar la respuesta
-            iframe.onload = function() {
-                try {
-                    const responseText = iframe.contentDocument.body.textContent;
-                    const data = JSON.parse(responseText);
-                    
-                    if (data.error) {
-                        throw new Error(data.error);
-                    }
-                    
-                    // Añadir al carrito
-                    cart.push({
-                        product: "Diseño Personalizado",
-                        price: 20.00,
-                        img: data.fileUrl,
-                        quantity: 1,
-                        custom: true,
-                        fileId: data.fileId
-                    });
-                    
-                    updateCart();
-                    customDesignModal.classList.remove('active');
-                    overlay.classList.remove('active');
-                    resetUploadForm();
-                    alert('Diseño personalizado añadido al carrito');
-                    
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Error al subir la imagen: ' + error.message);
-                } finally {
-                    addCustomDesignBtn.textContent = 'Agregar al carrito';
-                    addCustomDesignBtn.disabled = false;
-                    document.body.removeChild(form);
+        // Primero hacer una solicitud OPTIONS (preflight)
+        try {
+            await fetch(scriptURL, {
+                method: 'OPTIONS',
+                headers: {
+                    'Access-Control-Request-Method': 'POST',
+                    'Access-Control-Request-Headers': 'Content-Type'
                 }
-            };
+            });
+        } catch (preflightError) {
+            console.log('Preflight OPTIONS ignorado, continuando...');
         }
         
-        // Enviar formulario
-        form.submit();
+        // Enviar solicitud POST
+        const response = await fetch(scriptURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+            mode: 'cors' // Importantísimo para CORS
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.error) {
+            throw new Error(data.error);
+        }
+        
+        // Añadir al carrito con la URL de Google Drive
+        cart.push({
+            product: "Diseño Personalizado",
+            price: 20.00,
+            img: data.fileUrl,
+            quantity: 1,
+            custom: true,
+            fileId: data.fileId
+        });
+        
+        updateCart();
+        customDesignModal.classList.remove('active');
+        overlay.classList.remove('active');
+        resetUploadForm();
+        alert('✅ Diseño personalizado añadido al carrito');
         
     } catch (error) {
-        console.error('Error:', error);
-        alert('Error al procesar la imagen: ' + error.message);
+        console.error('Error detallado:', error);
+        
+        // Mensaje de error más específico
+        if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+            alert('Error de conexión. Intenta lo siguiente:\n\n1. Asegúrate de estar conectado a internet\n2. Prueba en modo incógnito\n3. O usa el método alternativo');
+            // Método alternativo
+            useAlternativeUploadMethod(file);
+        } else {
+            alert('Error al subir la imagen: ' + error.message);
+        }
+    } finally {
         addCustomDesignBtn.textContent = 'Agregar al carrito';
         addCustomDesignBtn.disabled = false;
     }
 });
+
+// Método alternativo como fallback
+function useAlternativeUploadMethod(file) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const base64Data = reader.result.split(',')[1];
+        
+        // Crear enlace alternativo
+        const alternativeURL = `https://script.google.com/macros/s/AKfycbxXbdqFRFSBYXMbulPkLyqveUL1nrPg_ndnHnJv9GBLbKqG2-xirmt1bH8CMssJRzfN/exec?file=${encodeURIComponent(base64Data)}&name=diseño-${Date.now()}.png`;
+        
+        if (confirm('¿Quieres probar el método alternativo de subida?')) {
+            window.open(alternativeURL, '_blank');
+            alert('Se abrirá una nueva pestaña. Cuando termine, la imagen se habrá subido.');
+        }
+    };
+    reader.readAsDataURL(file);
+}
     // Función para resetear el formulario de subida
     function resetUploadForm() {
         designUpload.value = '';
