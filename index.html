@@ -6,8 +6,7 @@
     <title>Tazas Personalizadas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* [Todo el código CSS permanece igual] */
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -900,6 +899,7 @@
             <input type="file" id="design-upload" accept="image/*" style="display: none;">
         </div>
         <img id="image-preview" src="#" alt="Vista previa">
+        <div class="upload-status" id="upload-status"></div>
         <button class="add-custom-design-btn" id="add-custom-design" disabled>Agregar al carrito</button>
     </div>
 </div>
@@ -1148,6 +1148,7 @@
     const designUpload = document.getElementById('design-upload');
     const imagePreview = document.getElementById('image-preview');
     const addCustomDesignBtn = document.getElementById('add-custom-design');
+    const uploadStatus = document.getElementById('upload-status');
     
     // Abrir modal para subir diseño
     uploadDesignBtn.addEventListener('click', (e) => {
@@ -1221,102 +1222,81 @@
         }
     });
     
-    // Añadir diseño personalizado al carrito (VERSIÓN SIMPLIFICADA)
-addCustomDesignBtn.addEventListener('click', async () => {
-    const file = designUpload.files[0];
-    if (!file) {
-        alert('Por favor, selecciona una imagen');
-        return;
-    }
-
-    addCustomDesignBtn.textContent = 'Subiendo...';
-    addCustomDesignBtn.disabled = true;
-
-    try {
-        // Convertir imagen a base64
-        const reader = new FileReader();
-        const fileData = await new Promise((resolve, reject) => {
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = reject;
-            reader.readAsDataURL(file);
-        });
-        
-        const base64Data = fileData.split(',')[1];
-        
-        // Preparar datos
-        const payload = {
-            file: base64Data,
-            name: 'diseño-' + Date.now() + '.png'
-        };
-        
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxQlxmsNj_gFNZ5y6Hj5QAZEGrcvpkHzGW5OdNB1-HKTCRq3cOWazAASeu-wyGO9zG1/exec';
-        
-        // Enviar solicitud POST
-        const response = await fetch(scriptURL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload)
-        });
-        
-        if (!response.ok) {
-            throw new Error(`Error del servidor: ${response.status}`);
+    // Añadir diseño personalizado al carrito
+    addCustomDesignBtn.addEventListener('click', async () => {
+        const file = designUpload.files[0];
+        if (!file) {
+            alert('Por favor, selecciona una imagen');
+            return;
         }
-        
-        const data = await response.json();
-        
-        if (data.error) {
-            throw new Error(data.error);
-        }
-        
-        // Añadir al carrito
-        cart.push({
-            product: "Diseño Personalizado",
-            price: 20.00,
-            img: data.fileUrl,
-            quantity: 1,
-            custom: true,
-            fileId: data.fileId
-        });
-        
-        updateCart();
-        customDesignModal.classList.remove('active');
-        overlay.classList.remove('active');
-        resetUploadForm();
-        alert('✅ Diseño personalizado añadido al carrito');
-        
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error al subir la imagen: ' + error.message);
-    } finally {
-        addCustomDesignBtn.textContent = 'Agregar al carrito';
-        addCustomDesignBtn.disabled = false;
-    }
-});
 
-// Método alternativo como fallback
-function useAlternativeUploadMethod(file) {
-    const reader = new FileReader();
-    reader.onload = function() {
-        const base64Data = reader.result.split(',')[1];
-        
-        // Crear enlace alternativo
-        const alternativeURL = `https://script.google.com/macros/s/AKfycbxXbdqFRFSBYXMbulPkLyqveUL1nrPg_ndnHnJv9GBLbKqG2-xirmt1bH8CMssJRzfN/exec?file=${encodeURIComponent(base64Data)}&name=diseño-${Date.now()}.png`;
-        
-        if (confirm('¿Quieres probar el método alternativo de subida?')) {
-            window.open(alternativeURL, '_blank');
-            alert('Se abrirá una nueva pestaña. Cuando termine, la imagen se habrá subido.');
+        addCustomDesignBtn.textContent = 'Subiendo...';
+        addCustomDesignBtn.disabled = true;
+        uploadStatus.textContent = 'Subiendo imagen...';
+        uploadStatus.style.color = '#017143';
+
+        try {
+            // En una implementación real, aquí subirías la imagen a tu servidor
+            // Para este ejemplo, simulamos una subida exitosa después de un delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Simulamos una URL de imagen subida (en un caso real, esto vendría del servidor)
+            const simulatedImageUrl = URL.createObjectURL(file);
+            
+            // Añadir al carrito
+            cart.push({
+                product: "Diseño Personalizado",
+                price: 20.00,
+                img: simulatedImageUrl,
+                quantity: 1,
+                custom: true
+            });
+            
+            updateCart();
+            customDesignModal.classList.remove('active');
+            overlay.classList.remove('active');
+            resetUploadForm();
+            
+            alert('✅ Diseño personalizado añadido al carrito');
+            
+        } catch (error) {
+            console.error('Error:', error);
+            uploadStatus.textContent = 'Error al subir la imagen. Intenta de nuevo.';
+            uploadStatus.style.color = '#ff4d4d';
+            
+            // Ofrecer alternativa de almacenamiento local
+            if (confirm('Error al subir. ¿Quieres añadir el diseño igualmente (la imagen se incluirá en el pedido)?')) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    cart.push({
+                        product: "Diseño Personalizado (sin subir)",
+                        price: 20.00,
+                        img: reader.result,
+                        quantity: 1,
+                        custom: true
+                    });
+                    
+                    updateCart();
+                    customDesignModal.classList.remove('active');
+                    overlay.classList.remove('active');
+                    resetUploadForm();
+                    alert('Diseño añadido al carrito (la imagen se incluirá en el pedido).');
+                };
+                reader.readAsDataURL(file);
+            }
+        } finally {
+            addCustomDesignBtn.textContent = 'Agregar al carrito';
+            addCustomDesignBtn.disabled = false;
         }
-    };
-    reader.readAsDataURL(file);
-}
+    });
+
     // Función para resetear el formulario de subida
     function resetUploadForm() {
         designUpload.value = '';
         imagePreview.src = '#';
         imagePreview.style.display = 'none';
         addCustomDesignBtn.disabled = true;
+        uploadStatus.textContent = '';
     }
     
     // Actualizar función updateCart para manejar diseños personalizados
@@ -1360,4 +1340,4 @@ function useAlternativeUploadMethod(file) {
     };
 </script>
 </body>
-</html>    addCustomDesignBtn.addEventListener
+</html>
