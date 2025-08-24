@@ -1142,6 +1142,83 @@
     text-shadow: 0 0 10px rgba(1, 113, 67, 0.3);
     transition: all 0.3s ease;
 }
+    
+    /* Efecto de máquina de escribir - Solo para desktop */
+@media (min-width: 769px) {
+    .typewriter {
+        overflow: hidden;
+        border-right: .15em solid #017143;
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    }
+}
+
+/* Animación de escritura */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Efecto de parpadeo del cursor */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #017143; }
+}
+
+/* Mejorar el título principal */
+.content .textBox h2 {
+    color: #333;
+    font-size: 3.5em;
+    line-height: 1.3em;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Efecto para la palabra DISEÑARLO */
+.design-text {
+    display: inline-block;
+    color: #017143 !important;
+    font-weight: 700;
+    animation: pulse 2s infinite;
+    text-shadow: 0 0 10px rgba(1, 113, 67, 0.3);
+}
+
+/* Animación de pulso para diseño en móviles y desktop */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .content .textBox h2 {
+        font-size: 2em;
+        line-height: 1.2em;
+        color: white !important;
+        margin-bottom: 15px;
+    }
+    
+    .typewriter {
+        animation: none;
+        border-right: none;
+        white-space: normal;
+    }
+    
+    .design-text {
+        font-size: 1.2em;
+        display: block;
+        margin-top: 10px;
+        animation: heartbeat 1.5s ease-in-out infinite both;
+    }
+    
+    @keyframes heartbeat {
+        from { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        to { transform: scale(1); }
+    }
+}
     </style>
 </head>
 <body>
@@ -1167,8 +1244,11 @@
     </header>
     <div class="content">
         <div class="textBox">
-            <!-- Reemplazar la línea actual del h2 -->
-<h2><span class="typewriter">Puedes imaginarlo... también puedes</span> <span class="design-text">DISEÑARLO</span></h2>
+            <h2>
+    <span class="typewriter">Puedes imaginarlo...</span>
+    <span class="typewriter">también puedes</span>
+    <span class="design-text">DISEÑARLO</span>
+</h2>
             <p>"Transformamos tus ideas en tazas únicas. ¿Imaginas un diseño? Nosotros lo sublimamos. Crea la taza perfecta con tus fotos, dibujos o mensajes especiales: para regalos inolvidables, momentos de oficina con estilo o ese detalle que solo tú puedes dar. ¡Tu inspiración, hecha arte!"</p>
             <a href="#" id="upload-design-btn">Subir diseño</a>
             <a href="#productos" id="choose-design-btn">Elegir diseño</a>
@@ -1876,19 +1956,25 @@
         uploadStatus.textContent = '';
     }
     
-    // Agregar después de las funciones existentes
-function animateText() {
+    // Animación para el texto en móviles
+function setupTextAnimations() {
     const designText = document.querySelector('.design-text');
-    setInterval(() => {
-        designText.style.transform = 'scale(1.05)';
-        setTimeout(() => {
-            designText.style.transform = 'scale(1)';
-        }, 500);
-    }, 2000);
+    
+    // Solo aplicar hover effect en desktop
+    if (window.innerWidth > 768) {
+        designText.addEventListener('mouseover', () => {
+            designText.style.textShadow = '0 0 15px rgba(1, 113, 67, 0.5)';
+        });
+        
+        designText.addEventListener('mouseout', () => {
+            designText.style.textShadow = '0 0 10px rgba(1, 113, 67, 0.3)';
+        });
+    }
 }
 
-// Llamar la función al cargar la página
-window.addEventListener('load', animateText);
+// Llamar la función al cargar y al redimensionar
+window.addEventListener('load', setupTextAnimations);
+window.addEventListener('resize', setupTextAnimations);
 </script>
 </body>
 </html>
