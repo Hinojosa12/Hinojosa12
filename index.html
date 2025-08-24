@@ -184,324 +184,213 @@
           align-items: center;
           }
 
-        /* --- Slider Section --- */
-        .slider-section {
-            position: relative;
-            width: 100%;
-            height: 50vw;
-            overflow: hidden;
+        /* --- Sección de Productos en Grid --- */
+        .products-section {
+            padding: 80px 20px;
             background: #f8f8f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        @media (max-width: 900px) {
-            .slider-section {
-                height: 600px;
-            }
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .slider-container {
+        .section-title {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            color: #017143;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
             position: absolute;
-            top: 50%;
+            bottom: -10px;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70vw;
-            height: 50vw;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #0857b1;
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
         }
 
-        @media (max-width: 900px) {
-            .slider-container {
-                width: 100%;
-                height: 600px;
-            }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .slider{
-            position: absolute;
-            inset: 80px 200px 80px 80px;
-            background: #ccc;
+        .product-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            cursor: pointer;
         }
 
-        .slider .slides{
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 240px;
-            height: 320px;
-            background: var(--img);
-            background-size: cover;
-            background-position: center;
-            transition: 0.5s;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-end;
+            flex-direction: column;
         }
 
-        .slider .slides:nth-child(1),
-        .slider .slides:nth-child(2){
-            position: absolute;
+        .product-title {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 1.4em;
+            color: #017143;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-select-btn {
+            background: #017143;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            margin-top: auto;
+        }
+
+        .product-select-btn:hover {
+            background: #015c35;
+            transform: translateY(-2px);
+        }
+
+        /* Lightbox para ver imagen ampliada */
+        .image-lightbox {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            transform: translateY(0);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0);
-            background-size: cover;
-        }
-
-        .slider .slides:nth-child(3){
-            left: calc(50% + 240px);
-            background-size: cover;
-        }
-        .slider .slides:nth-child(4){
-            left: calc(50% + 500px);
-            background-size: cover;
-        }
-        .slider .slides:nth-child(5){
-            left: calc(50% + 760px);
-            background-size: cover;
-        }
-        .slider .slides:nth-child(6){
-            left: calc(50% + 1020px);
-            background-size: cover;
-            opacity: 0;
-        }
-    
-     .slider .slides:nth-child(7){
-            left: calc(50% + 1280px);
-            background-size: cover;
-            opacity: 0;
-        }
-     .slider .slides:nth-child(8){
-            left: calc(50% + 1540px);
-            background-size: cover;
-            opacity: 0;
-        }
-     .slider .slides:nth-child(9){
-            left: calc(50% + 1800px);
-            background-size: cover;
-            opacity: 0;
-        }
-     .slider .slides:nth-child(10){
-            left: calc(50% + 2060px);
-            background-size: cover;
-            opacity: 0;
-        }
-     .slider .slides:nth-child(11){
-            left: calc(50% + 2320px);
-            background-size: cover;
-            opacity: 0;
-        }
-     .slider .slides:nth-child(12){
-            left: calc(50% + 2580px);
-            background-size: cover;
-            opacity: 0;
-        }
-     .slider .slides:nth-child(13){
-            left: calc(50% + 2840px);
-            background-size: cover;
-            opacity: 0;
-        }
-    
-     .slider .slides:nth-child(14){
-            left: calc(50% + 3100px);
-            background-size: cover;
-            opacity: 0;
-        }
-    
-     .slider .slides:nth-child(15){
-            left: calc(50% + 3360px);
-            background-size: cover;
-            opacity: 0;
-        }
-    
-     .slider .slides:nth-child(16){
-            left: calc(50% + 3620px);
-            background-size: cover;
-            opacity: 0;
-        }
-   
-    
-    
-    
-    
-    
-    
-
-        .slider-buttons{
-            position: absolute;
-            bottom: 15px;
-            display: flex;
-            gap: 20px;
-            z-index: 100;
-        }
-
-        .slider-buttons span{
-            position: relative;
-            width: 50px;
-            height: 50px;
-            background: #111;
-            cursor: pointer;
+            background: rgba(0, 0, 0, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 50%;
-        }
-
-        .slider-buttons span::before{
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border-top: 4px solid #fff;
-            border-left: 4px solid #fff;
-            transform: rotate(315deg) translate(2px, 2px);
-        }
-
-        .slider-buttons span:nth-child(2)::before{
-            transform: rotate(135deg) translate(2px, 2px);
-        }
-
-        .slider-buttons span:active{
-            opacity: 0.5;
-        }
-
-        .slider .content{
-            position: relative;
-            padding: 40px;
-            max-width: 600px;
-            transition-delay: 0s;
-            transform: translateY(40px);
             z-index: 10000;
             opacity: 0;
-        }
-        .slider .content h2{
-            font-size: 4em;
-            color: #fff;
-        }
-        .slider .slides:nth-child(1) .content,
-        .slider .slides:nth-child(2) .content{
-            opacity: 1;
-            transform: translateY(0px);
-            transition-delay: 0.5s;
+            visibility: hidden;
+            transition: all 0.3s;
         }
 
-        /* Botón de elegir en el slider */
-        .choose-btn {
+        .image-lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-product-info {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            max-width: 600px;
+        }
+
+        .lightbox-product-title {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .lightbox-product-description {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .lightbox-product-price {
+            font-size: 1.5em;
+            color: #017143;
+            font-weight: bold;
+        }
+
+        .lightbox-select-btn {
             background: #017143;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 12px 25px;
+            border-radius: 30px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 10px;
+            margin-top: 20px;
             transition: all 0.3s;
         }
-        
-        .choose-btn:hover {
+
+        .lightbox-select-btn:hover {
             background: #015c35;
             transform: translateY(-3px);
         }
-
-        /************   MOVILES **********/
-
-        @media(max-width: 900px){
-            .slider{
-                position: absolute;
-                inset: 40px 40px 200px 40px;
-            }
-
-            .slider .slides{
-                width: 100px;
-                height: 100px;
-                top: initial;
-                bottom: -170px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-            }
-
-            .slider .slides:nth-child(1),
-            .slider .slides:nth-child(2){
-                top: initial;
-                bottom: 0px;
-            }
-            .slider .slides:nth-child(3){
-                left: 0;
-            }
-            .slider .slides:nth-child(4){
-                left: 120px;
-            }
-            .slider .slides:nth-child(5){
-                left: 240;
-            }
-            .slider .slides:nth-child(6){
-                left: 360;
-            }
-        }
-    
-    .slider .slides:nth-child(7){
-                left: 480;
-            }
-        }
-    
-    .slider .slides:nth-child(8){
-                left: 600;
-            }
-        }
-    
-    .slider .slides:nth-child(9){
-                left: 720;
-            }
-        }
-    
-     
-    .slider .slides:nth-child(10){
-                left: 840;
-            }
-        }
-    
-    .slider .slides:nth-child(11){
-                left: 960;
-            }
-        }
-    
-    .slider .slides:nth-child(12){
-                left: 1080;
-            }
-        }
-    
-     
-    .slider .slides:nth-child(13){
-                left: 1200;
-            }
-        }
-    
-    .slider .slides:nth-child(14){
-                left: 1320;
-            }
-        }
-    
-    .slider .slides:nth-child(15){
-                left: 1440;
-            }
-        }
-    
-     
-    .slider .slides:nth-child(16){
-                left: 1560;
-            }
-        }
-    
-    
-    
 
         /* Animación */
         @keyframes float {
@@ -834,6 +723,37 @@
             .menu-toggle i, .cart-toggle i {
                 color: white !important;
             }
+
+            /* MODIFICACIÓN PRINCIPAL: 3 productos por fila en móviles */
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            
+            .product-image {
+                height: 150px;
+            }
+            
+            .product-info {
+                padding: 10px;
+            }
+            
+            .product-title {
+                font-size: 0.9em;
+            }
+            
+            .product-description {
+                display: none; /* Ocultamos descripción en móviles */
+            }
+            
+            .product-price {
+                font-size: 1.1em;
+            }
+            
+            .product-select-btn {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -875,9 +795,38 @@
             .cart-sidebar {
                 width: 300px;
             }
+
+            /* MODIFICACIÓN: Mantener 3 columnas en móviles pequeños */
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            .product-image {
+                height: 120px;
+            }
+            
+            .product-info {
+                padding: 8px;
+            }
+            
+            .product-title {
+                font-size: 0.8em;
+                margin-bottom: 5px;
+            }
+            
+            .product-price {
+                font-size: 1em;
+                margin-bottom: 10px;
+            }
+            
+            .product-select-btn {
+                padding: 6px 8px;
+                font-size: 11px;
+            }
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
             .content .textBox h2 {
                 font-size: 1.8em;
                 color: white !important;
@@ -890,6 +839,26 @@
             .circle {
                 clip-path: circle(100% at center);
                 border-radius: 0;
+            }
+            
+            /* MODIFICACIÓN: Ajustar para pantallas muy pequeñas */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 360px) {
+            /* MODIFICACIÓN: Para pantallas muy pequeñas, 2 columnas */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-image {
+                height: 100px;
+            }
+            
+            .product-title {
+                font-size: 0.7em;
             }
         }
 
@@ -944,45 +913,6 @@
             color: #000;
         }
 
-        .download-instructions {
-            background: #f8f8f8;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 4px solid #017143;
-        }
-        
-        .download-instructions h3 {
-            color: #017143;
-            margin-bottom: 10px;
-        }
-        
-        .download-instructions ol {
-            padding-left: 20px;
-        }
-        
-        .download-instructions li {
-            margin-bottom: 10px;
-        }
-        
-        .download-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-            display: inline-block;
-            transition: all 0.3s;
-        }
-        
-        .download-btn:hover {
-            background: #218838;
-            transform: translateY(-2px);
-        }
-
         /* Nueva sección de proceso de sublimación */
         .sublimation-process {
             padding: 80px 20px;
@@ -993,35 +923,6 @@
         .process-container {
             max-width: 1200px;
             margin: 0 auto;
-        }
-        
-        .section-title {
-            font-size: 2.8em;
-            margin-bottom: 20px;
-            color: #017143;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: #0857b1;
-            border-radius: 2px;
-        }
-        
-        .section-subtitle {
-            font-size: 1.2em;
-            color: #555;
-            margin-bottom: 60px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
         
         .process-steps {
@@ -1121,10 +1022,6 @@
             .section-title {
                 font-size: 2.2em;
             }
-            
-            .section-subtitle {
-                font-size: 1em;
-            }
         }
         
         /* Notificación bonita */
@@ -1212,133 +1109,131 @@
     </div>
 </section>
 
-<!-- Sección del Slider de Productos - CORREGIDA -->
-<section id="productos" class="slider-section">
-    <div class="slider-container">
-        <div class="slider">
-            <div class="slides" style="--img: url('img4.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Azul" data-price="15.00" data-img="img4.jpg">Seleccionar</button>
-               </div>
-            </div>
-            <div class="slides" style="--img: url('img5.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Morada" data-price="15.00" data-img="img5.jpg">Seleccionar</button>
-               </div>
-            </div>
-            <div class="slides" style="--img: url('img6.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Roja" data-price="15.00" data-img="img6.jpg">Seleccionar</button>
-               </div>
-            </div>
-            <div class="slides" style="--img: url('img7.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Especial 1" data-price="18.00" data-img="img7.jpg">Seleccionar</button>
-               </div>
-            </div>
-            <div class="slides" style="--img: url('img8.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Especial 2" data-price="18.00" data-img="img8.jpg">Seleccionar</button>
-               </div>
-            </div>
-            <div class="slides" style="--img: url('img9.jpg')">
-               <div class="content"> 
-                   
-                   <button class="choose-btn" data-product="Taza Especial 3" data-price="18.00" data-img="img9.jpg">Seleccionar</button>
-               </div>
+<!-- Sección de Productos en Grid -->
+<section id="productos" class="products-section">
+    <div class="products-container">
+        <h2 class="section-title">Nuestros Diseños</h2>
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img4.jpg" alt="Taza Azul" data-product="Taza Azul" data-description="Taza de cerámica de alta calidad con diseño azul moderno. Perfecta para el café de la mañana." data-price="15.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Taza Azul</h3>
+                    <p class="product-description">Taza de cerámica de alta calidad con diseño azul moderno. Perfecta para el café de la mañana.</p>
+                    <div class="product-price">$15.00</div>
+                    <button class="product-select-btn" data-product="Taza Azul" data-price="15.00" data-img="img4.jpg">Seleccionar</button>
+                </div>
             </div>
             
-            <div class="slides" style="--img: url('img10.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img10.jpg">Seleccionar</button>
-   </div>
-</div>
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img5.jpg" alt="Taza Morada" data-product="Taza Morada" data-description="Elegante taza morada con detalles en dorado. Ideal para regalos especiales." data-price="16.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Taza Morada</h3>
+                    <p class="product-description">Elegante taza morada con detalles en dorado. Ideal para regalos especiales.</p>
+                    <div class="product-price">$16.00</div>
+                    <button class="product-select-btn" data-product="Taza Morada" data-price="16.00" data-img="img5.jpg">Seleccionar</button>
+                </div>
+            </div>
             
-<div class="slides" style="--img: url('img11.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img11.jpg">Seleccionar</button>
-   </div>
-</div>
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img6.jpg" alt="Taza Roja" data-product="Taza Roja" data-description="Taza roja vibrante con acabado brillante. Llama la atención con este diseño audaz." data-price="14.50">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Taza Roja</h3>
+                    <p class="product-description">Taza roja vibrante con acabado brillante. Llama la atención con este diseño audaz.</p>
+                    <div class="product-price">$14.50</div>
+                    <button class="product-select-btn" data-product="Taza Roja" data-price="14.50" data-img="img6.jpg">Seleccionar</button>
+                </div>
+            </div>
             
-<div class="slides" style="--img: url('img12.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img12.jpg">Seleccionar</button>
-   </div>
-</div>
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img7.jpg" alt="Taza Especial 1" data-product="Taza Especial 1" data-description="Diseño exclusivo con motivos florales. Fabricada con materiales de primera calidad." data-price="18.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Taza Especial 1</h3>
+                    <p class="product-description">Diseño exclusivo con motivos florales. Fabricada con materiales de primera calidad.</p>
+                    <div class="product-price">$18.00</div>
+                    <button class="product-select-btn" data-product="Taza Especial 1" data-price="18.00" data-img="img7.jpg">Seleccionar</button>
+                </div>
+            </div>
             
-<div class="slides" style="--img: url('img13.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img13.jpg">Seleccionar</button>
-   </div>
-</div>
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img8.jpg" alt="Taza Especial 2" data-product="Taza Especial 2" data-description="Taza conmemorativa con diseño único. Perfecta para coleccionistas." data-price="19.50">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Taza Especial 2</h3>
+                    <p class="product-description">Taza conmemorativa con diseño único. Perfecta para coleccionistas.</p>
+                    <div class="product-price">$19.50</div>
+                    <button class="product-select-btn" data-product="Taza Especial 2" data-price="19.50" data-img="img8.jpg">Seleccionar</button>
+                </div>
+            </div>
             
-<div class="slides" style="--img: url('img14.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img14.jpg">Seleccionar</button>
-   </div>
-</div>
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img9.jpg" alt="Taza Especial 3" data-product="Taza Especial 3" data-description="Diseño moderno con formas geométricas. Ideal para amantes del arte contemporáneo." data-price="17.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Taza Especial 3</h3>
+                    <p class="product-description">Diseño moderno con formas geométricas. Ideal para amantes del arte contemporáneo.</p>
+                    <div class="product-price">$17.00</div>
+                    <button class="product-select-btn" data-product="Taza Especial 3" data-price="17.00" data-img="img9.jpg">Seleccionar</button>
+                </div>
+            </div>
             
+            <!-- Producto 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img10.jpg" alt="Taza Clásica" data-product="Taza Clásica" data-description="Diseño atemporal que nunca pasa de moda. Para los tradicionalistas del café." data-price="12.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Taza Clásica</h3>
+                    <p class="product-description">Diseño atemporal que nunca pasa de moda. Para los tradicionalistas del café.</p>
+                    <div class="product-price">$12.00</div>
+                    <button class="product-select-btn" data-product="Taza Clásica" data-price="12.00" data-img="img10.jpg">Seleccionar</button>
+                </div>
+            </div>
             
-<div class="slides" style="--img: url('img15.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img15.jpg">Seleccionar</button>
-   </div>
-</div>
-            
-<div class="slides" style="--img: url('img16.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img16.jpg">Seleccionar</button>
-   </div>
-</div>
-            
-<div class="slides" style="--img: url('img17.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img17.jpg">Seleccionar</button>
-   </div>
-</div>
-            
-<div class="slides" style="--img: url('img18.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img18.jpg">Seleccionar</button>
-   </div>
-</div>
-            
-<div class="slides" style="--img: url('img19.jpg')">
-   <div class="content"> 
-       
-       <button class="choose-btn" data-product="Nombre del producto" data-price="15.00" data-img="img19.jpg">Seleccionar</button>
-   </div>
-</div>
-   
-            
-            
-            
-            
-            
-            
-            
+            <!-- Producto 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img11.jpg" alt="Taza Vintage" data-product="Taza Vintage" data-description="Inspirada en diseños retro de los años 60. Perfecta para añadir carácter a tu colección." data-price="20.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Taza Vintage</h3>
+                    <p class="product-description">Inspirada en diseños retro de los años 60. Perfecta para añadir carácter a tu colección.</p>
+                    <div class="product-price">$20.00</div>
+                    <button class="product-select-btn" data-product="Taza Vintage" data-price="20.00" data-img="img11.jpg">Seleccionar</button>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <div class="slider-buttons">
-        <span class="prev"></span>
-        <span class="next"></span>
-    </div>
 </section>
+
+<!-- Lightbox para ver imagen ampliada -->
+<div class="image-lightbox">
+    <div class="lightbox-content">
+        <span class="close-lightbox"><i class="fas fa-times"></i></span>
+        <img src="" alt="Imagen ampliada">
+        <div class="lightbox-product-info">
+            <h3 class="lightbox-product-title"></h3>
+            <p class="lightbox-product-description"></p>
+            <div class="lightbox-product-price"></div>
+            <button class="lightbox-select-btn">Seleccionar</button>
+        </div>
+    </div>
+</div>
 
 <!-- Nueva sección: Cómo funciona la sublimación -->
 <section id="como-funciona" class="sublimation-process">
@@ -1521,21 +1416,55 @@
         });
     });
     
-    // Slider de productos - FUNCIONALIDAD DEL PRIMER CÓDIGO
-    let next = document.querySelector('.next');
-    let prev = document.querySelector('.prev');
-    let slider = document.querySelector('.slider');
-
-    next.addEventListener('click', function(){
-        let slides = document.querySelectorAll('.slides');
-        slider.appendChild(slides[0]);
+    // Lightbox para imágenes de productos
+    const productImages = document.querySelectorAll('.product-image img');
+    const imageLightbox = document.querySelector('.image-lightbox');
+    const lightboxImage = document.querySelector('.lightbox-content img');
+    const lightboxTitle = document.querySelector('.lightbox-product-title');
+    const lightboxDescription = document.querySelector('.lightbox-product-description');
+    const lightboxPrice = document.querySelector('.lightbox-product-price');
+    const lightboxSelectBtn = document.querySelector('.lightbox-select-btn');
+    const closeLightbox = document.querySelector('.close-lightbox');
+    
+    let currentProductData = null;
+    
+    productImages.forEach(image => {
+        image.addEventListener('click', () => {
+            currentProductData = {
+                product: image.getAttribute('data-product'),
+                description: image.getAttribute('data-description'),
+                price: image.getAttribute('data-price'),
+                img: image.getAttribute('src')
+            };
+            
+            lightboxImage.src = currentProductData.img;
+            lightboxTitle.textContent = currentProductData.product;
+            lightboxDescription.textContent = currentProductData.description;
+            lightboxPrice.textContent = `$${currentProductData.price}`;
+            
+            // Configurar el botón de seleccionar en el lightbox
+            lightboxSelectBtn.setAttribute('data-product', currentProductData.product);
+            lightboxSelectBtn.setAttribute('data-price', currentProductData.price);
+            lightboxSelectBtn.setAttribute('data-img', currentProductData.img);
+            
+            imageLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        });
     });
     
-    prev.addEventListener('click', function(){
-        let slides = document.querySelectorAll('.slides');
-        slider.prepend(slides[slides.length - 1]);
+    // Cerrar lightbox
+    closeLightbox.addEventListener('click', () => {
+        imageLightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Permitir scroll nuevamente
     });
-
+    
+    imageLightbox.addEventListener('click', (e) => {
+        if (e.target === imageLightbox) {
+            imageLightbox.classList.remove('active');
+            document.body.style.overflow = ''; // Permitir scroll nuevamente
+        }
+    });
+    
     // Funcionalidad del carrito
     const cartToggle = document.querySelector('.cart-toggle');
     const closeCart = document.querySelector('.close-cart');
@@ -1544,7 +1473,7 @@
     const cartItems = document.querySelector('.cart-items');
     const cartTotal = document.querySelector('.cart-total');
     const checkoutBtn = document.querySelector('.checkout-btn');
-    const chooseButtons = document.querySelectorAll('.choose-btn');
+    const productSelectButtons = document.querySelectorAll('.product-select-btn, .lightbox-select-btn');
     const cartCount = document.querySelector('.cart-count');
     
     let cart = [];
@@ -1580,8 +1509,14 @@
     }
     
     // Añadir productos al carrito
-    chooseButtons.forEach(button => {
-        button.addEventListener('click', () => {
+    productSelectButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            // Si es el botón del lightbox, cerrar el lightbox primero
+            if (button.classList.contains('lightbox-select-btn')) {
+                imageLightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
             const product = button.getAttribute('data-product');
             const price = parseFloat(button.getAttribute('data-price'));
             const img = button.getAttribute('data-img');
@@ -1865,58 +1800,6 @@
         addCustomDesignBtn.disabled = true;
         uploadStatus.textContent = '';
     }
-    
-    // Actualizar función updateCart para manejar diseños personalizados
-    const originalUpdateCart = updateCart;
-    updateCart = function() {
-        cartItems.innerHTML = '';
-        let total = 0;
-        let totalItems = 0;
-        
-        cart.forEach((item, index) => {
-            const itemTotal = item.price * item.quantity;
-            total += itemTotal;
-            totalItems += item.quantity;
-            
-            const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
-            
-            // Manejar imágenes personalizadas (base64) vs imágenes normales
-            const imageSrc = item.custom ? item.img : item.img;
-            
-            cartItem.innerHTML = `
-                <img src="${imageSrc}" alt="${item.product}" style="${item.custom ? 'object-fit: contain;' : ''}">
-                <div class="cart-item-details">
-                    <div>${item.product}</div>
-                    <div>$${item.price.toFixed(2)} x ${item.quantity}</div>
-                </div>
-                <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
-            `;
-            
-            cartItems.appendChild(cartItem);
-        });
-        
-        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
-        cartCount.textContent = totalItems;
-        
-        // Mostrar u ocultar el contador
-        if (totalItems > 0) {
-            cartCount.style.display = 'flex';
-        } else {
-            cartCount.style.display = 'none';
-        }
-        
-        // Añadir event listeners a los botones de eliminar
-        document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = parseInt(e.currentTarget.getAttribute('data-index'));
-                const removedProduct = cart[index].product;
-                cart.splice(index, 1);
-                updateCart();
-                showNotification(`Se eliminó ${removedProduct} del carrito`);
-            });
-        });
-    };
 </script>
 </body>
 </html>
