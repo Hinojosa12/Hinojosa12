@@ -1106,6 +1106,42 @@
             font-size: 12px;
             font-weight: bold;
         }
+    
+    /* Efecto de máquina de escribir */
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid #017143;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+/* Animación de escritura */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Efecto de parpadeo del cursor */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #017143; }
+}
+
+/* Mejorar el título principal */
+.content .textBox h2 {
+    color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Efecto hover en el texto span */
+.content .textBox h2 span:hover {
+    color: #017143;
+    text-shadow: 0 0 10px rgba(1, 113, 67, 0.3);
+    transition: all 0.3s ease;
+}
     </style>
 </head>
 <body>
@@ -1131,7 +1167,8 @@
     </header>
     <div class="content">
         <div class="textBox">
-            <h2><span class="changing-text">Puedes imaginarlo... también puedes</span> <span>DISEÑARLO</span></h2>
+            <!-- Reemplazar la línea actual del h2 -->
+<h2><span class="typewriter">Puedes imaginarlo... también puedes</span> <span class="design-text">DISEÑARLO</span></h2>
             <p>"Transformamos tus ideas en tazas únicas. ¿Imaginas un diseño? Nosotros lo sublimamos. Crea la taza perfecta con tus fotos, dibujos o mensajes especiales: para regalos inolvidables, momentos de oficina con estilo o ese detalle que solo tú puedes dar. ¡Tu inspiración, hecha arte!"</p>
             <a href="#" id="upload-design-btn">Subir diseño</a>
             <a href="#productos" id="choose-design-btn">Elegir diseño</a>
@@ -1838,6 +1875,20 @@
         addCustomDesignBtn.disabled = true;
         uploadStatus.textContent = '';
     }
+    
+    // Agregar después de las funciones existentes
+function animateText() {
+    const designText = document.querySelector('.design-text');
+    setInterval(() => {
+        designText.style.transform = 'scale(1.05)';
+        setTimeout(() => {
+            designText.style.transform = 'scale(1)';
+        }, 500);
+    }, 2000);
+}
+
+// Llamar la función al cargar la página
+window.addEventListener('load', animateText);
 </script>
 </body>
 </html>
