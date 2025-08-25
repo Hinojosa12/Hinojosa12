@@ -218,11 +218,39 @@
             border-radius: 2px;
         }
 
+        /* Filtros de categoría */
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .filter-btn {
+            padding: 12px 25px;
+            background: #fff;
+            border: 2px solid #017143;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            color: #017143;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #017143;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 20px;
         }
 
         .product-card {
@@ -782,6 +810,19 @@
             .lightbox-product-description {
                 font-size: 1em;
             }
+            
+            /* Filtros en móviles */
+            .category-filters {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+            }
+            
+            .filter-btn {
+                flex: 0 0 auto;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1268,108 +1309,113 @@
 <section id="productos" class="products-section">
     <div class="products-container">
         <h2 class="section-title">Nuestros Diseños</h2>
+        
+        <!-- Filtros de categoría -->
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="anime">Anime</button>
+            <button class="filter-btn" data-category="deportes">Deportes</button>
+            <button class="filter-btn" data-category="familiar">Familiar</button>
+            <button class="filter-btn" data-category="otros">Otros</button>
+        </div>
+        
         <div class="products-grid">
-            <!-- Producto 1 -->
-            <div class="product-card">
+            <!-- Productos de ANIME -->
+            <div class="product-card" data-category="anime">
                 <div class="product-image">
-                    <img src="img17.jpg" alt="Real Madrid" data-product="Real Madrid" data-description="**Lleva el escudo del Real Madrid, símbolo de 14 Champions y grandeza. ¡Hala Madrid!**" data-price="15.00">
+                    <img src="img5.jpg" alt="Itachi Uchiha" data-product="Itachi Uchiha" data-description="Lleva el Sharingan de Itachi Uchiha, un símbolo de poder y legado. Para los verdaderos herederos de la aldea oculta." data-price="16.00">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-title">Real Madrid</h3>
-                    <p class="product-description">**Lleva el escudo del Real Madrid, símbolo de 14 Champions y grandeza. ¡Hala Madrid!**.</p>
-                    <div class="product-price">$15.00</div>
-                    <button class="product-select-btn" data-product="Real Madrid" data-price="15.00" data-img="img17.jpg">Seleccionar</button>
-                </div>
-            </div>
-            
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="img5.jpg" alt=" Hitashi Uchija" data-product="Hitashi Uchija " data-description="**Lleva el Sharingan de Itachi Uchiha, un símbolo de poder y legado. Para los verdaderos herederos de la aldea oculta.**." data-price="16.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title"> Hitashi Uchija</h3>
-                    <p class="product-description">**Lleva el Sharingan de Itachi Uchiha, un símbolo de poder y legado. Para los verdaderos herederos de la aldea oculta.**.</p>
+                    <h3 class="product-title">Itachi Uchiha</h3>
+                    <p class="product-description">Lleva el Sharingan de Itachi Uchiha, un símbolo de poder y legado.</p>
                     <div class="product-price">$16.00</div>
-                    <button class="product-select-btn" data-product=" Hitashi Uchija" data-price="16.00" data-img="img5.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Itachi Uchiha" data-price="16.00" data-img="img5.jpg">Seleccionar</button>
                 </div>
             </div>
             
-            <!-- Producto 3 -->
-            <div class="product-card">
+            <div class="product-card" data-category="anime">
                 <div class="product-image">
-                    <img src="img6.jpg" alt=" Itashi Uchiha Dark" data-product=" Itashi Uchiha Dark" data-description="**Porta la mirada del prodigio oscuro: Itachi Uchiha y su Mangekyō Sharingan. Un tributo a su legado trágico y poder absoluto. Para quienes comprenden el precio de la fuerza.**." data-price="14.50">
+                    <img src="img6.jpg" alt="Itachi Uchiha Dark" data-product="Itachi Uchiha Dark" data-description="Porta la mirada del prodigio oscuro: Itachi Uchiha y su Mangekyō Sharingan. Un tributo a su legado trágico y poder absoluto." data-price="14.50">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-title">Itashi Uchiha Dark</h3>
-                    <p class="product-description">**Porta la mirada del prodigio oscuro: Itachi Uchiha y su Mangekyō Sharingan. Un tributo a su legado trágico y poder absoluto. Para quienes comprenden el precio de la fuerza.**.</p>
+                    <h3 class="product-title">Itachi Uchiha Dark</h3>
+                    <p class="product-description">Porta la mirada del prodigio oscuro: Itachi Uchiha y su Mangekyō Sharingan.</p>
                     <div class="product-price">$14.50</div>
-                    <button class="product-select-btn" data-product=" Itashi Uchiha Dark" data-price="14.50" data-img="img6.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Itachi Uchiha Dark" data-price="14.50" data-img="img6.jpg">Seleccionar</button>
                 </div>
             </div>
             
-            <!-- Producto 4 -->
-            <div class="product-card">
+            <div class="product-card" data-category="anime">
                 <div class="product-image">
-                    <img src="img7.jpg" alt="  Familiar" data-product="Familiar" data-description="**Un diseño cálido y reconfortante, perfecto para esos momentos de tranquilidad. Ideal para disfrutar de tu bebida favorita en compañía de quien más quieres.**." data-price="18.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Familiar</h3>
-                    <p class="product-description">**Un diseño cálido y reconfortante, perfecto para esos momentos de tranquilidad. Ideal para disfrutar de tu bebida favorita en compañía de quien más quieres.**.</p>
-                    <div class="product-price">$18.00</div>
-                    <button class="product-select-btn" data-product="Familiar" data-price="18.00" data-img="img7.jpg">Seleccionar</button>
-                </div>
-            </div>
-            
-            <!-- Producto 5 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="img8.jpg" alt="Kakashi" data-product="Kakashi" data-description="**Luce el misterioso rostro de Kakashi Hatake, con su icónica mirada tranquila y su eterna mascarilla. Perfecta para los amantes del ninja más calmado y letal.**" data-price="19.50">
+                    <img src="img8.jpg" alt="Kakashi" data-product="Kakashi" data-description="Luce el misterioso rostro de Kakashi Hatake, con su icónica mirada tranquila y su eterna mascarilla. Perfecta para los amantes del ninja más calmado y letal." data-price="19.50">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Kakashi</h3>
-                    <p class="product-description">**Luce el misterioso rostro de Kakashi Hatake, con su icónica mirada tranquila y su eterna mascarilla. Perfecta para los amantes del ninja más calmado y letal.**</p>
+                    <p class="product-description">Luce el misterioso rostro de Kakashi Hatake, con su icónica mirada tranquila.</p>
                     <div class="product-price">$19.50</div>
                     <button class="product-select-btn" data-product="Kakashi" data-price="19.50" data-img="img8.jpg">Seleccionar</button>
                 </div>
             </div>
             
-            <!-- Producto 6 -->
-            <div class="product-card">
+            <!-- Productos de DEPORTES -->
+            <div class="product-card" data-category="deportes">
                 <div class="product-image">
-                    <img src="img9.jpg" alt="Messi" data-product="Messi" data-description="**Lleva la esencia de Messi: talento puro, magia y grandeza. Un tributo a la leyenda.**." data-price="17.00">
+                    <img src="img17.jpg" alt="Real Madrid" data-product="Real Madrid" data-description="Lleva el escudo del Real Madrid, símbolo de 14 Champions y grandeza. ¡Hala Madrid!" data-price="15.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Real Madrid</h3>
+                    <p class="product-description">Lleva el escudo del Real Madrid, símbolo de 14 Champions y grandeza.</p>
+                    <div class="product-price">$15.00</div>
+                    <button class="product-select-btn" data-product="Real Madrid" data-price="15.00" data-img="img17.jpg">Seleccionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="deportes">
+                <div class="product-image">
+                    <img src="img9.jpg" alt="Messi" data-product="Messi" data-description="Lleva la esencia de Messi: talento puro, magia y grandeza. Un tributo a la leyenda." data-price="17.00">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Messi</h3>
-                    <p class="product-description">**Lleva la esencia de Messi: talento puro, magia y grandeza. Un tributo a la leyenda.**</p>
+                    <p class="product-description">Lleva la esencia de Messi: talento puro, magia y grandeza.</p>
                     <div class="product-price">$17.00</div>
                     <button class="product-select-btn" data-product="Messi" data-price="17.00" data-img="img9.jpg">Seleccionar</button>
                 </div>
             </div>
             
-            <!-- Producto 7 -->
-            <div class="product-card">
+            <div class="product-card" data-category="deportes">
                 <div class="product-image">
-                    <img src="img10.jpg" alt="Universo " data-product="Universo" data-description="**Un viaje cósmico en cada sorbo. Esta taza captura la belleza infinita del universo con nebulosas, estrellas y galaxias brillantes. Perfecta para soñar despierto.**." data-price="12.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Universo</h3>
-                    <p class="product-description">**Un viaje cósmico en cada sorbo. Esta taza captura la belleza infinita del universo con nebulosas, estrellas y galaxias brillantes. Perfecta para soñar despierto.**.</p>
-                    <div class="product-price">$12.00</div>
-                    <button class="product-select-btn" data-product="Universo" data-price="12.00" data-img="img10.jpg">Seleccionar</button>
-                </div>
-            </div>
-            
-            <!-- Producto 8 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="img11.jpg" alt="Barcelona" data-product="Barcelona" data-description="**Luce el escudo del FC Barcelona, símbolo de más que un club. Para los que llevan el blaugrana en el corazón.**." data-price="20.00">
+                    <img src="img11.jpg" alt="Barcelona" data-product="Barcelona" data-description="Luce el escudo del FC Barcelona, símbolo de más que un club. Para los que llevan el blaugrana en el corazón." data-price="20.00">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Barcelona</h3>
-                    <p class="product-description">**Luce el escudo del FC Barcelona, símbolo de más que un club. Para los que llevan el blaugrana en el corazón.**.</p>
+                    <p class="product-description">Luce el escudo del FC Barcelona, símbolo de más que un club.</p>
                     <div class="product-price">$20.00</div>
                     <button class="product-select-btn" data-product="Barcelona" data-price="20.00" data-img="img11.jpg">Seleccionar</button>
+                </div>
+            </div>
+            
+            <!-- Productos FAMILIAR -->
+            <div class="product-card" data-category="familiar">
+                <div class="product-image">
+                    <img src="img7.jpg" alt="Familiar" data-product="Familiar" data-description="Un diseño cálido y reconfortante, perfecto para esos momentos de tranquilidad. Ideal para disfrutar de tu bebida favorita en compañía de quien más quieres." data-price="18.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Familiar</h3>
+                    <p class="product-description">Un diseño cálido y reconfortante, perfecto para momentos de tranquilidad.</p>
+                    <div class="product-price">$18.00</div>
+                    <button class="product-select-btn" data-product="Familiar" data-price="18.00" data-img="img7.jpg">Seleccionar</button>
+                </div>
+            </div>
+            
+            <!-- Productos OTROS -->
+            <div class="product-card" data-category="otros">
+                <div class="product-image">
+                    <img src="img10.jpg" alt="Universo" data-product="Universo" data-description="Un viaje cósmico en cada sorbo. Esta taza captura la belleza infinita del universo con nebulosas, estrellas y galaxias brillantes. Perfecta para soñar despierto." data-price="12.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Universo</h3>
+                    <p class="product-description">Un viaje cósmico en cada sorbo. Captura la belleza infinita del universo.</p>
+                    <div class="product-price">$12.00</div>
+                    <button class="product-select-btn" data-product="Universo" data-price="12.00" data-img="img10.jpg">Seleccionar</button>
                 </div>
             </div>
         </div>
@@ -1957,24 +2003,59 @@
     }
     
     // Animación para el texto en móviles
-function setupTextAnimations() {
-    const designText = document.querySelector('.design-text');
-    
-    // Solo aplicar hover effect en desktop
-    if (window.innerWidth > 768) {
-        designText.addEventListener('mouseover', () => {
-            designText.style.textShadow = '0 0 15px rgba(1, 113, 67, 0.5)';
-        });
+    function setupTextAnimations() {
+        const designText = document.querySelector('.design-text');
         
-        designText.addEventListener('mouseout', () => {
-            designText.style.textShadow = '0 0 10px rgba(1, 113, 67, 0.3)';
+        // Solo aplicar hover effect en desktop
+        if (window.innerWidth > 768) {
+            designText.addEventListener('mouseover', () => {
+                designText.style.textShadow = '0 0 15px rgba(1, 113, 67, 0.5)';
+            });
+            
+            designText.addEventListener('mouseout', () => {
+                designText.style.textShadow = '0 0 10px rgba(1, 113, 67, 0.3)';
+            });
+        }
+    }
+
+    // Llamar la función al cargar y al redimensionar
+    window.addEventListener('load', setupTextAnimations);
+    window.addEventListener('resize', setupTextAnimations);
+    
+    // Filtrado por categorías
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    
+    // Función para filtrar productos por categoría
+    function filterProducts(category) {
+        productCards.forEach(card => {
+            if (category === 'todos' || card.getAttribute('data-category') === category) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
         });
     }
-}
-
-// Llamar la función al cargar y al redimensionar
-window.addEventListener('load', setupTextAnimations);
-window.addEventListener('resize', setupTextAnimations);
+    
+    // Añadir event listeners a los botones de filtro
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remover la clase active de todos los botones
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Añadir la clase active al botón clickeado
+            button.classList.add('active');
+            
+            // Filtrar productos por la categoría seleccionada
+            const category = button.getAttribute('data-category');
+            filterProducts(category);
+        });
+    });
+    
+    // Inicializar con la categoría "anime" seleccionada
+    window.addEventListener('load', () => {
+        filterProducts('anime');
+    });
 </script>
 </body>
 </html>
