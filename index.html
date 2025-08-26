@@ -35,7 +35,7 @@
             align-items: center;
             z-index: 1000;
             background: rgba(0, 0, 0, 0.8);
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         header.scrolled {
@@ -350,13 +350,17 @@
             position: relative;
             max-width: 90%;
             max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .lightbox-content img {
             max-width: 100%;
-            max-height: 80vh;
+            max-height: 60vh;
             border-radius: 10px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            object-fit: contain;
         }
 
         .close-lightbox {
@@ -437,8 +441,8 @@
         .cart-sidebar {
             position: fixed;
             top: 0;
-            right: -400px;
-            width: 350px;
+            right: -100%;
+            width: 100%;
             height: 100%;
             background: white;
             box-shadow: -2px 0 10px rgba(0,0,0,0.2);
@@ -469,13 +473,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #eee;
         }
         
         .cart-item img {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             object-fit: cover;
             border-radius: 5px;
         }
@@ -489,20 +493,21 @@
             background: #ff4d4d;
             color: white;
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 18px;
         }
         
         .cart-total {
             font-weight: bold;
             text-align: right;
-            margin: 15px 0;
-            font-size: 1.2em;
+            margin: 20px 0;
+            font-size: 1.5em;
         }
         
         .checkout-form {
@@ -510,32 +515,35 @@
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: bold;
+            font-size: 16px;
         }
         
         .form-group input {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 16px;
         }
         
         .checkout-btn {
             background: #017143;
             color: white;
             border: none;
-            padding: 12px;
+            padding: 18px;
             width: 100%;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
         }
         
         .checkout-btn:hover {
@@ -620,10 +628,10 @@
             background: #017143;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 15px 25px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             margin-top: 15px;
         }
         
@@ -864,7 +872,7 @@
             }
             
             .cart-sidebar {
-                width: 300px;
+                width: 100%;
             }
 
             /* MODIFICACIÓN: Mantener 3 columnas en móviles pequeños */
@@ -1271,8 +1279,8 @@
     background: #017143;
     color: white;
     border: none;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1280,6 +1288,7 @@
     cursor: pointer;
     font-weight: bold;
     transition: all 0.2s;
+    font-size: 18px;
 }
 
 .quantity-btn:hover {
@@ -1290,8 +1299,9 @@
 .quantity {
     margin: 0 8px;
     font-weight: bold;
-    min-width: 20px;
+    min-width: 25px;
     text-align: center;
+    font-size: 18px;
 }
 
 .cart-item-details {
@@ -1302,18 +1312,103 @@
 .cart-item-details div:first-child {
     font-weight: bold;
     margin-bottom: 5px;
+    font-size: 16px;
 }
 
 .cart-item-details div:last-child {
     color: #017143;
-    font-size: 0.9em;
+    font-size: 16px;
 }
+
+/* NUEVOS ESTILOS PARA LOS FILTROS EN EL HEADER */
+.header-filters {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.header-filters.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.header-filter-btn {
+    padding: 8px 15px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s;
+    color: white;
+    white-space: nowrap;
+}
+
+.header-filter-btn.active, .header-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Ajustes para el header en móviles */
+@media (max-width: 992px) {
+    .header-filters {
+        display: none;
+    }
+}
+
+/* Ajustes para el lightbox - tamaño consistente */
+.lightbox-image-container {
+    max-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content img {
+    max-height: 60vh;
+    width: auto;
+    max-width: 100%;
+}
+
     </style>
 </head>
 <body>
 <section id="inicio">
     <div class="circle"></div>
     <header id="main-header">
+        <div class="header-nav">
+            <ul>
+                <li> <a href="#inicio">Inicio</a></li>
+                <li> <a href="#productos">Diseños</a></li>
+                <li> <a href="#contacto">Contacto</a></li>
+                <li> <a href="#como-funciona">Cómo funciona</a></li>
+            </ul>
+        </div>
+        
+        <div class="header-filters">
+            <button class="header-filter-btn active" data-category="anime">Anime</button>
+            <button class="header-filter-btn" data-category="deportes">Deportes</button>
+            <button class="header-filter-btn" data-category="familiar">Familiar</button>
+            <button class="header-filter-btn" data-category="otros">Otros</button>
+        </div>
+        
         <div class="header-icons">
             <div class="cart-toggle">
                 <i class="fas fa-shopping-cart"></i>
@@ -1323,12 +1418,6 @@
                 <i class="fas fa-bars"></i>
             </div>
         </div>
-        <ul>
-            <li> <a href="#inicio">Inicio</a></li>
-            <li> <a href="#productos">Diseños</a></li>
-            <li> <a href="#contacto">Contacto</a></li>
-            <li> <a href="#como-funciona">Cómo funciona</a></li>
-        </ul>
     </header>
     <div class="content">
         <div class="textBox">
@@ -1357,7 +1446,7 @@
     <div class="products-container">
         <h2 class="section-title">Nuestros Diseños</h2>
         
-        <!-- Filtros de categoría -->
+        <!-- Filtros de categoría (originales, se mantienen en la sección) -->
         <div class="category-filters">
             <button class="filter-btn active" data-category="anime">Anime</button>
             <button class="filter-btn" data-category="deportes">Deportes</button>
@@ -1473,7 +1562,9 @@
 <div class="image-lightbox">
     <div class="lightbox-content">
         <span class="close-lightbox"><i class="fas fa-times"></i></span>
-        <img src="" alt="Imagen ampliada">
+        <div class="lightbox-image-container">
+            <img src="" alt="Imagen ampliada">
+        </div>
         <div class="lightbox-product-info">
             <h3 class="lightbox-product-title"></h3>
             <p class="lightbox-product-description"></p>
@@ -1494,7 +1585,7 @@
                 <div class="step-number">1</div>
                 <div class="step-icon"><i class="fas fa-pencil-alt"></i></div>
                 <h3 class="step-title">Diseño Personalizado</h3>
-                <p class="step-description">Crea tu diseño desde cero o elige entre nuestras plantillas. Utilizamos tintas especiales de sublimación que se transformarán con el calor.</p>
+                <p class="step-description">Crea tu diseño desde cero o elige entre nuestras plantillas. Utilizamos tintes especiales de sublimación que se transformarán con el calor.</p>
             </div>
             
             <div class="process-step">
@@ -1635,8 +1726,12 @@
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
+            // Mostrar los filtros en el header cuando se hace scroll
+            document.querySelector('.header-filters').classList.add('active');
         } else {
             header.classList.remove('scrolled');
+            // Ocultar los filtros en el header cuando está en la parte superior
+            document.querySelector('.header-filters').classList.remove('active');
         }
     });
     
@@ -2102,7 +2197,7 @@
     window.addEventListener('resize', setupTextAnimations);
     
     // Filtrado por categorías
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterButtons = document.querySelectorAll('.filter-btn, .header-filter-btn');
     const productCards = document.querySelectorAll('.product-card');
     
     // Función para filtrar productos por categoría
