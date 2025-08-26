@@ -44,12 +44,6 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
-        header .logo{
-            position: relative;
-            max-width: 80px;
-            z-index: 11;
-        }
-
         header ul{
             position: relative;
             display: flex;
@@ -436,6 +430,7 @@
             font-size: 24px;
             color: white;
             z-index: 1000;
+            position: relative;
         }
 
         /* Carrito de compras */
@@ -498,6 +493,9 @@
             height: 30px;
             border-radius: 50%;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .cart-total {
@@ -1134,18 +1132,19 @@
         /* Contador de carrito */
         .cart-count {
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: -8px;
+            right: -8px;
             background: #ff4d4d;
             color: white;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 12px;
             font-weight: bold;
+            z-index: 1001;
         }
     
     /* Efecto de máquina de escribir */
@@ -1260,13 +1259,61 @@
         to { transform: scale(1); }
     }
 }
+
+/* Controles de cantidad en el carrito */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.quantity-btn {
+    background: #017143;
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.quantity-btn:hover {
+    background: #015c35;
+    transform: scale(1.1);
+}
+
+.quantity {
+    margin: 0 8px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+.cart-item-details {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.cart-item-details div:first-child {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cart-item-details div:last-child {
+    color: #017143;
+    font-size: 0.9em;
+}
     </style>
 </head>
 <body>
 <section id="inicio">
     <div class="circle"></div>
     <header id="main-header">
-        <a href="#inicio" class="logo"> <img src="logo.png" alt="Logo"></a>
         <div class="header-icons">
             <div class="cart-toggle">
                 <i class="fas fa-shopping-cart"></i>
@@ -1328,7 +1375,7 @@
                     <h3 class="product-title">Itachi Uchiha</h3>
                     <p class="product-description">Lleva el Sharingan de Itachi Uchiha, un símbolo de poder y legado.</p>
                     <div class="product-price">$16.00</div>
-                    <button class="product-select-btn" data-product="Itachi Uchiha" data-price="16.00" data-img="img5.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Itachi Uchiha" data-price="16.00" data-img="img5.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
             
@@ -1340,7 +1387,7 @@
                     <h3 class="product-title">Itachi Uchiha Dark</h3>
                     <p class="product-description">Porta la mirada del prodigio oscuro: Itachi Uchiha y su Mangekyō Sharingan.</p>
                     <div class="product-price">$14.50</div>
-                    <button class="product-select-btn" data-product="Itachi Uchiha Dark" data-price="14.50" data-img="img6.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Itachi Uchiha Dark" data-price="14.50" data-img="img6.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
             
@@ -1352,7 +1399,7 @@
                     <h3 class="product-title">Kakashi</h3>
                     <p class="product-description">Luce el misterioso rostro de Kakashi Hatake, con su icónica mirada tranquila.</p>
                     <div class="product-price">$19.50</div>
-                    <button class="product-select-btn" data-product="Kakashi" data-price="19.50" data-img="img8.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Kakashi" data-price="19.50" data-img="img8.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
             
@@ -1365,7 +1412,7 @@
                     <h3 class="product-title">Real Madrid</h3>
                     <p class="product-description">Lleva el escudo del Real Madrid, símbolo de 14 Champions y grandeza.</p>
                     <div class="product-price">$15.00</div>
-                    <button class="product-select-btn" data-product="Real Madrid" data-price="15.00" data-img="img17.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Real Madrid" data-price="15.00" data-img="img17.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
             
@@ -1377,7 +1424,7 @@
                     <h3 class="product-title">Messi</h3>
                     <p class="product-description">Lleva la esencia de Messi: talento puro, magia y grandeza.</p>
                     <div class="product-price">$17.00</div>
-                    <button class="product-select-btn" data-product="Messi" data-price="17.00" data-img="img9.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Messi" data-price="17.00" data-img="img9.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
             
@@ -1389,7 +1436,7 @@
                     <h3 class="product-title">Barcelona</h3>
                     <p class="product-description">Luce el escudo del FC Barcelona, símbolo de más que un club.</p>
                     <div class="product-price">$20.00</div>
-                    <button class="product-select-btn" data-product="Barcelona" data-price="20.00" data-img="img11.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Barcelona" data-price="20.00" data-img="img11.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
             
@@ -1402,7 +1449,7 @@
                     <h3 class="product-title">Familiar</h3>
                     <p class="product-description">Un diseño cálido y reconfortante, perfecto para momentos de tranquilidad.</p>
                     <div class="product-price">$18.00</div>
-                    <button class="product-select-btn" data-product="Familiar" data-price="18.00" data-img="img7.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Familiar" data-price="18.00" data-img="img7.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
             
@@ -1415,7 +1462,7 @@
                     <h3 class="product-title">Universo</h3>
                     <p class="product-description">Un viaje cósmico en cada sorbo. Captura la belleza infinita del universo.</p>
                     <div class="product-price">$12.00</div>
-                    <button class="product-select-btn" data-product="Universo" data-price="12.00" data-img="img10.jpg">Seleccionar</button>
+                    <button class="product-select-btn" data-product="Universo" data-price="12.00" data-img="img10.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
         </div>
@@ -1431,7 +1478,7 @@
             <h3 class="lightbox-product-title"></h3>
             <p class="lightbox-product-description"></p>
             <div class="lightbox-product-price"></div>
-            <button class="lightbox-select-btn">Seleccionar</button>
+            <button class="lightbox-select-btn">Añadir al carrito 🛒</button>
         </div>
     </div>
 </div>
@@ -1536,7 +1583,7 @@
 <div class="overlay"></div>
 <div class="cart-sidebar">
     <div class="cart-header">
-        <h2>Tu Carrito</h2>
+        <h2>Tu Carrito 🛒</h2>
         <button class="close-cart"><i class="fas fa-times"></i></button>
     </div>
     <div class="cart-items">
@@ -1760,7 +1807,12 @@
                 <img src="${item.img}" alt="${item.product}">
                 <div class="cart-item-details">
                     <div>${item.product}</div>
-                    <div>$${item.price.toFixed(2)} x ${item.quantity}</div>
+                    <div>$${item.price.toFixed(2)}</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn minus" data-index="${index}">-</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="quantity-btn plus" data-index="${index}">+</button>
                 </div>
                 <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
             `;
@@ -1777,6 +1829,33 @@
         } else {
             cartCount.style.display = 'none';
         }
+        
+        // Añadir event listeners a los botones de cantidad
+        document.querySelectorAll('.quantity-btn.plus').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                cart[index].quantity += 1;
+                updateCart();
+                showNotification(`Se añadió una unidad más de ${cart[index].product}`);
+            });
+        });
+        
+        document.querySelectorAll('.quantity-btn.minus').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                    updateCart();
+                    showNotification(`Se removió una unidad de ${cart[index].product}`);
+                } else {
+                    // Si la cantidad es 1, al hacer menos eliminamos el producto
+                    const removedProduct = cart[index].product;
+                    cart.splice(index, 1);
+                    updateCart();
+                    showNotification(`Se eliminó ${removedProduct} del carrito`);
+                }
+            });
+        });
         
         // Añadir event listeners a los botones de eliminar
         document.querySelectorAll('.remove-item').forEach(button => {
