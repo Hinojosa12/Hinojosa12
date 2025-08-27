@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,7 +40,7 @@
 
         header.scrolled {
             background: rgba(8, 87, 177, 0.95);
-           
+            
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -66,7 +65,7 @@
         header ul li a:hover{
             transform: translateY(-15px);
         }
-       
+        
         .content{
             position: relative;
             width: 100%;
@@ -114,7 +113,7 @@
             transition: all 0.3s ease;
             margin-right: 15px;
         }
-       
+        
         .content .textBox a:hover {
             background: #015c35;
             transform: translateY(-3px);
@@ -200,7 +199,7 @@
             display: inline-block;
             width: 100%;
         }
-       
+        
         .section-title::after {
             content: '';
             position: absolute;
@@ -452,11 +451,11 @@
             padding: 20px;
             overflow-y: auto;
         }
-       
+        
         .cart-sidebar.active {
             right: 0;
         }
-       
+        
         .cart-header {
             display: flex;
             justify-content: space-between;
@@ -465,11 +464,11 @@
             padding-bottom: 10px;
             border-bottom: 1px solid #ddd;
         }
-       
+        
         .cart-items {
             margin-bottom: 20px;
         }
-       
+        
         .cart-item {
             display: flex;
             justify-content: space-between;
@@ -477,19 +476,19 @@
             padding: 15px 0;
             border-bottom: 1px solid #eee;
         }
-       
+        
         .cart-item img {
             width: 60px;
             height: 60px;
             object-fit: cover;
             border-radius: 5px;
         }
-       
+        
         .cart-item-details {
             flex: 1;
             padding: 0 15px;
         }
-       
+        
         .remove-item {
             background: #ff4d4d;
             color: white;
@@ -503,29 +502,29 @@
             justify-content: center;
             font-size: 18px;
         }
-       
+        
         .cart-total {
             font-weight: bold;
             text-align: right;
             margin: 20px 0;
             font-size: 1.5em;
         }
-       
+        
         .checkout-form {
             margin-top: 20px;
         }
-       
+        
         .form-group {
             margin-bottom: 20px;
         }
-       
+        
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
             font-size: 16px;
         }
-       
+        
         .form-group input {
             width: 100%;
             padding: 15px;
@@ -533,7 +532,7 @@
             border-radius: 8px;
             font-size: 16px;
         }
-       
+        
         .checkout-btn {
             background: #017143;
             color: white;
@@ -546,11 +545,11 @@
             margin-top: 20px;
             font-weight: bold;
         }
-       
+        
         .checkout-btn:hover {
             background: #015c35;
         }
-       
+        
         .overlay {
             position: fixed;
             top: 0;
@@ -561,11 +560,11 @@
             display: none;
             z-index: 1000;
         }
-       
+        
         .overlay.active {
             display: block;
         }
-       
+        
         /* Modal para subir diseño personalizado */
         .custom-design-modal {
             position: fixed;
@@ -580,11 +579,11 @@
             z-index: 1002;
             display: none;
         }
-       
+        
         .custom-design-modal.active {
             display: flex;
         }
-       
+        
         .custom-design-content {
             background: white;
             padding: 30px;
@@ -594,7 +593,7 @@
             text-align: center;
             position: relative;
         }
-       
+        
         .close-modal {
             position: absolute;
             top: 15px;
@@ -603,7 +602,7 @@
             cursor: pointer;
             z-index: 1003;
         }
-       
+        
         .upload-area {
             border: 2px dashed #017143;
             padding: 30px;
@@ -611,20 +610,20 @@
             cursor: pointer;
             border-radius: 10px;
         }
-       
+        
         .upload-area i {
             font-size: 48px;
             color: #017143;
             margin-bottom: 15px;
         }
-       
+        
         #image-preview {
             max-width: 100%;
             max-height: 200px;
             margin: 15px 0;
             display: none;
         }
-       
+        
         .add-custom-design-btn {
             background: #017143;
             color: white;
@@ -635,7 +634,7 @@
             font-size: 18px;
             margin-top: 15px;
         }
-       
+        
         .add-custom-design-btn:disabled {
             background: #ccc;
             cursor: not-allowed;
@@ -652,37 +651,37 @@
             section {
                 padding: 80px 50px;
             }
-           
+            
             header {
                 padding: 15px 50px;
             }
-           
+            
             .content {
                 flex-direction: column;
                 text-align: center;
             }
-           
+            
             .content .textBox {
                 max-width: 100%;
                 margin-bottom: 40px;
             }
-           
+            
             .content .imgBox {
                 width: 100%;
                 justify-content: center;
                 padding-right: 0;
                 margin-top: 30px;
             }
-           
+            
             .circle {
                 clip-path: circle(500px at center);
             }
-           
+            
             .thumb {
                 position: relative;
                 bottom: 30px;
                 margin-top: 30px;
-               
+                
             }
 
     .header-filters {
@@ -692,7 +691,7 @@
   display: flex;
   gap: 10px;
   opacity: 0;
- 
+  
   transition: all 0.3s ease;
 }
 
@@ -708,11 +707,11 @@
                 padding: 40px 20px;
                 min-height: 80vh;
             }
-           
+            
             header {
                 padding: 15px 20px;
             }
-           
+            
             header ul {
                 position: fixed;
                 top: 0;
@@ -727,58 +726,58 @@
                 transition: 0.5s;
                 z-index: 5;
             }
-           
+            
             header ul.active {
                 left: 0;
             }
-           
+            
             header ul li {
                 margin: 15px 0;
             }
-           
+            
             header ul li a {
                 margin-left: 0;
                 font-size: 1.8em;
             }
-           
+            
             .menu-toggle, .cart-toggle {
                 display: block;
             }
-           
+            
             .content .textBox h2 {
                 font-size: 3.2em;
                 line-height: 1.2em;
                 color: white !important;
                 margin-bottom: 20px;
             }
-           
+            
             .content .textBox h2 span {
                 color: white !important;
                 font-size: 1em;
             }
-           
+            
             .content .textBox p {
                 display: none; /* Ocultar párrafo en móviles */
             }
-           
+            
             .content .imgBox img {
                 max-width: 280px;
             }
-           
+            
             .circle {
                 clip-path: circle(100% at center); /* Círculo que ocupa toda la sección */
                 border-radius: 0;
             }
-           
+            
             .thumb li img {
                 max-width: 50px;
             }
-           
+            
             .header-icons {
                 display: flex;
                 gap: 15px;
             }
-           
+            
             .menu-toggle i, .cart-toggle i {
                 color: white !important;
             }
@@ -788,27 +787,27 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 15px;
             }
-           
+            
             .product-image {
                 height: 150px;
             }
-           
+            
             .product-info {
                 padding: 10px;
             }
-           
+            
             .product-title {
                 font-size: 0.9em;
             }
-           
+            
             .product-description {
                 display: none; /* Ocultamos descripción en móviles */
             }
-           
+            
             .product-price {
                 font-size: 1.1em;
             }
-           
+            
             .product-select-btn {
                 padding: 8px 10px;
                 font-size: 12px;
@@ -822,26 +821,26 @@
                 width: 35px;
                 height: 35px;
             }
-           
+            
             .lightbox-product-info {
                 margin-top: 15px;
             }
-           
+            
             .lightbox-product-title {
                 font-size: 1.5em;
             }
-           
+            
             .lightbox-product-description {
                 font-size: 1em;
             }
-           
+            
             /* Filtros en móviles */
             .category-filters {
                 overflow-x: auto;
                 justify-content: flex-start;
                 padding-bottom: 10px;
             }
-           
+            
             .filter-btn {
                 flex: 0 0 auto;
                 padding: 10px 20px;
@@ -850,7 +849,7 @@
 
             .cart-toggle{
                 position: relative;
-                right: 320px;
+                
             }
 
 
@@ -861,7 +860,7 @@
   display: flex;
   gap: 10px;
   opacity: 0;
- 
+  
   transition: all 0.3s ease;
 }
 
@@ -877,41 +876,41 @@
                 padding: 40px 15px;
                 min-height: 70vh;
             }
-           
+            
             .content .textBox h2 {
                 font-size: 2.8em;
                 color: white !important;
                 margin-bottom: 15px;
             }
-           
+            
             .content .textBox h2 span {
                 color: white !important;
                 font-size: 0.9em;
             }
-           
+            
             .content .textBox p {
                 display: none; /* Asegurarse de que el párrafo esté oculto */
             }
-           
+            
             .content .textBox a {
                 padding: 10px 25px;
                 font-size: 1em;
                 margin-top: 10px;
             }
-           
+            
             .circle {
                 clip-path: circle(100% at center);
                 border-radius: 0;
             }
-           
+            
             .thumb li {
                 margin: 0 10px;
             }
-           
+            
             .thumb li img {
                 max-width: 40px;
             }
-           
+            
             .cart-sidebar {
                 width: 100%;
             }
@@ -921,25 +920,25 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
             }
-           
+            
             .product-image {
                 height: 120px;
             }
-           
+            
             .product-info {
                 padding: 8px;
             }
-           
+            
             .product-title {
                 font-size: 0.8em;
                 margin-bottom: 5px;
             }
-           
+            
             .product-price {
                 font-size: 1em;
                 margin-bottom: 10px;
             }
-           
+            
             .product-select-btn {
                 padding: 6px 8px;
                 font-size: 11px;
@@ -952,17 +951,17 @@
                 color: white !important;
                 margin-bottom: 15px;
             }
-           
+            
             .content .textBox h2 span {
                 color: white !important;
                 font-size: 0.85em;
             }
-           
+            
             .circle {
                 clip-path: circle(100% at center);
                 border-radius: 0;
             }
-           
+            
             /* MODIFICACIÓN: Ajustar para pantallas muy pequeñas */
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -974,15 +973,15 @@
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-           
+            
             .product-image {
                 height: 100px;
             }
-           
+            
             .product-title {
                 font-size: 0.7em;
             }
-           
+            
             .content .textBox h2 {
                 font-size: 2.2em;
             }
@@ -996,45 +995,45 @@
             padding: 30px;
             margin-top: 50px;
         }
-       
+        
         .social-icons {
             margin: 20px 0;
         }
-       
+        
         .social-icons a {
             color: white;
             margin: 0 15px;
             font-size: 24px;
             transition: all 0.3s;
         }
-       
+        
         .social-icons a:hover {
             color: #017143;
             transform: translateY(-5px);
         }
-       
+        
         .footer-links {
             margin: 20px 0;
         }
-       
+        
         .footer-links a {
             color: #ddd;
             margin: 0 15px;
             text-decoration: none;
             transition: all 0.3s;
         }
-       
+        
         .footer-links a:hover {
             color: white;
             text-decoration: underline;
         }
-       
+        
         .copyright {
             margin-top: 20px;
             color: #aaa;
             font-size: 0.9em;
         }
-       
+        
         .fas{
             color: #000;
         }
@@ -1045,12 +1044,12 @@
             background: linear-gradient(135deg, #f8f8f8 0%, #e0e0e0 100%);
             text-align: center;
         }
-       
+        
         .process-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-       
+        
         .process-steps {
             display: flex;
             justify-content: space-between;
@@ -1058,7 +1057,7 @@
             gap: 30px;
             margin-top: 50px;
         }
-       
+        
         .process-step {
             flex: 1;
             min-width: 280px;
@@ -1070,12 +1069,12 @@
             position: relative;
             overflow: hidden;
         }
-       
+        
         .process-step:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-       
+        
         .step-number {
             position: absolute;
             top: -20px;
@@ -1085,7 +1084,7 @@
             color: rgba(1, 113, 67, 0.08);
             z-index: 1;
         }
-       
+        
         .step-icon {
             width: 80px;
             height: 80px;
@@ -1100,7 +1099,7 @@
             position: relative;
             z-index: 2;
         }
-       
+        
         .step-title {
             font-size: 1.5em;
             margin-bottom: 15px;
@@ -1108,14 +1107,14 @@
             position: relative;
             z-index: 2;
         }
-       
+        
         .step-description {
             color: #666;
             line-height: 1.6;
             position: relative;
             z-index: 2;
         }
-       
+        
         .process-image {
             margin-top: 50px;
             border-radius: 10px;
@@ -1125,31 +1124,31 @@
             margin-left: auto;
             margin-right: auto;
         }
-       
+        
         .process-image img {
             width: 100%;
             display: block;
             transition: transform 0.5s;
         }
-       
+        
         .process-image:hover img {
             transform: scale(1.03);
         }
-       
+        
         @media (max-width: 768px) {
             .process-steps {
                 flex-direction: column;
             }
-           
+            
             .process-step {
                 min-width: 100%;
             }
-           
+            
             .section-title {
                 font-size: 2.2em;
             }
         }
-       
+        
         /* Notificación bonita */
         .notification {
             position: fixed;
@@ -1167,17 +1166,17 @@
             opacity: 0;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-       
+        
         .notification.active {
             transform: translateY(0);
             opacity: 1;
         }
-       
+        
         .notification i {
             margin-right: 10px;
             font-size: 20px;
         }
-       
+        
         /* Contador de carrito */
         .cart-count {
             position: absolute;
@@ -1195,7 +1194,7 @@
             font-weight: bold;
             z-index: 1001;
         }
-   
+    
     /* Efecto de máquina de escribir */
 .typewriter {
     overflow: hidden;
@@ -1231,7 +1230,7 @@
     text-shadow: 0 0 10px rgba(1, 113, 67, 0.3);
     transition: all 0.3s ease;
 }
-   
+    
     /* Efecto de máquina de escribir - Solo para desktop */
 @media (min-width: 769px) {
     .typewriter {
@@ -1288,20 +1287,20 @@
         color: white !important;
         margin-bottom: 15px;
     }
-   
+    
     .typewriter {
         animation: none;
         border-right: none;
         white-space: normal;
     }
-   
+    
     .design-text {
         font-size: 1.2em;
         display: block;
         margin-top: 10px;
         animation: heartbeat 1.5s ease-in-out infinite both;
     }
-   
+    
     @keyframes heartbeat {
         from { transform: scale(1); }
         50% { transform: scale(1.1); }
@@ -1445,14 +1444,14 @@
                 <li> <a href="#como-funciona">Cómo funciona</a></li>
             </ul>
         </div>
-       
+        
         <div class="header-filters">
             <button class="header-filter-btn active" data-category="anime">Anime</button>
             <button class="header-filter-btn" data-category="deportes">Deportes</button>
             <button class="header-filter-btn" data-category="familiar">Familiar</button>
             <button class="header-filter-btn" data-category="otros">Otros</button>
         </div>
-       
+        
         <div class="header-icons">
             <div class="cart-toggle">
                 <i class="fas fa-shopping-cart"></i>
@@ -1468,7 +1467,7 @@
             <h2>
     <span class="typewriter">Puedes imaginarlo...</span>
     <span class="typewriter">también puedes</span>
-    <span class="design-text">SUBLIMATLO</span>
+    <span class="design-text">DISEÑARLO</span>
 </h2>
             <p>"Transformamos tus ideas en tazas únicas. ¿Imaginas un diseño? Nosotros lo sublimamos. Crea la taza perfecta con tus fotos, dibujos o mensajes especiales: para regalos inolvidables, momentos de oficina con estilo o ese detalle que solo tú puedes dar. ¡Tu inspiración, hecha arte!"</p>
             <a href="#" id="upload-design-btn">Subir diseño</a>
@@ -1489,8 +1488,8 @@
 <section id="productos" class="products-section">
     <div class="products-container">
         <h2 class="section-title">Nuestros Diseños</h2>
-       
-       
+        
+        
         <div class="products-grid">
             <!-- Productos de ANIME -->
             <div class="product-card" data-category="anime">
@@ -1504,7 +1503,7 @@
                     <button class="product-select-btn" data-product="Itachi Uchiha" data-price="16.00" data-img="img5.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
-           
+            
             <div class="product-card" data-category="anime">
                 <div class="product-image">
                     <img src="img6.jpg" alt="Itachi Uchiha Dark" data-product="Itachi Uchiha Dark" data-description="Porta la mirada del prodigio oscuro: Itachi Uchiha y su Mangekyō Sharingan. Un tributo a su legado trágico y poder absoluto." data-price="14.50">
@@ -1516,7 +1515,7 @@
                     <button class="product-select-btn" data-product="Itachi Uchiha Dark" data-price="14.50" data-img="img6.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
-           
+            
             <div class="product-card" data-category="anime">
                 <div class="product-image">
                     <img src="img8.jpg" alt="Kakashi" data-product="Kakashi" data-description="Luce el misterioso rostro de Kakashi Hatake, con su icónica mirada tranquila y su eterna mascarilla. Perfecta para los amantes del ninja más calmado y letal." data-price="19.50">
@@ -1528,7 +1527,7 @@
                     <button class="product-select-btn" data-product="Kakashi" data-price="19.50" data-img="img8.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
-           
+            
             <!-- Productos de DEPORTES -->
             <div class="product-card" data-category="deportes">
                 <div class="product-image">
@@ -1541,7 +1540,7 @@
                     <button class="product-select-btn" data-product="Real Madrid" data-price="15.00" data-img="img17.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
-           
+            
             <div class="product-card" data-category="deportes">
                 <div class="product-image">
                     <img src="img9.jpg" alt="Messi" data-product="Messi" data-description="Lleva la esencia de Messi: talento puro, magia y grandeza. Un tributo a la leyenda." data-price="17.00">
@@ -1553,7 +1552,7 @@
                     <button class="product-select-btn" data-product="Messi" data-price="17.00" data-img="img9.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
-           
+            
             <div class="product-card" data-category="deportes">
                 <div class="product-image">
                     <img src="img11.jpg" alt="Barcelona" data-product="Barcelona" data-description="Luce el escudo del FC Barcelona, símbolo de más que un club. Para los que llevan el blaugrana en el corazón." data-price="20.00">
@@ -1565,7 +1564,7 @@
                     <button class="product-select-btn" data-product="Barcelona" data-price="20.00" data-img="img11.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
-           
+            
             <!-- Productos FAMILIAR -->
             <div class="product-card" data-category="familiar">
                 <div class="product-image">
@@ -1578,7 +1577,7 @@
                     <button class="product-select-btn" data-product="Familiar" data-price="18.00" data-img="img7.jpg">Añadir al carrito 🛒</button>
                 </div>
             </div>
-           
+            
             <!-- Productos OTROS -->
             <div class="product-card" data-category="otros">
                 <div class="product-image">
@@ -1616,7 +1615,7 @@
     <div class="process-container">
         <h2 class="section-title">El Arte de la Sublimación</h2>
         <p class="section-subtitle">Descubre cómo transformamos tus ideas en tazas únicas mediante el fascinante proceso de sublimación, donde la ciencia y el arte se unen para crear productos extraordinarios.</p>
-       
+        
         <div class="process-steps">
             <div class="process-step">
                 <div class="step-number">1</div>
@@ -1624,35 +1623,35 @@
                 <h3 class="step-title">Diseño Personalizado</h3>
                 <p class="step-description">Crea tu diseño desde cero o elige entre nuestras plantillas. Utilizamos tintes especiales de sublimación que se transformarán con el calor.</p>
             </div>
-           
+            
             <div class="process-step">
                 <div class="step-number">2</div>
                 <div class="step-icon"><i class="fas fa-print"></i></div>
                 <h3 class="step-title">Impresión en Papel Transfer</h3>
                 <p class="step-description">Imprimimos tu diseño en papel de sublimación de alta calidad. Este papel actúa como vehículo para transferir la imagen a la taza.</p>
             </div>
-           
+            
             <div class="process-step">
                 <div class="step-number">3</div>
                 <div class="step-icon"><i class="fas fa-cut"></i></div>
                 <h3 class="step-title">Preparación y Fijación</h3>
                 <p class="step-description">Recortamos el diseño y lo fijamos firmemente a la taza con cinta térmica especial, asegurando una transferencia perfecta sin burbujas.</p>
             </div>
-           
+            
             <div class="process-step">
                 <div class="step-number">4</div>
                 <div class="step-icon"><i class="fas fa-fire"></i></div>
                 <h3 class="step-title">Sublimación con Calor</h3>
                 <p class="step-description">Introducimos la taza en una prensa térmica a 200°C. Bajo esta temperatura, la tinta se convierte en gas y penetra permanentemente en el material.</p>
             </div>
-           
+            
             <div class="process-step">
                 <div class="step-number">5</div>
                 <div class="step-icon"><i class="fas fa-temperature-low"></i></div>
                 <h3 class="step-title">Enfriamiento y Revisión</h3>
                 <p class="step-description">Después del proceso térmico, dejamos enfriar la taza y retiramos el papel. Realizamos un control de calidad para garantizar la perfección.</p>
             </div>
-           
+            
             <div class="process-step">
                 <div class="step-number">6</div>
                 <div class="step-icon"><i class="fas fa-gift"></i></div>
@@ -1660,7 +1659,7 @@
                 <p class="step-description">Embalamos tu taza personalizada con materiales protectores para que llegue a tus manos en perfectas condiciones, lista para sorprender.</p>
             </div>
         </div>
-       
+        
         <div class="process-image">
             <img src="https://images.unsplash.com/photo-1580637250481-b5c6dfaab83d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Proceso de sublimación de tazas">
         </div>
@@ -1741,24 +1740,24 @@
     function imgSlider(anything){
         document.querySelector('.starbucks').src = anything;
     }
-   
+    
     // Función para cambiar el color del círculo de fondo
     function changeCircleColor(color){
         const circle = document.querySelector('.circle');
         circle.style.background = color;
     }
-   
+    
     // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('header ul');
     const header = document.getElementById('main-header');
-   
+    
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
-        menuToggle.innerHTML = navMenu.classList.contains('active') ?
+        menuToggle.innerHTML = navMenu.classList.contains('active') ? 
             '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'
     });
-   
+    
     // Header fijo y cambio de estilo al hacer scroll
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -1771,15 +1770,15 @@
             document.querySelector('.header-filters').classList.remove('active');
         }
     });
-   
+    
     // Smooth scroll para navegación
     document.querySelectorAll('header ul li a, .footer-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-           
+            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-           
+            
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 // Cerrar menú en móviles
@@ -1787,7 +1786,7 @@
                     navMenu.classList.remove('active');
                     menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                 }
-               
+                
                 window.scrollTo({
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
@@ -1795,7 +1794,7 @@
             }
         });
     });
-   
+    
     // Lightbox para imágenes de productos
     const productImages = document.querySelectorAll('.product-image img');
     const imageLightbox = document.querySelector('.image-lightbox');
@@ -1805,9 +1804,9 @@
     const lightboxPrice = document.querySelector('.lightbox-product-price');
     const lightboxSelectBtn = document.querySelector('.lightbox-select-btn');
     const closeLightbox = document.querySelector('.close-lightbox');
-   
+    
     let currentProductData = null;
-   
+    
     productImages.forEach(image => {
         image.addEventListener('click', () => {
             currentProductData = {
@@ -1816,35 +1815,35 @@
                 price: image.getAttribute('data-price'),
                 img: image.getAttribute('src')
             };
-           
+            
             lightboxImage.src = currentProductData.img;
             lightboxTitle.textContent = currentProductData.product;
             lightboxDescription.textContent = currentProductData.description;
             lightboxPrice.textContent = `$${currentProductData.price}`;
-           
+            
             // Configurar el botón de seleccionar en el lightbox
             lightboxSelectBtn.setAttribute('data-product', currentProductData.product);
             lightboxSelectBtn.setAttribute('data-price', currentProductData.price);
             lightboxSelectBtn.setAttribute('data-img', currentProductData.img);
-           
+            
             imageLightbox.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevenir scroll
         });
     });
-   
+    
     // Cerrar lightbox
     closeLightbox.addEventListener('click', () => {
         imageLightbox.classList.remove('active');
         document.body.style.overflow = ''; // Permitir scroll nuevamente
     });
-   
+    
     imageLightbox.addEventListener('click', (e) => {
         if (e.target === imageLightbox) {
             imageLightbox.classList.remove('active');
             document.body.style.overflow = ''; // Permitir scroll nuevamente
         }
     });
-   
+    
     // Funcionalidad del carrito
     const cartToggle = document.querySelector('.cart-toggle');
     const closeCart = document.querySelector('.close-cart');
@@ -1855,39 +1854,39 @@
     const checkoutBtn = document.querySelector('.checkout-btn');
     const productSelectButtons = document.querySelectorAll('.product-select-btn, .lightbox-select-btn');
     const cartCount = document.querySelector('.cart-count');
-   
+    
     let cart = [];
-   
+    
     // Abrir carrito
     cartToggle.addEventListener('click', () => {
         cartSidebar.classList.add('active');
         overlay.classList.add('active');
     });
-   
+    
     // Cerrar carrito
     closeCart.addEventListener('click', () => {
         cartSidebar.classList.remove('active');
         overlay.classList.remove('active');
     });
-   
+    
     overlay.addEventListener('click', () => {
         cartSidebar.classList.remove('active');
         overlay.classList.remove('active');
     });
-   
+    
     // Función para mostrar notificación
     function showNotification(message) {
         const notification = document.getElementById('notification');
         const notificationText = document.getElementById('notification-text');
-       
+        
         notificationText.textContent = message;
         notification.classList.add('active');
-       
+        
         setTimeout(() => {
             notification.classList.remove('active');
         }, 3000);
     }
-   
+    
     // Añadir productos al carrito
     productSelectButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -1896,14 +1895,14 @@
                 imageLightbox.classList.remove('active');
                 document.body.style.overflow = '';
             }
-           
+            
             const product = button.getAttribute('data-product');
             const price = parseFloat(button.getAttribute('data-price'));
             const img = button.getAttribute('data-img');
-           
+            
             // Verificar si el producto ya está en el carrito
             const existingItem = cart.find(item => item.product === product);
-           
+            
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
@@ -1914,25 +1913,25 @@
                     quantity: 1
                 });
             }
-           
+            
             updateCart();
-           
+            
             // Mostrar mensaje de confirmación bonito
             showNotification(`¡${product} añadido al carrito! 🎉`);
         });
     });
-   
+    
     // Actualizar carrito
     function updateCart() {
         cartItems.innerHTML = '';
         let total = 0;
         let totalItems = 0;
-       
+        
         cart.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
             totalItems += item.quantity;
-           
+            
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
             cartItem.innerHTML = `
@@ -1948,20 +1947,20 @@
                 </div>
                 <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
             `;
-           
+            
             cartItems.appendChild(cartItem);
         });
-       
+        
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
         cartCount.textContent = totalItems;
-       
+        
         // Mostrar u ocultar el contador
         if (totalItems > 0) {
             cartCount.style.display = 'flex';
         } else {
             cartCount.style.display = 'none';
         }
-       
+        
         // Añadir event listeners a los botones de cantidad
         document.querySelectorAll('.quantity-btn.plus').forEach(button => {
             button.addEventListener('click', (e) => {
@@ -1971,7 +1970,7 @@
                 showNotification(`Se añadió una unidad más de ${cart[index].product}`);
             });
         });
-       
+        
         document.querySelectorAll('.quantity-btn.minus').forEach(button => {
             button.addEventListener('click', (e) => {
                 const index = parseInt(e.currentTarget.getAttribute('data-index'));
@@ -1988,7 +1987,7 @@
                 }
             });
         });
-       
+        
         // Añadir event listeners a los botones de eliminar
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', (e) => {
@@ -2000,59 +1999,59 @@
             });
         });
     }
-   
+    
     // Enviar pedido por WhatsApp
     checkoutBtn.addEventListener('click', () => {
         const name = document.getElementById('name').value;
         const phone = document.getElementById('phone').value;
         const address = document.getElementById('address').value;
-       
+        
         // Validar formulario
         if (!name || !phone || !address) {
             alert('Por favor, completa todos los campos');
             return;
         }
-       
+        
         if (cart.length === 0) {
             alert('Tu carrito está vacío');
             return;
         }
-       
+        
         // Crear mensaje para WhatsApp
         let message = `¡Hola! Quiero hacer un pedido:%0A%0A`;
         message += `*Nombre:* ${name}%0A`;
         message += `*Teléfono:* ${phone}%0A`;
         message += `*Dirección:* ${address}%0A%0A`;
         message += `*Pedido:*%0A`;
-       
+        
         cart.forEach(item => {
             message += `- ${item.product} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}%0A`;
-           
+            
             // Si es un diseño personalizado, añadir la URL de Drive
             if (item.custom) {
                 message += `  🔗 Imagen: ${item.img}%0A`;
             }
         });
-       
+        
         message += `%0A*Total:* $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
-       
+        
         // Abrir WhatsApp con el mensaje (REEMPLAZA EL NÚMERO DE TELÉFONO)
         window.open(`https://wa.me/51388955?text=${message}`, '_blank');
-       
+        
         // Limpiar carrito y formulario
         cart = [];
         updateCart();
         document.getElementById('name').value = '';
         document.getElementById('phone').value = '';
         document.getElementById('address').value = '';
-       
+        
         // Cerrar carrito
         cartSidebar.classList.remove('active');
         overlay.classList.remove('active');
-       
+        
         showNotification('¡Pedido enviado! Te contactaremos pronto. 📦');
     });
-   
+    
     // Funcionalidad para subir diseños personalizados
     const uploadDesignBtn = document.getElementById('upload-design-btn');
     const chooseDesignBtn = document.getElementById('choose-design-btn');
@@ -2063,79 +2062,79 @@
     const imagePreview = document.getElementById('image-preview');
     const addCustomDesignBtn = document.getElementById('add-custom-design');
     const uploadStatus = document.getElementById('upload-status');
-   
+    
     // Abrir modal para subir diseño
     uploadDesignBtn.addEventListener('click', (e) => {
         e.preventDefault();
         customDesignModal.classList.add('active');
         overlay.classList.add('active');
     });
-   
+    
     // Cerrar modal
     closeModalBtn.addEventListener('click', () => {
         customDesignModal.classList.remove('active');
         overlay.classList.remove('active');
         resetUploadForm();
     });
-   
+    
     overlay.addEventListener('click', () => {
         customDesignModal.classList.remove('active');
         overlay.classList.remove('active');
         resetUploadForm();
     });
-   
+    
     // Subir imagen
     uploadArea.addEventListener('click', () => {
         designUpload.click();
     });
-   
+    
     designUpload.addEventListener('change', function() {
         const file = this.files[0];
         if (file) {
             const reader = new FileReader();
-           
+            
             reader.addEventListener('load', function() {
                 imagePreview.src = reader.result;
                 imagePreview.style.display = 'block';
                 addCustomDesignBtn.disabled = false;
             });
-           
+            
             reader.readAsDataURL(file);
         }
     });
-   
+    
     // Arrastrar y soltar imagen
     uploadArea.addEventListener('dragover', function(e) {
         e.preventDefault();
         this.style.borderColor = '#015c35';
     });
-   
+    
     uploadArea.addEventListener('dragleave', function() {
         this.style.borderColor = '#017143';
     });
-   
+    
     uploadArea.addEventListener('drop', function(e) {
         e.preventDefault();
         this.style.borderColor = '#017143';
-       
+        
         const file = e.dataTransfer.files[0];
         if (file && file.type.includes('image')) {
             designUpload.files = e.dataTransfer.files;
-           
+            
             const reader = new FileReader();
-           
+            
             reader.addEventListener('load', function() {
                 imagePreview.src = reader.result;
                 imagePreview.style.display = 'block';
                 addCustomDesignBtn.disabled = false;
             });
-           
+            
             reader.readAsDataURL(file);
         } else {
             alert('Por favor, sube solo archivos de imagen');
         }
     });
-   
+    
     // Añadir diseño personalizado al carrito
     addCustomDesignBtn.addEventListener('click', async () => {
         const file = designUpload.files[0];
@@ -2153,10 +2152,10 @@
             // En una implementación real, aquí subirías la imagen a tu servidor
             // Para este ejemplo, simulamos una subida exitosa después de un delay
             await new Promise(resolve => setTimeout(resolve, 2000));
-           
+            
             // Simulamos una URL de imagen subida (en un caso real, esto vendría del servidor)
             const simulatedImageUrl = URL.createObjectURL(file);
-           
+            
             // Añadir al carrito
             cart.push({
                 product: "Diseño Personalizado",
@@ -2165,19 +2164,19 @@
                 quantity: 1,
                 custom: true
             });
-           
+            
             updateCart();
             customDesignModal.classList.remove('active');
             overlay.classList.remove('active');
             resetUploadForm();
-           
+            
             showNotification('✅ Diseño personalizado añadido al carrito');
-           
+            
         } catch (error) {
             console.error('Error:', error);
             uploadStatus.textContent = 'Error al subir la imagen. Intenta de nuevo.';
             uploadStatus.style.color = '#ff4d4d';
-           
+            
             // Ofrecer alternativa de almacenamiento local
             if (confirm('Error al subir. ¿Quieres añadir el diseño igualmente (la imagen se incluirá en el pedido)?')) {
                 const reader = new FileReader();
@@ -2189,7 +2188,7 @@
                         quantity: 1,
                         custom: true
                     });
-                   
+                    
                     updateCart();
                     customDesignModal.classList.remove('active');
                     overlay.classList.remove('active');
@@ -2212,17 +2211,17 @@
         addCustomDesignBtn.disabled = true;
         uploadStatus.textContent = '';
     }
-   
+    
     // Animación para el texto en móviles
     function setupTextAnimations() {
         const designText = document.querySelector('.design-text');
-       
+        
         // Solo aplicar hover effect en desktop
         if (window.innerWidth > 768) {
             designText.addEventListener('mouseover', () => {
                 designText.style.textShadow = '0 0 15px rgba(1, 113, 67, 0.5)';
             });
-           
+            
             designText.addEventListener('mouseout', () => {
                 designText.style.textShadow = '0 0 10px rgba(1, 113, 67, 0.3)';
             });
@@ -2232,11 +2231,11 @@
     // Llamar la función al cargar y al redimensionar
     window.addEventListener('load', setupTextAnimations);
     window.addEventListener('resize', setupTextAnimations);
-   
+    
     // Filtrado por categorías
     const filterButtons = document.querySelectorAll('.filter-btn, .header-filter-btn');
     const productCards = document.querySelectorAll('.product-card');
-   
+    
     // Función para filtrar productos por categoría
     function filterProducts(category) {
         productCards.forEach(card => {
@@ -2247,26 +2246,26 @@
             }
         });
     }
-   
+    
     // Añadir event listeners a los botones de filtro
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             // Remover la clase active de todos los botones
             filterButtons.forEach(btn => btn.classList.remove('active'));
-           
+            
             // Añadir la clase active al botón clickeado
             button.classList.add('active');
-           
+            
             // Filtrar productos por la categoría seleccionada
             const category = button.getAttribute('data-category');
             filterProducts(category);
         });
     });
-   
+    
     // Inicializar con la categoría "anime" seleccionada
     window.addEventListener('load', () => {
         filterProducts('anime');
     });
 </script>
 </body>
-</html>
+</html> right: 320px
