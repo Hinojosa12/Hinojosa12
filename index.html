@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tazas Personalizadas</title>
+    <title>Grabación en Memoria Flash</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -40,7 +40,6 @@
 
         header.scrolled {
             background: rgba(8, 87, 177, 0.95);
-            
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -134,33 +133,6 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        .thumb{
-            position: absolute;
-            left: 50%;
-            bottom: 20px;
-            transform: translateX(-50%);
-            display: flex;
-            z-index: 1;
-        }
-
-        .thumb li{
-            list-style: none;
-            display: inline-block;
-            margin: 0 20px;
-            cursor: pointer;
-            transition: 0.5s;
-        }
-
-        .thumb li:hover{
-            transform: translateY(-15px);
-        }
-
-        .thumb li img{
-            max-width: 60px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
         .circle{
             position: absolute;
             top: 0;
@@ -171,13 +143,6 @@
             clip-path: circle(900px at right 90px);
             z-index: 0;
         }
-
-        ul img{
-          transform: translateX(-90px);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          }
 
         /* --- Sección de Productos en Grid --- */
         .products-section {
@@ -240,10 +205,11 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* CUADRÍCULAS MÁS PEQUEÑAS */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
 
@@ -264,7 +230,7 @@
 
         .product-image {
             width: 100%;
-            height: 250px;
+            height: 180px;
             overflow: hidden;
             cursor: pointer;
         }
@@ -281,45 +247,45 @@
         }
 
         .product-info {
-            padding: 20px;
+            padding: 15px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .product-title {
-            font-size: 1.3em;
-            margin-bottom: 10px;
+            font-size: 1.1em;
+            margin-bottom: 8px;
             color: #333;
         }
 
         .product-description {
             color: #666;
-            margin-bottom: 15px;
-            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-size: 0.85em;
             flex-grow: 1;
         }
 
         .product-price {
-            font-size: 1.4em;
+            font-size: 1.2em;
             color: #017143;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
-        .product-select-btn {
+        .view-btn {
             background: #017143;
             color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             transition: all 0.3s;
             margin-top: auto;
         }
 
-        .product-select-btn:hover {
+        .view-btn:hover {
             background: #015c35;
             transform: translateY(-2px);
         }
@@ -403,7 +369,7 @@
             font-weight: bold;
         }
 
-        .lightbox-select-btn {
+        .lightbox-view-btn {
             background: #017143;
             color: white;
             border: none;
@@ -415,7 +381,7 @@
             transition: all 0.3s;
         }
 
-        .lightbox-select-btn:hover {
+        .lightbox-view-btn:hover {
             background: #015c35;
             transform: translateY(-3px);
         }
@@ -565,590 +531,6 @@
             display: block;
         }
         
-        /* Modal para subir diseño personalizado */
-        .custom-design-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1002;
-            display: none;
-        }
-        
-        .custom-design-modal.active {
-            display: flex;
-        }
-        
-        .custom-design-content {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1003;
-        }
-        
-        .upload-area {
-            border: 2px dashed #017143;
-            padding: 30px;
-            margin: 20px 0;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        
-        .upload-area i {
-            font-size: 48px;
-            color: #017143;
-            margin-bottom: 15px;
-        }
-        
-        #image-preview {
-            max-width: 100%;
-            max-height: 200px;
-            margin: 15px 0;
-            display: none;
-        }
-        
-        .add-custom-design-btn {
-            background: #017143;
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            margin-top: 15px;
-        }
-        
-        .add-custom-design-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .circle {
-                clip-path: circle(700px at right 90px);
-            }
-        }
-
-        @media (max-width: 992px) {
-            section {
-                padding: 80px 50px;
-            }
-            
-            header {
-                padding: 15px 50px;
-            }
-            
-            .content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .content .textBox {
-                max-width: 100%;
-                margin-bottom: 40px;
-            }
-            
-            .content .imgBox {
-                width: 100%;
-                justify-content: center;
-                padding-right: 0;
-                margin-top: 30px;
-            }
-            
-            .circle {
-                clip-path: circle(500px at center);
-            }
-            
-            .thumb {
-                position: relative;
-                bottom: 30px;
-                margin-top: 30px;
-                
-            }
-
-    .header-filters {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  opacity: 0;
-  
-  transition: all 0.3s ease;
-}
-
-.header-filters.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 40px 20px;
-                min-height: 80vh;
-            }
-            
-            header {
-                padding: 15px 20px;
-            }
-            
-            header ul {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100vh;
-                background: rgba(8, 87, 177, 0.95);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: 0.5s;
-                z-index: 5;
-            }
-            
-            header ul.active {
-                left: 0;
-            }
-            
-            header ul li {
-                margin: 15px 0;
-            }
-            
-            header ul li a {
-                margin-left: 0;
-                font-size: 1.8em;
-            }
-            
-            .menu-toggle, .cart-toggle {
-                display: block;
-            }
-            
-            .content .textBox h2 {
-                font-size: 3.2em;
-                line-height: 1.2em;
-                color: white !important;
-                margin-bottom: 20px;
-            }
-            
-            .content .textBox h2 span {
-                color: white !important;
-                font-size: 1em;
-            }
-            
-            .content .textBox p {
-                display: none; /* Ocultar párrafo en móviles */
-            }
-            
-            .content .imgBox img {
-                max-width: 280px;
-            }
-            
-            .circle {
-                clip-path: circle(100% at center); /* Círculo que ocupa toda la sección */
-                border-radius: 0;
-            }
-            
-            .thumb li img {
-                max-width: 50px;
-            }
-            
-            .header-icons {
-                display: flex;
-                gap: 15px;
-            }
-            
-            .menu-toggle i, .cart-toggle i {
-                color: white !important;
-            }
-
-            /* MODIFICACIÓN PRINCIPAL: 3 productos por fila en móviles */
-            .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
-            }
-            
-            .product-image {
-                height: 150px;
-            }
-            
-            .product-info {
-                padding: 10px;
-            }
-            
-            .product-title {
-                font-size: 0.9em;
-            }
-            
-            .product-description {
-                display: none; /* Ocultamos descripción en móviles */
-            }
-            
-            .product-price {
-                font-size: 1.1em;
-            }
-            
-            .product-select-btn {
-                padding: 8px 10px;
-                font-size: 12px;
-            }
-
-            /* Ajustes para el lightbox en móviles */
-            .close-lightbox {
-                top: 10px;
-                right: 10px;
-                font-size: 24px;
-                width: 35px;
-                height: 35px;
-            }
-            
-            .lightbox-product-info {
-                margin-top: 15px;
-            }
-            
-            .lightbox-product-title {
-                font-size: 1.5em;
-            }
-            
-            .lightbox-product-description {
-                font-size: 1em;
-            }
-            
-            /* Filtros en móviles */
-            .category-filters {
-                overflow-x: auto;
-                justify-content: flex-start;
-                padding-bottom: 10px;
-            }
-            
-            .filter-btn {
-                flex: 0 0 auto;
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .cart-toggle{
-                position: relative;
-                
-            }
-
-
-   .header-filters {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  opacity: 0;
-  
-  transition: all 0.3s ease;
-}
-
-.header-filters.active {
-  opacity: 1;
-  visibility: visible;
-  display: contents;
-}
- }
-
-        @media (max-width: 576px) {
-            section {
-                padding: 40px 15px;
-                min-height: 70vh;
-            }
-            
-            .content .textBox h2 {
-                font-size: 2.8em;
-                color: white !important;
-                margin-bottom: 15px;
-            }
-            
-            .content .textBox h2 span {
-                color: white !important;
-                font-size: 0.9em;
-            }
-            
-            .content .textBox p {
-                display: none; /* Asegurarse de que el párrafo esté oculto */
-            }
-            
-            .content .textBox a {
-                padding: 10px 25px;
-                font-size: 1em;
-                margin-top: 10px;
-            }
-            
-            .circle {
-                clip-path: circle(100% at center);
-                border-radius: 0;
-            }
-            
-            .thumb li {
-                margin: 0 10px;
-            }
-            
-            .thumb li img {
-                max-width: 40px;
-            }
-            
-            .cart-sidebar {
-                width: 100%;
-            }
-
-            /* MODIFICACIÓN: Mantener 3 columnas en móviles pequeños */
-            .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-            }
-            
-            .product-image {
-                height: 120px;
-            }
-            
-            .product-info {
-                padding: 8px;
-            }
-            
-            .product-title {
-                font-size: 0.8em;
-                margin-bottom: 5px;
-            }
-            
-            .product-price {
-                font-size: 1em;
-                margin-bottom: 10px;
-            }
-            
-            .product-select-btn {
-                padding: 6px 8px;
-                font-size: 11px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .content .textBox h2 {
-                font-size: 2.4em;
-                color: white !important;
-                margin-bottom: 15px;
-            }
-            
-            .content .textBox h2 span {
-                color: white !important;
-                font-size: 0.85em;
-            }
-            
-            .circle {
-                clip-path: circle(100% at center);
-                border-radius: 0;
-            }
-            
-            /* MODIFICACIÓN: Ajustar para pantallas muy pequeñas */
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 360px) {
-            /* MODIFICACIÓN: Para pantallas muy pequeñas, 2 columnas */
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .product-image {
-                height: 100px;
-            }
-            
-            .product-title {
-                font-size: 0.7em;
-            }
-            
-            .content .textBox h2 {
-                font-size: 2.2em;
-            }
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-        }
-        
-        .social-icons {
-            margin: 20px 0;
-        }
-        
-        .social-icons a {
-            color: white;
-            margin: 0 15px;
-            font-size: 24px;
-            transition: all 0.3s;
-        }
-        
-        .social-icons a:hover {
-            color: #017143;
-            transform: translateY(-5px);
-        }
-        
-        .footer-links {
-            margin: 20px 0;
-        }
-        
-        .footer-links a {
-            color: #ddd;
-            margin: 0 15px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-        
-        .copyright {
-            margin-top: 20px;
-            color: #aaa;
-            font-size: 0.9em;
-        }
-        
-        .fas{
-            color: #000;
-        }
-
-        /* Nueva sección de proceso de sublimación */
-        .sublimation-process {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #f8f8f8 0%, #e0e0e0 100%);
-            text-align: center;
-        }
-        
-        .process-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .process-step {
-            flex: 1;
-            min-width: 280px;
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .process-step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .step-number {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 120px;
-            font-weight: bold;
-            color: rgba(1, 113, 67, 0.08);
-            z-index: 1;
-        }
-        
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: #017143;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            margin: 0 auto 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .step-title {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: #333;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .step-description {
-            color: #666;
-            line-height: 1.6;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .process-image {
-            margin-top: 50px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .process-image img {
-            width: 100%;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .process-image:hover img {
-            transform: scale(1.03);
-        }
-        
-        @media (max-width: 768px) {
-            .process-steps {
-                flex-direction: column;
-            }
-            
-            .process-step {
-                min-width: 100%;
-            }
-            
-            .section-title {
-                font-size: 2.2em;
-            }
-        }
-        
         /* Notificación bonita */
         .notification {
             position: fixed;
@@ -1196,240 +578,469 @@
         }
     
     /* Efecto de máquina de escribir */
-.typewriter {
-    overflow: hidden;
-    border-right: .15em solid #017143;
-    white-space: nowrap;
-    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-}
-
-/* Animación de escritura */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-/* Efecto de parpadeo del cursor */
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #017143; }
-}
-
-/* Mejorar el título principal */
-.content .textBox h2 {
-    color: #333;
-    font-size: 4em;
-    line-height: 1.4em;
-    font-weight: 500;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Efecto hover en el texto span */
-.content .textBox h2 span:hover {
-    color: #017143;
-    text-shadow: 0 0 10px rgba(1, 113, 67, 0.3);
-    transition: all 0.3s ease;
-}
-    
-    /* Efecto de máquina de escribir - Solo para desktop */
-@media (min-width: 769px) {
-    .typewriter {
-        overflow: hidden;
-        border-right: .15em solid #017143;
-        white-space: nowrap;
-        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    @media (min-width: 769px) {
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #017143;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
     }
-}
 
-/* Animación de escritura */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-/* Efecto de parpadeo del cursor */
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #017143; }
-}
-
-/* Mejorar el título principal */
-.content .textBox h2 {
-    color: #333;
-    font-size: 3.5em;
-    line-height: 1.3em;
-    font-weight: 600;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
-
-/* Efecto para la palabra DISEÑARLO */
-.design-text {
-    display: inline-block;
-    color: #017143 !important;
-    font-weight: 700;
-    animation: pulse 2s infinite;
-    text-shadow: 0 0 10px rgba(1, 113, 67, 0.3);
-}
-
-/* Animación de pulso para diseño en móviles y desktop */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-/* Ajustes para móviles */
-@media (max-width: 768px) {
-    .content .textBox h2 {
-        font-size: 2em;
-        line-height: 1.2em;
-        color: white !important;
-        margin-bottom: 15px;
+    /* Animación de escritura */
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
     }
-    
-    .typewriter {
-        animation: none;
-        border-right: none;
-        white-space: normal;
+
+    /* Efecto de parpadeo del cursor */
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #017143; }
     }
-    
-    .design-text {
-        font-size: 1.2em;
-        display: block;
-        margin-top: 10px;
-        animation: heartbeat 1.5s ease-in-out infinite both;
+
+    /* Efecto para la palabra GRABAR */
+    .record-text {
+        display: inline-block;
+        color: #017143 !important;
+        font-weight: 700;
+        animation: pulse 2s infinite;
+        text-shadow: 0 0 10px rgba(1, 113, 67, 0.3);
     }
-    
-    @keyframes heartbeat {
-        from { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        to { transform: scale(1); }
+
+    /* Animación de pulso */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
     }
-}
 
-/* Controles de cantidad en el carrito */
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    margin: 0 10px;
-}
+    /* Controles de cantidad en el carrito */
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        margin: 0 10px;
+    }
 
-.quantity-btn {
-    background: #017143;
-    color: white;
-    border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.2s;
-    font-size: 18px;
-}
+    .quantity-btn {
+        background: #017143;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.2s;
+        font-size: 18px;
+    }
 
-.quantity-btn:hover {
-    background: #015c35;
-    transform: scale(1.1);
-}
+    .quantity-btn:hover {
+        background: #015c35;
+        transform: scale(1.1);
+    }
 
-.quantity {
-    margin: 0 8px;
-    font-weight: bold;
-    min-width: 25px;
-    text-align: center;
-    font-size: 18px;
-}
+    .quantity {
+        margin: 0 8px;
+        font-weight: bold;
+        min-width: 25px;
+        text-align: center;
+        font-size: 18px;
+    }
 
-.cart-item-details {
-    flex: 1;
-    padding: 0 15px;
-}
-
-.cart-item-details div:first-child {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 16px;
-}
-
-.cart-item-details div:last-child {
-    color: #017143;
-    font-size: 16px;
-}
-
-/* NUEVOS ESTILOS PARA LOS FILTROS EN EL HEADER */
-.header-filters {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.header-filters.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.header-filter-btn {
-    padding: 8px 15px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 14px;
-    transition: all 0.3s;
-    color: white;
-    white-space: nowrap;
-    position: relative;
-  left: -20px
-
-}
-
-.header-filter-btn.active, .header-filter-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.header-nav {
-    display: flex;
-    align-items: center;
-}
-
-.header-icons {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-/* Ajustes para el header en móviles */
-@media (max-width: 992px) {
+    /* NUEVOS ESTILOS PARA LOS FILTROS EN EL HEADER */
     .header-filters {
-        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
     }
-}
 
-/* Ajustes para el lightbox - tamaño consistente */
-.lightbox-image-container {
-    max-height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .header-filters.active {
+        opacity: 1;
+        visibility: visible;
+    }
 
-.lightbox-content img {
-    max-height: 60vh;
-    width: auto;
-    max-width: 100%;
-}
+    .header-filter-btn {
+        padding: 8px 15px;
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.3s;
+        color: white;
+        white-space: nowrap;
+        position: relative;
+        left: -20px
+    }
 
+    .header-filter-btn.active, .header-filter-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .header-nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .header-icons {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    /* Vista de capítulos */
+    .chapters-view {
+        display: none;
+        padding: 80px 20px;
+        background: #f8f8f8;
+        min-height: 100vh;
+    }
+
+    .chapters-view.active {
+        display: block;
+    }
+
+    .chapters-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .back-btn {
+        background: #017143;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+    }
+
+    .back-btn:hover {
+        background: #015c35;
+        transform: translateY(-2px);
+    }
+
+    .chapters-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+        max-height: 600px;
+        overflow-y: auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .chapter-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+        transition: all 0.3s;
+    }
+
+    .chapter-item:hover {
+        background: #f9f9f9;
+    }
+
+    .chapter-title {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .add-to-cart-btn {
+        background: #017143;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+
+    .add-to-cart-btn:hover {
+        background: #015c35;
+        transform: translateY(-2px);
+    }
+
+    /* Ajustes responsive */
+    @media (max-width: 1200px) {
+        .circle {
+            clip-path: circle(700px at right 90px);
+        }
+    }
+
+    @media (max-width: 992px) {
+        section {
+            padding: 80px 50px;
+        }
+        
+        header {
+            padding: 15px 50px;
+        }
+        
+        .content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .content .textBox {
+            max-width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .content .imgBox {
+            width: 100%;
+            justify-content: center;
+            padding-right: 0;
+            margin-top: 30px;
+        }
+        
+        .circle {
+            clip-path: circle(500px at center);
+        }
+        
+        .header-filters {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        section {
+            padding: 40px 20px;
+            min-height: 80vh;
+        }
+        
+        header {
+            padding: 15px 20px;
+        }
+        
+        header ul {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(8, 87, 177, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+            z-index: 5;
+        }
+        
+        header ul.active {
+            left: 0;
+        }
+        
+        header ul li {
+            margin: 15px 0;
+        }
+        
+        header ul li a {
+            margin-left: 0;
+            font-size: 1.8em;
+        }
+        
+        .menu-toggle, .cart-toggle {
+            display: block;
+        }
+        
+        .content .textBox h2 {
+            font-size: 3.2em;
+            line-height: 1.2em;
+            color: white !important;
+            margin-bottom: 20px;
+        }
+        
+        .content .textBox h2 span {
+            color: white !important;
+            font-size: 1em;
+        }
+        
+        .content .textBox p {
+            display: none; /* Ocultar párrafo en móviles */
+        }
+        
+        .content .imgBox img {
+            max-width: 280px;
+        }
+        
+        .circle {
+            clip-path: circle(100% at center); /* Círculo que ocupa toda la sección */
+            border-radius: 0;
+        }
+        
+        /* Grid más pequeña para móviles */
+        .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .product-image {
+            height: 120px;
+        }
+        
+        .product-info {
+            padding: 10px;
+        }
+        
+        .product-title {
+            font-size: 0.9em;
+        }
+        
+        .product-description {
+            display: none; /* Ocultamos descripción en móviles */
+        }
+        
+        .product-price {
+            font-size: 1em;
+        }
+        
+        .view-btn {
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+
+        /* Vista de capítulos en móviles */
+        .chapters-list {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .chapter-item {
+            padding: 10px;
+        }
+        
+        .chapter-title {
+            font-size: 14px;
+        }
+        
+        .add-to-cart-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        section {
+            padding: 40px 15px;
+            min-height: 70vh;
+        }
+        
+        .content .textBox h2 {
+            font-size: 2.8em;
+            color: white !important;
+            margin-bottom: 15px;
+        }
+        
+        .content .textBox h2 span {
+            color: white !important;
+            font-size: 0.9em;
+        }
+        
+        .circle {
+            clip-path: circle(100% at center);
+            border-radius: 0;
+        }
+        
+        /* Grid de 2 columnas en móviles pequeños */
+        .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .product-image {
+            height: 100px;
+        }
+        
+        .product-info {
+            padding: 8px;
+        }
+        
+        .product-title {
+            font-size: 0.8em;
+            margin-bottom: 5px;
+        }
+        
+        .product-price {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        
+        .view-btn {
+            padding: 5px 8px;
+            font-size: 11px;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 30px;
+        margin-top: 50px;
+    }
+    
+    .social-icons {
+        margin: 20px 0;
+    }
+    
+    .social-icons a {
+        color: white;
+        margin: 0 15px;
+        font-size: 24px;
+        transition: all 0.3s;
+    }
+    
+    .social-icons a:hover {
+        color: #017143;
+        transform: translateY(-5px);
+    }
+    
+    .footer-links {
+        margin: 20px 0;
+    }
+    
+    .footer-links a {
+        color: #ddd;
+        margin: 0 15px;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    
+    .footer-links a:hover {
+        color: white;
+        text-decoration: underline;
+    }
+    
+    .copyright {
+        margin-top: 20px;
+        color: #aaa;
+        font-size: 0.9em;
+    }
+    
+    .fas{
+        color: #000;
+    }
     </style>
 </head>
 <body>
@@ -1439,17 +1050,16 @@
         <div class="header-nav">
             <ul>
                 <li> <a href="#inicio">Inicio</a></li>
-                <li> <a href="#productos">Diseños</a></li>
+                <li> <a href="#productos">Contenido</a></li>
                 <li> <a href="#contacto">Contacto</a></li>
-                <li> <a href="#como-funciona">Cómo funciona</a></li>
             </ul>
         </div>
         
         <div class="header-filters">
-            <button class="header-filter-btn active" data-category="anime">Anime</button>
-            <button class="header-filter-btn" data-category="deportes">Deportes</button>
-            <button class="header-filter-btn" data-category="familiar">Familiar</button>
-            <button class="header-filter-btn" data-category="otros">Otros</button>
+            <button class="header-filter-btn active" data-category="peliculas">Películas</button>
+            <button class="header-filter-btn" data-category="series">Series</button>
+            <button class="header-filter-btn" data-category="musica">Música</button>
+            <button class="header-filter-btn" data-category="novelas">Novelas</button>
         </div>
         
         <div class="header-icons">
@@ -1465,131 +1075,118 @@
     <div class="content">
         <div class="textBox">
             <h2>
-    <span class="typewriter">Puedes imaginarlo...</span>
-    <span class="typewriter">también puedes</span>
-    <span class="design-text">DISEÑARLO</span>
-</h2>
-            <p>"Transformamos tus ideas en tazas únicas. ¿Imaginas un diseño? Nosotros lo sublimamos. Crea la taza perfecta con tus fotos, dibujos o mensajes especiales: para regalos inolvidables, momentos de oficina con estilo o ese detalle que solo tú puedes dar. ¡Tu inspiración, hecha arte!"</p>
-            <a href="#" id="upload-design-btn">Subir diseño</a>
-            <a href="#productos" id="choose-design-btn">Elegir diseño</a>
+                <span class="typewriter">Puedes imaginarlo...</span>
+                <span class="typewriter">también puedes</span>
+                <span class="record-text">GRABARLO</span>
+            </h2>
+            <p>Desde tu comodidad elige que quieres grabar en tu memoria, al llegar al sitio solo necesitas sentarte y esperar que nosotros sabremos que grabarte... en nuestra pagina te mostramos el precio de todo lo que necesitas.</p>
+            <a href="#productos">Ver Catálogo</a>
         </div>
         <div class="imgBox">
-            <img src="img1.png" class="starbucks" alt="Taza personalizada">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="starbucks" alt="Memoria Flash">
         </div>
-        <ul class="thumb">
-           <li> <img src="img1.png" onclick="imgSlider('img1.png');changeCircleColor('#0857b1')" class="imagen1" alt="Taza azul"></li>
-           <li> <img src="img2.png" onclick="imgSlider('img2.png');changeCircleColor('#70059b')" class="imagen2" alt="Taza morada"></li>
-           <li> <img src="img3.png" onclick="imgSlider('img3.png');changeCircleColor('#9b0a0a')" class="imagen3" alt="Taza roja"></li>
-        </ul>
     </div>
 </section>
 
 <!-- Sección de Productos en Grid -->
 <section id="productos" class="products-section">
     <div class="products-container">
-        <h2 class="section-title">Nuestros Diseños</h2>
+        <h2 class="section-title">Nuestro Catálogo</h2>
         
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="peliculas">Películas</button>
+            <button class="filter-btn" data-category="series">Series</button>
+            <button class="filter-btn" data-category="musica">Música</button>
+            <button class="filter-btn" data-category="novelas">Novelas</button>
+        </div>
         
         <div class="products-grid">
-            <!-- Productos de ANIME -->
-            <div class="product-card" data-category="anime">
+            <!-- Películas -->
+            <div class="product-card" data-category="peliculas">
                 <div class="product-image">
-                    <img src="img5.jpg" alt="Itachi Uchiha" data-product="Itachi Uchiha" data-description="Lleva el Sharingan de Itachi Uchiha, un símbolo de poder y legado. Para los verdaderos herederos de la aldea oculta." data-price="16.00">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Avengers: Endgame" data-product="Avengers: Endgame" data-description="La épica conclusión de la saga del Infinity. Incluye escenas eliminadas y contenido extra." data-price="12.00">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-title">Itachi Uchiha</h3>
-                    <p class="product-description">Lleva el Sharingan de Itachi Uchiha, un símbolo de poder y legado.</p>
-                    <div class="product-price">$16.00</div>
-                    <button class="product-select-btn" data-product="Itachi Uchiha" data-price="16.00" data-img="img5.jpg">Añadir al carrito 🛒</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="anime">
-                <div class="product-image">
-                    <img src="img6.jpg" alt="Itachi Uchiha Dark" data-product="Itachi Uchiha Dark" data-description="Porta la mirada del prodigio oscuro: Itachi Uchiha y su Mangekyō Sharingan. Un tributo a su legado trágico y poder absoluto." data-price="14.50">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Itachi Uchiha Dark</h3>
-                    <p class="product-description">Porta la mirada del prodigio oscuro: Itachi Uchiha y su Mangekyō Sharingan.</p>
-                    <div class="product-price">$14.50</div>
-                    <button class="product-select-btn" data-product="Itachi Uchiha Dark" data-price="14.50" data-img="img6.jpg">Añadir al carrito 🛒</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="anime">
-                <div class="product-image">
-                    <img src="img8.jpg" alt="Kakashi" data-product="Kakashi" data-description="Luce el misterioso rostro de Kakashi Hatake, con su icónica mirada tranquila y su eterna mascarilla. Perfecta para los amantes del ninja más calmado y letal." data-price="19.50">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Kakashi</h3>
-                    <p class="product-description">Luce el misterioso rostro de Kakashi Hatake, con su icónica mirada tranquila.</p>
-                    <div class="product-price">$19.50</div>
-                    <button class="product-select-btn" data-product="Kakashi" data-price="19.50" data-img="img8.jpg">Añadir al carrito 🛒</button>
-                </div>
-            </div>
-            
-            <!-- Productos de DEPORTES -->
-            <div class="product-card" data-category="deportes">
-                <div class="product-image">
-                    <img src="img17.jpg" alt="Real Madrid" data-product="Real Madrid" data-description="Lleva el escudo del Real Madrid, símbolo de 14 Champions y grandeza. ¡Hala Madrid!" data-price="15.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Real Madrid</h3>
-                    <p class="product-description">Lleva el escudo del Real Madrid, símbolo de 14 Champions y grandeza.</p>
-                    <div class="product-price">$15.00</div>
-                    <button class="product-select-btn" data-product="Real Madrid" data-price="15.00" data-img="img17.jpg">Añadir al carrito 🛒</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="deportes">
-                <div class="product-image">
-                    <img src="img9.jpg" alt="Messi" data-product="Messi" data-description="Lleva la esencia de Messi: talento puro, magia y grandeza. Un tributo a la leyenda." data-price="17.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Messi</h3>
-                    <p class="product-description">Lleva la esencia de Messi: talento puro, magia y grandeza.</p>
-                    <div class="product-price">$17.00</div>
-                    <button class="product-select-btn" data-product="Messi" data-price="17.00" data-img="img9.jpg">Añadir al carrito 🛒</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="deportes">
-                <div class="product-image">
-                    <img src="img11.jpg" alt="Barcelona" data-product="Barcelona" data-description="Luce el escudo del FC Barcelona, símbolo de más que un club. Para los que llevan el blaugrana en el corazón." data-price="20.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Barcelona</h3>
-                    <p class="product-description">Luce el escudo del FC Barcelona, símbolo de más que un club.</p>
-                    <div class="product-price">$20.00</div>
-                    <button class="product-select-btn" data-product="Barcelona" data-price="20.00" data-img="img11.jpg">Añadir al carrito 🛒</button>
-                </div>
-            </div>
-            
-            <!-- Productos FAMILIAR -->
-            <div class="product-card" data-category="familiar">
-                <div class="product-image">
-                    <img src="img7.jpg" alt="Familiar" data-product="Familiar" data-description="Un diseño cálido y reconfortante, perfecto para esos momentos de tranquilidad. Ideal para disfrutar de tu bebida favorita en compañía de quien más quieres." data-price="18.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Familiar</h3>
-                    <p class="product-description">Un diseño cálido y reconfortante, perfecto para momentos de tranquilidad.</p>
-                    <div class="product-price">$18.00</div>
-                    <button class="product-select-btn" data-product="Familiar" data-price="18.00" data-img="img7.jpg">Añadir al carrito 🛒</button>
-                </div>
-            </div>
-            
-            <!-- Productos OTROS -->
-            <div class="product-card" data-category="otros">
-                <div class="product-image">
-                    <img src="img10.jpg" alt="Universo" data-product="Universo" data-description="Un viaje cósmico en cada sorbo. Esta taza captura la belleza infinita del universo con nebulosas, estrellas y galaxias brillantes. Perfecta para soñar despierto." data-price="12.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Universo</h3>
-                    <p class="product-description">Un viaje cósmico en cada sorbo. Captura la belleza infinita del universo.</p>
+                    <h3 class="product-title">Avengers: Endgame</h3>
+                    <p class="product-description">La épica conclusión de la saga del Infinity. Incluye escenas eliminadas y contenido extra.</p>
                     <div class="product-price">$12.00</div>
-                    <button class="product-select-btn" data-product="Universo" data-price="12.00" data-img="img10.jpg">Añadir al carrito 🛒</button>
+                    <button class="view-btn" data-product="Avengers: Endgame" data-price="12.00" data-img="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
                 </div>
             </div>
+            
+            <div class="product-card" data-category="peliculas">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595769812725-4c6564f7528b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="El Padrino" data-product="El Padrino" data-description="Clásico del cine mafioso. Restauración en 4K con audio remasterizado." data-price="10.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">El Padrino</h3>
+                    <p class="product-description">Clásico del cine mafioso. Restauración en 4K con audio remasterizado.</p>
+                    <div class="product-price">$10.00</div>
+                    <button class="view-btn" data-product="El Padrino" data-price="10.00" data-img="https://images.unsplash.com/photo-1595769812725-4c6564f7528b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
+                </div>
+            </div>
+            
+            <!-- Series -->
+            <div class="product-card" data-category="series">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1560972550-aba3456b5564?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Dragon Ball Z" data-product="Dragon Ball Z" data-description="La saga completa de Dragon Ball Z. 291 episodios en alta definición." data-price="45.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Dragon Ball Z</h3>
+                    <p class="product-description">La saga completa de Dragon Ball Z. 291 episodios en alta definición.</p>
+                    <div class="product-price">$45.00</div>
+                    <button class="view-btn" data-product="Dragon Ball Z" data-price="45.00" data-img="https://images.unsplash.com/photo-1560972550-aba3456b5564?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="series">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1585776245865-b92df54c6b25?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Breaking Bad" data-product="Breaking Bad" data-description="Las 5 temporadas completas de la exitosa serie. Incluye contenido extra." data-price="38.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Breaking Bad</h3>
+                    <p class="product-description">Las 5 temporadas completas de la exitosa serie. Incluye contenido extra.</p>
+                    <div class="product-price">$38.00</div>
+                    <button class="view-btn" data-product="Breaking Bad" data-price="38.00" data-img="https://images.unsplash.com/photo-1585776245865-b92df54c6b25?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
+                </div>
+            </div>
+            
+            <!-- Música -->
+            <div class="product-card" data-category="musica">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Queen Greatest Hits" data-product="Queen Greatest Hits" data-description="Los mejores éxitos de Queen en calidad FLAC. 35 canciones remasterizadas." data-price="15.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Queen Greatest Hits</h3>
+                    <p class="product-description">Los mejores éxitos de Queen en calidad FLAC. 35 canciones remasterizadas.</p>
+                    <div class="product-price">$15.00</div>
+                    <button class="view-btn" data-product="Queen Greatest Hits" data-price="15.00" data-img="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
+                </div>
+            </div>
+            
+            <!-- Novelas -->
+            <div class="product-card" data-category="novelas">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Cien Años de Soledad" data-product="Cien Años de Soledad" data-description="Audiolibro completo de la obra maestra de Gabriel García Márquez. 15 horas de narración." data-price="18.00">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Cien Años de Soledad</h3>
+                    <p class="product-description">Audiolibro completo de la obra maestra de Gabriel García Márquez. 15 horas de narración.</p>
+                    <div class="product-price">$18.00</div>
+                    <button class="view-btn" data-product="Cien Años de Soledad" data-price="18.00" data-img="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vista de capítulos -->
+<section id="chapters-view" class="chapters-view">
+    <div class="chapters-container">
+        <button class="back-btn" id="back-to-products">← Volver al Catálogo</button>
+        <h2 class="section-title" id="chapters-title">Capítulos</h2>
+        <div class="chapters-list" id="chapters-list">
+            <!-- Los capítulos se cargarán aquí dinámicamente -->
         </div>
     </div>
 </section>
@@ -1605,104 +1202,8 @@
             <h3 class="lightbox-product-title"></h3>
             <p class="lightbox-product-description"></p>
             <div class="lightbox-product-price"></div>
-            <button class="lightbox-select-btn">Añadir al carrito 🛒</button>
+            <button class="lightbox-view-btn">Ver</button>
         </div>
-    </div>
-</div>
-
-<!-- Nueva sección: Cómo funciona la sublimación -->
-<section id="como-funciona" class="sublimation-process">
-    <div class="process-container">
-        <h2 class="section-title">El Arte de la Sublimación</h2>
-        <p class="section-subtitle">Descubre cómo transformamos tus ideas en tazas únicas mediante el fascinante proceso de sublimación, donde la ciencia y el arte se unen para crear productos extraordinarios.</p>
-        
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="step-number">1</div>
-                <div class="step-icon"><i class="fas fa-pencil-alt"></i></div>
-                <h3 class="step-title">Diseño Personalizado</h3>
-                <p class="step-description">Crea tu diseño desde cero o elige entre nuestras plantillas. Utilizamos tintes especiales de sublimación que se transformarán con el calor.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">2</div>
-                <div class="step-icon"><i class="fas fa-print"></i></div>
-                <h3 class="step-title">Impresión en Papel Transfer</h3>
-                <p class="step-description">Imprimimos tu diseño en papel de sublimación de alta calidad. Este papel actúa como vehículo para transferir la imagen a la taza.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">3</div>
-                <div class="step-icon"><i class="fas fa-cut"></i></div>
-                <h3 class="step-title">Preparación y Fijación</h3>
-                <p class="step-description">Recortamos el diseño y lo fijamos firmemente a la taza con cinta térmica especial, asegurando una transferencia perfecta sin burbujas.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">4</div>
-                <div class="step-icon"><i class="fas fa-fire"></i></div>
-                <h3 class="step-title">Sublimación con Calor</h3>
-                <p class="step-description">Introducimos la taza en una prensa térmica a 200°C. Bajo esta temperatura, la tinta se convierte en gas y penetra permanentemente en el material.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">5</div>
-                <div class="step-icon"><i class="fas fa-temperature-low"></i></div>
-                <h3 class="step-title">Enfriamiento y Revisión</h3>
-                <p class="step-description">Después del proceso térmico, dejamos enfriar la taza y retiramos el papel. Realizamos un control de calidad para garantizar la perfección.</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">6</div>
-                <div class="step-icon"><i class="fas fa-gift"></i></div>
-                <h3 class="step-title">Empaque y Entrega</h3>
-                <p class="step-description">Embalamos tu taza personalizada con materiales protectores para que llegue a tus manos en perfectas condiciones, lista para sorprender.</p>
-            </div>
-        </div>
-        
-        <div class="process-image">
-            <img src="https://images.unsplash.com/photo-1580637250481-b5c6dfaab83d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Proceso de sublimación de tazas">
-        </div>
-    </div>
-</section>
-
-<footer id="contacto">
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-pinterest"></i></a>
-    </div>
-    <div class="footer-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Diseños</a>
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#contacto">Contacto</a>
-        <a href="#">Términos y Condiciones</a>
-        <a href="#">Política de Privacidad</a>
-    </div>
-    <p class="copyright">© 2025 Tazas Personalizadas. Todos los derechos reservados.</p>
-</footer>
-
-<!-- Notificación bonita -->
-<div class="notification" id="notification">
-    <i class="fas fa-check-circle"></i>
-    <span id="notification-text">Producto añadido al carrito</span>
-</div>
-
-<!-- Modal para subir diseño personalizado -->
-<div class="custom-design-modal">
-    <div class="custom-design-content">
-        <span class="close-modal">&times;</span>
-        <h2>Sube tu diseño personalizado</h2>
-        <div class="upload-area" id="upload-area">
-            <i class="fas fa-cloud-upload-alt"></i>
-            <p>Haz clic o arrastra una imagen aquí</p>
-            <input type="file" id="design-upload" accept="image/*" style="display: none;">
-        </div>
-        <img id="image-preview" src="#" alt="Vista previa">
-        <div class="upload-status" id="upload-status"></div>
-        <button class="add-custom-design-btn" id="add-custom-design" disabled>Agregar al carrito</button>
     </div>
 </div>
 
@@ -1734,6 +1235,29 @@
         <button class="checkout-btn">Enviar pedido por WhatsApp</button>
     </div>
 </div>
+
+<!-- Notificación bonita -->
+<div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notification-text">Producto añadido al carrito</span>
+</div>
+
+<footer id="contacto">
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Contenido</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+    </div>
+    <p class="copyright">© 2025 Grabación en Memoria Flash. Todos los derechos reservados.</p>
+</footer>
 
 <script>
     // Función para cambiar la imagen principal
@@ -1772,7 +1296,7 @@
     });
     
     // Smooth scroll para navegación
-    document.querySelectorAll('header ul li a, .footer-links a').forEach(anchor => {
+    document.querySelectorAll('header ul li a, .footer-links a, .content .textBox a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             
@@ -1802,7 +1326,7 @@
     const lightboxTitle = document.querySelector('.lightbox-product-title');
     const lightboxDescription = document.querySelector('.lightbox-product-description');
     const lightboxPrice = document.querySelector('.lightbox-product-price');
-    const lightboxSelectBtn = document.querySelector('.lightbox-select-btn');
+    const lightboxViewBtn = document.querySelector('.lightbox-view-btn');
     const closeLightbox = document.querySelector('.close-lightbox');
     
     let currentProductData = null;
@@ -1821,26 +1345,26 @@
             lightboxDescription.textContent = currentProductData.description;
             lightboxPrice.textContent = `$${currentProductData.price}`;
             
-            // Configurar el botón de seleccionar en el lightbox
-            lightboxSelectBtn.setAttribute('data-product', currentProductData.product);
-            lightboxSelectBtn.setAttribute('data-price', currentProductData.price);
-            lightboxSelectBtn.setAttribute('data-img', currentProductData.img);
+            // Configurar el botón de ver en el lightbox
+            lightboxViewBtn.setAttribute('data-product', currentProductData.product);
+            lightboxViewBtn.setAttribute('data-price', currentProductData.price);
+            lightboxViewBtn.setAttribute('data-img', currentProductData.img);
             
             imageLightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevenir scroll
+            document.body.style.overflow = 'hidden';
         });
     });
     
     // Cerrar lightbox
     closeLightbox.addEventListener('click', () => {
         imageLightbox.classList.remove('active');
-        document.body.style.overflow = ''; // Permitir scroll nuevamente
+        document.body.style.overflow = '';
     });
     
     imageLightbox.addEventListener('click', (e) => {
         if (e.target === imageLightbox) {
             imageLightbox.classList.remove('active');
-            document.body.style.overflow = ''; // Permitir scroll nuevamente
+            document.body.style.overflow = '';
         }
     });
     
@@ -1852,7 +1376,7 @@
     const cartItems = document.querySelector('.cart-items');
     const cartTotal = document.querySelector('.cart-total');
     const checkoutBtn = document.querySelector('.checkout-btn');
-    const productSelectButtons = document.querySelectorAll('.product-select-btn, .lightbox-select-btn');
+    const viewButtons = document.querySelectorAll('.view-btn, .lightbox-view-btn');
     const cartCount = document.querySelector('.cart-count');
     
     let cart = [];
@@ -1887,41 +1411,7 @@
         }, 3000);
     }
     
-    // Añadir productos al carrito
-    productSelectButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            // Si es el botón del lightbox, cerrar el lightbox primero
-            if (button.classList.contains('lightbox-select-btn')) {
-                imageLightbox.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-            
-            const product = button.getAttribute('data-product');
-            const price = parseFloat(button.getAttribute('data-price'));
-            const img = button.getAttribute('data-img');
-            
-            // Verificar si el producto ya está en el carrito
-            const existingItem = cart.find(item => item.product === product);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    product,
-                    price,
-                    img,
-                    quantity: 1
-                });
-            }
-            
-            updateCart();
-            
-            // Mostrar mensaje de confirmación bonito
-            showNotification(`¡${product} añadido al carrito! 🎉`);
-        });
-    });
-    
-    // Actualizar carrito
+    // Función para actualizar carrito
     function updateCart() {
         cartItems.innerHTML = '';
         let total = 0;
@@ -1935,7 +1425,6 @@
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
             cartItem.innerHTML = `
-                <img src="${item.img}" alt="${item.product}">
                 <div class="cart-item-details">
                     <div>${item.product}</div>
                     <div>$${item.price.toFixed(2)}</div>
@@ -2000,6 +1489,149 @@
         });
     }
     
+    // Vista de capítulos
+    const chaptersView = document.getElementById('chapters-view');
+    const productsSection = document.getElementById('productos');
+    const backToProductsBtn = document.getElementById('back-to-products');
+    const chaptersTitle = document.getElementById('chapters-title');
+    const chaptersList = document.getElementById('chapters-list');
+    
+    // Función para mostrar capítulos
+    function showChapters(productName, productPrice, productImg) {
+        chaptersTitle.textContent = `Capítulos de ${productName}`;
+        chaptersList.innerHTML = '';
+        
+        // Generar 300 capítulos para Dragon Ball Z, menos para otros
+        let chapterCount = 300;
+        if (productName === "Breaking Bad") chapterCount = 62;
+        if (productName === "Avengers: Endgame") chapterCount = 1; // Película
+        if (productName === "El Padrino") chapterCount = 1;
+        if (productName === "Queen Greatest Hits") chapterCount = 35;
+        if (productName === "Cien Años de Soledad") chapterCount = 20;
+        
+        for (let i = 1; i <= chapterCount; i++) {
+            const chapterItem = document.createElement('div');
+            chapterItem.classList.add('chapter-item');
+            
+            let chapterTitle = "";
+            let chapterPrice = 0.50; // Precio por capítulo
+            
+            if (productName === "Dragon Ball Z") {
+                if (i <= 67) chapterTitle = `Saga de los Saiyajins - Capítulo ${i}`;
+                else if (i <= 107) chapterTitle = `Saga de Freezer - Capítulo ${i}`;
+                else if (i <= 139) chapterTitle = `Saga de Cell - Capítulo ${i}`;
+                else if (i <= 194) chapterTitle = `Saga de Majin Boo - Capítulo ${i}`;
+                else chapterTitle = `Saga de los Torneos - Capítulo ${i}`;
+            } else if (productName === "Breaking Bad") {
+                if (i <= 7) chapterTitle = `Temporada 1 - Capítulo ${i}`;
+                else if (i <= 20) chapterTitle = `Temporada 2 - Capítulo ${i-7}`;
+                else if (i <= 33) chapterTitle = `Temporada 3 - Capítulo ${i-20}`;
+                else if (i <= 49) chapterTitle = `Temporada 4 - Capítulo ${i-33}`;
+                else chapterTitle = `Temporada 5 - Capítulo ${i-49}`;
+            } else if (productName === "Queen Greatest Hits") {
+                chapterTitle = `Canción ${i}: ${getQueenSongTitle(i)}`;
+                chapterPrice = 0.99;
+            } else if (productName === "Cien Años de Soledad") {
+                chapterTitle = `Capítulo ${i}`;
+                chapterPrice = 0.75;
+            } else {
+                chapterTitle = `Capítulo ${i}`;
+            }
+            
+            chapterItem.innerHTML = `
+                <div class="chapter-title">${chapterTitle}</div>
+                <button class="add-to-cart-btn" data-product="${productName} - ${chapterTitle}" data-price="${chapterPrice}" data-img="${productImg}">
+                    Añadir al carrito $${chapterPrice.toFixed(2)}
+                </button>
+            `;
+            
+            chaptersList.appendChild(chapterItem);
+        }
+        
+        // Añadir event listeners a los botones de añadir al carrito
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const product = button.getAttribute('data-product');
+                const price = parseFloat(button.getAttribute('data-price'));
+                const img = button.getAttribute('data-img');
+                
+                // Verificar si el producto ya está en el carrito
+                const existingItem = cart.find(item => item.product === product);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        product,
+                        price,
+                        img,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                showNotification(`¡${product} añadido al carrito! 🎉`);
+            });
+        });
+        
+        // Mostrar vista de capítulos
+        productsSection.style.display = 'none';
+        chaptersView.classList.add('active');
+        
+        // Scroll to top
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    
+    // Función auxiliar para títulos de canciones de Queen
+    function getQueenSongTitle(index) {
+        const songs = [
+            "Bohemian Rhapsody", "We Will Rock You", "We Are The Champions", 
+            "Another One Bites The Dust", "Don't Stop Me Now", "Somebody To Love",
+            "Killer Queen", "Radio Ga Ga", "I Want To Break Free", "Under Pressure",
+            "Crazy Little Thing Called Love", "The Show Must Go On", "You're My Best Friend",
+            "Love of My Life", "Who Wants To Live Forever", "A Kind of Magic",
+            "I Want It All", "Breakthru", "Innuendo", "These Are The Days of Our Lives",
+            "The Miracle", "It's A Hard Life", "One Vision", "Friends Will Be Friends",
+            "Hammer To Fall", "Save Me", "Play The Game", "Flash", "Seven Seas of Rhye",
+            "Stone Cold Crazy", "Now I'm Here", "Tie Your Mother Down", "Good Old-Fashioned Lover Boy",
+            "Keep Yourself Alive", "Fat Bottomed Girls"
+        ];
+        
+        return songs[index-1] || `Canción ${index}`;
+    }
+    
+    // Botón para volver a productos
+    backToProductsBtn.addEventListener('click', () => {
+        chaptersView.classList.remove('active');
+        productsSection.style.display = 'block';
+        
+        // Scroll a productos
+        window.scrollTo({
+            top: productsSection.offsetTop - 80,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Botones de ver
+    viewButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            // Si es el botón del lightbox, cerrar el lightbox primero
+            if (button.classList.contains('lightbox-view-btn')) {
+                imageLightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            const product = button.getAttribute('data-product');
+            const price = parseFloat(button.getAttribute('data-price'));
+            const img = button.getAttribute('data-img');
+            
+            showChapters(product, price, img);
+        });
+    });
+    
     // Enviar pedido por WhatsApp
     checkoutBtn.addEventListener('click', () => {
         const name = document.getElementById('name').value;
@@ -2018,25 +1650,20 @@
         }
         
         // Crear mensaje para WhatsApp
-        let message = `¡Hola! Quiero hacer un pedido:%0A%0A`;
+        let message = `¡Hola! Quiero hacer un pedido de grabación en memoria flash:%0A%0A`;
         message += `*Nombre:* ${name}%0A`;
         message += `*Teléfono:* ${phone}%0A`;
         message += `*Dirección:* ${address}%0A%0A`;
-        message += `*Pedido:*%0A`;
+        message += `*Contenido a grabar:*%0A`;
         
         cart.forEach(item => {
             message += `- ${item.product} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}%0A`;
-            
-            // Si es un diseño personalizado, añadir la URL de Drive
-            if (item.custom) {
-                message += `  🔗 Imagen: ${item.img}%0A`;
-            }
         });
         
         message += `%0A*Total:* $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
         
-        // Abrir WhatsApp con el mensaje (REEMPLAZA EL NÚMERO DE TELÉFONO)
-        window.open(`https://wa.me/51388955?text=${message}`, '_blank');
+        // Abrir WhatsApp con el mensaje
+        window.open(`https://wa.me/1234567890?text=${message}`, '_blank');
         
         // Limpiar carrito y formulario
         cart = [];
@@ -2051,186 +1678,6 @@
         
         showNotification('¡Pedido enviado! Te contactaremos pronto. 📦');
     });
-    
-    // Funcionalidad para subir diseños personalizados
-    const uploadDesignBtn = document.getElementById('upload-design-btn');
-    const chooseDesignBtn = document.getElementById('choose-design-btn');
-    const customDesignModal = document.querySelector('.custom-design-modal');
-    const closeModalBtn = document.querySelector('.close-modal');
-    const uploadArea = document.getElementById('upload-area');
-    const designUpload = document.getElementById('design-upload');
-    const imagePreview = document.getElementById('image-preview');
-    const addCustomDesignBtn = document.getElementById('add-custom-design');
-    const uploadStatus = document.getElementById('upload-status');
-    
-    // Abrir modal para subir diseño
-    uploadDesignBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        customDesignModal.classList.add('active');
-        overlay.classList.add('active');
-    });
-    
-    // Cerrar modal
-    closeModalBtn.addEventListener('click', () => {
-        customDesignModal.classList.remove('active');
-        overlay.classList.remove('active');
-        resetUploadForm();
-    });
-    
-    overlay.addEventListener('click', () => {
-        customDesignModal.classList.remove('active');
-        overlay.classList.remove('active');
-        resetUploadForm();
-    });
-    
-    // Subir imagen
-    uploadArea.addEventListener('click', () => {
-        designUpload.click();
-    });
-    
-    designUpload.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            
-            reader.addEventListener('load', function() {
-                imagePreview.src = reader.result;
-                imagePreview.style.display = 'block';
-                addCustomDesignBtn.disabled = false;
-            });
-            
-            reader.readAsDataURL(file);
-        }
-    });
-    
-    // Arrastrar y soltar imagen
-    uploadArea.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        this.style.borderColor = '#015c35';
-    });
-    
-    uploadArea.addEventListener('dragleave', function() {
-        this.style.borderColor = '#017143';
-    });
-    
-    uploadArea.addEventListener('drop', function(e) {
-        e.preventDefault();
-        this.style.borderColor = '#017143';
-        
-        const file = e.dataTransfer.files[0];
-        if (file && file.type.includes('image')) {
-            designUpload.files = e.dataTransfer.files;
-            
-            const reader = new FileReader();
-            
-            reader.addEventListener('load', function() {
-                imagePreview.src = reader.result;
-                imagePreview.style.display = 'block';
-                addCustomDesignBtn.disabled = false;
-            });
-            
-            reader.readAsDataURL(file);
-        } else {
-            alert('Por favor, sube solo archivos de imagen');
-        }
-    });
-    
-    // Añadir diseño personalizado al carrito
-    addCustomDesignBtn.addEventListener('click', async () => {
-        const file = designUpload.files[0];
-        if (!file) {
-            alert('Por favor, selecciona una imagen');
-            return;
-        }
-
-        addCustomDesignBtn.textContent = 'Subiendo...';
-        addCustomDesignBtn.disabled = true;
-        uploadStatus.textContent = 'Subiendo imagen...';
-        uploadStatus.style.color = '#017143';
-
-        try {
-            // En una implementación real, aquí subirías la imagen a tu servidor
-            // Para este ejemplo, simulamos una subida exitosa después de un delay
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            // Simulamos una URL de imagen subida (en un caso real, esto vendría del servidor)
-            const simulatedImageUrl = URL.createObjectURL(file);
-            
-            // Añadir al carrito
-            cart.push({
-                product: "Diseño Personalizado",
-                price: 20.00,
-                img: simulatedImageUrl,
-                quantity: 1,
-                custom: true
-            });
-            
-            updateCart();
-            customDesignModal.classList.remove('active');
-            overlay.classList.remove('active');
-            resetUploadForm();
-            
-            showNotification('✅ Diseño personalizado añadido al carrito');
-            
-        } catch (error) {
-            console.error('Error:', error);
-            uploadStatus.textContent = 'Error al subir la imagen. Intenta de nuevo.';
-            uploadStatus.style.color = '#ff4d4d';
-            
-            // Ofrecer alternativa de almacenamiento local
-            if (confirm('Error al subir. ¿Quieres añadir el diseño igualmente (la imagen se incluirá en el pedido)?')) {
-                const reader = new FileReader();
-                reader.onload = function() {
-                    cart.push({
-                        product: "Diseño Personalizado (sin subir)",
-                        price: 20.00,
-                        img: reader.result,
-                        quantity: 1,
-                        custom: true
-                    });
-                    
-                    updateCart();
-                    customDesignModal.classList.remove('active');
-                    overlay.classList.remove('active');
-                    resetUploadForm();
-                    showNotification('Diseño añadido al carrito (la imagen se incluirá en el pedido).');
-                };
-                reader.readAsDataURL(file);
-            }
-        } finally {
-            addCustomDesignBtn.textContent = 'Agregar al carrito';
-            addCustomDesignBtn.disabled = false;
-        }
-    });
-
-    // Función para resetear el formulario de subida
-    function resetUploadForm() {
-        designUpload.value = '';
-        imagePreview.src = '#';
-        imagePreview.style.display = 'none';
-        addCustomDesignBtn.disabled = true;
-        uploadStatus.textContent = '';
-    }
-    
-    // Animación para el texto en móviles
-    function setupTextAnimations() {
-        const designText = document.querySelector('.design-text');
-        
-        // Solo aplicar hover effect en desktop
-        if (window.innerWidth > 768) {
-            designText.addEventListener('mouseover', () => {
-                designText.style.textShadow = '0 0 15px rgba(1, 113, 67, 0.5)';
-            });
-            
-            designText.addEventListener('mouseout', () => {
-                designText.style.textShadow = '0 0 10px rgba(1, 113, 67, 0.3)';
-            });
-        }
-    }
-
-    // Llamar la función al cargar y al redimensionar
-    window.addEventListener('load', setupTextAnimations);
-    window.addEventListener('resize', setupTextAnimations);
     
     // Filtrado por categorías
     const filterButtons = document.querySelectorAll('.filter-btn, .header-filter-btn');
@@ -2262,10 +1709,10 @@
         });
     });
     
-    // Inicializar con la categoría "anime" seleccionada
+    // Inicializar con la categoría "peliculas" seleccionada
     window.addEventListener('load', () => {
-        filterProducts('anime');
+        filterProducts('peliculas');
     });
 </script>
 </body>
-</html> .header-filter-btn
+</html>
