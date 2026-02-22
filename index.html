@@ -3,1716 +3,618 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grabación en Memoria Flash</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Control de Gastos · Meta de Ahorro</title>
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-
-        section{
-            position: relative;
-            width: 100%;
+        body {
+            background: #f4f7fb;
             min-height: 100vh;
-            padding: 100px;
-            display: flex;
-            align-items: center;
-            background: #fff;
-            overflow: hidden;
-        }
-
-        header{
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 100px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            background: rgba(8, 87, 177, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        header ul{
-            position: relative;
-            display: flex;
-        }
-
-        header ul li {
-            list-style: none;
-        }
-
-        header ul li a{
-            display: inline-block;
-            color: #ffffff;
-            font-weight: 400;
-            margin-left: 40px;
-            text-decoration: none;
-            font-size: 1.5em;
-            transition: 0.5s;
-        }
-        header ul li a:hover{
-            transform: translateY(-15px);
-        }
-        
-        .content{
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1;
-        }
-
-        .content .textBox{
-            position: relative;
-            max-width: 600px;
-            z-index: 1;
-            transform: translateY(40px);
-        }
-
-        .content .textBox h2{
-            color: #333;
-            font-size: 4em;
-            line-height: 1.4em;
-            font-weight: 500;
-        }
-        .content .textBox h2 span{
-            color: #949796;
-            font-size: 1.2em;
-            font-weight: 900;
-        }
-        .content .textBox p{
-            color: #333;
-            font-size: 1.1em;
-            margin: 20px 0;
-        }
-
-        .content .textBox a{
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            background: #017143;
-            color: #fff;
-            border-radius: 40px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            margin-right: 15px;
-        }
-        
-        .content .textBox a:hover {
-            background: #015c35;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .content .imgBox{
-            width: 600px;
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 50px;
-            margin-top: 50px;
-        }
-
-        .content .imgBox img{
-            max-width: 340px;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .circle{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0857b1;
-            clip-path: circle(900px at right 90px);
-            z-index: 0;
-        }
-
-        /* --- Sección de Productos en Grid --- */
-        .products-section {
-            padding: 80px 20px;
-            background: #f8f8f8;
-        }
-
-        .products-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.8em;
-            margin-bottom: 20px;
-            color: #017143;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: #0857b1;
-            border-radius: 2px;
-        }
-
-        /* Filtros de categoría */
-        .category-filters {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 30px 0;
+            align-items: center;
+            padding: 1rem;
         }
-
-        .filter-btn {
-            padding: 12px 25px;
-            background: #fff;
-            border: 2px solid #017143;
-            border-radius: 30px;
-            cursor: pointer;
+        .card {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -8px rgba(0, 20, 30, 0.15);
+            padding: 2rem 1.8rem;
+            transition: all 0.2s;
+        }
+        h1 {
+            font-size: 2rem;
             font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s;
-            color: #017143;
+            letter-spacing: -0.02em;
+            color: #1a2e3f;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.8rem;
         }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: #017143;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        h1 span {
+            background: #e7eef5;
+            font-size: 1rem;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-weight: 400;
+            color: #2f4b6e;
         }
-
-        /* CUADRÍCULAS MÁS PEQUEÑAS */
-        .products-grid {
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #1c3b5e;
+            margin-bottom: 1rem;
+            border-left: 5px solid #2b6f9b;
+            padding-left: 1rem;
+        }
+        .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
-
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+        @media (max-width: 650px) {
+            .grid-2 { grid-template-columns: 1fr; gap: 1.5rem; }
+            .card { padding: 1.5rem; }
+        }
+        .income-box {
+            background: #e9f2fa;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.8rem;
             display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 15px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-title {
-            font-size: 1.1em;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        .product-description {
-            color: #666;
-            margin-bottom: 10px;
-            font-size: 0.85em;
-            flex-grow: 1;
-        }
-
-        .product-price {
-            font-size: 1.2em;
-            color: #017143;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        .view-btn {
-            background: #017143;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
-            margin-top: auto;
-        }
-
-        .view-btn:hover {
-            background: #015c35;
-            transform: translateY(-2px);
-        }
-
-        /* Lightbox para ver imagen ampliada */
-        .image-lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
+            flex-wrap: wrap;
             align-items: center;
-            z-index: 10000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-
-        .image-lightbox.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 60vh;
-            border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-            object-fit: contain;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10001;
-        }
-
-        .lightbox-product-info {
-            color: white;
-            text-align: center;
-            margin-top: 20px;
-            max-width: 600px;
-        }
-
-        .lightbox-product-title {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-
-        .lightbox-product-description {
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-
-        .lightbox-product-price {
-            font-size: 1.5em;
-            color: #017143;
-            font-weight: bold;
-        }
-
-        .lightbox-view-btn {
-            background: #017143;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-            transition: all 0.3s;
-        }
-
-        .lightbox-view-btn:hover {
-            background: #015c35;
-            transform: translateY(-3px);
-        }
-
-        /* Animación */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Botón de menú móvil y carrito */
-        .menu-toggle, .cart-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: white;
-            z-index: 1000;
-            position: relative;
-        }
-
-        /* Carrito de compras */
-        .cart-sidebar {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100%;
-            background: white;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-            transition: right 0.3s ease;
-            z-index: 1001;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        
-        .cart-sidebar.active {
-            right: 0;
-        }
-        
-        .cart-header {
-            display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #ddd;
         }
-        
-        .cart-items {
-            margin-bottom: 20px;
+        .income-label {
+            font-weight: 500;
+            color: #154c79;
         }
-        
-        .cart-item {
+        .income-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0d2b44;
+        }
+        .input-group {
             display: flex;
-            justify-content: space-between;
+            gap: 0.5rem;
             align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
         }
-        
-        .cart-item img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        
-        .cart-item-details {
-            flex: 1;
-            padding: 0 15px;
-        }
-        
-        .remove-item {
-            background: #ff4d4d;
-            color: white;
+        input, button {
             border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            outline: none;
+            border-radius: 60px;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.95rem;
+        }
+        input {
+            background: #ffffff;
+            border: 1px solid #cbd6e4;
+            flex: 1 1 150px;
+            transition: 0.15s;
+        }
+        input:focus {
+            border-color: #2b6f9b;
+            box-shadow: 0 0 0 3px rgba(43, 111, 155, 0.2);
+        }
+        button {
+            background: #2b6f9b;
+            color: white;
+            font-weight: 500;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-        
-        .cart-total {
-            font-weight: bold;
-            text-align: right;
-            margin: 20px 0;
-            font-size: 1.5em;
-        }
-        
-        .checkout-form {
-            margin-top: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-        
-        .checkout-btn {
-            background: #017143;
-            color: white;
-            border: none;
-            padding: 18px;
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        
-        .checkout-btn:hover {
-            background: #015c35;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            z-index: 1000;
-        }
-        
-        .overlay.active {
-            display: block;
-        }
-        
-        /* Notificación bonita */
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #017143;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            z-index: 10000;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        
-        .notification.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .notification i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-        
-        /* Contador de carrito */
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ff4d4d;
-            color: white;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            font-weight: bold;
-            z-index: 1001;
-        }
-    
-    /* Efecto de máquina de escribir */
-    @media (min-width: 769px) {
-        .typewriter {
-            overflow: hidden;
-            border-right: .15em solid #017143;
+            transition: background 0.15s, transform 0.1s;
             white-space: nowrap;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+            border: 1px solid transparent;
         }
-    }
-
-    /* Animación de escritura */
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 100% }
-    }
-
-    /* Efecto de parpadeo del cursor */
-    @keyframes blink-caret {
-        from, to { border-color: transparent }
-        50% { border-color: #017143; }
-    }
-
-    /* Efecto para la palabra GRABAR */
-    .record-text {
-        display: inline-block;
-        color: #017143 !important;
-        font-weight: 700;
-        animation: pulse 2s infinite;
-        text-shadow: 0 0 10px rgba(1, 113, 67, 0.3);
-    }
-
-    /* Animación de pulso */
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
-
-    /* Controles de cantidad en el carrito */
-    .quantity-controls {
-        display: flex;
-        align-items: center;
-        margin: 0 10px;
-    }
-
-    .quantity-btn {
-        background: #017143;
-        color: white;
-        border: none;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.2s;
-        font-size: 18px;
-    }
-
-    .quantity-btn:hover {
-        background: #015c35;
-        transform: scale(1.1);
-    }
-
-    .quantity {
-        margin: 0 8px;
-        font-weight: bold;
-        min-width: 25px;
-        text-align: center;
-        font-size: 18px;
-    }
-
-    /* NUEVOS ESTILOS PARA LOS FILTROS EN EL HEADER */
-    .header-filters {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 10px;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-    }
-
-    .header-filters.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .header-filter-btn {
-        padding: 8px 15px;
-        background: transparent;
-        border: 2px solid rgba(255, 255, 255, 0.7);
-        border-radius: 20px;
-        cursor: pointer;
-        font-weight: 500;
-        font-size: 14px;
-        transition: all 0.3s;
-        color: white;
-        white-space: nowrap;
-        position: relative;
-        left: -20px
-    }
-
-    .header-filter-btn.active, .header-filter-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
-    }
-
-    .header-nav {
-        display: flex;
-        align-items: center;
-    }
-
-    .header-icons {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
-
-    /* Vista de capítulos */
-    .chapters-view {
-        display: none;
-        padding: 80px 20px;
-        background: #f8f8f8;
-        min-height: 100vh;
-    }
-
-    .chapters-view.active {
-        display: block;
-    }
-
-    .chapters-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .back-btn {
-        background: #017143;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-bottom: 20px;
-        transition: all 0.3s;
-    }
-
-    .back-btn:hover {
-        background: #015c35;
-        transform: translateY(-2px);
-    }
-
-    .chapters-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 15px;
-        max-height: 600px;
-        overflow-y: auto;
-        padding: 20px;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .chapter-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 15px;
-        border-bottom: 1px solid #eee;
-        transition: all 0.3s;
-    }
-
-    .chapter-item:hover {
-        background: #f9f9f9;
-    }
-
-    .chapter-title {
-        font-size: 16px;
-        color: #333;
-    }
-
-    .add-to-cart-btn {
-        background: #017143;
-        color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.3s;
-    }
-
-    .add-to-cart-btn:hover {
-        background: #015c35;
-        transform: translateY(-2px);
-    }
-
-    /* Ajustes responsive */
-    @media (max-width: 1200px) {
-        .circle {
-            clip-path: circle(700px at right 90px);
+        button:hover {
+            background: #1f567a;
         }
-    }
-
-    @media (max-width: 992px) {
-        section {
-            padding: 80px 50px;
+        button:active {
+            transform: scale(0.96);
         }
-        
-        header {
-            padding: 15px 50px;
+        .btn-outline {
+            background: white;
+            color: #1f567a;
+            border: 1px solid #b6cde0;
         }
-        
-        .content {
-            flex-direction: column;
-            text-align: center;
+        .btn-outline:hover {
+            background: #e5f0fa;
+            border-color: #2b6f9b;
         }
-        
-        .content .textBox {
-            max-width: 100%;
-            margin-bottom: 40px;
+        .btn-small {
+            padding: 0.4rem 0.9rem;
+            font-size: 0.85rem;
         }
-        
-        .content .imgBox {
-            width: 100%;
-            justify-content: center;
-            padding-right: 0;
-            margin-top: 30px;
+        .expense-list {
+            margin: 1.2rem 0 0.8rem;
+            list-style: none;
+            max-height: 280px;
+            overflow-y: auto;
+            border-radius: 1.2rem;
+            background: #fafdff;
+            padding: 0.3rem;
         }
-        
-        .circle {
-            clip-path: circle(500px at center);
-        }
-        
-        .header-filters {
-            display: none;
-        }
-    }
-
-    @media (max-width: 768px) {
-        section {
-            padding: 40px 20px;
-            min-height: 80vh;
-        }
-        
-        header {
-            padding: 15px 20px;
-        }
-        
-        header ul {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100vh;
-            background: rgba(8, 87, 177, 0.95);
+        .expense-item {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            transition: 0.5s;
-            z-index: 5;
+            background: white;
+            padding: 0.8rem 1.2rem;
+            margin: 0.4rem 0;
+            border-radius: 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border: 1px solid #e3ecf5;
         }
-        
-        header ul.active {
-            left: 0;
+        .expense-desc {
+            font-weight: 500;
+            color: #173e5c;
+            word-break: break-word;
+            max-width: 60%;
         }
-        
-        header ul li {
-            margin: 15px 0;
+        .expense-amount {
+            font-weight: 600;
+            color: #1d3557;
+            background: #e1edfb;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            margin-right: 0.5rem;
         }
-        
-        header ul li a {
-            margin-left: 0;
-            font-size: 1.8em;
+        .delete-btn {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: #b22234;
+            padding: 0 0.2rem;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.1s;
         }
-        
-        .menu-toggle, .cart-toggle {
-            display: block;
+        .delete-btn:hover {
+            background: #ffe1e1;
+            color: #a11b1b;
         }
-        
-        .content .textBox h2 {
-            font-size: 3.2em;
-            line-height: 1.2em;
-            color: white !important;
-            margin-bottom: 20px;
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            background: #ddeeff;
+            padding: 0.9rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            margin: 1rem 0 0.5rem;
+            color: #0b314a;
         }
-        
-        .content .textBox h2 span {
-            color: white !important;
-            font-size: 1em;
+        .balance {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e4f6e;
         }
-        
-        .content .textBox p {
-            display: none; /* Ocultar párrafo en móviles */
+        .goal-card {
+            background: linear-gradient(145deg, #f0f7ff, #ffffff);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid #cfe2f5;
+            margin-top: 1.2rem;
         }
-        
-        .content .imgBox img {
-            max-width: 280px;
+        .goal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1rem;
         }
-        
-        .circle {
-            clip-path: circle(100% at center); /* Círculo que ocupa toda la sección */
-            border-radius: 0;
+        .goal-header input {
+            flex: 2;
         }
-        
-        /* Grid más pequeña para móviles */
-        .products-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+        .progress-container {
+            background: #d9e4f0;
+            height: 0.8rem;
+            border-radius: 40px;
+            margin: 1rem 0 0.5rem;
+            overflow: hidden;
         }
-        
-        .product-image {
-            height: 120px;
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #2b6f9b;
+            border-radius: 40px;
+            transition: width 0.25s ease;
         }
-        
-        .product-info {
-            padding: 10px;
+        .goal-message {
+            font-size: 0.95rem;
+            background: #e5f2fd;
+            padding: 0.7rem 1rem;
+            border-radius: 40px;
+            color: #0b3f5c;
+            font-weight: 500;
         }
-        
-        .product-title {
-            font-size: 0.9em;
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
+            justify-content: space-between;
         }
-        
-        .product-description {
-            display: none; /* Ocultamos descripción en móviles */
+        .text-small {
+            font-size: 0.9rem;
+            color: #446688;
         }
-        
-        .product-price {
-            font-size: 1em;
+        hr {
+            border: 1px solid #d3e2f0;
+            margin: 1.2rem 0;
         }
-        
-        .view-btn {
-            padding: 6px 10px;
-            font-size: 12px;
+        .danger-btn {
+            background: white;
+            color: #b13e3e;
+            border: 1px solid #f3c1c1;
         }
-
-        /* Vista de capítulos en móviles */
-        .chapters-list {
-            grid-template-columns: 1fr;
-            gap: 10px;
+        .danger-btn:hover {
+            background: #fde7e7;
         }
-        
-        .chapter-item {
-            padding: 10px;
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #7b98b3;
+            font-size: 0.85rem;
         }
-        
-        .chapter-title {
-            font-size: 14px;
-        }
-        
-        .add-to-cart-btn {
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-    }
-
-    @media (max-width: 576px) {
-        section {
-            padding: 40px 15px;
-            min-height: 70vh;
-        }
-        
-        .content .textBox h2 {
-            font-size: 2.8em;
-            color: white !important;
-            margin-bottom: 15px;
-        }
-        
-        .content .textBox h2 span {
-            color: white !important;
-            font-size: 0.9em;
-        }
-        
-        .circle {
-            clip-path: circle(100% at center);
-            border-radius: 0;
-        }
-        
-        /* Grid de 2 columnas en móviles pequeños */
-        .products-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-        
-        .product-image {
-            height: 100px;
-        }
-        
-        .product-info {
-            padding: 8px;
-        }
-        
-        .product-title {
-            font-size: 0.8em;
-            margin-bottom: 5px;
-        }
-        
-        .product-price {
-            font-size: 0.9em;
-            margin-bottom: 8px;
-        }
-        
-        .view-btn {
-            padding: 5px 8px;
-            font-size: 11px;
-        }
-    }
-
-    /* Footer */
-    footer {
-        background: #333;
-        color: white;
-        text-align: center;
-        padding: 30px;
-        margin-top: 50px;
-    }
-    
-    .social-icons {
-        margin: 20px 0;
-    }
-    
-    .social-icons a {
-        color: white;
-        margin: 0 15px;
-        font-size: 24px;
-        transition: all 0.3s;
-    }
-    
-    .social-icons a:hover {
-        color: #017143;
-        transform: translateY(-5px);
-    }
-    
-    .footer-links {
-        margin: 20px 0;
-    }
-    
-    .footer-links a {
-        color: #ddd;
-        margin: 0 15px;
-        text-decoration: none;
-        transition: all 0.3s;
-    }
-    
-    .footer-links a:hover {
-        color: white;
-        text-decoration: underline;
-    }
-    
-    .copyright {
-        margin-top: 20px;
-        color: #aaa;
-        font-size: 0.9em;
-    }
-    
-    .fas{
-        color: #000;
-    }
     </style>
 </head>
 <body>
-<section id="inicio">
-    <div class="circle"></div>
-    <header id="main-header">
-        <div class="header-nav">
-            <ul>
-                <li> <a href="#inicio">Inicio</a></li>
-                <li> <a href="#productos">Contenido</a></li>
-                <li> <a href="#contacto">Contacto</a></li>
-            </ul>
-        </div>
-        
-        <div class="header-filters">
-            <button class="header-filter-btn active" data-category="peliculas">Películas</button>
-            <button class="header-filter-btn" data-category="series">Series</button>
-            <button class="header-filter-btn" data-category="musica">Música</button>
-            <button class="header-filter-btn" data-category="novelas">Novelas</button>
-        </div>
-        
-        <div class="header-icons">
-            <div class="cart-toggle">
-                <i class="fas fa-shopping-cart"></i>
-                <div class="cart-count">0</div>
-            </div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
-    <div class="content">
-        <div class="textBox">
-            <h2>
-                <span class="typewriter">Desde la comunidad de tu casa...</span>
-                <span class="typewriter">también puedes</span>
-                <span class="record-text">GRABAR</span>
-            </h2>
-            <p>Desde tu comodidad elige que quieres grabar en tu memoria, al llegar al sitio solo necesitas sentarte y esperar que nosotros sabremos que grabar... en nuestra pagina te mostramos el precio de todo lo que necesitas.</p>
-            <a href="#productos">Ver Catálogo</a>
-        </div>
-        <div class="imgBox">
-            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="starbucks" alt="Memoria Flash">
-        </div>
-    </div>
-</section>
+    <div class="card">
+        <h1>💰 Control del mes <span>ahorra para tu meta</span></h1>
 
-<!-- Sección de Productos en Grid -->
-<section id="productos" class="products-section">
-    <div class="products-container">
-        <h2 class="section-title">Nuestro Catálogo</h2>
-        
-        <div class="category-filters">
-            <button class="filter-btn active" data-category="peliculas">Películas</button>
-            <button class="filter-btn" data-category="series">Series</button>
-            <button class="filter-btn" data-category="musica">Música</button>
-            <button class="filter-btn" data-category="novelas">Novelas</button>
-        </div>
-        
-        <div class="products-grid">
-            <!-- Películas -->
-            <div class="product-card" data-category="peliculas">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Avengers: Endgame" data-product="Avengers: Endgame" data-description="La épica conclusión de la saga del Infinity. Incluye escenas eliminadas y contenido extra." data-price="12.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Avengers: Endgame</h3>
-                    <p class="product-description">La épica conclusión de la saga del Infinity. Incluye escenas eliminadas y contenido extra.</p>
-                    <div class="product-price">$12.00</div>
-                    <button class="view-btn" data-product="Avengers: Endgame" data-price="12.00" data-img="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="peliculas">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1595769812725-4c6564f7528b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="El Padrino" data-product="El Padrino" data-description="Clásico del cine mafioso. Restauración en 4K con audio remasterizado." data-price="10.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">El Padrino</h3>
-                    <p class="product-description">Clásico del cine mafioso. Restauración en 4K con audio remasterizado.</p>
-                    <div class="product-price">$10.00</div>
-                    <button class="view-btn" data-product="El Padrino" data-price="10.00" data-img="https://images.unsplash.com/photo-1595769812725-4c6564f7528b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
-                </div>
-            </div>
-            
-            <!-- Series -->
-            <div class="product-card" data-category="series">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1560972550-aba3456b5564?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Dragon Ball Z" data-product="Dragon Ball Z" data-description="La saga completa de Dragon Ball Z. 291 episodios en alta definición." data-price="45.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Dragon Ball Z</h3>
-                    <p class="product-description">La saga completa de Dragon Ball Z. 291 episodios en alta definición.</p>
-                    <div class="product-price">$45.00</div>
-                    <button class="view-btn" data-product="Dragon Ball Z" data-price="45.00" data-img="https://images.unsplash.com/photo-1560972550-aba3456b5564?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-category="series">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1585776245865-b92df54c6b25?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Breaking Bad" data-product="Breaking Bad" data-description="Las 5 temporadas completas de la exitosa serie. Incluye contenido extra." data-price="38.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Breaking Bad</h3>
-                    <p class="product-description">Las 5 temporadas completas de la exitosa serie. Incluye contenido extra.</p>
-                    <div class="product-price">$38.00</div>
-                    <button class="view-btn" data-product="Breaking Bad" data-price="38.00" data-img="https://images.unsplash.com/photo-1585776245865-b92df54c6b25?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
-                </div>
-            </div>
-            
-            <!-- Música -->
-            <div class="product-card" data-category="musica">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Queen Greatest Hits" data-product="Queen Greatest Hits" data-description="Los mejores éxitos de Queen en calidad FLAC. 35 canciones remasterizadas." data-price="15.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Queen Greatest Hits</h3>
-                    <p class="product-description">Los mejores éxitos de Queen en calidad FLAC. 35 canciones remasterizadas.</p>
-                    <div class="product-price">$15.00</div>
-                    <button class="view-btn" data-product="Queen Greatest Hits" data-price="15.00" data-img="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
-                </div>
-            </div>
-            
-            <!-- Novelas -->
-            <div class="product-card" data-category="novelas">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Cien Años de Soledad" data-product="Cien Años de Soledad" data-description="Audiolibro completo de la obra maestra de Gabriel García Márquez. 15 horas de narración." data-price="18.00">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Cien Años de Soledad</h3>
-                    <p class="product-description">Audiolibro completo de la obra maestra de Gabriel García Márquez. 15 horas de narración.</p>
-                    <div class="product-price">$18.00</div>
-                    <button class="view-btn" data-product="Cien Años de Soledad" data-price="18.00" data-img="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">Ver</button>
-                </div>
+        <!-- Ingresos mensuales -->
+        <div class="income-box">
+            <span class="income-label">Ingreso del mes</span>
+            <div class="input-group">
+                <span style="font-weight:600; color:#0a3147;">$</span>
+                <input type="number" id="incomeInput" placeholder="Ej. 2500" min="0" step="1" value="0">
+                <button id="setIncomeBtn">Actualizar</button>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Vista de capítulos -->
-<section id="chapters-view" class="chapters-view">
-    <div class="chapters-container">
-        <button class="back-btn" id="back-to-products">← Volver al Catálogo</button>
-        <h2 class="section-title" id="chapters-title">Capítulos</h2>
-        <div class="chapters-list" id="chapters-list">
-            <!-- Los capítulos se cargarán aquí dinámicamente -->
-        </div>
-    </div>
-</section>
+        <div class="grid-2">
+            <!-- Columna izquierda: Gastos -->
+            <div>
+                <h2>📋 Gastos</h2>
+                <div class="flex-row">
+                    <input type="text" id="expenseDesc" placeholder="Ej. Supermercado" maxlength="40">
+                    <input type="number" id="expenseAmount" placeholder="Monto $" min="0" step="1" style="max-width:120px;">
+                    <button id="addExpenseBtn">➕ Añadir</button>
+                </div>
 
-<!-- Lightbox para ver imagen ampliada -->
-<div class="image-lightbox">
-    <div class="lightbox-content">
-        <span class="close-lightbox"><i class="fas fa-times"></i></span>
-        <div class="lightbox-image-container">
-            <img src="" alt="Imagen ampliada">
-        </div>
-        <div class="lightbox-product-info">
-            <h3 class="lightbox-product-title"></h3>
-            <p class="lightbox-product-description"></p>
-            <div class="lightbox-product-price"></div>
-            <button class="lightbox-view-btn">Ver</button>
-        </div>
-    </div>
-</div>
+                <ul class="expense-list" id="expenseList">
+                    <!-- Se llena con JS -->
+                </ul>
 
-<!-- Carrito de compras -->
-<div class="overlay"></div>
-<div class="cart-sidebar">
-    <div class="cart-header">
-        <h2>Tu Carrito 🛒</h2>
-        <button class="close-cart"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="cart-items">
-        <!-- Los elementos del carrito se añadirán aquí dinámicamente -->
-    </div>
-    <div class="cart-total">Total: $0.00</div>
-    <div class="checkout-form">
-        <h3>Información de envío</h3>
-        <div class="form-group">
-            <label for="name">Nombre completo</label>
-            <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-            <label for="phone">Número de teléfono</label>
-            <input type="tel" id="phone" required>
-        </div>
-        <div class="form-group">
-            <label for="address">Dirección</label>
-            <input type="text" id="address" required>
-        </div>
-        <button class="checkout-btn">Enviar pedido por WhatsApp</button>
-    </div>
-</div>
+                <div class="total-row">
+                    <span>Total gastado:</span>
+                    <span id="totalExpenses">$0</span>
+                </div>
 
-<!-- Notificación bonita -->
-<div class="notification" id="notification">
-    <i class="fas fa-check-circle"></i>
-    <span id="notification-text">Producto añadido al carrito</span>
-</div>
+                <!-- Balance disponible después de gastos -->
+                <div style="display: flex; justify-content: space-between; background: #d4e2f0; padding: 0.8rem 1.5rem; border-radius: 40px; margin-top:0.5rem;">
+                    <span style="font-weight:500;">💰 Disponible:</span>
+                    <span class="balance" id="balanceAmount">$0</span>
+                </div>
+                <button id="resetExpensesBtn" class="btn-outline btn-small" style="margin-top:1rem; width:100%;">🗑️ Reiniciar todos los gastos</button>
+            </div>
 
-<footer id="contacto">
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-    </div>
-    <div class="footer-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Contenido</a>
-        <a href="#contacto">Contacto</a>
-        <a href="#">Términos y Condiciones</a>
-        <a href="#">Política de Privacidad</a>
-    </div>
-    <p class="copyright">© 2025 Grabación en Memoria Flash. Todos los derechos reservados.</p>
-</footer>
+            <!-- Columna derecha: Meta de ahorro -->
+            <div>
+                <h2>🎯 Meta de ahorro</h2>
+                <p class="text-small">Define un producto necesario o meta para fin de mes.</p>
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <input type="text" id="goalName" placeholder="Ej. Lavadora / Viaje" value="Fondo para casa">
+                        <input type="number" id="goalTarget" placeholder="Monto $" min="0" step="1" style="max-width:110px;" value="500">
+                    </div>
+                    <div class="flex-row">
+                        <button id="setGoalBtn">🎯 Establecer meta</button>
+                        <button id="clearGoalBtn" class="btn-outline btn-small">Limpiar</button>
+                    </div>
 
-<script>
-    // Función para cambiar la imagen principal
-    function imgSlider(anything){
-        document.querySelector('.starbucks').src = anything;
-    }
-    
-    // Función para cambiar el color del círculo de fondo
-    function changeCircleColor(color){
-        const circle = document.querySelector('.circle');
-        circle.style.background = color;
-    }
-    
-    // Menú móvil
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('header ul');
-    const header = document.getElementById('main-header');
-    
-    menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        menuToggle.innerHTML = navMenu.classList.contains('active') ? 
-            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'
-    });
-    
-    // Header fijo y cambio de estilo al hacer scroll
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-            // Mostrar los filtros en el header cuando se hace scroll
-            document.querySelector('.header-filters').classList.add('active');
-        } else {
-            header.classList.remove('scrolled');
-            // Ocultar los filtros en el header cuando está en la parte superior
-            document.querySelector('.header-filters').classList.remove('active');
-        }
-    });
-    
-    // Smooth scroll para navegación
-    document.querySelectorAll('header ul li a, .footer-links a, .content .textBox a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                // Cerrar menú en móviles
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    <div style="margin: 1.2rem 0 0.5rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span id="goalNameDisplay">Lavadora</span>
+                            <span id="goalTargetDisplay">$500</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="goalProgressBar" style="width:0%;"></div>
+                        </div>
+                        <div id="goalMessage" class="goal-message">
+                            Establece una meta para comenzar.
+                        </div>
+                    </div>
+                </div>
+                <p class="text-small" style="margin-top:1rem;">✔️ El progreso se calcula según el disponible (ingresos - gastos).</p>
+            </div>
+        </div>
+        <hr>
+        <div style="display:flex; justify-content: flex-end;">
+            <button id="resetAllBtn" class="danger-btn">🔄 Reiniciar todo (por defecto)</button>
+        </div>
+        <footer>
+            Tus datos se guardan automáticamente en el navegador.
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // ********** Estado de la aplicación **********
+            let currentIncome = 0;
+            let expenses = [];               // cada objeto: { id, desc, amount }
+            let goal = { name: '', target: 0 };   // meta activa
+
+            // ********** Elementos del DOM **********
+            const incomeInput = document.getElementById('incomeInput');
+            const setIncomeBtn = document.getElementById('setIncomeBtn');
+            const expenseDesc = document.getElementById('expenseDesc');
+            const expenseAmount = document.getElementById('expenseAmount');
+            const addExpenseBtn = document.getElementById('addExpenseBtn');
+            const expenseList = document.getElementById('expenseList');
+            const totalExpensesSpan = document.getElementById('totalExpenses');
+            const balanceSpan = document.getElementById('balanceAmount');
+            const resetExpensesBtn = document.getElementById('resetExpensesBtn');
+            const resetAllBtn = document.getElementById('resetAllBtn');
+
+            // Elementos de meta
+            const goalName = document.getElementById('goalName');
+            const goalTarget = document.getElementById('goalTarget');
+            const setGoalBtn = document.getElementById('setGoalBtn');
+            const clearGoalBtn = document.getElementById('clearGoalBtn');
+            const goalNameDisplay = document.getElementById('goalNameDisplay');
+            const goalTargetDisplay = document.getElementById('goalTargetDisplay');
+            const goalProgressBar = document.getElementById('goalProgressBar');
+            const goalMessage = document.getElementById('goalMessage');
+
+            // ********** Utilidades **********
+            function formatMoney(amount) {
+                return '$' + Number(amount).toFixed(0);
+            }
+
+            // Calcular total de gastos
+            function totalExpensesCalc() {
+                return expenses.reduce((sum, e) => sum + e.amount, 0);
+            }
+
+            // Calcular disponible (income - total gastos)
+            function availableBalance() {
+                return currentIncome - totalExpensesCalc();
+            }
+
+            // ********** Renderizar lista de gastos **********
+            function renderExpenses() {
+                if (expenses.length === 0) {
+                    expenseList.innerHTML = '<li style="text-align: center; padding: 1.5rem; color: #7895b4;">No hay gastos registrados.</li>';
+                } else {
+                    let html = '';
+                    expenses.forEach(exp => {
+                        html += `<li class="expense-item" data-id="${exp.id}">
+                            <span class="expense-desc">${escapeHTML(exp.desc)}</span>
+                            <span>
+                                <span class="expense-amount">${formatMoney(exp.amount)}</span>
+                                <button class="delete-btn" title="Eliminar gasto">✕</button>
+                            </span>
+                        </li>`;
+                    });
+                    expenseList.innerHTML = html;
                 }
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
+                updateTotalsAndGoal();  // actualiza total, balance y meta
+            }
+
+            // pequeño helper para evitar XSS (los desc pueden tener texto)
+            function escapeHTML(str) {
+                return String(str).replace(/[&<>"]/g, function(match) {
+                    if (match === '&') return '&amp;';
+                    if (match === '<') return '&lt;';
+                    if (match === '>') return '&gt;';
+                    if (match === '"') return '&quot;';
+                    return match;
                 });
             }
-        });
-    });
-    
-    // Lightbox para imágenes de productos
-    const productImages = document.querySelectorAll('.product-image img');
-    const imageLightbox = document.querySelector('.image-lightbox');
-    const lightboxImage = document.querySelector('.lightbox-content img');
-    const lightboxTitle = document.querySelector('.lightbox-product-title');
-    const lightboxDescription = document.querySelector('.lightbox-product-description');
-    const lightboxPrice = document.querySelector('.lightbox-product-price');
-    const lightboxViewBtn = document.querySelector('.lightbox-view-btn');
-    const closeLightbox = document.querySelector('.close-lightbox');
-    
-    let currentProductData = null;
-    
-    productImages.forEach(image => {
-        image.addEventListener('click', () => {
-            currentProductData = {
-                product: image.getAttribute('data-product'),
-                description: image.getAttribute('data-description'),
-                price: image.getAttribute('data-price'),
-                img: image.getAttribute('src')
-            };
-            
-            lightboxImage.src = currentProductData.img;
-            lightboxTitle.textContent = currentProductData.product;
-            lightboxDescription.textContent = currentProductData.description;
-            lightboxPrice.textContent = `$${currentProductData.price}`;
-            
-            // Configurar el botón de ver en el lightbox
-            lightboxViewBtn.setAttribute('data-product', currentProductData.product);
-            lightboxViewBtn.setAttribute('data-price', currentProductData.price);
-            lightboxViewBtn.setAttribute('data-img', currentProductData.img);
-            
-            imageLightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-    });
-    
-    // Cerrar lightbox
-    closeLightbox.addEventListener('click', () => {
-        imageLightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-    
-    imageLightbox.addEventListener('click', (e) => {
-        if (e.target === imageLightbox) {
-            imageLightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-    
-    // Funcionalidad del carrito
-    const cartToggle = document.querySelector('.cart-toggle');
-    const closeCart = document.querySelector('.close-cart');
-    const cartSidebar = document.querySelector('.cart-sidebar');
-    const overlay = document.querySelector('.overlay');
-    const cartItems = document.querySelector('.cart-items');
-    const cartTotal = document.querySelector('.cart-total');
-    const checkoutBtn = document.querySelector('.checkout-btn');
-    const viewButtons = document.querySelectorAll('.view-btn, .lightbox-view-btn');
-    const cartCount = document.querySelector('.cart-count');
-    
-    let cart = [];
-    
-    // Abrir carrito
-    cartToggle.addEventListener('click', () => {
-        cartSidebar.classList.add('active');
-        overlay.classList.add('active');
-    });
-    
-    // Cerrar carrito
-    closeCart.addEventListener('click', () => {
-        cartSidebar.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-    
-    overlay.addEventListener('click', () => {
-        cartSidebar.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-    
-    // Función para mostrar notificación
-    function showNotification(message) {
-        const notification = document.getElementById('notification');
-        const notificationText = document.getElementById('notification-text');
-        
-        notificationText.textContent = message;
-        notification.classList.add('active');
-        
-        setTimeout(() => {
-            notification.classList.remove('active');
-        }, 3000);
-    }
-    
-    // Función para actualizar carrito
-    function updateCart() {
-        cartItems.innerHTML = '';
-        let total = 0;
-        let totalItems = 0;
-        
-        cart.forEach((item, index) => {
-            const itemTotal = item.price * item.quantity;
-            total += itemTotal;
-            totalItems += item.quantity;
-            
-            const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
-            cartItem.innerHTML = `
-                <div class="cart-item-details">
-                    <div>${item.product}</div>
-                    <div>$${item.price.toFixed(2)}</div>
-                </div>
-                <div class="quantity-controls">
-                    <button class="quantity-btn minus" data-index="${index}">-</button>
-                    <span class="quantity">${item.quantity}</span>
-                    <button class="quantity-btn plus" data-index="${index}">+</button>
-                </div>
-                <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
-            `;
-            
-            cartItems.appendChild(cartItem);
-        });
-        
-        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
-        cartCount.textContent = totalItems;
-        
-        // Mostrar u ocultar el contador
-        if (totalItems > 0) {
-            cartCount.style.display = 'flex';
-        } else {
-            cartCount.style.display = 'none';
-        }
-        
-        // Añadir event listeners a los botones de cantidad
-        document.querySelectorAll('.quantity-btn.plus').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = parseInt(e.currentTarget.getAttribute('data-index'));
-                cart[index].quantity += 1;
-                updateCart();
-                showNotification(`Se añadió una unidad más de ${cart[index].product}`);
-            });
-        });
-        
-        document.querySelectorAll('.quantity-btn.minus').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = parseInt(e.currentTarget.getAttribute('data-index'));
-                if (cart[index].quantity > 1) {
-                    cart[index].quantity -= 1;
-                    updateCart();
-                    showNotification(`Se removió una unidad de ${cart[index].product}`);
+
+            // ********** Actualizar totales, balance y progreso de meta **********
+            function updateTotalsAndGoal() {
+                const total = totalExpensesCalc();
+                totalExpensesSpan.textContent = formatMoney(total);
+                const balance = availableBalance();
+                balanceSpan.textContent = formatMoney(balance);
+
+                // Actualizar meta si existe
+                updateGoalUI(balance);
+                saveToLocalStorage();  // cada cambio relevante guarda
+            }
+
+            // Actualizar UI de la meta basado en balance actual
+            function updateGoalUI(balance) {
+                if (goal && goal.target > 0 && goal.name.trim() !== '') {
+                    const target = goal.target;
+                    const progressPercent = Math.min(100, Math.max(0, (balance / target) * 100));
+                    goalProgressBar.style.width = progressPercent + '%';
+                    goalNameDisplay.textContent = goal.name.length > 20 ? goal.name.substring(0,18)+'…' : goal.name;
+                    goalTargetDisplay.textContent = formatMoney(target);
+
+                    if (balance >= target) {
+                        goalMessage.innerHTML = `✅ ¡Felicidades! Puedes ahorrar para <strong>${escapeHTML(goal.name)}</strong>. Tu disponible cubre la meta.`;
+                    } else {
+                        const falta = target - balance;
+                        goalMessage.innerHTML = `⏳ Te faltan <strong>${formatMoney(falta)}</strong> para alcanzar tu meta "<strong>${escapeHTML(goal.name)}</strong>". Ajusta gastos o ingresos.`;
+                    }
                 } else {
-                    // Si la cantidad es 1, al hacer menos eliminamos el producto
-                    const removedProduct = cart[index].product;
-                    cart.splice(index, 1);
-                    updateCart();
-                    showNotification(`Se eliminó ${removedProduct} del carrito`);
+                    // No hay meta activa
+                    goalProgressBar.style.width = '0%';
+                    goalNameDisplay.textContent = 'Sin meta';
+                    goalTargetDisplay.textContent = '$0';
+                    goalMessage.innerHTML = '🎯 Establece una meta (nombre y monto) para empezar a ahorrar.';
+                }
+            }
+
+            // ********** LocalStorage **********
+            const STORAGE_KEY = 'monthly_expense_goal_app';
+
+            function saveToLocalStorage() {
+                const data = {
+                    income: currentIncome,
+                    expenses: expenses,
+                    goal: goal
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            }
+
+            function loadFromLocalStorage() {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    try {
+                        const data = JSON.parse(saved);
+                        currentIncome = data.income || 0;
+                        expenses = Array.isArray(data.expenses) ? data.expenses : [];
+                        // Asegurar que cada gasto tenga id (por si acaso)
+                        expenses = expenses.map(e => ({ ...e, id: e.id || Date.now() + Math.random() }));
+                        goal = data.goal && typeof data.goal === 'object' ? data.goal : { name: '', target: 0 };
+                    } catch (e) {
+                        console.warn('Error cargando datos, se usan valores por defecto');
+                        setDefaultData();
+                    }
+                } else {
+                    setDefaultData(); // datos de ejemplo amigables
+                }
+                // Sincronizar inputs con valores cargados
+                incomeInput.value = currentIncome;
+                goalName.value = goal.name || '';
+                goalTarget.value = goal.target || 0;
+                renderExpenses();
+            }
+
+            function setDefaultData() {
+                currentIncome = 2800;
+                expenses = [
+                    { id: '1', desc: 'Alquiler', amount: 900 },
+                    { id: '2', desc: 'Supermercado', amount: 350 },
+                    { id: '3', desc: 'Servicios (luz, agua)', amount: 120 }
+                ];
+                goal = { name: 'Lavadora', target: 600 };
+                incomeInput.value = currentIncome;
+                goalName.value = goal.name;
+                goalTarget.value = goal.target;
+            }
+
+            // ********** Reset parcial/total **********
+            function resetExpensesOnly() {
+                if (confirm('¿Eliminar todos los gastos?')) {
+                    expenses = [];
+                    renderExpenses();
+                }
+            }
+
+            function resetAll() {
+                if (confirm('Reiniciar todo a datos de ejemplo por defecto?')) {
+                    setDefaultData();
+                    renderExpenses();
+                    saveToLocalStorage();
+                }
+            }
+
+            // ********** Eventos **********
+
+            // Ingreso
+            setIncomeBtn.addEventListener('click', () => {
+                const val = parseFloat(incomeInput.value);
+                if (!isNaN(val) && val >= 0) {
+                    currentIncome = val;
+                } else {
+                    currentIncome = 0;
+                    incomeInput.value = 0;
+                }
+                updateTotalsAndGoal();
+            });
+
+            // Agregar gasto
+            addExpenseBtn.addEventListener('click', () => {
+                const desc = expenseDesc.value.trim();
+                const amount = parseFloat(expenseAmount.value);
+                if (desc === '') {
+                    alert('Escribe una descripción del gasto');
+                    return;
+                }
+                if (isNaN(amount) || amount <= 0) {
+                    alert('Ingresa un monto válido (mayor a 0)');
+                    return;
+                }
+                const newExpense = {
+                    id: Date.now() + '-' + Math.random().toString(36).substr(2, 6),
+                    desc: desc,
+                    amount: amount
+                };
+                expenses.push(newExpense);
+                expenseDesc.value = '';
+                expenseAmount.value = '';
+                renderExpenses();
+            });
+
+            // Eliminar gasto (delegación)
+            expenseList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('delete-btn')) {
+                    const li = e.target.closest('.expense-item');
+                    if (li) {
+                        const id = li.getAttribute('data-id');
+                        expenses = expenses.filter(exp => exp.id != id);
+                        renderExpenses();
+                    }
                 }
             });
-        });
-        
-        // Añadir event listeners a los botones de eliminar
-        document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = parseInt(e.currentTarget.getAttribute('data-index'));
-                const removedProduct = cart[index].product;
-                cart.splice(index, 1);
-                updateCart();
-                showNotification(`Se eliminó ${removedProduct} del carrito`);
-            });
-        });
-    }
-    
-    // Vista de capítulos
-    const chaptersView = document.getElementById('chapters-view');
-    const productsSection = document.getElementById('productos');
-    const backToProductsBtn = document.getElementById('back-to-products');
-    const chaptersTitle = document.getElementById('chapters-title');
-    const chaptersList = document.getElementById('chapters-list');
-    
-    // Función para mostrar capítulos
-    function showChapters(productName, productPrice, productImg) {
-        chaptersTitle.textContent = `Capítulos de ${productName}`;
-        chaptersList.innerHTML = '';
-        
-        // Generar 300 capítulos para Dragon Ball Z, menos para otros
-        let chapterCount = 300;
-        if (productName === "Breaking Bad") chapterCount = 62;
-        if (productName === "Avengers: Endgame") chapterCount = 1; // Película
-        if (productName === "El Padrino") chapterCount = 1;
-        if (productName === "Queen Greatest Hits") chapterCount = 35;
-        if (productName === "Cien Años de Soledad") chapterCount = 20;
-        
-        for (let i = 1; i <= chapterCount; i++) {
-            const chapterItem = document.createElement('div');
-            chapterItem.classList.add('chapter-item');
-            
-            let chapterTitle = "";
-            let chapterPrice = 0.50; // Precio por capítulo
-            
-            if (productName === "Dragon Ball Z") {
-                if (i <= 67) chapterTitle = `Saga de los Saiyajins - Capítulo ${i}`;
-                else if (i <= 107) chapterTitle = `Saga de Freezer - Capítulo ${i}`;
-                else if (i <= 139) chapterTitle = `Saga de Cell - Capítulo ${i}`;
-                else if (i <= 194) chapterTitle = `Saga de Majin Boo - Capítulo ${i}`;
-                else chapterTitle = `Saga de los Torneos - Capítulo ${i}`;
-            } else if (productName === "Breaking Bad") {
-                if (i <= 7) chapterTitle = `Temporada 1 - Capítulo ${i}`;
-                else if (i <= 20) chapterTitle = `Temporada 2 - Capítulo ${i-7}`;
-                else if (i <= 33) chapterTitle = `Temporada 3 - Capítulo ${i-20}`;
-                else if (i <= 49) chapterTitle = `Temporada 4 - Capítulo ${i-33}`;
-                else chapterTitle = `Temporada 5 - Capítulo ${i-49}`;
-            } else if (productName === "Queen Greatest Hits") {
-                chapterTitle = `Canción ${i}: ${getQueenSongTitle(i)}`;
-                chapterPrice = 0.99;
-            } else if (productName === "Cien Años de Soledad") {
-                chapterTitle = `Capítulo ${i}`;
-                chapterPrice = 0.75;
-            } else {
-                chapterTitle = `Capítulo ${i}`;
-            }
-            
-            chapterItem.innerHTML = `
-                <div class="chapter-title">${chapterTitle}</div>
-                <button class="add-to-cart-btn" data-product="${productName} - ${chapterTitle}" data-price="${chapterPrice}" data-img="${productImg}">
-                    Añadir al carrito $${chapterPrice.toFixed(2)}
-                </button>
-            `;
-            
-            chaptersList.appendChild(chapterItem);
-        }
-        
-        // Añadir event listeners a los botones de añadir al carrito
-        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const product = button.getAttribute('data-product');
-                const price = parseFloat(button.getAttribute('data-price'));
-                const img = button.getAttribute('data-img');
-                
-                // Verificar si el producto ya está en el carrito
-                const existingItem = cart.find(item => item.product === product);
-                
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({
-                        product,
-                        price,
-                        img,
-                        quantity: 1
-                    });
+
+            // Reset solo gastos
+            resetExpensesBtn.addEventListener('click', resetExpensesOnly);
+
+            // Meta: establecer
+            setGoalBtn.addEventListener('click', () => {
+                const name = goalName.value.trim();
+                const target = parseFloat(goalTarget.value);
+                if (name === '') {
+                    alert('Escribe un nombre para tu meta (ej. "Compra nevera")');
+                    return;
                 }
-                
-                updateCart();
-                showNotification(`¡${product} añadido al carrito! 🎉`);
+                if (isNaN(target) || target <= 0) {
+                    alert('El monto de la meta debe ser positivo');
+                    return;
+                }
+                goal = { name: name, target: target };
+                updateTotalsAndGoal(); // guarda y actualiza
             });
-        });
-        
-        // Mostrar vista de capítulos
-        productsSection.style.display = 'none';
-        chaptersView.classList.add('active');
-        
-        // Scroll to top
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-    
-    // Función auxiliar para títulos de canciones de Queen
-    function getQueenSongTitle(index) {
-        const songs = [
-            "Bohemian Rhapsody", "We Will Rock You", "We Are The Champions", 
-            "Another One Bites The Dust", "Don't Stop Me Now", "Somebody To Love",
-            "Killer Queen", "Radio Ga Ga", "I Want To Break Free", "Under Pressure",
-            "Crazy Little Thing Called Love", "The Show Must Go On", "You're My Best Friend",
-            "Love of My Life", "Who Wants To Live Forever", "A Kind of Magic",
-            "I Want It All", "Breakthru", "Innuendo", "These Are The Days of Our Lives",
-            "The Miracle", "It's A Hard Life", "One Vision", "Friends Will Be Friends",
-            "Hammer To Fall", "Save Me", "Play The Game", "Flash", "Seven Seas of Rhye",
-            "Stone Cold Crazy", "Now I'm Here", "Tie Your Mother Down", "Good Old-Fashioned Lover Boy",
-            "Keep Yourself Alive", "Fat Bottomed Girls"
-        ];
-        
-        return songs[index-1] || `Canción ${index}`;
-    }
-    
-    // Botón para volver a productos
-    backToProductsBtn.addEventListener('click', () => {
-        chaptersView.classList.remove('active');
-        productsSection.style.display = 'block';
-        
-        // Scroll a productos
-        window.scrollTo({
-            top: productsSection.offsetTop - 80,
-            behavior: 'smooth'
-        });
-    });
-    
-    // Botones de ver
-    viewButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            // Si es el botón del lightbox, cerrar el lightbox primero
-            if (button.classList.contains('lightbox-view-btn')) {
-                imageLightbox.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-            
-            const product = button.getAttribute('data-product');
-            const price = parseFloat(button.getAttribute('data-price'));
-            const img = button.getAttribute('data-img');
-            
-            showChapters(product, price, img);
-        });
-    });
-    
-    // Enviar pedido por WhatsApp
-    checkoutBtn.addEventListener('click', () => {
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const address = document.getElementById('address').value;
-        
-        // Validar formulario
-        if (!name || !phone || !address) {
-            alert('Por favor, completa todos los campos');
-            return;
-        }
-        
-        if (cart.length === 0) {
-            alert('Tu carrito está vacío');
-            return;
-        }
-        
-        // Crear mensaje para WhatsApp
-        let message = `¡Hola! Quiero hacer un pedido de grabación en memoria flash:%0A%0A`;
-        message += `*Nombre:* ${name}%0A`;
-        message += `*Teléfono:* ${phone}%0A`;
-        message += `*Dirección:* ${address}%0A%0A`;
-        message += `*Contenido a grabar:*%0A`;
-        
-        cart.forEach(item => {
-            message += `- ${item.product} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}%0A`;
-        });
-        
-        message += `%0A*Total:* $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
-        
-        // Abrir WhatsApp con el mensaje
-        window.open(`https://wa.me/+5351168588?text=${message}`, '_blank');
-        
-        // Limpiar carrito y formulario
-        cart = [];
-        updateCart();
-        document.getElementById('name').value = '';
-        document.getElementById('phone').value = '';
-        document.getElementById('address').value = '';
-        
-        // Cerrar carrito
-        cartSidebar.classList.remove('active');
-        overlay.classList.remove('active');
-        
-        showNotification('¡Pedido enviado! Te contactaremos pronto. 📦');
-    });
-    
-    // Filtrado por categorías
-    const filterButtons = document.querySelectorAll('.filter-btn, .header-filter-btn');
-    const productCards = document.querySelectorAll('.product-card');
-    
-    // Función para filtrar productos por categoría
-    function filterProducts(category) {
-        productCards.forEach(card => {
-            if (category === 'todos' || card.getAttribute('data-category') === category) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-    
-    // Añadir event listeners a los botones de filtro
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remover la clase active de todos los botones
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Añadir la clase active al botón clickeado
-            button.classList.add('active');
-            
-            // Filtrar productos por la categoría seleccionada
-            const category = button.getAttribute('data-category');
-            filterProducts(category);
-        });
-    });
-    
-    // Inicializar con la categoría "peliculas" seleccionada
-    window.addEventListener('load', () => {
-        filterProducts('peliculas');
-    });
-</script>
+
+            // Limpiar meta
+            clearGoalBtn.addEventListener('click', () => {
+                goal = { name: '', target: 0 };
+                goalName.value = '';
+                goalTarget.value = '';
+                updateTotalsAndGoal();
+            });
+
+            // Reset total
+            resetAllBtn.addEventListener('click', resetAll);
+
+            // ********** Inicializar **********
+            loadFromLocalStorage();
+
+            // Si por alguna razón no hay meta en ui pero hay goal objeto, sincronizar inputs (ya se hizo en load)
+            // Asegurar que goal esté reflejado en UI cuando se carga
+            window.addEventListener('load', function() {
+                // Forzar actualización de meta (por si acaso)
+                updateGoalUI(availableBalance());
+            });
+        })();
+    </script>
 </body>
 </html>
