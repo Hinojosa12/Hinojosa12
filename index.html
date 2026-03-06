@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔒 Instalación de Cámaras de Seguridad · Guía visual definitiva</title>
+    <title>🔒 Security Camera Installation · Complete Visual Guide</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts: Inter -->
@@ -163,7 +163,7 @@
             color: var(--primary);
         }
 
-        /* Tarjetas con imagen */
+        /* Tarjetas con imagen - ajuste para que la imagen se vea completa */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -189,9 +189,9 @@
 
         .card-img {
             width: 100%;
-            height: 180px;
-            object-fit: cover;
-            background-color: var(--accent-bg);
+            height: 200px; /* aumentado para mejor visualización */
+            object-fit: contain; /* cambia a contain para que la imagen se vea completa */
+            background-color: var(--accent-bg); /* fondo neutro para rellenar espacios */
             border-bottom: 2px solid var(--primary);
         }
 
@@ -365,254 +365,246 @@
             transform: scale(1.1);
         }
 
-        /* Atribución imágenes (solo para las de Wikimedia) */
-        .attribution {
-            font-size: 0.7rem;
-            color: var(--text-light);
-            margin-top: 0.3rem;
-            opacity: 0.7;
-        }
+        /* Se elimina la atribución de imágenes */
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Cabecera con botón modo oscuro -->
+        <!-- Header with dark mode toggle -->
         <div class="header">
             <div class="title-section">
-                <h1><i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i>Instalación de Cámaras de Seguridad</h1>
-                <p>Todo lo que necesitas saber: tipos, apps, formatos, distancias y pasos detallados</p>
+                <h1><i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i>Security Camera Installation</h1>
+                <p>Everything you need to know: types, apps, formats, distances, and detailed steps</p>
             </div>
             <div class="dark-toggle" id="darkModeToggle">
                 <i class="fas fa-sun"></i>
-                <span>Modo oscuro</span>
+                <span>Dark mode</span>
                 <i class="fas fa-moon"></i>
             </div>
         </div>
 
-        <!-- Navegación rápida -->
+        <!-- Quick navigation -->
         <div class="quick-nav">
-            <a href="#tipos"><i class="fas fa-camera"></i>Tipos</a>
+            <a href="#types"><i class="fas fa-camera"></i>Types</a>
             <a href="#apps"><i class="fas fa-mobile-alt"></i>Apps</a>
-            <a href="#formatos"><i class="fas fa-microchip"></i>Formatos</a>
-            <a href="#distancias"><i class="fas fa-ruler"></i>Distancias</a>
+            <a href="#formats"><i class="fas fa-microchip"></i>Formats</a>
+            <a href="#distances"><i class="fas fa-ruler"></i>Distances</a>
             <a href="#cables"><i class="fas fa-plug"></i>Cables</a>
-            <a href="#pasos"><i class="fas fa-tools"></i>Instalación</a>
+            <a href="#steps"><i class="fas fa-tools"></i>Steps</a>
             <a href="#extra"><i class="fas fa-plus-circle"></i>Extras</a>
         </div>
 
-        <!-- TIPOS DE CÁMARAS (con imágenes locales) -->
-        <section id="tipos">
-            <h2><i class="fas fa-camera-retro"></i> Tipos de cámaras (imágenes reales)</h2>
+        <!-- CAMERA TYPES (with local images) -->
+        <section id="types">
+            <h2><i class="fas fa-camera-retro"></i> Camera types (real images)</h2>
             <div class="card-grid">
-                <!-- Domo -->
+                <!-- Dome -->
                 <div class="card">
-                    <img class="card-img" src="Domo.jpg" alt="Cámara tipo domo" loading="lazy">
+                    <img class="card-img" src="Domo.jpg" alt="Dome camera" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-circle"></i>
-                        <h4>Domo</h4>
-                        <p>Compacta, discreta, ideal para interiores. Difícil de manipular. Ángulo ajustable.</p>
-                        <span class="badge">Interior/Exterior</span>
+                        <h4>Dome</h4>
+                        <p>Compact, discreet, ideal for indoors. Hard to tamper. Adjustable angle.</p>
+                        <span class="badge">Indoor/Outdoor</span>
                     </div>
                 </div>
-                <!-- Bala -->
+                <!-- Bullet -->
                 <div class="card">
-                    <img class="card-img" src="Bullet.jpg" alt="Cámara tipo bala" loading="lazy">
+                    <img class="card-img" src="Bullet.jpg" alt="Bullet camera" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-bullseye"></i>
-                        <h4>Balas (Bullet)</h4>
-                        <p>Larga distancia, visible como disuasivo. Ideal para exteriores y visión nocturna.</p>
-                        <span class="badge">Exterior</span>
+                        <h4>Bullet</h4>
+                        <p>Long distance, visible as deterrent. Ideal for outdoors and night vision.</p>
+                        <span class="badge">Outdoor</span>
                     </div>
                 </div>
                 <!-- PTZ -->
                 <div class="card">
-                    <img class="card-img" src="Ptz.jpg" alt="Cámara PTZ" loading="lazy">
+                    <img class="card-img" src="Ptz.jpg" alt="PTZ camera" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-sync-alt"></i>
                         <h4>PTZ</h4>
-                        <p>Panorámica, inclinación, zoom. Control remoto, cobertura amplia y seguimiento.</p>
-                        <span class="badge">Motorizada</span>
+                        <p>Pan, tilt, zoom. Remote control, wide coverage and tracking.</p>
+                        <span class="badge">Motorized</span>
                     </div>
                 </div>
                 <!-- IP / WiFi -->
                 <div class="card">
-                    <img class="card-img" src="IpWifi.jpg" alt="Cámara IP WiFi" loading="lazy">
+                    <img class="card-img" src="IpWifi.jpg" alt="IP WiFi camera" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-wifi"></i>
                         <h4>IP / WiFi</h4>
-                        <p>Conectividad red, resolución HD, acceso remoto por app. Fáciles de instalar.</p>
+                        <p>Network connectivity, HD resolution, remote access via app. Easy to install.</p>
                         <span class="badge">Digital</span>
                     </div>
                 </div>
-                <!-- Analógica HD -->
+                <!-- Analog HD -->
                 <div class="card">
-                    <img class="card-img" src="Analogica.jpg" alt="Cámara analógica HD" loading="lazy">
+                    <img class="card-img" src="Analogica.jpg" alt="Analog HD camera" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-plug"></i>
-                        <h4>Analógica HD</h4>
-                        <p>AHD, TVI, CVI. Calidad HD sobre cable coaxial, económica para actualizar.</p>
-                        <span class="badge">Analógica</span>
+                        <h4>Analog HD</h4>
+                        <p>AHD, TVI, CVI. HD quality over coaxial cable, economical to upgrade.</p>
+                        <span class="badge">Analog</span>
                     </div>
                 </div>
-                <!-- Térmica -->
+                <!-- Thermal -->
                 <div class="card">
-                    <img class="card-img" src="Termica.jpg" alt="Cámara térmica" loading="lazy">
+                    <img class="card-img" src="Termica.jpg" alt="Thermal camera" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-thermometer-half"></i>
-                        <h4>Térmica</h4>
-                        <p>Detección por calor, sin luz. Ideal para oscuridad total y largas distancias.</p>
-                        <span class="badge">Especial</span>
+                        <h4>Thermal</h4>
+                        <p>Heat detection, no light needed. Ideal for total darkness and long distances.</p>
+                        <span class="badge">Special</span>
                     </div>
                 </div>
             </div>
-            <div class="attribution">Imágenes locales: Domo.jpg, Bullet.jpg, Ptz.jpg, IpWifi.jpg, Analogica.jpg, Termica.jpg</div>
         </section>
 
-        <!-- APLICACIONES MÓVILES -->
+        <!-- MOBILE APPS -->
         <section id="apps">
-            <h2><i class="fas fa-mobile-alt"></i> Apps por tipo / marca</h2>
+            <h2><i class="fas fa-mobile-alt"></i> Apps by type / brand</h2>
             <div class="table-responsive">
                 <table>
                     <thead>
-                        <tr><th>Tipo / Marca</th><th>Aplicaciones principales</th><th>Características</th></tr>
+                        <tr><th>Type / Brand</th><th>Main applications</th><th>Features</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>Hikvision</td><td><div class="app-icons"><span class="app-icon"><i class="fab fa-android"></i> Hik-Connect</span><span class="app-icon"><i class="fab fa-apple"></i> iVMS-4500</span></div></td><td>Visualización remota, alertas, reproducción</td></tr>
-                        <tr><td>Dahua</td><td><div class="app-icons"><span class="app-icon">DMSS</span><span class="app-icon">gDMSS</span><span class="app-icon">SmartPSS</span></div></td><td>Gestión multi-dispositivo, notificaciones</td></tr>
-                        <tr><td>Reolink</td><td><div class="app-icons"><span class="app-icon">Reolink</span></div></td><td>Fácil configuración, nube/local, 4K</td></tr>
-                        <tr><td>Arlo</td><td><div class="app-icons"><span class="app-icon">Arlo</span></div></td><td>Cámaras inalámbricas, detección de personas</td></tr>
-                        <tr><td>Ring</td><td><div class="app-icons"><span class="app-icon">Ring</span></div></td><td>Videoporteros, seguridad hogar, suscripción</td></tr>
-                        <tr><td>Genérica IP</td><td><div class="app-icons"><span class="app-icon">IP Cam Viewer</span><span class="app-icon">TinyCam</span></div></td><td>Compatibilidad multi-marca, visualización</td></tr>
+                        <tr><td>Hikvision</td><td><div class="app-icons"><span class="app-icon"><i class="fab fa-android"></i> Hik-Connect</span><span class="app-icon"><i class="fab fa-apple"></i> iVMS-4500</span></div></td><td>Remote viewing, alerts, playback</td></tr>
+                        <tr><td>Dahua</td><td><div class="app-icons"><span class="app-icon">DMSS</span><span class="app-icon">gDMSS</span><span class="app-icon">SmartPSS</span></div></td><td>Multi-device management, notifications</td></tr>
+                        <tr><td>Reolink</td><td><div class="app-icons"><span class="app-icon">Reolink</span></div></td><td>Easy setup, cloud/local, 4K</td></tr>
+                        <tr><td>Arlo</td><td><div class="app-icons"><span class="app-icon">Arlo</span></div></td><td>Wireless cameras, person detection</td></tr>
+                        <tr><td>Ring</td><td><div class="app-icons"><span class="app-icon">Ring</span></div></td><td>Video doorbells, home security, subscription</td></tr>
+                        <tr><td>Generic IP</td><td><div class="app-icons"><span class="app-icon">IP Cam Viewer</span><span class="app-icon">TinyCam</span></div></td><td>Multi-brand compatibility, viewing</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- FORMATOS Y RESOLUCIONES -->
-        <section id="formatos">
-            <h2><i class="fas fa-microchip"></i> Formatos y resoluciones</h2>
+        <!-- FORMATS AND RESOLUTIONS -->
+        <section id="formats">
+            <h2><i class="fas fa-microchip"></i> Formats and resolutions</h2>
             <div class="table-responsive">
                 <table>
-                    <thead><tr><th>Tecnología</th><th>Descripción</th><th>Resoluciones típicas</th></tr></thead>
+                    <thead><tr><th>Technology</th><th>Description</th><th>Typical resolutions</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>AHD</strong> (Analog HD)</td><td>Transmite video HD por coaxial, larga distancia sin retardo.</td><td>720p, 1080p, 4MP, 5MP</td></tr>
-                        <tr><td><strong>TVI</strong> (HD-TVI)</td><td>Tecnología de Hikvision, soporte de audio y control por coaxial.</td><td>1080p, 4K</td></tr>
-                        <tr><td><strong>CVI</strong> (HD-CVI)</td><td>Desarrollado por Dahua, buena inmunidad al ruido.</td><td>1080p, 4MP, 8MP</td></tr>
-                        <tr><td><strong>CVBS</strong> (analógico clásico)</td><td>Señal compuesta, definición estándar (D1).</td><td>960H, D1 (aprox. 0.4MP)</td></tr>
-                        <tr><td><strong>IP / MPEG</strong></td><td>Compresión H.264/H.265, video sobre red, escalable.</td><td>2MP (1080p), 4MP, 4K, 12MP</td></tr>
+                        <tr><td><strong>AHD</strong> (Analog HD)</td><td>Transmits HD video over coaxial, long distance without delay.</td><td>720p, 1080p, 4MP, 5MP</td></tr>
+                        <tr><td><strong>TVI</strong> (HD-TVI)</td><td>Hikvision technology, supports audio and control over coaxial.</td><td>1080p, 4K</td></tr>
+                        <tr><td><strong>CVI</strong> (HD-CVI)</td><td>Developed by Dahua, good noise immunity.</td><td>1080p, 4MP, 8MP</td></tr>
+                        <tr><td><strong>CVBS</strong> (classic analog)</td><td>Composite signal, standard definition (D1).</td><td>960H, D1 (~0.4MP)</td></tr>
+                        <tr><td><strong>IP / MPEG</strong></td><td>H.264/H.265 compression, network video, scalable.</td><td>2MP (1080p), 4MP, 4K, 12MP</td></tr>
                     </tbody>
                 </table>
             </div>
             <div class="tip-box">
-                <i class="fas fa-info-circle" style="margin-right: 0.8rem;"></i> <strong>Dato clave:</strong> Los formatos AHD, TVI y CVI permiten reutilizar cable coaxial existente para actualizar a HD sin re-cablear.
+                <i class="fas fa-info-circle" style="margin-right: 0.8rem;"></i> <strong>Key fact:</strong> AHD, TVI, and CVI formats allow reusing existing coaxial cable to upgrade to HD without rewiring.
             </div>
         </section>
 
-        <!-- DISTANCIA Y COBERTURA -->
-        <section id="distancias">
-            <h2><i class="fas fa-ruler-combined"></i> Distancia y cobertura por lente</h2>
-            <p>La distancia efectiva depende del lente (mm) y el sensor. Datos orientativos para reconocimiento facial/placas:</p>
+        <!-- DISTANCE AND COVERAGE -->
+        <section id="distances">
+            <h2><i class="fas fa-ruler-combined"></i> Distance and coverage by lens</h2>
+            <p>Effective distance depends on lens (mm) and sensor. Approximate data for face/license plate recognition:</p>
             <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px,1fr));">
-                <div class="card"><div class="card-content"><h4>2.8 mm</h4><p>Ángulo muy amplio (90°-100°). Alcance: hasta <strong>8-12 m</strong> (detección).</p><i class="fas fa-arrows-alt-h"></i></div></div>
-                <div class="card"><div class="card-content"><h4>3.6 mm</h4><p>Ángulo medio (70°-80°). Alcance: <strong>15-20 m</strong> reconocimiento.</p></div></div>
-                <div class="card"><div class="card-content"><h4>4 mm</h4><p>Estándar (60°-70°). Alcance: <strong>20-25 m</strong> identificación.</p></div></div>
-                <div class="card"><div class="card-content"><h4>6 mm</h4><p>Teleobjetivo (40°-50°). Alcance: <strong>30-40 m</strong>.</p></div></div>
-                <div class="card"><div class="card-content"><h4>8 mm</h4><p>Largo alcance (30°-35°). Hasta <strong>50-60 m</strong>.</p></div></div>
-                <div class="card"><div class="card-content"><h4>12 mm +</h4><p>Zoom óptico. Más de <strong>80 m</strong> (ideal para PTZ).</p></div></div>
+                <div class="card"><div class="card-content"><h4>2.8 mm</h4><p>Very wide angle (90°-100°). Range: up to <strong>8-12 m</strong> (detection).</p><i class="fas fa-arrows-alt-h"></i></div></div>
+                <div class="card"><div class="card-content"><h4>3.6 mm</h4><p>Medium angle (70°-80°). Range: <strong>15-20 m</strong> recognition.</p></div></div>
+                <div class="card"><div class="card-content"><h4>4 mm</h4><p>Standard (60°-70°). Range: <strong>20-25 m</strong> identification.</p></div></div>
+                <div class="card"><div class="card-content"><h4>6 mm</h4><p>Telephoto (40°-50°). Range: <strong>30-40 m</strong>.</p></div></div>
+                <div class="card"><div class="card-content"><h4>8 mm</h4><p>Long range (30°-35°). Up to <strong>50-60 m</strong>.</p></div></div>
+                <div class="card"><div class="card-content"><h4>12 mm +</h4><p>Optical zoom. More than <strong>80 m</strong> (ideal for PTZ).</p></div></div>
             </div>
-            <p style="margin-top:1rem;"><i class="fas fa-lightbulb"></i> La distancia de <strong>visión nocturna IR</strong> suele ser menor (por ejemplo, 30m en balas IR). Siempre verificar especificaciones.</p>
+            <p style="margin-top:1rem;"><i class="fas fa-lightbulb"></i> Night vision IR distance is usually shorter (e.g., 30m on bullet IR). Always check specifications.</p>
         </section>
 
-        <!-- SECCIÓN CABLES Y CONECTORES (con imágenes locales actualizadas) -->
+        <!-- CABLES AND CONNECTORS (local images) -->
         <section id="cables">
-            <h2><i class="fas fa-plug"></i> Cables y conectores esenciales</h2>
+            <h2><i class="fas fa-plug"></i> Essential cables and connectors</h2>
             <div class="card-grid">
                 <!-- Coaxial -->
                 <div class="card">
-                    <img class="card-img" src="Coaxial.jpg" alt="Cable coaxial" loading="lazy">
+                    <img class="card-img" src="Coaxial.jpg" alt="Coaxial cable" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-cable-car"></i>
-                        <h4>Cable coaxial</h4>
-                        <p>Usado en sistemas analógicos (AHD/TVI/CVI). Conector BNC. Distancia hasta 300m sin pérdida.</p>
+                        <h4>Coaxial cable</h4>
+                        <p>Used in analog systems (AHD/TVI/CVI). BNC connector. Distance up to 300m without loss.</p>
                         <span class="badge">RG59 / RG6</span>
                     </div>
                 </div>
                 <!-- Ethernet / UTP -->
                 <div class="card">
-                    <img class="card-img" src="Ethernet.jpg" alt="Cable Ethernet" loading="lazy">
+                    <img class="card-img" src="Ethernet.jpg" alt="Ethernet cable" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-network-wired"></i>
                         <h4>Ethernet (UTP)</h4>
-                        <p>Para cámaras IP y PoE. Distancia máxima 100m. Categoría 5e o 6 recomendada.</p>
+                        <p>For IP cameras and PoE. Maximum distance 100m. Cat5e or 6 recommended.</p>
                         <span class="badge">RJ45</span>
                     </div>
                 </div>
-                <!-- Conector BNC -->
+                <!-- BNC connector -->
                 <div class="card">
-                    <img class="card-img" src="Bnc.jpg" alt="Conector BNC" loading="lazy">
+                    <img class="card-img" src="Bnc.jpg" alt="BNC connector" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-link"></i>
-                        <h4>Conector BNC</h4>
-                        <p>Estándar en video vigilancia analógica. Macho y hembra, crimpado o soldado.</p>
+                        <h4>BNC connector</h4>
+                        <p>Standard in analog video surveillance. Male and female, crimp or solder.</p>
                         <span class="badge">Coaxial</span>
                     </div>
                 </div>
-                <!-- Fuente de alimentación / Inyector PoE -->
+                <!-- Power supply / PoE injector -->
                 <div class="card">
-                    <img class="card-img" src="InyectorPoE.jpg" alt="Inyector PoE" loading="lazy">
+                    <img class="card-img" src="InyectorPoE.jpg" alt="PoE injector" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-bolt"></i>
-                        <h4>Fuente / Inyector PoE</h4>
-                        <p>Alimentación 12V DC para cámaras analógicas o inyectores PoE para IP (48V).</p>
+                        <h4>Power supply / PoE injector</h4>
+                        <p>12V DC for analog cameras or PoE injectors for IP (48V).</p>
                         <span class="badge">12V / PoE</span>
                     </div>
                 </div>
             </div>
-            <div class="attribution">Imágenes de cables: archivos locales (Coaxial.jpg, Ethernet.jpg, Bnc.jpg, InyectorPoE.jpg)</div>
         </section>
 
-        <!-- PASOS PARA INSTALACIÓN -->
-        <section id="pasos">
-            <h2><i class="fas fa-tools"></i> Pasos para instalar (guía profesional)</h2>
+        <!-- INSTALLATION STEPS -->
+        <section id="steps">
+            <h2><i class="fas fa-tools"></i> Installation steps (professional guide)</h2>
             <ol class="steps-list">
-                <li><strong>Planificación y diseño:</strong> Define puntos ciegos, ángulos, tipo de cámara por zona. Haz un croquis.</li>
-                <li><strong>Elegir ubicación y alturas:</strong> Mínimo 2.5-3 m para evitar vandalismo, pero suficiente para capturar rostros.</li>
-                <li><strong>Cableado (si aplica):</strong> Para analógicas/PoE usa cable UTP o coaxial. Protege con canaletas. En inalámbricas asegura señal WiFi.</li>
-                <li><strong>Montaje físico:</strong> Fija la base con tornillos y tacos, pasa los cables, asegura la cámara.</li>
-                <li><strong>Conexión al DVR/NVR o switch PoE:</strong> Conecta cada cámara al grabador o inyector PoE. Si es IP, configurar red.</li>
-                <li><strong>Configuración inicial:</strong> Accede al menú (local o app). Asigna IP, fecha/hora, calidad de grabación, detección de movimiento.</li>
-                <li><strong>Ajuste de imagen y enfoque:</strong> Desde la app o monitor auxiliar, enfoca y ajusta el zoom/ángulo.</li>
-                <li><strong>Prueba de visión remota:</strong> Verifica acceso desde la app en el móvil, notificaciones y reproducción.</li>
-                <li><strong>Almacenamiento:</strong> Configura disco duro (sobregrabación), nube o tarjeta SD. Estima días de respaldo.</li>
+                <li><strong>Planning and design:</strong> Define blind spots, angles, camera type per area. Make a sketch.</li>
+                <li><strong>Choose location and height:</strong> Minimum 2.5-3 m to avoid vandalism, but enough to capture faces.</li>
+                <li><strong>Cabling (if applicable):</strong> For analog/PoE use UTP or coaxial cable. Protect with conduits. For wireless, ensure WiFi signal.</li>
+                <li><strong>Physical mounting:</strong> Fix the base with screws and anchors, route cables, secure the camera.</li>
+                <li><strong>Connection to DVR/NVR or PoE switch:</strong> Connect each camera to the recorder or PoE injector. If IP, configure network.</li>
+                <li><strong>Initial configuration:</strong> Access menu (local or app). Set IP, date/time, recording quality, motion detection.</li>
+                <li><strong>Image adjustment and focus:</strong> From the app or auxiliary monitor, focus and adjust zoom/angle.</li>
+                <li><strong>Remote viewing test:</strong> Verify access from mobile app, notifications, and playback.</li>
+                <li><strong>Storage:</strong> Configure hard drive (overwrite), cloud, or SD card. Estimate backup days.</li>
             </ol>
         </section>
 
-        <!-- EXTRAS: todo lo demás -->
+        <!-- EXTRAS: everything else -->
         <section id="extra">
-            <h2><i class="fas fa-star"></i> Información adicional clave</h2>
+            <h2><i class="fas fa-star"></i> Additional key information</h2>
             <div class="card-grid">
-                <div class="card"><div class="card-content"><i class="fas fa-database"></i><h4>Almacenamiento</h4><p>DVR (analógico) / NVR (IP). Discos duros especiales para videovigilancia (Western Purple, SkyHawk). Cálculo: una cámara 1080p consume ~8-12 GB/día.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-bolt"></i><h4>PoE (Power over Ethernet)</h4><p>Un solo cable UTP transmite datos y alimentación (hasta 100m). Ideal para cámaras IP. Usa switch PoE o inyectores.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-moon"></i><h4>Visión nocturna</h4><p>Infrarrojos (IR) o luz blanca. Los LED IR tienen alcance variable (10-60m). Cuidado con reflejos en paredes.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-cloud"></i><h4>Nube vs Local</h4><p>Nube: suscripción, accesible desde cualquier lugar. Local: más privacidad, sin costos recurrentes.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-shield-alt"></i><h4>Seguridad de red</h4><p>Cambia contraseñas por defecto, usa 2FA, red WiFi separada para las cámaras.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-video"></i><h4>Doble lente / 180°</h4><p>Cámaras ojo de pez o multi-sensor cubren áreas amplias sin puntos ciegos.</p></div></div>
+                <div class="card"><div class="card-content"><i class="fas fa-database"></i><h4>Storage</h4><p>DVR (analog) / NVR (IP). Special hard drives for surveillance (Western Purple, SkyHawk). Calculation: one 1080p camera uses ~8-12 GB/day.</p></div></div>
+                <div class="card"><div class="card-content"><i class="fas fa-bolt"></i><h4>PoE (Power over Ethernet)</h4><p>Single UTP cable carries data and power (up to 100m). Ideal for IP cameras. Use PoE switch or injectors.</p></div></div>
+                <div class="card"><div class="card-content"><i class="fas fa-moon"></i><h4>Night vision</h4><p>Infrared (IR) or white light. IR LED range varies (10-60m). Avoid reflections on walls.</p></div></div>
+                <div class="card"><div class="card-content"><i class="fas fa-cloud"></i><h4>Cloud vs Local</h4><p>Cloud: subscription, accessible anywhere. Local: more privacy, no recurring costs.</p></div></div>
+                <div class="card"><div class="card-content"><i class="fas fa-shield-alt"></i><h4>Network security</h4><p>Change default passwords, use 2FA, separate WiFi network for cameras.</p></div></div>
+                <div class="card"><div class="card-content"><i class="fas fa-video"></i><h4>Dual lens / 180°</h4><p>Fisheye or multi-sensor cameras cover wide areas without blind spots.</p></div></div>
             </div>
         </section>
 
+        <!-- Footer actualizado -->
         <footer>
-            <p>© 2026 · Guía completa actualizada · Creada para sorprender con información útil y diseño dinámico</p>
+            <p>© 2026 · Complete Guide created by Alcide Humberto Hinojosa Caballero. All rights reserved.</p>
             <p style="margin-top: 1rem;">
                 <i class="fas fa-camera" style="margin: 0 0.3rem;"></i>
                 <i class="fas fa-wifi" style="margin: 0 0.3rem;"></i>
                 <i class="fas fa-microchip" style="margin: 0 0.3rem;"></i>
             </p>
-            <p class="attribution">Imágenes de cámaras: archivos locales (Domo.jpg, Bullet.jpg, Ptz.jpg, IpWifi.jpg, Analogica.jpg, Termica.jpg). · Imágenes de cables: Coaxial.jpg, Ethernet.jpg, Bnc.jpg, InyectorPoE.jpg.</p>
         </footer>
     </div>
 
-    <!-- Botón ir arriba -->
-    <div class="go-top" id="goTop" title="Ir arriba"><i class="fas fa-arrow-up"></i></div>
+    <!-- Back to top button -->
+    <div class="go-top" id="goTop" title="Go to top"><i class="fas fa-arrow-up"></i></div>
 
     <script>
         (function() {
@@ -645,7 +637,7 @@
                 }
             });
 
-            // Botón ir arriba
+            // Back to top button
             const goTopBtn = document.getElementById('goTop');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 400) {
@@ -658,7 +650,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Smooth scroll para enlaces internos
+            // Smooth scroll for internal links
             document.querySelectorAll('.quick-nav a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
