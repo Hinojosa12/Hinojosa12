@@ -365,7 +365,7 @@
             transform: scale(1.1);
         }
 
-        /* Atribución imágenes */
+        /* Atribución imágenes (solo para las de Wikimedia) */
         .attribution {
             font-size: 0.7rem;
             color: var(--text-light);
@@ -400,13 +400,13 @@
             <a href="#extra"><i class="fas fa-plus-circle"></i>Extras</a>
         </div>
 
-        <!-- TIPOS DE CÁMARAS (con imágenes) -->
+        <!-- TIPOS DE CÁMARAS (con imágenes locales) -->
         <section id="tipos">
-            <h2><i class="fas fa-camera-retro"></i> Tipos de cámaras (con imágenes reales)</h2>
+            <h2><i class="fas fa-camera-retro"></i> Tipos de cámaras (imágenes reales)</h2>
             <div class="card-grid">
                 <!-- Domo -->
                 <div class="card">
-                    <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Ceiling_mounted_CCTV_camera.jpg/400px-Ceiling_mounted_CCTV_camera.jpg" alt="Cámara tipo domo" loading="lazy">
+                    <img class="card-img" src="Domo.jpg" alt="Cámara tipo domo" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-circle"></i>
                         <h4>Domo</h4>
@@ -416,7 +416,7 @@
                 </div>
                 <!-- Bala -->
                 <div class="card">
-                    <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/CCTV_camera_%28Ag%C3%BCera%29.jpg/400px-CCTV_camera_%28Ag%C3%BCera%29.jpg" alt="Cámara tipo bala" loading="lazy">
+                    <img class="card-img" src="Bullet.jpg" alt="Cámara tipo bala" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-bullseye"></i>
                         <h4>Balas (Bullet)</h4>
@@ -426,7 +426,7 @@
                 </div>
                 <!-- PTZ -->
                 <div class="card">
-                    <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/PTZ_camera.jpg/400px-PTZ_camera.jpg" alt="Cámara PTZ" loading="lazy">
+                    <img class="card-img" src="Ptz.jpg" alt="Cámara PTZ" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-sync-alt"></i>
                         <h4>PTZ</h4>
@@ -436,7 +436,7 @@
                 </div>
                 <!-- IP / WiFi -->
                 <div class="card">
-                    <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/IP_camera.jpg/400px-IP_camera.jpg" alt="Cámara IP WiFi" loading="lazy">
+                    <img class="card-img" src="IpWifi.jpg" alt="Cámara IP WiFi" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-wifi"></i>
                         <h4>IP / WiFi</h4>
@@ -444,9 +444,9 @@
                         <span class="badge">Digital</span>
                     </div>
                 </div>
-                <!-- Analógica HD (usamos imagen similar) -->
+                <!-- Analógica HD -->
                 <div class="card">
-                    <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/CCTV_camera_%28cropped%29.JPG/400px-CCTV_camera_%28cropped%29.JPG" alt="Cámara analógica HD" loading="lazy">
+                    <img class="card-img" src="Analogica.jpg" alt="Cámara analógica HD" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-plug"></i>
                         <h4>Analógica HD</h4>
@@ -456,7 +456,7 @@
                 </div>
                 <!-- Térmica -->
                 <div class="card">
-                    <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Thermal_imaging_camera.jpg/400px-Thermal_imaging_camera.jpg" alt="Cámara térmica" loading="lazy">
+                    <img class="card-img" src="Termica.jpg" alt="Cámara térmica" loading="lazy">
                     <div class="card-content">
                         <i class="fas fa-thermometer-half"></i>
                         <h4>Térmica</h4>
@@ -465,7 +465,7 @@
                     </div>
                 </div>
             </div>
-            <div class="attribution">Imágenes: Wikimedia Commons (CC BY-SA, dominio público)</div>
+            <div class="attribution">Imágenes locales: Domo.jpg, Bullet.jpg, Ptz.jpg, IpWifi.jpg, Analogica.jpg, Termica.jpg</div>
         </section>
 
         <!-- APLICACIONES MÓVILES -->
@@ -523,7 +523,7 @@
             <p style="margin-top:1rem;"><i class="fas fa-lightbulb"></i> La distancia de <strong>visión nocturna IR</strong> suele ser menor (por ejemplo, 30m en balas IR). Siempre verificar especificaciones.</p>
         </section>
 
-        <!-- NUEVA SECCIÓN: CABLES Y CONECTORES (con imágenes) -->
+        <!-- SECCIÓN CABLES Y CONECTORES (con imágenes de Wikimedia) -->
         <section id="cables">
             <h2><i class="fas fa-plug"></i> Cables y conectores esenciales</h2>
             <div class="card-grid">
@@ -568,7 +568,7 @@
                     </div>
                 </div>
             </div>
-            <div class="attribution">Imágenes: Wikimedia Commons (CC BY-SA, dominio público)</div>
+            <div class="attribution">Imágenes de cables: Wikimedia Commons (CC BY-SA, dominio público)</div>
         </section>
 
         <!-- PASOS PARA INSTALACIÓN -->
@@ -587,7 +587,7 @@
             </ol>
         </section>
 
-        <!-- EXTRAS: todo lo demás (almacenamiento, PoE, consejos) -->
+        <!-- EXTRAS: todo lo demás -->
         <section id="extra">
             <h2><i class="fas fa-star"></i> Información adicional clave</h2>
             <div class="card-grid">
@@ -607,7 +607,7 @@
                 <i class="fas fa-wifi" style="margin: 0 0.3rem;"></i>
                 <i class="fas fa-microchip" style="margin: 0 0.3rem;"></i>
             </p>
-            <p class="attribution">Imágenes de cámaras y cables: Wikimedia Commons (licencias libres).</p>
+            <p class="attribution">Imágenes de cámaras: archivos locales (Domo.jpg, Bullet.jpg, Ptz.jpg, IpWifi.jpg, Analogica.jpg, Termica.jpg).</p>
         </footer>
     </div>
 
