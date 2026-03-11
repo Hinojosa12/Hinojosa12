@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Steam Cleaning · MMG</title>
+  <title>Livity Projects Inc · Steam Cleaning</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -32,7 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* ─── ANIMATED BACKGROUND ─── */
     body::before {
       content: '';
       position: fixed;
@@ -45,7 +44,6 @@
       z-index: 0;
     }
 
-    /* Steam particles */
     .steam-bg {
       position: fixed;
       inset: 0;
@@ -69,16 +67,14 @@
       100% { transform: translateY(-100vh) scale(2.5); opacity: 0; }
     }
 
-    /* ─── LAYOUT ─── */
     .wrapper {
       position: relative;
       z-index: 1;
-      max-width: 1160px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 2rem 1.2rem 4rem;
     }
 
-    /* ─── HERO ─── */
     .hero {
       text-align: center;
       padding: 4rem 1rem 3rem;
@@ -142,7 +138,6 @@
       font-weight: 500;
     }
 
-    /* ─── SERVICES ─── */
     .section-label {
       font-size: 0.78rem;
       font-weight: 700;
@@ -159,56 +154,95 @@
       color: var(--text);
     }
 
+    /* Flip Card Styles */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-    .service-card {
-      position: relative;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius);
-      padding: 1.5rem 1rem 1.2rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-      backdrop-filter: blur(12px);
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,198,255,0.06), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .service-card:hover {
-      transform: translateY(-6px) scale(1.03);
-      border-color: rgba(0,198,255,0.5);
-      box-shadow: 0 20px 40px rgba(0,198,255,0.15), 0 0 0 1px rgba(0,198,255,0.2);
-    }
-    .service-card:hover::before { opacity: 1; }
-    .service-card.active {
-      border-color: var(--accent);
-      background: rgba(0,198,255,0.1);
-      box-shadow: 0 0 0 2px rgba(0,198,255,0.3);
-    }
-    .service-icon {
-      font-size: 2.4rem;
-      margin-bottom: 0.7rem;
-      display: block;
-      filter: drop-shadow(0 4px 12px rgba(0,198,255,0.3));
-    }
-    .service-name {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      perspective: 1000px;
     }
 
-    /* ─── GLASS CARDS ─── */
+    .flip-card {
+      background-color: transparent;
+      height: 220px;
+      cursor: pointer;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      border-radius: var(--radius);
+    }
+
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+    }
+
+    .flip-card-front {
+      transform: rotateY(0deg);
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, rgba(0,198,255,0.15), rgba(0,87,183,0.15));
+      border-color: var(--accent);
+      text-align: center;
+    }
+
+    .service-icon {
+      font-size: 2.8rem;
+      margin-bottom: 0.7rem;
+      filter: drop-shadow(0 4px 12px rgba(0,198,255,0.3));
+    }
+
+    .service-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .service-desc-back {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .service-price-back {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 0.3rem;
+    }
+
+    .service-price-detail {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
     .glass-card {
       background: var(--glass);
       border: 1px solid var(--glass-border);
@@ -218,7 +252,6 @@
       margin-bottom: 2rem;
     }
 
-    /* ─── FORM ─── */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -261,7 +294,6 @@
     }
     select option { background: #0a1628; color: white; }
 
-    /* ─── BUTTONS ─── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -295,20 +327,9 @@
       transform: translateY(-3px);
       box-shadow: 0 14px 32px rgba(244,180,0,0.5);
     }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--glass-border);
-      color: var(--text);
-    }
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
     .btn-lg { padding: 1.1rem 2.5rem; font-size: 1.05rem; }
     .btn-full { width: 100%; }
 
-    /* ─── LOADER DOTS ─── */
     .dots { display: inline-flex; gap: 4px; align-items: center; }
     .dots span {
       width: 7px; height: 7px; border-radius: 50%;
@@ -319,7 +340,6 @@
     .dots span:nth-child(3) { animation-delay: 0.4s; }
     @keyframes dot { 0%,80%,100% { transform: scale(0.7); opacity:0.4; } 40% { transform: scale(1.1); opacity:1; } }
 
-    /* ─── PAYMENT PANEL ─── */
     .payment-step {
       display: flex;
       flex-direction: column;
@@ -352,7 +372,6 @@
     }
     .wa-box strong { color: var(--whatsapp); }
 
-    /* ─── CONFIRMATION ─── */
     .confirm-icon {
       width: 90px; height: 90px;
       border-radius: 50%;
@@ -398,7 +417,6 @@
     .badge-blue   { background: rgba(0,198,255,0.12); border: 1px solid rgba(0,198,255,0.3); color: var(--accent); }
     .badge-yellow { background: rgba(244,180,0,0.12); border: 1px solid rgba(244,180,0,0.3); color: var(--accent2); }
 
-    /* ─── CRM TABLE ─── */
     .crm-wrap {
       overflow-x: auto;
       border-radius: var(--radius);
@@ -439,7 +457,18 @@
     .pill-ok  { background: rgba(0,230,118,0.1); color: var(--success); border: 1px solid rgba(0,230,118,0.2); }
     .pill-pend{ background: rgba(244,180,0,0.1);  color: var(--accent2); border: 1px solid rgba(244,180,0,0.2); }
 
-    /* ─── MARKETING BANNER ─── */
+    .pickup-info {
+      margin-top: 1rem;
+      background: rgba(0,198,255,0.08);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .pickup-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+    }
+
     .marketing-banner {
       background: linear-gradient(135deg, rgba(0,198,255,0.08), rgba(244,180,0,0.06));
       border: 1px solid rgba(0,198,255,0.15);
@@ -461,7 +490,6 @@
     }
     .marketing-banner strong { color: var(--accent); }
 
-    /* ─── FOOTER ─── */
     footer {
       text-align: center;
       padding: 3rem 1rem 1rem;
@@ -486,14 +514,12 @@
       backdrop-filter: blur(8px);
     }
 
-    /* ─── DIVIDER ─── */
     .divider {
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
       margin: 2.5rem 0;
     }
 
-    /* ─── UTILITY ─── */
     .hidden { display: none !important; }
     .text-center { text-align: center; }
     .mb-1 { margin-bottom: 0.5rem; }
@@ -502,7 +528,6 @@
     .mt-3 { margin-top: 1.5rem; }
     .gap-row { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
 
-    /* ─── STEP INDICATOR ─── */
     .steps {
       display: flex;
       justify-content: center;
@@ -554,18 +579,12 @@
     .step-line.done { background: rgba(0,230,118,0.4); }
     .step-line.active { background: rgba(0,198,255,0.4); }
 
-    /* Entry animation */
     @keyframes fadeSlideUp {
       from { opacity:0; transform: translateY(24px); }
       to   { opacity:1; transform: translateY(0); }
     }
     .anim { animation: fadeSlideUp 0.5s ease both; }
 
-    /* ════════════════════════════════════
-       CHATBOT
-    ════════════════════════════════════ */
-
-    /* ── Floating button ── */
     #chatToggle {
       position: fixed;
       bottom: 2rem;
@@ -592,7 +611,6 @@
     #chatToggle:hover { transform: scale(1.1); }
     #chatToggle.open  { animation: none; background: linear-gradient(135deg, #ff4d6d, #c9184a); }
 
-    /* Unread notification */
     .chat-notif {
       position: absolute;
       top: -3px; right: -3px;
@@ -608,7 +626,6 @@
     }
     .chat-notif.hide { transform: scale(0); }
 
-    /* ── Chat window ── */
     #chatWindow {
       position: fixed;
       bottom: 6.5rem;
@@ -639,7 +656,6 @@
       #chatToggle  { bottom: 1.2rem; right: 1.2rem; }
     }
 
-    /* ── Chat header ── */
     .chat-header {
       background: linear-gradient(135deg, rgba(0,198,255,0.15), rgba(0,87,183,0.15));
       border-bottom: 1px solid rgba(0,198,255,0.15);
@@ -692,7 +708,6 @@
     }
     .chat-close:hover { background: rgba(255,77,109,0.2); color: #ff4d6d; }
 
-    /* ── Messages area ── */
     .chat-messages {
       flex: 1;
       overflow-y: auto;
@@ -706,7 +721,6 @@
     .chat-messages::-webkit-scrollbar-track { background: transparent; }
     .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
 
-    /* Bubbles */
     .msg {
       display: flex;
       gap: 0.5rem;
@@ -754,7 +768,6 @@
     }
     .bubble strong { color: #ffffff; font-weight: 700; }
 
-    /* Timestamp */
     .msg-time {
       font-size: 0.65rem;
       color: rgba(255,255,255,0.25);
@@ -763,7 +776,6 @@
     }
     .msg.user .msg-time { text-align: right; }
 
-    /* Typing indicator */
     .typing-bubble {
       display: flex; gap: 4px; align-items: center;
       padding: 0.7rem 1rem;
@@ -785,7 +797,6 @@
       40%          { transform: scale(1.1); opacity:1; }
     }
 
-    /* ── Quick suggestions ── */
     .chat-suggestions {
       padding: 0.6rem 1rem;
       display: flex;
@@ -813,7 +824,6 @@
       transform: translateY(-2px);
     }
 
-    /* ── Chat input ── */
     .chat-input-row {
       display: flex;
       gap: 0.5rem;
@@ -857,58 +867,30 @@
 </head>
 <body>
 
-<!-- Steam particles -->
 <div class="steam-bg" id="steamBg"></div>
 
 <div class="wrapper">
 
-  <!-- ── HERO ── -->
   <div class="hero anim">
-    <div class="hero-badge">💧LIVITY PROJECTS Inc</div>
-    <h1>The cleaning that<br><span>your home deserves</span></h1>
+    <div class="hero-badge">🧼 LIVITY PROJECTS Inc · operations@livitygy.com</div>
+    <h1>Professional steam cleaning<br><span>for your home & vehicles</span></h1>
     <p class="hero-sub">
-      High-pressure steam technology for vehicles, furniture, mattresses, and spaces.
-      Book in minutes, pay with MMG and receive instant confirmation.
+      High-pressure steam technology for furniture, mattresses, cars, and carpets.
+      Book in minutes, pay with MMG. CSR have discretion to give discounts up to 15%.
     </p>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Satisfied clients</div></div>
-      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Specialized services</div></div>
+      <div class="stat"><div class="stat-num">18+</div><div class="stat-label">Specialized services</div></div>
+      <div class="stat"><div class="stat-num">15%</div><div class="stat-label">Max discount</div></div>
       <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Secure MMG payment</div></div>
     </div>
   </div>
 
-  <!-- ── SERVICES ── -->
   <div class="glass-card anim" style="animation-delay:0.1s">
-    <div class="section-label">What do you need to clean?</div>
+    <div class="section-label">Click on any service to flip and see details</div>
     <div class="section-title">Our services</div>
-    <div class="services-grid">
-      <div class="service-card" data-val="Limpieza a vapor de vehículos">
-        <span class="service-icon">🚗</span>
-        <div class="service-name">Vehicles</div>
-      </div>
-      <div class="service-card" data-val="Limpieza a vapor de sofá">
-        <span class="service-icon">🛋️</span>
-        <div class="service-name">Sofa</div>
-      </div>
-      <div class="service-card" data-val="Limpieza a vapor de colchón">
-        <span class="service-icon">🛏️</span>
-        <div class="service-name">Mattress</div>
-      </div>
-      <div class="service-card" data-val="Pulido de suelos">
-        <span class="service-icon">🧹</span>
-        <div class="service-name">Floor polishing</div>
-      </div>
-      <div class="service-card" data-val="Limpieza general de casa">
-        <span class="service-icon">🏠</span>
-        <div class="service-name">General cleaning</div>
-      </div>
-      <div class="service-card" data-val="Otro">
-        <span class="service-icon">🔧</span>
-        <div class="service-name">Others</div>
-      </div>
-    </div>
+    
+    <div class="services-grid" id="servicesGrid"></div>
 
-    <!-- ── STEP INDICATOR ── -->
     <div class="steps" id="stepIndicator">
       <div class="step">
         <div class="step-dot active" id="dot1">1</div>
@@ -926,18 +908,17 @@
       </div>
     </div>
 
-    <!-- ── FORM ── -->
     <div id="formReserva">
       <div class="section-label mb-1">Step 1</div>
       <div class="section-title mb-3">Request service</div>
       <div class="form-grid">
         <div class="form-group">
           <label>Full name *</label>
-          <input type="text" id="nombre" placeholder="e.g., Ana Pérez" />
+          <input type="text" id="nombre" placeholder="e.g., John Smith" />
         </div>
         <div class="form-group">
           <label>Email *</label>
-          <input type="email" id="email" placeholder="ana@email.com" />
+          <input type="email" id="email" placeholder="john@email.com" />
         </div>
         <div class="form-group">
           <label>Phone (WhatsApp) *</label>
@@ -945,14 +926,7 @@
         </div>
         <div class="form-group">
           <label>Service *</label>
-          <select id="servicio">
-            <option value="Limpieza a vapor de vehículos">🚗 Vehicles</option>
-            <option value="Limpieza a vapor de sofá">🛋️ Sofa</option>
-            <option value="Limpieza a vapor de colchón">🛏️ Mattress</option>
-            <option value="Pulido de suelos">🧹 Floor polishing</option>
-            <option value="Limpieza general de casa">🏠 General cleaning</option>
-            <option value="Otro">🔧 Other</option>
-          </select>
+          <select id="servicio"></select>
         </div>
         <div class="form-group">
           <label>Date and time *</label>
@@ -963,6 +937,11 @@
           <input type="text" id="direccion" placeholder="Street, city" />
         </div>
       </div>
+      <div class="pickup-info" id="pickupInfo">
+        <strong>🚚 Carpet Pickup Service:</strong>
+        <div class="pickup-row"><span>West Coast, Georgetown, West Bank:</span> <span>$2,000</span></div>
+        <div class="pickup-row"><span>Linden & New Amsterdam:</span> <span>$3,000</span></div>
+      </div>
       <div class="mt-3">
         <button class="btn btn-primary btn-lg" id="btnReservar">
           📲 Book and request payment
@@ -970,7 +949,6 @@
       </div>
     </div>
 
-    <!-- ── PAYMENT PANEL ── -->
     <div id="panelPago" class="hidden">
       <div class="payment-step anim">
         <div class="payment-icon">💳</div>
@@ -986,12 +964,11 @@
           💰 Simulate payment with MMG
         </button>
         <p style="font-size:0.8rem; color:var(--text-muted);">
-          <em>In production, MMG would call your webhook upon payment confirmation.</em>
+          <em>CSR: Discounts up to 15% · Above 5% must be justified</em>
         </p>
       </div>
     </div>
 
-    <!-- ── CONFIRMATION ── -->
     <div id="panelConfirmacion" class="hidden">
       <div class="text-center anim">
         <div class="confirm-icon">✅</div>
@@ -1027,9 +1004,8 @@
       </div>
     </div>
 
-  </div><!-- /glass-card -->
+  </div>
 
-  <!-- ── CRM ── -->
   <div class="glass-card anim" style="animation-delay:0.2s">
     <div class="section-label">Internal panel</div>
     <div class="section-title mb-3">🗂️ Latest bookings</div>
@@ -1046,19 +1022,19 @@
         <tbody id="crm-body">
           <tr>
             <td>Carlos Gómez</td>
-            <td>Sofa cleaning</td>
+            <td>3-2-1 Suite</td>
             <td>2025-04-15 · 10:00</td>
             <td><span class="pill pill-ok">✓ Confirmed</span></td>
           </tr>
           <tr>
             <td>María López</td>
-            <td>Floor polishing</td>
+            <td>SUV</td>
             <td>2025-04-16 · 14:30</td>
             <td><span class="pill pill-ok">✓ Confirmed</span></td>
           </tr>
           <tr>
             <td>Juan Díaz</td>
-            <td>General cleaning</td>
+            <td>King Mattress</td>
             <td>2025-04-17 · 09:00</td>
             <td><span class="pill pill-pend">⏳ Pending</span></td>
           </tr>
@@ -1067,18 +1043,16 @@
     </div>
   </div>
 
-  <!-- ── MARKETING BANNER ── -->
   <div class="marketing-banner anim" style="animation-delay:0.3s">
     <div class="m-icon">📢</div>
     <p>
-      <strong>Automated marketing active:</strong> Every week we send personalized offers
-      via WhatsApp to previous customers. Campaigns integrated with social media and Google Ads.
+      <strong>CSR Policy:</strong> Discretionary discounts up to 15%. Any discount above 5% must be justified.
+      Carpet pickup available: West Coast, Georgetown, West Bank ($2,000) · Linden & New Amsterdam ($3,000)
     </p>
   </div>
 
-  <!-- ── FOOTER ── -->
   <footer>
-    <p>⚡ Functional prototype based on automated workflow</p>
+    <p>⚡ Livity Projects Inc · operations@livitygy.com</p>
     <div class="footer-tech">
       <span class="tech-tag">n8n</span>
       <span class="tech-tag">MMG Payments</span>
@@ -1088,54 +1062,37 @@
     </div>
   </footer>
 
-</div><!-- /wrapper -->
+</div>
 
-<!-- ══════════════════════════════════
-     CHATBOT WIDGET
-══════════════════════════════════ -->
-
-<!-- Floating button -->
 <button id="chatToggle" title="Chat with us">
   <span id="chatIcon">💬</span>
   <span class="chat-notif" id="chatNotif">1</span>
 </button>
 
-<!-- Chat window -->
 <div id="chatWindow">
-
-  <!-- Header -->
   <div class="chat-header">
     <div class="chat-avatar">🧽</div>
     <div class="chat-info">
-      <h3>VaporBot · MMG</h3>
+      <h3>Livity Assistant</h3>
       <p>● Online now</p>
     </div>
     <button class="chat-close" id="chatCloseBtn" title="Close">✕</button>
   </div>
-
-  <!-- Messages -->
   <div class="chat-messages" id="chatMessages"></div>
-
-  <!-- Quick suggestions -->
   <div class="chat-suggestions" id="chatSugs">
     <button class="sug-btn" data-sug="What are your services?">🧹 Services</button>
     <button class="sug-btn" data-sug="What are the prices?">💲 Prices</button>
     <button class="sug-btn" data-sug="How do I book?">📅 Book</button>
-    <button class="sug-btn" data-sug="How does MMG work?">💳 MMG payment</button>
-    <button class="sug-btn" data-sug="What areas do you cover?">📍 Coverage</button>
-    <button class="sug-btn" data-sug="Talk to an agent">👤 Agent</button>
+    <button class="sug-btn" data-sug="Do you offer discounts?">💰 Discounts</button>
+    <button class="sug-btn" data-sug="Carpet pickup?">🚚 Pickup</button>
   </div>
-
-  <!-- Input -->
   <div class="chat-input-row">
     <input type="text" id="chatInput" placeholder="Type your message…" autocomplete="off" />
     <button id="chatSend">➤</button>
   </div>
-
 </div>
 
 <script>
-  /* ─── Steam particles ─── */
   (function() {
     const bg = document.getElementById('steamBg');
     for (let i = 0; i < 28; i++) {
@@ -1151,23 +1108,194 @@
     }
   })();
 
-  /* ─── Service card selection ─── */
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-      const val = card.dataset.val;
-      const sel = document.getElementById('servicio');
-      for (let o of sel.options) { if (o.value === val) { sel.value = val; break; } }
-    });
-  });
+  const servicesData = {
+    'sofa-1seat': { 
+      name: '1 Seat Sofa', 
+      price: '$6,000', 
+      icon: '🛋️',
+      desc: 'Deep steam cleaning for 1-seat sofas. Removes stains, bacteria, and odors.',
+      detail: 'Standard pricing'
+    },
+    'sofa-2seat': { 
+      name: '2 Seat Sofa', 
+      price: '$10,000', 
+      icon: '🛋️',
+      desc: 'Complete cleaning for 2-seat sofas. Restores fabric appearance.',
+      detail: 'Standard pricing'
+    },
+    'sofa-3seat': { 
+      name: '3 Seat Sofa', 
+      price: '$14,000', 
+      icon: '🛋️',
+      desc: 'Professional steam cleaning for 3-seat sofas.',
+      detail: 'Standard pricing'
+    },
+    'l-shaped': { 
+      name: 'L Shaped Sofa', 
+      price: '$16,000', 
+      icon: '🛋️',
+      desc: 'Deep cleaning for L-shaped sofas, including all sections.',
+      detail: 'Standard pricing'
+    },
+    'suite-321': { 
+      name: '3-2-1 Suite', 
+      price: '$24,000', 
+      icon: '🛋️',
+      desc: 'Complete suite cleaning: 3-seat, 2-seat, and 1-seat sofa.',
+      detail: 'Standard pricing'
+    },
+    'suite-311': { 
+      name: '3-1-1 Suite', 
+      price: '$20,000', 
+      icon: '🛋️',
+      desc: 'Suite cleaning: 3-seat and two 1-seat sofas.',
+      detail: 'Standard pricing'
+    },
+    'suite-32': { 
+      name: '3-2 Suite', 
+      price: '$20,000', 
+      icon: '🛋️',
+      desc: 'Suite cleaning: 3-seat and 2-seat sofa.',
+      detail: 'Standard pricing'
+    },
+    'suite-211': { 
+      name: '2-1-1 Suite', 
+      price: '$16,000', 
+      icon: '🛋️',
+      desc: 'Suite cleaning: 2-seat and two 1-seat sofas.',
+      detail: 'Standard pricing'
+    },
+    'office-chairs': { 
+      name: 'Office Chairs', 
+      price: '$2,500', 
+      icon: '💺',
+      desc: 'Per chair cleaning. Removes dirt and bacteria.',
+      detail: 'Per chair'
+    },
+    'dining-chairs': { 
+      name: 'Dining Chairs', 
+      price: '$2,000', 
+      icon: '🍽️',
+      desc: 'Per chair cleaning for dining room chairs.',
+      detail: 'Per chair'
+    },
+    'mattress-king': { 
+      name: 'King Mattress', 
+      price: '$10,000', 
+      icon: '🛏️',
+      desc: 'Includes 2 pillows. Deep sanitization and stain removal.',
+      detail: 'Includes 2 pillows'
+    },
+    'mattress-queen': { 
+      name: 'Queen Mattress', 
+      price: '$8,000', 
+      icon: '🛏️',
+      desc: 'Includes 2 pillows. Complete mattress cleaning.',
+      detail: 'Includes 2 pillows'
+    },
+    'car': { 
+      name: 'Car', 
+      price: '$12,000', 
+      icon: '🚗',
+      desc: 'Includes mats. Interior steam cleaning for cars.',
+      detail: 'Includes mats'
+    },
+    'suv': { 
+      name: 'SUV', 
+      price: '$16,000', 
+      icon: '🚙',
+      desc: 'Includes mats. Full interior cleaning for SUVs.',
+      detail: 'Includes mats'
+    },
+    'carpet-uninstalled': { 
+      name: 'Carpet (uninstalled)', 
+      price: '$115/sq ft', 
+      icon: '🧹',
+      desc: 'Per square foot. L x W measurement. Pickup service available.',
+      detail: 'Uninstalled - pickup available'
+    },
+    'carpet-installed': { 
+      name: 'Carpet (installed)', 
+      price: '$95/sq ft', 
+      icon: '🧹',
+      desc: 'Per square foot. L x W measurement. Cleaning on-site.',
+      detail: 'Installed - on-site cleaning'
+    },
+    'pressure-washing': { 
+      name: 'Pressure Washing', 
+      price: '$30/sq ft', 
+      icon: '💧',
+      desc: 'Per square foot. High-pressure cleaning for exterior surfaces.',
+      detail: 'Exterior surfaces'
+    },
+    'recliners': { 
+      name: 'Recliners', 
+      price: '$6,000 / $10,000', 
+      icon: '🪑',
+      desc: 'Single $6,000 · Joined $10,000',
+      detail: 'Single or joined pricing'
+    }
+  };
+
+  function createFlipCards() {
+    const grid = document.getElementById('servicesGrid');
+    grid.innerHTML = '';
+    
+    for (const [key, data] of Object.entries(servicesData)) {
+      const flipCard = document.createElement('div');
+      flipCard.className = 'flip-card';
+      flipCard.dataset.service = key;
+      
+      flipCard.innerHTML = `
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <span class="service-icon">${data.icon}</span>
+            <div class="service-name">${data.name}</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="service-name">${data.name}</div>
+            <div class="service-desc-back">${data.desc}</div>
+            <div class="service-price-back">${data.price}</div>
+            <div class="service-price-detail">${data.detail}</div>
+          </div>
+        </div>
+      `;
+      
+      flipCard.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('flipped');
+        document.getElementById('servicio').value = key;
+      });
+      
+      grid.appendChild(flipCard);
+    }
+  }
+
+  function populateServiceSelect() {
+    const select = document.getElementById('servicio');
+    select.innerHTML = '';
+    for (const [key, data] of Object.entries(servicesData)) {
+      const option = document.createElement('option');
+      option.value = key;
+      option.textContent = `${data.name} - ${data.price}`;
+      select.appendChild(option);
+    }
+  }
+
+  createFlipCards();
+  populateServiceSelect();
+
   document.getElementById('servicio').addEventListener('change', function() {
-    document.querySelectorAll('.service-card').forEach(c => {
-      c.classList.toggle('active', c.dataset.val === this.value);
+    const selectedKey = this.value;
+    document.querySelectorAll('.flip-card').forEach(card => {
+      if (card.dataset.service === selectedKey) {
+        card.classList.add('flipped');
+      } else {
+        card.classList.remove('flipped');
+      }
     });
   });
 
-  /* ─── Steps helper ─── */
   function setStep(step) {
     [1,2,3].forEach(n => {
       const dot = document.getElementById('dot' + n);
@@ -1183,7 +1311,6 @@
   }
   setStep(1);
 
-  /* ─── Validation ─── */
   function validar(nombre, email, telefono, fechaHora, direccion) {
     if (!nombre || !email || !telefono || !fechaHora || !direccion) return false;
     if (!email.includes('@') || !email.includes('.')) return false;
@@ -1194,7 +1321,6 @@
 
   let reservaActual = {};
 
-  /* ─── Step 1 → 2 ─── */
   document.getElementById('btnReservar').addEventListener('click', e => {
     e.preventDefault();
     const nombre   = document.getElementById('nombre').value.trim();
@@ -1208,20 +1334,18 @@
       alert('❌ Please check the fields. The date must be in the future and all fields are required.');
       return;
     }
-    reservaActual = { nombre, email, telefono, servicio, fechaHora, direccion };
+    reservaActual = { nombre, email, telefono, servicio: servicesData[servicio].name, fechaHora, direccion };
     document.getElementById('telefonoMostrar').textContent = telefono;
     document.getElementById('formReserva').classList.add('hidden');
     document.getElementById('panelPago').classList.remove('hidden');
     setStep(2);
 
-    /* Add to CRM as pending */
     const row = document.createElement('tr');
-    row.innerHTML = `<td>${nombre}</td><td>${servicio}</td><td>${fechaHora.replace('T',' · ')}</td><td><span class="pill pill-pend">⏳ Pending</span></td>`;
+    row.innerHTML = `<td>${nombre}</td><td>${servicesData[servicio].name}</td><td>${fechaHora.replace('T',' · ')}</td><td><span class="pill pill-pend">⏳ Pending</span></td>`;
     row.id = 'crm-new-row';
     document.getElementById('crm-body').prepend(row);
   });
 
-  /* ─── Step 2 → 3 ─── */
   document.getElementById('btnSimularPago').addEventListener('click', () => {
     const { nombre, servicio, fechaHora, direccion } = reservaActual;
     document.getElementById('reciboNombre').textContent    = nombre;
@@ -1232,7 +1356,6 @@
     document.getElementById('panelConfirmacion').classList.remove('hidden');
     setStep(3);
 
-    /* Update CRM */
     const row = document.getElementById('crm-new-row');
     if (row) {
       const celdas = row.querySelectorAll('td');
@@ -1240,10 +1363,6 @@
     }
   });
 
-
-  /* ════════════════════════════════════
-     CHATBOT LOGIC
-  ════════════════════════════════════ */
   (function() {
     const toggle   = document.getElementById('chatToggle');
     const win      = document.getElementById('chatWindow');
@@ -1256,64 +1375,37 @@
     const sugs     = document.getElementById('chatSugs');
     let isOpen     = false;
 
-    /* ── Knowledge base (English) ── */
     const KB = [
       {
-        keys: ['service','services','offer','do','clean','types','ofrecen'],
-        reply: `We offer **6 steam cleaning services**:\n\n🚗 <strong>Vehicles</strong> — full interior\n🛋️ <strong>Sofa</strong> — fabrics and upholstery\n🛏️ <strong>Mattress</strong> — deep sanitization\n🧹 <strong>Floor polishing</strong> — tile and marble\n🏠 <strong>General cleaning</strong> — entire home\n🔧 <strong>Others</strong> — ask us!\n\nAre you interested in any particular one?`
+        keys: ['service','services','offer','do','clean'],
+        reply: `We offer **18 professional cleaning services**:\n\n🛋️ Sofas (1,2,3 seat, L-shaped)\n🛋️ Suites (3-2-1, 3-1-1, 3-2, 2-1-1)\n💺 Office & Dining Chairs\n🛏️ King & Queen Mattresses (incl. pillows)\n🚗 Cars & SUVs (incl. mats)\n🧹 Carpet cleaning (installed/uninstalled)\n💧 Pressure washing\n🪑 Recliners (single/joined)\n\nClick on any service above to flip and see details!`
       },
       {
-        keys: ['price','prices','cost','rate','how much','charge','cuesta','tarifa'],
-        reply: `Our approximate rates are:\n\n🚗 Vehicle — from <strong>$25</strong>\n🛋️ Sofa — from <strong>$30</strong>\n🛏️ Mattress — from <strong>$20</strong>\n🧹 Floor polishing — from <strong>$40</strong>\n🏠 General cleaning — from <strong>$60</strong>\n\nThe final price depends on size and condition. <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">Request a free quote →</a>`
+        keys: ['price','prices','cost','how much','charge'],
+        reply: `💰 Our rates:\n\n1 Seat Sofa: $6,000\n2 Seat Sofa: $10,000\n3 Seat Sofa: $14,000\nL Shaped: $16,000\n3-2-1 Suite: $24,000\n3-1-1 Suite: $20,000\n3-2 Suite: $20,000\n2-1-1 Suite: $16,000\nOffice Chairs: $2,500 each\nDining Chairs: $2,000 each\nKing Mattress: $10,000 (2 pillows)\nQueen Mattress: $8,000 (2 pillows)\nCar: $12,000 (incl. mats)\nSUV: $16,000 (incl. mats)\nCarpet (uninstalled): $115/sq ft\nCarpet (installed): $95/sq ft\nPressure Washing: $30/sq ft\nRecliners: Single $6,000 / Joined $10,000`
       },
       {
-        keys: ['booking','book','appointment','schedule','request','reserva','cita'],
-        reply: `Booking is very easy 📅\n\n<strong>1.</strong> Choose your service above\n<strong>2.</strong> Fill out the form with your details\n<strong>3.</strong> Pay securely with MMG\n<strong>4.</strong> Receive confirmation via WhatsApp!\n\n<a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">👉 Go to the booking form</a>`
+        keys: ['discount','discounts','off','save','csr'],
+        reply: `🎯 CSR have discretion to give discounts of up to 15%.\n⚠️ Any discount issued above 5% must be justified by the CSR.\n\nAsk our team about available discounts!`
       },
       {
-        keys: ['mmg','payment','pay','method','secure','pago','método'],
-        reply: `We accept 100% secure payment through <strong>MMG</strong> 💳\n\n✅ Secure online payment\n✅ You receive a link via WhatsApp\n✅ Instant automatic confirmation\n✅ Digital receipt in your email\n\nHaving trouble with payment? Write to us at <strong>+592 000 0000</strong>.`
+        keys: ['pickup','carpet pickup','delivery','west coast','georgetown','linden','amsterdam'],
+        reply: `🚚 Carpet Pickup Service:\n\nWest Coast, Georgetown, West Bank: $2,000\nLinden & New Amsterdam: $3,000\n\nWe pick up your carpets, clean them, and return them!`
       },
       {
-        keys: ['area','areas','city','coverage','reach','service area','zona','ciudad'],
-        reply: `📍 We currently cover the following areas:\n\n🏙️ Capital city and surroundings\n🌆 North and south residential areas\n🏘️ Metropolitan area (radius ~30 km)\n\nIf you're not sure if we reach your area, <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">book and we'll confirm →</a>`
+        keys: ['booking','book','appointment','schedule','request'],
+        reply: `📅 Booking is easy:\n\n1. Select your service above\n2. Fill out the form\n3. Pay securely with MMG\n4. Get WhatsApp confirmation!\n\nCSR can apply discounts during booking.`
       },
       {
-        keys: ['time','duration','how long','take','tiempo','demora','tarda'],
-        reply: `⏱️ Approximate times are:\n\n🚗 Vehicle — <strong>1 to 2 hours</strong>\n🛋️ Sofa — <strong>45 to 90 min</strong>\n🛏️ Mattress — <strong>30 to 60 min</strong>\n🧹 Floors — <strong>1 to 3 hours</strong>\n🏠 General cleaning — <strong>3 to 6 hours</strong>\n\nWe always arrive on time for your booked slot 😊`
-      },
-      {
-        keys: ['steam','chemical','safe','kids','pets','allergic','vapor','químico'],
-        reply: `💧 Our cleaning is <strong>100% steam</strong>, with no harsh chemicals.\n\n✅ Safe for children\n✅ Safe for pets\n✅ No toxic residues\n✅ Eliminates dust mites, bacteria, and germs\n✅ Eco-friendly 🌱\n\nThe healthiest option for your home!`
-      },
-      {
-        keys: ['cancel','cancellation','policy','refund','change','cancelar','reembolso'],
-        reply: `🔄 Our cancellation policy is flexible:\n\n✅ Free cancellation with <strong>24 hours notice</strong>\n✅ Rescheduling at no extra cost\n⚠️ Cancellations with <12h may incur a small fee\n\nTo cancel or reschedule, contact us on WhatsApp at <strong>+592 000 0000</strong>.`
-      },
-      {
-        keys: ['whatsapp','contact','phone','call','write','teléfono','contacto'],
-        reply: `📱 You can contact us by:\n\n💬 <strong>WhatsApp:</strong> +592 000 0000\n📧 <strong>Email:</strong> info@steamcleaning.com\n🕐 <strong>Hours:</strong> Mon–Sat 8:00 AM – 6:00 PM\n\nYou can also <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">book directly online →</a>`
-      },
-      {
-        keys: ['agent','human','person','talk','advisor','real help','agente','asesor'],
-        reply: `👤 I'll gladly connect you with an advisor!\n\nWrite to us right now on WhatsApp:\n<strong>+592 000 0000</strong>\n\nOr if you prefer, leave me your name and number and we'll call you in less than 10 minutes 📞`
-      },
-      {
-        keys: ['hello','hi','hey','greetings','good morning','good afternoon','hola','buenas'],
-        reply: `Hello! 👋 Welcome to <strong>MMG Steam Cleaning</strong>.\n\nI'm here to help you. You can ask me about our services, prices, bookings, or any questions you have. How can I help you today?`
-      },
-      {
-        keys: ['thanks','thank you','perfect','great','excellent','ok','done','gracias'],
-        reply: `You're welcome! 😊 It's been a pleasure helping you.\n\nIf you need anything else, I'll be here. Have a great day and we hope to serve you soon! 🧽✨`
+        keys: ['hello','hi','hey','greetings','hola'],
+        reply: `Hello! 👋 Welcome to Livity Projects Inc.\n\nI can help you with service info, prices, discounts, and bookings. How can I assist you today?`
       }
     ];
 
-    /* ── Current time ── */
     function now() {
       return new Date().toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
     }
 
-    /* ── Add message ── */
     function addMsg(text, who) {
       const wrap = document.createElement('div');
       wrap.className = 'msg ' + who;
@@ -1335,7 +1427,6 @@
       msgs.scrollTop = msgs.scrollHeight;
     }
 
-    /* ── Typing indicator ── */
     function showTyping(cb, delay = 900) {
       const wrap = document.createElement('div');
       wrap.className = 'msg bot';
@@ -1352,16 +1443,14 @@
       }, delay);
     }
 
-    /* ── Response engine ── */
     function getReply(txt) {
       const t = txt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
       for (const item of KB) {
         if (item.keys.some(k => t.includes(k))) return item.reply;
       }
-      return `Hmm, I'm not sure how to answer that 🤔\n\nYou can ask me about our <strong>services</strong>, <strong>prices</strong>, <strong>payment methods</strong>, or how to <strong>make a booking</strong>.\n\nOr if you prefer, write to us on WhatsApp: <strong>+592 000 0000</strong>`;
+      return `I'm not sure about that 🤔\n\nYou can ask me about:\n• Services & prices\n• Discounts (up to 15%)\n• Carpet pickup\n• How to book\n\nOr contact us at operations@livitygy.com`;
     }
 
-    /* ── Send message ── */
     function sendMessage(text) {
       const t = text.trim();
       if (!t) return;
@@ -1370,7 +1459,6 @@
       showTyping(() => addMsg(getReply(t), 'bot'), 700 + Math.random()*600);
     }
 
-    /* ── Toggle chat ── */
     toggle.addEventListener('click', () => {
       isOpen = !isOpen;
       win.classList.toggle('open', isOpen);
@@ -1378,10 +1466,9 @@
       chatIcon.textContent = isOpen ? '✕' : '💬';
       notif.classList.add('hide');
       if (isOpen && msgs.children.length === 0) {
-        // Welcome message
         showTyping(() => {
           addMsg(
-            `Hello! 👋 I'm <strong>VaporBot</strong>, the assistant for <strong>MMG Steam Cleaning</strong>.\n\nHow can I help you today? You can use the suggestions below or type your question 💬`,
+            `Hello! 👋 I'm the Livity Projects assistant.\n\nWe offer professional steam cleaning for sofas, suites, mattresses, cars, and carpets. CSR can give up to 15% discount. Click on any service above to flip it and see details!`,
             'bot'
           );
         }, 600);
@@ -1395,22 +1482,17 @@
       chatIcon.textContent = '💬';
     });
 
-    /* ── Send on button and Enter ── */
     sendBtn.addEventListener('click', () => sendMessage(input.value));
     input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(input.value); });
 
-    /* ── Quick suggestions ── */
     sugs.querySelectorAll('.sug-btn').forEach(btn => {
       btn.addEventListener('click', () => sendMessage(btn.dataset.sug));
     });
 
-    /* ── Initial notification after 3s ── */
     setTimeout(() => {
       if (!isOpen) notif.classList.remove('hide');
     }, 3000);
-
   })();
 </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
