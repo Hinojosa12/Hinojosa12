@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Limpieza al Vapor · MMG</title>
+  <title>Steam Cleaning · MMG</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -32,7 +32,7 @@
       overflow-x: hidden;
     }
 
-    /* ─── FONDO ANIMADO ─── */
+    /* ─── ANIMATED BACKGROUND ─── */
     body::before {
       content: '';
       position: fixed;
@@ -45,7 +45,7 @@
       z-index: 0;
     }
 
-    /* Partículas de vapor */
+    /* Steam particles */
     .steam-bg {
       position: fixed;
       inset: 0;
@@ -142,7 +142,7 @@
       font-weight: 500;
     }
 
-    /* ─── SERVICIOS ─── */
+    /* ─── SERVICES ─── */
     .section-label {
       font-size: 0.78rem;
       font-weight: 700;
@@ -208,7 +208,7 @@
       color: var(--text);
     }
 
-    /* ─── CARDS / GLASS ─── */
+    /* ─── GLASS CARDS ─── */
     .glass-card {
       background: var(--glass);
       border: 1px solid var(--glass-border);
@@ -218,7 +218,7 @@
       margin-bottom: 2rem;
     }
 
-    /* ─── FORMULARIO ─── */
+    /* ─── FORM ─── */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -261,7 +261,7 @@
     }
     select option { background: #0a1628; color: white; }
 
-    /* ─── BOTONES ─── */
+    /* ─── BUTTONS ─── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -319,7 +319,7 @@
     .dots span:nth-child(3) { animation-delay: 0.4s; }
     @keyframes dot { 0%,80%,100% { transform: scale(0.7); opacity:0.4; } 40% { transform: scale(1.1); opacity:1; } }
 
-    /* ─── PANEL PAGO ─── */
+    /* ─── PAYMENT PANEL ─── */
     .payment-step {
       display: flex;
       flex-direction: column;
@@ -352,7 +352,7 @@
     }
     .wa-box strong { color: var(--whatsapp); }
 
-    /* ─── CONFIRMACIÓN ─── */
+    /* ─── CONFIRMATION ─── */
     .confirm-icon {
       width: 90px; height: 90px;
       border-radius: 50%;
@@ -554,7 +554,7 @@
     .step-line.done { background: rgba(0,230,118,0.4); }
     .step-line.active { background: rgba(0,198,255,0.4); }
 
-    /* Animación de entrada */
+    /* Entry animation */
     @keyframes fadeSlideUp {
       from { opacity:0; transform: translateY(24px); }
       to   { opacity:1; transform: translateY(0); }
@@ -565,7 +565,7 @@
        CHATBOT
     ════════════════════════════════════ */
 
-    /* ── Botón flotante ── */
+    /* ── Floating button ── */
     #chatToggle {
       position: fixed;
       bottom: 2rem;
@@ -592,7 +592,7 @@
     #chatToggle:hover { transform: scale(1.1); }
     #chatToggle.open  { animation: none; background: linear-gradient(135deg, #ff4d6d, #c9184a); }
 
-    /* Notificación no leída */
+    /* Unread notification */
     .chat-notif {
       position: absolute;
       top: -3px; right: -3px;
@@ -608,7 +608,7 @@
     }
     .chat-notif.hide { transform: scale(0); }
 
-    /* ── Ventana del chat ── */
+    /* ── Chat window ── */
     #chatWindow {
       position: fixed;
       bottom: 6.5rem;
@@ -639,7 +639,7 @@
       #chatToggle  { bottom: 1.2rem; right: 1.2rem; }
     }
 
-    /* ── Header del chat ── */
+    /* ── Chat header ── */
     .chat-header {
       background: linear-gradient(135deg, rgba(0,198,255,0.15), rgba(0,87,183,0.15));
       border-bottom: 1px solid rgba(0,198,255,0.15);
@@ -692,7 +692,7 @@
     }
     .chat-close:hover { background: rgba(255,77,109,0.2); color: #ff4d6d; }
 
-    /* ── Área de mensajes ── */
+    /* ── Messages area ── */
     .chat-messages {
       flex: 1;
       overflow-y: auto;
@@ -706,7 +706,7 @@
     .chat-messages::-webkit-scrollbar-track { background: transparent; }
     .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
 
-    /* Burbujas */
+    /* Bubbles */
     .msg {
       display: flex;
       gap: 0.5rem;
@@ -763,7 +763,7 @@
     }
     .msg.user .msg-time { text-align: right; }
 
-    /* Indicador de escritura */
+    /* Typing indicator */
     .typing-bubble {
       display: flex; gap: 4px; align-items: center;
       padding: 0.7rem 1rem;
@@ -785,7 +785,7 @@
       40%          { transform: scale(1.1); opacity:1; }
     }
 
-    /* ── Sugerencias rápidas ── */
+    /* ── Quick suggestions ── */
     .chat-suggestions {
       padding: 0.6rem 1rem;
       display: flex;
@@ -813,7 +813,7 @@
       transform: translateY(-2px);
     }
 
-    /* ── Input del chat ── */
+    /* ── Chat input ── */
     .chat-input-row {
       display: flex;
       gap: 0.5rem;
@@ -857,54 +857,54 @@
 </head>
 <body>
 
-<!-- Partículas de vapor -->
+<!-- Steam particles -->
 <div class="steam-bg" id="steamBg"></div>
 
 <div class="wrapper">
 
   <!-- ── HERO ── -->
   <div class="hero anim">
-    <div class="hero-badge">💧 Limpieza al Vapor Profesional</div>
-    <h1>La limpieza que<br><span>tu hogar merece</span></h1>
+    <div class="hero-badge">💧 Professional Steam Cleaning</div>
+    <h1>The cleaning that<br><span>your home deserves</span></h1>
     <p class="hero-sub">
-      Tecnología de vapor de alta presión para vehículos, muebles, colchones y espacios.
-      Reserva en minutos, paga con MMG y recibe confirmación al instante.
+      High-pressure steam technology for vehicles, furniture, mattresses, and spaces.
+      Book in minutes, pay with MMG and receive instant confirmation.
     </p>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Clientes satisfechos</div></div>
-      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Servicios especializados</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Pago seguro MMG</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Satisfied clients</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Specialized services</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Secure MMG payment</div></div>
     </div>
   </div>
 
-  <!-- ── SERVICIOS ── -->
+  <!-- ── SERVICES ── -->
   <div class="glass-card anim" style="animation-delay:0.1s">
-    <div class="section-label">¿Qué necesitas limpiar?</div>
-    <div class="section-title">Nuestros servicios</div>
+    <div class="section-label">What do you need to clean?</div>
+    <div class="section-title">Our services</div>
     <div class="services-grid">
       <div class="service-card" data-val="Limpieza a vapor de vehículos">
         <span class="service-icon">🚗</span>
-        <div class="service-name">Vehículos</div>
+        <div class="service-name">Vehicles</div>
       </div>
       <div class="service-card" data-val="Limpieza a vapor de sofá">
         <span class="service-icon">🛋️</span>
-        <div class="service-name">Sofá</div>
+        <div class="service-name">Sofa</div>
       </div>
       <div class="service-card" data-val="Limpieza a vapor de colchón">
         <span class="service-icon">🛏️</span>
-        <div class="service-name">Colchón</div>
+        <div class="service-name">Mattress</div>
       </div>
       <div class="service-card" data-val="Pulido de suelos">
         <span class="service-icon">🧹</span>
-        <div class="service-name">Pulido suelos</div>
+        <div class="service-name">Floor polishing</div>
       </div>
       <div class="service-card" data-val="Limpieza general de casa">
         <span class="service-icon">🏠</span>
-        <div class="service-name">Limpieza general</div>
+        <div class="service-name">General cleaning</div>
       </div>
       <div class="service-card" data-val="Otro">
         <span class="service-icon">🔧</span>
-        <div class="service-name">Otros</div>
+        <div class="service-name">Others</div>
       </div>
     </div>
 
@@ -912,117 +912,117 @@
     <div class="steps" id="stepIndicator">
       <div class="step">
         <div class="step-dot active" id="dot1">1</div>
-        <span class="step-label active" id="lbl1">Reserva</span>
+        <span class="step-label active" id="lbl1">Booking</span>
       </div>
       <div class="step-line" id="line1"></div>
       <div class="step">
         <div class="step-dot" id="dot2">2</div>
-        <span class="step-label" id="lbl2">Pago MMG</span>
+        <span class="step-label" id="lbl2">MMG Payment</span>
       </div>
       <div class="step-line" id="line2"></div>
       <div class="step">
         <div class="step-dot" id="dot3">3</div>
-        <span class="step-label" id="lbl3">Confirmado</span>
+        <span class="step-label" id="lbl3">Confirmed</span>
       </div>
     </div>
 
-    <!-- ── FORMULARIO ── -->
+    <!-- ── FORM ── -->
     <div id="formReserva">
-      <div class="section-label mb-1">Paso 1</div>
-      <div class="section-title mb-3">Solicitar servicio</div>
+      <div class="section-label mb-1">Step 1</div>
+      <div class="section-title mb-3">Request service</div>
       <div class="form-grid">
         <div class="form-group">
-          <label>Nombre completo *</label>
-          <input type="text" id="nombre" placeholder="Ej: Ana Pérez" />
+          <label>Full name *</label>
+          <input type="text" id="nombre" placeholder="e.g., Ana Pérez" />
         </div>
         <div class="form-group">
-          <label>Correo electrónico *</label>
+          <label>Email *</label>
           <input type="email" id="email" placeholder="ana@email.com" />
         </div>
         <div class="form-group">
-          <label>Teléfono (WhatsApp) *</label>
+          <label>Phone (WhatsApp) *</label>
           <input type="tel" id="telefono" placeholder="+592 123 4567" />
         </div>
         <div class="form-group">
-          <label>Servicio *</label>
+          <label>Service *</label>
           <select id="servicio">
-            <option value="Limpieza a vapor de vehículos">🚗 Vehículos</option>
-            <option value="Limpieza a vapor de sofá">🛋️ Sofá</option>
-            <option value="Limpieza a vapor de colchón">🛏️ Colchón</option>
-            <option value="Pulido de suelos">🧹 Pulido suelos</option>
-            <option value="Limpieza general de casa">🏠 Limpieza general</option>
-            <option value="Otro">🔧 Otro</option>
+            <option value="Limpieza a vapor de vehículos">🚗 Vehicles</option>
+            <option value="Limpieza a vapor de sofá">🛋️ Sofa</option>
+            <option value="Limpieza a vapor de colchón">🛏️ Mattress</option>
+            <option value="Pulido de suelos">🧹 Floor polishing</option>
+            <option value="Limpieza general de casa">🏠 General cleaning</option>
+            <option value="Otro">🔧 Other</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Fecha y hora *</label>
+          <label>Date and time *</label>
           <input type="datetime-local" id="fechaHora" />
         </div>
         <div class="form-group">
-          <label>Dirección *</label>
-          <input type="text" id="direccion" placeholder="Calle, ciudad" />
+          <label>Address *</label>
+          <input type="text" id="direccion" placeholder="Street, city" />
         </div>
       </div>
       <div class="mt-3">
         <button class="btn btn-primary btn-lg" id="btnReservar">
-          📲 Reservar y solicitar pago
+          📲 Book and request payment
         </button>
       </div>
     </div>
 
-    <!-- ── PANEL PAGO ── -->
+    <!-- ── PAYMENT PANEL ── -->
     <div id="panelPago" class="hidden">
       <div class="payment-step anim">
         <div class="payment-icon">💳</div>
         <div>
-          <div class="section-label mb-1">Paso 2</div>
-          <div class="section-title mb-2">Esperando pago con MMG</div>
+          <div class="section-label mb-1">Step 2</div>
+          <div class="section-title mb-2">Waiting for MMG payment</div>
           <div class="dots"><span></span><span></span><span></span></div>
         </div>
         <div class="wa-box">
-          <strong>📱 WhatsApp:</strong> Hemos enviado un enlace de pago a <strong id="telefonoMostrar"></strong>
+          <strong>📱 WhatsApp:</strong> We have sent a payment link to <strong id="telefonoMostrar"></strong>
         </div>
         <button class="btn btn-gold btn-lg" id="btnSimularPago">
-          💰 Simular pago con MMG
+          💰 Simulate payment with MMG
         </button>
         <p style="font-size:0.8rem; color:var(--text-muted);">
-          <em>En producción, MMG llamaría a tu webhook al confirmar el pago.</em>
+          <em>In production, MMG would call your webhook upon payment confirmation.</em>
         </p>
       </div>
     </div>
 
-    <!-- ── CONFIRMACIÓN ── -->
+    <!-- ── CONFIRMATION ── -->
     <div id="panelConfirmacion" class="hidden">
       <div class="text-center anim">
         <div class="confirm-icon">✅</div>
-        <div class="section-label mb-1">Paso 3</div>
-        <div class="section-title mb-3">¡Reserva confirmada!</div>
+        <div class="section-label mb-1">Step 3</div>
+        <div class="section-title mb-3">Booking confirmed!</div>
         <div class="receipt">
           <div class="receipt-row">
-            <span>Cliente</span>
+            <span>Customer</span>
             <span id="reciboNombre"></span>
           </div>
           <div class="receipt-row">
-            <span>Servicio</span>
+            <span>Service</span>
             <span id="reciboServicio"></span>
           </div>
           <div class="receipt-row">
-            <span>Fecha y hora</span>
+            <span>Date and time</span>
             <span id="reciboFecha"></span>
           </div>
           <div class="receipt-row">
-            <span>Dirección</span>
+            <span>Address</span>
             <span id="reciboDireccion"></span>
           </div>
           <div class="receipt-row">
-            <span>Estado de pago</span>
-            <span class="pill pill-ok">✓ Confirmado</span>
+            <span>Payment status</span>
+            <span class="pill pill-ok">✓ Confirmed</span>
           </div>
         </div>
         <div class="badge-row">
-          <span class="badge badge-green">📲 Recibo enviado por WhatsApp</span>
-          <span class="badge badge-blue">📅 Evento en Google Calendar</span>
-          <span class="badge badge-yellow">📊 Registrado en CRM</span>
+          <span class="badge badge-green">📲 Receipt sent by WhatsApp</span>
+          <span class="badge badge-blue">📅 Event in Google Calendar</span>
+          <span class="badge badge-yellow">📊 Registered in CRM</span>
         </div>
       </div>
     </div>
@@ -1031,36 +1031,36 @@
 
   <!-- ── CRM ── -->
   <div class="glass-card anim" style="animation-delay:0.2s">
-    <div class="section-label">Panel interno</div>
-    <div class="section-title mb-3">🗂️ Últimas reservas</div>
+    <div class="section-label">Internal panel</div>
+    <div class="section-title mb-3">🗂️ Latest bookings</div>
     <div class="crm-wrap">
       <table>
         <thead>
           <tr>
-            <th>Cliente</th>
-            <th>Servicio</th>
-            <th>Fecha &amp; Hora</th>
-            <th>Estado</th>
+            <th>Customer</th>
+            <th>Service</th>
+            <th>Date & Time</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody id="crm-body">
           <tr>
             <td>Carlos Gómez</td>
-            <td>Limpieza de sofá</td>
+            <td>Sofa cleaning</td>
             <td>2025-04-15 · 10:00</td>
-            <td><span class="pill pill-ok">✓ Confirmado</span></td>
+            <td><span class="pill pill-ok">✓ Confirmed</span></td>
           </tr>
           <tr>
             <td>María López</td>
-            <td>Pulido suelos</td>
+            <td>Floor polishing</td>
             <td>2025-04-16 · 14:30</td>
-            <td><span class="pill pill-ok">✓ Confirmado</span></td>
+            <td><span class="pill pill-ok">✓ Confirmed</span></td>
           </tr>
           <tr>
             <td>Juan Díaz</td>
-            <td>Limpieza general</td>
+            <td>General cleaning</td>
             <td>2025-04-17 · 09:00</td>
-            <td><span class="pill pill-pend">⏳ Pendiente</span></td>
+            <td><span class="pill pill-pend">⏳ Pending</span></td>
           </tr>
         </tbody>
       </table>
@@ -1071,20 +1071,20 @@
   <div class="marketing-banner anim" style="animation-delay:0.3s">
     <div class="m-icon">📢</div>
     <p>
-      <strong>Marketing automático activo:</strong> Cada semana enviamos ofertas personalizadas
-      por WhatsApp a clientes anteriores. Campañas integradas con redes sociales y Google Ads.
+      <strong>Automated marketing active:</strong> Every week we send personalized offers
+      via WhatsApp to previous customers. Campaigns integrated with social media and Google Ads.
     </p>
   </div>
 
   <!-- ── FOOTER ── -->
   <footer>
-    <p>⚡ Prototipo funcional basado en workflow automatizado</p>
+    <p>⚡ Functional prototype based on automated workflow</p>
     <div class="footer-tech">
       <span class="tech-tag">n8n</span>
       <span class="tech-tag">MMG Payments</span>
       <span class="tech-tag">WhatsApp API</span>
       <span class="tech-tag">Google Calendar</span>
-      <span class="tech-tag">CRM Integrado</span>
+      <span class="tech-tag">Integrated CRM</span>
     </div>
   </footer>
 
@@ -1094,13 +1094,13 @@
      CHATBOT WIDGET
 ══════════════════════════════════ -->
 
-<!-- Botón flotante -->
-<button id="chatToggle" title="Chatea con nosotros">
+<!-- Floating button -->
+<button id="chatToggle" title="Chat with us">
   <span id="chatIcon">💬</span>
   <span class="chat-notif" id="chatNotif">1</span>
 </button>
 
-<!-- Ventana del chat -->
+<!-- Chat window -->
 <div id="chatWindow">
 
   <!-- Header -->
@@ -1108,34 +1108,34 @@
     <div class="chat-avatar">🧽</div>
     <div class="chat-info">
       <h3>VaporBot · MMG</h3>
-      <p>● En línea ahora</p>
+      <p>● Online now</p>
     </div>
-    <button class="chat-close" id="chatCloseBtn" title="Cerrar">✕</button>
+    <button class="chat-close" id="chatCloseBtn" title="Close">✕</button>
   </div>
 
-  <!-- Mensajes -->
+  <!-- Messages -->
   <div class="chat-messages" id="chatMessages"></div>
 
-  <!-- Sugerencias rápidas -->
+  <!-- Quick suggestions -->
   <div class="chat-suggestions" id="chatSugs">
-    <button class="sug-btn" data-sug="¿Cuáles son sus servicios?">🧹 Servicios</button>
-    <button class="sug-btn" data-sug="¿Cuáles son los precios?">💲 Precios</button>
-    <button class="sug-btn" data-sug="¿Cómo hago una reserva?">📅 Reservar</button>
-    <button class="sug-btn" data-sug="¿Cómo funciona MMG?">💳 Pago MMG</button>
-    <button class="sug-btn" data-sug="¿En qué zonas trabajan?">📍 Cobertura</button>
-    <button class="sug-btn" data-sug="Hablar con un agente">👤 Agente</button>
+    <button class="sug-btn" data-sug="What are your services?">🧹 Services</button>
+    <button class="sug-btn" data-sug="What are the prices?">💲 Prices</button>
+    <button class="sug-btn" data-sug="How do I book?">📅 Book</button>
+    <button class="sug-btn" data-sug="How does MMG work?">💳 MMG payment</button>
+    <button class="sug-btn" data-sug="What areas do you cover?">📍 Coverage</button>
+    <button class="sug-btn" data-sug="Talk to an agent">👤 Agent</button>
   </div>
 
   <!-- Input -->
   <div class="chat-input-row">
-    <input type="text" id="chatInput" placeholder="Escribe tu mensaje…" autocomplete="off" />
+    <input type="text" id="chatInput" placeholder="Type your message…" autocomplete="off" />
     <button id="chatSend">➤</button>
   </div>
 
 </div>
 
 <script>
-  /* ─── Partículas de vapor ─── */
+  /* ─── Steam particles ─── */
   (function() {
     const bg = document.getElementById('steamBg');
     for (let i = 0; i < 28; i++) {
@@ -1151,7 +1151,7 @@
     }
   })();
 
-  /* ─── Selección de servicios en tarjetas ─── */
+  /* ─── Service card selection ─── */
   document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('click', () => {
       document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active'));
@@ -1183,7 +1183,7 @@
   }
   setStep(1);
 
-  /* ─── Validación ─── */
+  /* ─── Validation ─── */
   function validar(nombre, email, telefono, fechaHora, direccion) {
     if (!nombre || !email || !telefono || !fechaHora || !direccion) return false;
     if (!email.includes('@') || !email.includes('.')) return false;
@@ -1194,7 +1194,7 @@
 
   let reservaActual = {};
 
-  /* ─── Paso 1 → 2 ─── */
+  /* ─── Step 1 → 2 ─── */
   document.getElementById('btnReservar').addEventListener('click', e => {
     e.preventDefault();
     const nombre   = document.getElementById('nombre').value.trim();
@@ -1205,7 +1205,7 @@
     const direccion= document.getElementById('direccion').value.trim();
 
     if (!validar(nombre, email, telefono, fechaHora, direccion)) {
-      alert('❌ Por favor revisa los campos. La fecha debe ser futura y todos los campos son obligatorios.');
+      alert('❌ Please check the fields. The date must be in the future and all fields are required.');
       return;
     }
     reservaActual = { nombre, email, telefono, servicio, fechaHora, direccion };
@@ -1214,29 +1214,29 @@
     document.getElementById('panelPago').classList.remove('hidden');
     setStep(2);
 
-    /* Añadir al CRM como pendiente */
+    /* Add to CRM as pending */
     const row = document.createElement('tr');
-    row.innerHTML = `<td>${nombre}</td><td>${servicio}</td><td>${fechaHora.replace('T',' · ')}</td><td><span class="pill pill-pend">⏳ Pendiente</span></td>`;
+    row.innerHTML = `<td>${nombre}</td><td>${servicio}</td><td>${fechaHora.replace('T',' · ')}</td><td><span class="pill pill-pend">⏳ Pending</span></td>`;
     row.id = 'crm-new-row';
     document.getElementById('crm-body').prepend(row);
   });
 
-  /* ─── Paso 2 → 3 ─── */
+  /* ─── Step 2 → 3 ─── */
   document.getElementById('btnSimularPago').addEventListener('click', () => {
     const { nombre, servicio, fechaHora, direccion } = reservaActual;
     document.getElementById('reciboNombre').textContent    = nombre;
     document.getElementById('reciboServicio').textContent  = servicio;
-    document.getElementById('reciboFecha').textContent     = fechaHora.replace('T', ' a las ');
+    document.getElementById('reciboFecha').textContent     = fechaHora.replace('T', ' at ');
     document.getElementById('reciboDireccion').textContent = direccion;
     document.getElementById('panelPago').classList.add('hidden');
     document.getElementById('panelConfirmacion').classList.remove('hidden');
     setStep(3);
 
-    /* Actualizar CRM */
+    /* Update CRM */
     const row = document.getElementById('crm-new-row');
     if (row) {
       const celdas = row.querySelectorAll('td');
-      if (celdas[3]) celdas[3].innerHTML = '<span class="pill pill-ok">✓ Confirmado</span>';
+      if (celdas[3]) celdas[3].innerHTML = '<span class="pill pill-ok">✓ Confirmed</span>';
     }
   });
 
@@ -1256,64 +1256,64 @@
     const sugs     = document.getElementById('chatSugs');
     let isOpen     = false;
 
-    /* ── Base de conocimiento ── */
+    /* ── Knowledge base (English) ── */
     const KB = [
       {
-        keys: ['servicio','servicios','ofrecen','hacen','limpian','tipos'],
-        reply: `¡Ofrecemos **6 servicios** de limpieza al vapor: \n\n🚗 <strong>Vehículos</strong> — interior completo\n🛋️ <strong>Sofá</strong> — tejidos y tapicería\n🛏️ <strong>Colchón</strong> — higienización profunda\n🧹 <strong>Pulido de suelos</strong> — baldosa y mármol\n🏠 <strong>Limpieza general</strong> — hogar completo\n🔧 <strong>Otros</strong> — ¡consúltanos!\n\n¿Te interesa alguno en particular?`
+        keys: ['service','services','offer','do','clean','types','ofrecen'],
+        reply: `We offer **6 steam cleaning services**:\n\n🚗 <strong>Vehicles</strong> — full interior\n🛋️ <strong>Sofa</strong> — fabrics and upholstery\n🛏️ <strong>Mattress</strong> — deep sanitization\n🧹 <strong>Floor polishing</strong> — tile and marble\n🏠 <strong>General cleaning</strong> — entire home\n🔧 <strong>Others</strong> — ask us!\n\nAre you interested in any particular one?`
       },
       {
-        keys: ['precio','precios','cuesta','cuánto','costo','tarifa','cobran'],
-        reply: `Nuestras tarifas orientativas son:\n\n🚗 Vehículo — desde <strong>$25</strong>\n🛋️ Sofá — desde <strong>$30</strong>\n🛏️ Colchón — desde <strong>$20</strong>\n🧹 Pulido suelos — desde <strong>$40</strong>\n🏠 Limpieza general — desde <strong>$60</strong>\n\nEl precio final depende del tamaño y el estado. <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">Solicita un presupuesto gratis →</a>`
+        keys: ['price','prices','cost','rate','how much','charge','cuesta','tarifa'],
+        reply: `Our approximate rates are:\n\n🚗 Vehicle — from <strong>$25</strong>\n🛋️ Sofa — from <strong>$30</strong>\n🛏️ Mattress — from <strong>$20</strong>\n🧹 Floor polishing — from <strong>$40</strong>\n🏠 General cleaning — from <strong>$60</strong>\n\nThe final price depends on size and condition. <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">Request a free quote →</a>`
       },
       {
-        keys: ['reserva','reservar','cita','agendar','solicitar','pedir'],
-        reply: `Reservar es muy sencillo 📅\n\n<strong>1.</strong> Elige tu servicio arriba\n<strong>2.</strong> Rellena el formulario con tus datos\n<strong>3.</strong> Paga con MMG de forma segura\n<strong>4.</strong> ¡Recibe confirmación por WhatsApp!\n\n<a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">👉 Ir al formulario de reserva</a>`
+        keys: ['booking','book','appointment','schedule','request','reserva','cita'],
+        reply: `Booking is very easy 📅\n\n<strong>1.</strong> Choose your service above\n<strong>2.</strong> Fill out the form with your details\n<strong>3.</strong> Pay securely with MMG\n<strong>4.</strong> Receive confirmation via WhatsApp!\n\n<a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">👉 Go to the booking form</a>`
       },
       {
-        keys: ['mmg','pago','pagar','método','cobro','transferencia','seguro'],
-        reply: `Aceptamos pago 100% seguro a través de <strong>MMG</strong> 💳\n\n✅ Pago en línea seguro\n✅ Recibes enlace por WhatsApp\n✅ Confirmación automática al instante\n✅ Recibo digital en tu correo\n\n¿Tienes algún problema con el pago? Escríbenos al <strong>+592 000 0000</strong>.`
+        keys: ['mmg','payment','pay','method','secure','pago','método'],
+        reply: `We accept 100% secure payment through <strong>MMG</strong> 💳\n\n✅ Secure online payment\n✅ You receive a link via WhatsApp\n✅ Instant automatic confirmation\n✅ Digital receipt in your email\n\nHaving trouble with payment? Write to us at <strong>+592 000 0000</strong>.`
       },
       {
-        keys: ['zona','zonas','ciudad','área','trabajan','atienden','cobertura','llegan','domicilio'],
-        reply: `📍 Actualmente cubrimos las siguientes zonas:\n\n🏙️ Ciudad capital y alrededores\n🌆 Zona residencial norte y sur\n🏘️ Área metropolitana (radio ~30 km)\n\nSi no estás seguro de si llegamos a tu zona, <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">reserva y te confirmamos →</a>`
+        keys: ['area','areas','city','coverage','reach','service area','zona','ciudad'],
+        reply: `📍 We currently cover the following areas:\n\n🏙️ Capital city and surroundings\n🌆 North and south residential areas\n🏘️ Metropolitan area (radius ~30 km)\n\nIf you're not sure if we reach your area, <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">book and we'll confirm →</a>`
       },
       {
-        keys: ['tiempo','demora','cuánto tarda','duración','horas','tarda'],
-        reply: `⏱️ Los tiempos aproximados son:\n\n🚗 Vehículo — <strong>1 a 2 horas</strong>\n🛋️ Sofá — <strong>45 a 90 min</strong>\n🛏️ Colchón — <strong>30 a 60 min</strong>\n🧹 Suelos — <strong>1 a 3 horas</strong>\n🏠 Limpieza general — <strong>3 a 6 horas</strong>\n\nSiempre llegamos puntuales a la hora reservada 😊`
+        keys: ['time','duration','how long','take','tiempo','demora','tarda'],
+        reply: `⏱️ Approximate times are:\n\n🚗 Vehicle — <strong>1 to 2 hours</strong>\n🛋️ Sofa — <strong>45 to 90 min</strong>\n🛏️ Mattress — <strong>30 to 60 min</strong>\n🧹 Floors — <strong>1 to 3 hours</strong>\n🏠 General cleaning — <strong>3 to 6 hours</strong>\n\nWe always arrive on time for your booked slot 😊`
       },
       {
-        keys: ['vapor','producto','químico','seguro','niños','mascotas','alérgico'],
-        reply: `💧 Nuestra limpieza es <strong>100% al vapor</strong>, sin productos químicos agresivos.\n\n✅ Seguro para niños\n✅ Seguro para mascotas\n✅ Sin residuos tóxicos\n✅ Elimina ácaros, bacterias y gérmenes\n✅ Eco-friendly 🌱\n\n¡La opción más saludable para tu hogar!`
+        keys: ['steam','chemical','safe','kids','pets','allergic','vapor','químico'],
+        reply: `💧 Our cleaning is <strong>100% steam</strong>, with no harsh chemicals.\n\n✅ Safe for children\n✅ Safe for pets\n✅ No toxic residues\n✅ Eliminates dust mites, bacteria, and germs\n✅ Eco-friendly 🌱\n\nThe healthiest option for your home!`
       },
       {
-        keys: ['cancelar','cancelación','política','reembolso','devolver','cambiar'],
-        reply: `🔄 Nuestra política de cancelación es flexible:\n\n✅ Cancelación gratuita con <strong>24h de antelación</strong>\n✅ Reagendamiento sin coste adicional\n⚠️ Cancelaciones con <12h pueden tener un pequeño cargo\n\nPara cancelar o reagendar, contáctanos por WhatsApp al <strong>+592 000 0000</strong>.`
+        keys: ['cancel','cancellation','policy','refund','change','cancelar','reembolso'],
+        reply: `🔄 Our cancellation policy is flexible:\n\n✅ Free cancellation with <strong>24 hours notice</strong>\n✅ Rescheduling at no extra cost\n⚠️ Cancellations with <12h may incur a small fee\n\nTo cancel or reschedule, contact us on WhatsApp at <strong>+592 000 0000</strong>.`
       },
       {
-        keys: ['whatsapp','contacto','teléfono','llamar','escribir','contactar'],
-        reply: `📱 Puedes contactarnos por:\n\n💬 <strong>WhatsApp:</strong> +592 000 0000\n📧 <strong>Email:</strong> info@limpiezavapor.com\n🕐 <strong>Horario:</strong> Lun–Sáb 8:00–18:00\n\nTambién puedes <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">reservar directamente en línea →</a>`
+        keys: ['whatsapp','contact','phone','call','write','teléfono','contacto'],
+        reply: `📱 You can contact us by:\n\n💬 <strong>WhatsApp:</strong> +592 000 0000\n📧 <strong>Email:</strong> info@steamcleaning.com\n🕐 <strong>Hours:</strong> Mon–Sat 8:00 AM – 6:00 PM\n\nYou can also <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">book directly online →</a>`
       },
       {
-        keys: ['agente','humano','persona','hablar','asesor','ayuda real'],
-        reply: `👤 ¡Con gusto te conecto con un asesor!\n\nEscríbenos ahora mismo por WhatsApp:\n<strong>+592 000 0000</strong>\n\nO si prefieres, déjame tu nombre y número y te llamamos en menos de 10 minutos 📞`
+        keys: ['agent','human','person','talk','advisor','real help','agente','asesor'],
+        reply: `👤 I'll gladly connect you with an advisor!\n\nWrite to us right now on WhatsApp:\n<strong>+592 000 0000</strong>\n\nOr if you prefer, leave me your name and number and we'll call you in less than 10 minutes 📞`
       },
       {
-        keys: ['hola','buenas','hello','buenos días','buenas tardes','buenas noches','saludos'],
-        reply: `¡Hola! 👋 Bienvenido a <strong>Limpieza al Vapor MMG</strong>.\n\nEstoy aquí para ayudarte. Puedes preguntarme sobre nuestros servicios, precios, reservas o cualquier duda que tengas. ¿En qué te puedo ayudar hoy?`
+        keys: ['hello','hi','hey','greetings','good morning','good afternoon','hola','buenas'],
+        reply: `Hello! 👋 Welcome to <strong>MMG Steam Cleaning</strong>.\n\nI'm here to help you. You can ask me about our services, prices, bookings, or any questions you have. How can I help you today?`
       },
       {
-        keys: ['gracias','thank','perfecto','genial','excelente','ok','listo'],
-        reply: `¡De nada! 😊 Ha sido un placer ayudarte.\n\nSi necesitas algo más, aquí estaré. ¡Que tengas un excelente día y esperamos atenderte pronto! 🧽✨`
+        keys: ['thanks','thank you','perfect','great','excellent','ok','done','gracias'],
+        reply: `You're welcome! 😊 It's been a pleasure helping you.\n\nIf you need anything else, I'll be here. Have a great day and we hope to serve you soon! 🧽✨`
       }
     ];
 
-    /* ── Hora actual ── */
+    /* ── Current time ── */
     function now() {
-      return new Date().toLocaleTimeString('es-ES', { hour:'2-digit', minute:'2-digit' });
+      return new Date().toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
     }
 
-    /* ── Agregar mensaje ── */
+    /* ── Add message ── */
     function addMsg(text, who) {
       const wrap = document.createElement('div');
       wrap.className = 'msg ' + who;
@@ -1335,7 +1335,7 @@
       msgs.scrollTop = msgs.scrollHeight;
     }
 
-    /* ── Indicador de escritura ── */
+    /* ── Typing indicator ── */
     function showTyping(cb, delay = 900) {
       const wrap = document.createElement('div');
       wrap.className = 'msg bot';
@@ -1352,16 +1352,16 @@
       }, delay);
     }
 
-    /* ── Motor de respuestas ── */
+    /* ── Response engine ── */
     function getReply(txt) {
       const t = txt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
       for (const item of KB) {
         if (item.keys.some(k => t.includes(k))) return item.reply;
       }
-      return `Hmm, no estoy seguro de cómo responder eso 🤔\n\nPuedes preguntarme sobre nuestros <strong>servicios</strong>, <strong>precios</strong>, <strong>formas de pago</strong> o cómo <strong>hacer una reserva</strong>.\n\nO si prefieres, escríbenos por WhatsApp: <strong>+592 000 0000</strong>`;
+      return `Hmm, I'm not sure how to answer that 🤔\n\nYou can ask me about our <strong>services</strong>, <strong>prices</strong>, <strong>payment methods</strong>, or how to <strong>make a booking</strong>.\n\nOr if you prefer, write to us on WhatsApp: <strong>+592 000 0000</strong>`;
     }
 
-    /* ── Enviar mensaje ── */
+    /* ── Send message ── */
     function sendMessage(text) {
       const t = text.trim();
       if (!t) return;
@@ -1370,7 +1370,7 @@
       showTyping(() => addMsg(getReply(t), 'bot'), 700 + Math.random()*600);
     }
 
-    /* ── Toggle ── */
+    /* ── Toggle chat ── */
     toggle.addEventListener('click', () => {
       isOpen = !isOpen;
       win.classList.toggle('open', isOpen);
@@ -1378,10 +1378,10 @@
       chatIcon.textContent = isOpen ? '✕' : '💬';
       notif.classList.add('hide');
       if (isOpen && msgs.children.length === 0) {
-        // Mensaje de bienvenida
+        // Welcome message
         showTyping(() => {
           addMsg(
-            `¡Hola! 👋 Soy <strong>VaporBot</strong>, el asistente de <strong>Limpieza al Vapor MMG</strong>.\n\n¿En qué puedo ayudarte hoy? Puedes usar las sugerencias de abajo o escribir tu consulta 💬`,
+            `Hello! 👋 I'm <strong>VaporBot</strong>, the assistant for <strong>MMG Steam Cleaning</strong>.\n\nHow can I help you today? You can use the suggestions below or type your question 💬`,
             'bot'
           );
         }, 600);
@@ -1395,16 +1395,16 @@
       chatIcon.textContent = '💬';
     });
 
-    /* ── Envío con botón y Enter ── */
+    /* ── Send on button and Enter ── */
     sendBtn.addEventListener('click', () => sendMessage(input.value));
     input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(input.value); });
 
-    /* ── Sugerencias rápidas ── */
+    /* ── Quick suggestions ── */
     sugs.querySelectorAll('.sug-btn').forEach(btn => {
       btn.addEventListener('click', () => sendMessage(btn.dataset.sug));
     });
 
-    /* ── Notificación inicial después de 3s ── */
+    /* ── Initial notification after 3s ── */
     setTimeout(() => {
       if (!isOpen) notif.classList.remove('hide');
     }, 3000);
