@@ -1,666 +1,1416 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔒 BK Security Camera Installation Guide · Complete Visual Guide</title>
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Limpieza al Vapor · MMG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0a1628;
+      --accent: #00c6ff;
+      --accent2: #f4b400;
+      --steam: #e0f7fa;
+      --glass: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.12);
+      --card-bg: rgba(255,255,255,0.04);
+      --text: #e8edf2;
+      --text-muted: #8a99ae;
+      --success: #00e676;
+      --whatsapp: #25D366;
+      --radius: 20px;
+      --radius-lg: 32px;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-            scroll-behavior: smooth;
-            background-color: var(--bg);
-            color: var(--text);
-        }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-        :root {
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --text: #0f172a;
-            --text-light: #334155;
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --border: #e2e8f0;
-            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
-            --hover-scale: translateY(-4px);
-            --accent-bg: #f1f5f9;
-        }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--primary);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        body.dark-mode {
-            --bg: #0b1120;
-            --surface: #1e293b;
-            --text: #f1f5f9;
-            --text-light: #cbd5e1;
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --border: #334155;
-            --card-shadow: 0 20px 30px -10px rgba(0,0,0,0.6);
-            --accent-bg: #1e293b;
-        }
+    /* ─── FONDO ANIMADO ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,198,255,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(244,180,0,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0,198,255,0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
+    /* Partículas de vapor */
+    .steam-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .steam-bg span {
+      position: absolute;
+      bottom: -60px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(0,198,255,0.18);
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) scale(1); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-100vh) scale(2.5); opacity: 0; }
+    }
 
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
+    /* ─── LAYOUT ─── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 4rem;
+    }
 
-        .title-section h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
+    /* ─── HERO ─── */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,198,255,0.1);
+      border: 1px solid rgba(0,198,255,0.3);
+      border-radius: 60px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), #0057b7, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
 
-        .title-section p {
-            color: var(--text-light);
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
+    /* ─── SERVICIOS ─── */
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
 
-        .dark-toggle {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 2rem;
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: var(--card-shadow);
-        }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .service-card {
+      position: relative;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,198,255,0.06), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      border-color: rgba(0,198,255,0.5);
+      box-shadow: 0 20px 40px rgba(0,198,255,0.15), 0 0 0 1px rgba(0,198,255,0.2);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card.active {
+      border-color: var(--accent);
+      background: rgba(0,198,255,0.1);
+      box-shadow: 0 0 0 2px rgba(0,198,255,0.3);
+    }
+    .service-icon {
+      font-size: 2.4rem;
+      margin-bottom: 0.7rem;
+      display: block;
+      filter: drop-shadow(0 4px 12px rgba(0,198,255,0.3));
+    }
+    .service-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
 
-        .dark-toggle i {
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
+    /* ─── CARDS / GLASS ─── */
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      backdrop-filter: blur(20px);
+      margin-bottom: 2rem;
+    }
 
-        .dark-toggle span {
-            font-weight: 500;
-        }
+    /* ─── FORMULARIO ─── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { gap: 1.5rem; }
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    input, select, textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 0.85rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.97rem;
+      color: var(--text);
+      transition: all 0.25s;
+    }
+    input::placeholder { color: rgba(255,255,255,0.25); }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(0,198,255,0.06);
+      box-shadow: 0 0 0 3px rgba(0,198,255,0.12);
+    }
+    select option { background: #0a1628; color: white; }
 
-        .quick-nav {
-            background: var(--surface);
-            border-radius: 2rem;
-            padding: 0.8rem 1.5rem;
-            margin-bottom: 3rem;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.2rem 2rem;
-            box-shadow: var(--card-shadow);
-        }
+    /* ─── BOTONES ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 2rem;
+      border-radius: 60px;
+      font-family: inherit;
+      font-size: 0.97rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+      letter-spacing: 0.01em;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #0057b7);
+      color: white;
+      box-shadow: 0 8px 24px rgba(0,198,255,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(0,198,255,0.45);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #f4b400, #ff8c00);
+      color: #0a1628;
+      box-shadow: 0 8px 24px rgba(244,180,0,0.35);
+    }
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(244,180,0,0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--glass-border);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .btn-lg { padding: 1.1rem 2.5rem; font-size: 1.05rem; }
+    .btn-full { width: 100%; }
 
-        .quick-nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            transition: color 0.2s;
-        }
+    /* ─── LOADER DOTS ─── */
+    .dots { display: inline-flex; gap: 4px; align-items: center; }
+    .dots span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+      animation: dot 1.2s infinite ease-in-out;
+    }
+    .dots span:nth-child(2) { animation-delay: 0.2s; }
+    .dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dot { 0%,80%,100% { transform: scale(0.7); opacity:0.4; } 40% { transform: scale(1.1); opacity:1; } }
 
-        .quick-nav a i {
-            color: var(--primary);
-        }
+    /* ─── PANEL PAGO ─── */
+    .payment-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 2rem 0;
+    }
+    .payment-icon {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: rgba(0,198,255,0.1);
+      border: 2px solid rgba(0,198,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(0,198,255,0.3); }
+      50%      { box-shadow: 0 0 0 18px rgba(0,198,255,0); }
+    }
+    .wa-box {
+      background: rgba(37,211,102,0.08);
+      border: 1px solid rgba(37,211,102,0.25);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      font-size: 0.93rem;
+      color: #a8f0c0;
+      max-width: 480px;
+    }
+    .wa-box strong { color: var(--whatsapp); }
 
-        .quick-nav a:hover {
-            color: var(--primary);
-        }
+    /* ─── CONFIRMACIÓN ─── */
+    .confirm-icon {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: rgba(0,230,118,0.1);
+      border: 2px solid rgba(0,230,118,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto 1.5rem;
+    }
+    .receipt {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 0.93rem;
+    }
+    .receipt-row:last-child { border-bottom: none; }
+    .receipt-row span:first-child { color: var(--text-muted); font-weight: 500; }
+    .receipt-row span:last-child  { color: var(--text); font-weight: 600; }
 
-        section {
-            margin-bottom: 4rem;
-        }
+    .badge-row {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .badge-green  { background: rgba(0,230,118,0.12); border: 1px solid rgba(0,230,118,0.3); color: var(--success); }
+    .badge-blue   { background: rgba(0,198,255,0.12); border: 1px solid rgba(0,198,255,0.3); color: var(--accent); }
+    .badge-yellow { background: rgba(244,180,0,0.12); border: 1px solid rgba(244,180,0,0.3); color: var(--accent2); }
 
-        h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            border-bottom: 3px solid var(--primary);
-            padding-bottom: 0.6rem;
-            max-width: fit-content;
-        }
+    /* ─── CRM TABLE ─── */
+    .crm-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead th {
+      background: rgba(0,198,255,0.08);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.9rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+    tbody tr:hover { background: rgba(255,255,255,0.03); }
+    tbody td {
+      padding: 0.9rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    tbody td:first-child { color: var(--text); font-weight: 600; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.28rem 0.9rem;
+      border-radius: 60px;
+      font-size: 0.77rem;
+      font-weight: 700;
+    }
+    .pill-ok  { background: rgba(0,230,118,0.1); color: var(--success); border: 1px solid rgba(0,230,118,0.2); }
+    .pill-pend{ background: rgba(244,180,0,0.1);  color: var(--accent2); border: 1px solid rgba(244,180,0,0.2); }
 
-        h2 i {
-            color: var(--primary);
-        }
+    /* ─── MARKETING BANNER ─── */
+    .marketing-banner {
+      background: linear-gradient(135deg, rgba(0,198,255,0.08), rgba(244,180,0,0.06));
+      border: 1px solid rgba(0,198,255,0.15);
+      border-radius: var(--radius);
+      padding: 1.4rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .marketing-banner .m-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .marketing-banner p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .marketing-banner strong { color: var(--accent); }
 
-        h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+    footer .footer-tech {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    .tech-tag {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 60px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      backdrop-filter: blur(8px);
+    }
 
-        /* Tarjetas con imagen - ajuste para que la imagen se vea completa */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+      margin: 2.5rem 0;
+    }
 
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 1.8rem;
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: var(--card-shadow);
-            display: flex;
-            flex-direction: column;
-        }
+    /* ─── UTILITY ─── */
+    .hidden { display: none !important; }
+    .text-center { text-align: center; }
+    .mb-1 { margin-bottom: 0.5rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    .mt-3 { margin-top: 1.5rem; }
+    .gap-row { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
 
-        .card:hover {
-            transform: var(--hover-scale);
-            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
-        }
+    /* ─── STEP INDICATOR ─── */
+    .steps {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .step-dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      border: 2px solid rgba(255,255,255,0.15);
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      transition: all 0.3s;
+    }
+    .step-dot.active {
+      background: linear-gradient(135deg, var(--accent), #0057b7);
+      border-color: var(--accent);
+      color: white;
+      box-shadow: 0 0 16px rgba(0,198,255,0.4);
+    }
+    .step-dot.done {
+      background: rgba(0,230,118,0.15);
+      border-color: var(--success);
+      color: var(--success);
+    }
+    .step-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .step-label.active { color: var(--accent); }
+    .step-label.done { color: var(--success); }
+    .step-line {
+      width: 40px; height: 2px;
+      background: rgba(255,255,255,0.1);
+      margin: 0 0.4rem;
+      border-radius: 2px;
+    }
+    .step-line.done { background: rgba(0,230,118,0.4); }
+    .step-line.active { background: rgba(0,198,255,0.4); }
 
-        .card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            background-color: var(--accent-bg);
-            border-bottom: 2px solid var(--primary);
-        }
+    /* Animación de entrada */
+    @keyframes fadeSlideUp {
+      from { opacity:0; transform: translateY(24px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .anim { animation: fadeSlideUp 0.5s ease both; }
 
-        .card-content {
-            padding: 1.5rem 1.2rem 1.2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
+    /* ════════════════════════════════════
+       CHATBOT
+    ════════════════════════════════════ */
 
-        .card-content i {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
+    /* ── Botón flotante ── */
+    #chatToggle {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #00c6ff, #0057b7);
+      box-shadow: 0 8px 30px rgba(0,198,255,0.45), 0 0 0 0 rgba(0,198,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+      animation: chatPulse 2.5s infinite;
+    }
+    @keyframes chatPulse {
+      0%,100% { box-shadow: 0 8px 30px rgba(0,198,255,0.45), 0 0 0 0 rgba(0,198,255,0.3); }
+      50%      { box-shadow: 0 8px 30px rgba(0,198,255,0.45), 0 0 0 14px rgba(0,198,255,0); }
+    }
+    #chatToggle:hover { transform: scale(1.1); }
+    #chatToggle.open  { animation: none; background: linear-gradient(135deg, #ff4d6d, #c9184a); }
 
-        .card-content h4 {
-            font-size: 1.4rem;
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    /* Notificación no leída */
+    .chat-notif {
+      position: absolute;
+      top: -3px; right: -3px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #f4b400;
+      border: 2px solid var(--primary);
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #0a1628;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s;
+    }
+    .chat-notif.hide { transform: scale(0); }
 
-        .card-content p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 1.2rem;
-            flex: 1;
-        }
+    /* ── Ventana del chat ── */
+    #chatWindow {
+      position: fixed;
+      bottom: 6.5rem;
+      right: 2rem;
+      z-index: 999;
+      width: 370px;
+      max-height: 580px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #0d1f35;
+      border: 1px solid rgba(0,198,255,0.2);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,198,255,0.1);
+      transform: scale(0.85) translateY(30px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+      transform-origin: bottom right;
+    }
+    #chatWindow.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+    @media (max-width: 440px) {
+      #chatWindow { width: calc(100vw - 2rem); right: 1rem; }
+      #chatToggle  { bottom: 1.2rem; right: 1.2rem; }
+    }
 
-        .badge {
-            background: var(--primary);
-            color: white;
-            font-size: 0.75rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 2rem;
-            display: inline-block;
-            font-weight: 600;
-            align-self: flex-start;
-        }
+    /* ── Header del chat ── */
+    .chat-header {
+      background: linear-gradient(135deg, rgba(0,198,255,0.15), rgba(0,87,183,0.15));
+      border-bottom: 1px solid rgba(0,198,255,0.15);
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+    .chat-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00c6ff, #0057b7);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .chat-avatar::after {
+      content: '';
+      position: absolute;
+      bottom: 1px; right: 1px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #00e676;
+      border: 2px solid #0d1f35;
+    }
+    .chat-info h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #e8edf2;
+      margin-bottom: 0.1rem;
+    }
+    .chat-info p {
+      font-size: 0.73rem;
+      color: #00e676;
+      font-weight: 600;
+    }
+    .chat-close {
+      margin-left: auto;
+      background: rgba(255,255,255,0.07);
+      border: none;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      color: #8a99ae;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+    .chat-close:hover { background: rgba(255,77,109,0.2); color: #ff4d6d; }
 
-        /* Tablas */
-        .table-responsive {
-            overflow-x: auto;
-            border-radius: 1rem;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            box-shadow: var(--card-shadow);
-        }
+    /* ── Área de mensajes ── */
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      scroll-behavior: smooth;
+    }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
-        }
+    /* Burbujas */
+    .msg {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-end;
+      animation: msgIn 0.3s ease both;
+    }
+    @keyframes msgIn {
+      from { opacity:0; transform: translateY(10px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .msg.bot  { justify-content: flex-start; }
+    .msg.user { justify-content: flex-end; }
 
-        th {
-            background: var(--primary);
-            color: white;
-            font-weight: 600;
-            padding: 1rem;
-            text-align: left;
-        }
+    .msg-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00c6ff, #0057b7);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
 
-        td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--text);
-        }
+    .bubble {
+      max-width: 82%;
+      padding: 0.7rem 1rem;
+      border-radius: 18px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+    .msg.bot  .bubble {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #dde4ed;
+      border-bottom-left-radius: 4px;
+    }
+    .msg.user .bubble {
+      background: linear-gradient(135deg, #00c6ff, #0057b7);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+    .bubble a {
+      color: #f4b400;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .bubble strong { color: #ffffff; font-weight: 700; }
 
-        tr:last-child td {
-            border-bottom: none;
-        }
+    /* Timestamp */
+    .msg-time {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 0.15rem;
+      padding: 0 0.2rem;
+    }
+    .msg.user .msg-time { text-align: right; }
 
-        .app-icons {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
+    /* Indicador de escritura */
+    .typing-bubble {
+      display: flex; gap: 4px; align-items: center;
+      padding: 0.7rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      border-bottom-left-radius: 4px;
+      width: fit-content;
+    }
+    .typing-bubble span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #8a99ae;
+      animation: typingDot 1.2s infinite ease-in-out;
+    }
+    .typing-bubble span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-bubble span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingDot {
+      0%,80%,100% { transform: scale(0.7); opacity:0.4; }
+      40%          { transform: scale(1.1); opacity:1; }
+    }
 
-        .app-icon {
-            background: var(--accent-bg);
-            border-radius: 2rem;
-            padding: 0.3rem 1rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
+    /* ── Sugerencias rápidas ── */
+    .chat-suggestions {
+      padding: 0.6rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      flex-shrink: 0;
+      background: rgba(0,0,0,0.15);
+    }
+    .sug-btn {
+      background: rgba(0,198,255,0.08);
+      border: 1px solid rgba(0,198,255,0.25);
+      border-radius: 60px;
+      padding: 0.35rem 0.85rem;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #00c6ff;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .sug-btn:hover {
+      background: rgba(0,198,255,0.2);
+      transform: translateY(-2px);
+    }
 
-        /* Lista de pasos */
-        .steps-list {
-            list-style: none;
-            counter-reset: step-counter;
-        }
-
-        .steps-list li {
-            counter-increment: step-counter;
-            margin-bottom: 2rem;
-            padding-left: 3.5rem;
-            position: relative;
-            font-size: 1.1rem;
-        }
-
-        .steps-list li::before {
-            content: counter(step-counter);
-            background: var(--primary);
-            color: white;
-            font-weight: 700;
-            width: 2.2rem;
-            height: 2.2rem;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-size: 1.2rem;
-        }
-
-        .steps-list strong {
-            color: var(--primary);
-        }
-
-        .tip-box {
-            background: var(--accent-bg);
-            border-left: 6px solid var(--primary);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            margin: 1.8rem 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid var(--border);
-            margin-top: 3rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .go-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--primary);
-            color: white;
-            width: 3.2rem;
-            height: 3.2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.2s;
-            border: none;
-            z-index: 99;
-        }
-
-        .go-top.visible {
-            opacity: 1;
-        }
-
-        .go-top:hover {
-            transform: scale(1.1);
-        }
-    </style>
+    /* ── Input del chat ── */
+    .chat-input-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      flex-shrink: 0;
+      background: rgba(0,0,0,0.1);
+    }
+    #chatInput {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 60px;
+      padding: 0.65rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #e8edf2;
+      transition: border-color 0.2s;
+    }
+    #chatInput::placeholder { color: rgba(255,255,255,0.25); }
+    #chatInput:focus {
+      outline: none;
+      border-color: #00c6ff;
+      box-shadow: 0 0 0 3px rgba(0,198,255,0.12);
+    }
+    #chatSend {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #00c6ff, #0057b7);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(0,198,255,0.35);
+    }
+    #chatSend:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(0,198,255,0.5); }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header with dark mode toggle -->
-        <div class="header">
-            <div class="title-section">
-                <!-- Título actualizado a BK Security Camera Installation Guide -->
-                <h1><i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i>BK Security Camera Installation Guide</h1>
-                <p>Everything you need to know: types, apps, formats, distances, and detailed steps</p>
-            </div>
-            <div class="dark-toggle" id="darkModeToggle">
-                <i class="fas fa-sun"></i>
-                <span>Dark mode</span>
-                <i class="fas fa-moon"></i>
-            </div>
-        </div>
 
-        <!-- Quick navigation -->
-        <div class="quick-nav">
-            <a href="#types"><i class="fas fa-camera"></i>Types</a>
-            <a href="#apps"><i class="fas fa-mobile-alt"></i>Apps</a>
-            <a href="#formats"><i class="fas fa-microchip"></i>Formats</a>
-            <a href="#distances"><i class="fas fa-ruler"></i>Distances</a>
-            <a href="#cables"><i class="fas fa-plug"></i>Cables</a>
-            <a href="#steps"><i class="fas fa-tools"></i>Steps</a>
-            <a href="#extra"><i class="fas fa-plus-circle"></i>Extras</a>
-        </div>
+<!-- Partículas de vapor -->
+<div class="steam-bg" id="steamBg"></div>
 
-        <!-- CAMERA TYPES (with local images) -->
-        <section id="types">
-            <h2><i class="fas fa-camera-retro"></i> Camera types (real images)</h2>
-            <div class="card-grid">
-                <!-- Dome -->
-                <div class="card">
-                    <img class="card-img" src="Domo.jpg" alt="Dome camera" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-circle"></i>
-                        <h4>Dome</h4>
-                        <p>Compact, discreet, ideal for indoors. Hard to tamper. Adjustable angle.</p>
-                        <span class="badge">Indoor/Outdoor</span>
-                    </div>
-                </div>
-                <!-- Bullet -->
-                <div class="card">
-                    <img class="card-img" src="Bullet.jpg" alt="Bullet camera" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-bullseye"></i>
-                        <h4>Bullet</h4>
-                        <p>Long distance, visible as deterrent. Ideal for outdoors and night vision.</p>
-                        <span class="badge">Outdoor</span>
-                    </div>
-                </div>
-                <!-- PTZ -->
-                <div class="card">
-                    <img class="card-img" src="Ptz.jpg" alt="PTZ camera" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-sync-alt"></i>
-                        <h4>PTZ</h4>
-                        <p>Pan, tilt, zoom. Remote control, wide coverage and tracking.</p>
-                        <span class="badge">Motorized</span>
-                    </div>
-                </div>
-                <!-- IP / WiFi -->
-                <div class="card">
-                    <img class="card-img" src="IpWifi.jpg" alt="IP WiFi camera" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-wifi"></i>
-                        <h4>IP / WiFi</h4>
-                        <p>Network connectivity, HD resolution, remote access via app. Easy to install.</p>
-                        <span class="badge">Digital</span>
-                    </div>
-                </div>
-                <!-- Analog HD -->
-                <div class="card">
-                    <img class="card-img" src="Analogica.jpg" alt="Analog HD camera" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-plug"></i>
-                        <h4>Analog HD</h4>
-                        <p>AHD, TVI, CVI. HD quality over coaxial cable, economical to upgrade.</p>
-                        <span class="badge">Analog</span>
-                    </div>
-                </div>
-                <!-- Thermal -->
-                <div class="card">
-                    <img class="card-img" src="Termica.jpg" alt="Thermal camera" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-thermometer-half"></i>
-                        <h4>Thermal</h4>
-                        <p>Heat detection, no light needed. Ideal for total darkness and long distances.</p>
-                        <span class="badge">Special</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="wrapper">
 
-        <!-- MOBILE APPS -->
-        <section id="apps">
-            <h2><i class="fas fa-mobile-alt"></i> Apps by type / brand</h2>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr><th>Type / Brand</th><th>Main applications</th><th>Features</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Hikvision</td><td><div class="app-icons"><span class="app-icon"><i class="fab fa-android"></i> Hik-Connect</span><span class="app-icon"><i class="fab fa-apple"></i> iVMS-4500</span></div></td><td>Remote viewing, alerts, playback</td></tr>
-                        <tr><td>Dahua</td><td><div class="app-icons"><span class="app-icon">DMSS</span><span class="app-icon">gDMSS</span><span class="app-icon">SmartPSS</span></div></td><td>Multi-device management, notifications</td></tr>
-                        <tr><td>Reolink</td><td><div class="app-icons"><span class="app-icon">Reolink</span></div></td><td>Easy setup, cloud/local, 4K</td></tr>
-                        <tr><td>Arlo</td><td><div class="app-icons"><span class="app-icon">Arlo</span></div></td><td>Wireless cameras, person detection</td></tr>
-                        <tr><td>Ring</td><td><div class="app-icons"><span class="app-icon">Ring</span></div></td><td>Video doorbells, home security, subscription</td></tr>
-                        <tr><td>Generic IP</td><td><div class="app-icons"><span class="app-icon">IP Cam Viewer</span><span class="app-icon">TinyCam</span></div></td><td>Multi-brand compatibility, viewing</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+  <!-- ── HERO ── -->
+  <div class="hero anim">
+    <div class="hero-badge">💧 Limpieza al Vapor Profesional</div>
+    <h1>La limpieza que<br><span>tu hogar merece</span></h1>
+    <p class="hero-sub">
+      Tecnología de vapor de alta presión para vehículos, muebles, colchones y espacios.
+      Reserva en minutos, paga con MMG y recibe confirmación al instante.
+    </p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Clientes satisfechos</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Servicios especializados</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Pago seguro MMG</div></div>
+    </div>
+  </div>
 
-        <!-- FORMATS AND RESOLUTIONS -->
-        <section id="formats">
-            <h2><i class="fas fa-microchip"></i> Formats and resolutions</h2>
-            <div class="table-responsive">
-                <table>
-                    <thead><tr><th>Technology</th><th>Description</th><th>Typical resolutions</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>AHD</strong> (Analog HD)</td><td>Transmits HD video over coaxial, long distance without delay.</td><td>720p, 1080p, 4MP, 5MP</td></tr>
-                        <tr><td><strong>TVI</strong> (HD-TVI)</td><td>Hikvision technology, supports audio and control over coaxial.</td><td>1080p, 4K</td></tr>
-                        <tr><td><strong>CVI</strong> (HD-CVI)</td><td>Developed by Dahua, good noise immunity.</td><td>1080p, 4MP, 8MP</td></tr>
-                        <tr><td><strong>CVBS</strong> (classic analog)</td><td>Composite signal, standard definition (D1).</td><td>960H, D1 (~0.4MP)</td></tr>
-                        <tr><td><strong>IP / MPEG</strong></td><td>H.264/H.265 compression, network video, scalable.</td><td>2MP (1080p), 4MP, 4K, 12MP</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="tip-box">
-                <i class="fas fa-info-circle" style="margin-right: 0.8rem;"></i> <strong>Key fact:</strong> AHD, TVI, and CVI formats allow reusing existing coaxial cable to upgrade to HD without rewiring.
-            </div>
-        </section>
-
-        <!-- DISTANCE AND COVERAGE -->
-        <section id="distances">
-            <h2><i class="fas fa-ruler-combined"></i> Distance and coverage by lens</h2>
-            <p>Effective distance depends on lens (mm) and sensor. Approximate data for face/license plate recognition:</p>
-            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px,1fr));">
-                <div class="card"><div class="card-content"><h4>2.8 mm</h4><p>Very wide angle (90°-100°). Range: up to <strong>8-12 m</strong> (detection).</p><i class="fas fa-arrows-alt-h"></i></div></div>
-                <div class="card"><div class="card-content"><h4>3.6 mm</h4><p>Medium angle (70°-80°). Range: <strong>15-20 m</strong> recognition.</p></div></div>
-                <div class="card"><div class="card-content"><h4>4 mm</h4><p>Standard (60°-70°). Range: <strong>20-25 m</strong> identification.</p></div></div>
-                <div class="card"><div class="card-content"><h4>6 mm</h4><p>Telephoto (40°-50°). Range: <strong>30-40 m</strong>.</p></div></div>
-                <div class="card"><div class="card-content"><h4>8 mm</h4><p>Long range (30°-35°). Up to <strong>50-60 m</strong>.</p></div></div>
-                <div class="card"><div class="card-content"><h4>12 mm +</h4><p>Optical zoom. More than <strong>80 m</strong> (ideal for PTZ).</p></div></div>
-            </div>
-            <p style="margin-top:1rem;"><i class="fas fa-lightbulb"></i> Night vision IR distance is usually shorter (e.g., 30m on bullet IR). Always check specifications.</p>
-        </section>
-
-        <!-- CABLES AND CONNECTORS (local images) -->
-        <section id="cables">
-            <h2><i class="fas fa-plug"></i> Essential cables and connectors</h2>
-            <div class="card-grid">
-                <!-- Coaxial -->
-                <div class="card">
-                    <img class="card-img" src="Coaxial.jpg" alt="Coaxial cable" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-cable-car"></i>
-                        <h4>Coaxial cable</h4>
-                        <p>Used in analog systems (AHD/TVI/CVI). BNC connector. Distance up to 300m without loss.</p>
-                        <span class="badge">RG59 / RG6</span>
-                    </div>
-                </div>
-                <!-- Ethernet / UTP -->
-                <div class="card">
-                    <img class="card-img" src="Ethernet.jpg" alt="Ethernet cable" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-network-wired"></i>
-                        <h4>Ethernet (UTP)</h4>
-                        <p>For IP cameras and PoE. Maximum distance 100m. Cat5e or 6 recommended.</p>
-                        <span class="badge">RJ45</span>
-                    </div>
-                </div>
-                <!-- BNC connector -->
-                <div class="card">
-                    <img class="card-img" src="Bnc.jpg" alt="BNC connector" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-link"></i>
-                        <h4>BNC connector</h4>
-                        <p>Standard in analog video surveillance. Male and female, crimp or solder.</p>
-                        <span class="badge">Coaxial</span>
-                    </div>
-                </div>
-                <!-- Power supply / PoE injector -->
-                <div class="card">
-                    <img class="card-img" src="InyectorPoE.jpg" alt="PoE injector" loading="lazy">
-                    <div class="card-content">
-                        <i class="fas fa-bolt"></i>
-                        <h4>Power supply / PoE injector</h4>
-                        <p>12V DC for analog cameras or PoE injectors for IP (48V).</p>
-                        <span class="badge">12V / PoE</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INSTALLATION STEPS -->
-        <section id="steps">
-            <h2><i class="fas fa-tools"></i> Installation steps (professional guide)</h2>
-            <ol class="steps-list">
-                <li><strong>Planning and design:</strong> Define blind spots, angles, camera type per area. Make a sketch.</li>
-                <li><strong>Choose location and height:</strong> Minimum 2.5-3 m to avoid vandalism, but enough to capture faces.</li>
-                <li><strong>Cabling (if applicable):</strong> For analog/PoE use UTP or coaxial cable. Protect with conduits. For wireless, ensure WiFi signal.</li>
-                <li><strong>Physical mounting:</strong> Fix the base with screws and anchors, route cables, secure the camera.</li>
-                <li><strong>Connection to DVR/NVR or PoE switch:</strong> Connect each camera to the recorder or PoE injector. If IP, configure network.</li>
-                <li><strong>Initial configuration:</strong> Access menu (local or app). Set IP, date/time, recording quality, motion detection.</li>
-                <li><strong>Image adjustment and focus:</strong> From the app or auxiliary monitor, focus and adjust zoom/angle.</li>
-                <li><strong>Remote viewing test:</strong> Verify access from mobile app, notifications, and playback.</li>
-                <li><strong>Storage:</strong> Configure hard drive (overwrite), cloud, or SD card. Estimate backup days.</li>
-            </ol>
-        </section>
-
-        <!-- EXTRAS: everything else -->
-        <section id="extra">
-            <h2><i class="fas fa-star"></i> Additional key information</h2>
-            <div class="card-grid">
-                <div class="card"><div class="card-content"><i class="fas fa-database"></i><h4>Storage</h4><p>DVR (analog) / NVR (IP). Special hard drives for surveillance (Western Purple, SkyHawk). Calculation: one 1080p camera uses ~8-12 GB/day.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-bolt"></i><h4>PoE (Power over Ethernet)</h4><p>Single UTP cable carries data and power (up to 100m). Ideal for IP cameras. Use PoE switch or injectors.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-moon"></i><h4>Night vision</h4><p>Infrared (IR) or white light. IR LED range varies (10-60m). Avoid reflections on walls.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-cloud"></i><h4>Cloud vs Local</h4><p>Cloud: subscription, accessible anywhere. Local: more privacy, no recurring costs.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-shield-alt"></i><h4>Network security</h4><p>Change default passwords, use 2FA, separate WiFi network for cameras.</p></div></div>
-                <div class="card"><div class="card-content"><i class="fas fa-video"></i><h4>Dual lens / 180°</h4><p>Fisheye or multi-sensor cameras cover wide areas without blind spots.</p></div></div>
-            </div>
-        </section>
-
-        <!-- Footer actualizado -->
-        <footer>
-            <p>© 2026 · Complete Guide created by Alcide Humberto Hinojosa Caballero. All rights reserved.</p>
-            <p style="margin-top: 1rem;">
-                <i class="fas fa-camera" style="margin: 0 0.3rem;"></i>
-                <i class="fas fa-wifi" style="margin: 0 0.3rem;"></i>
-                <i class="fas fa-microchip" style="margin: 0 0.3rem;"></i>
-            </p>
-        </footer>
+  <!-- ── SERVICIOS ── -->
+  <div class="glass-card anim" style="animation-delay:0.1s">
+    <div class="section-label">¿Qué necesitas limpiar?</div>
+    <div class="section-title">Nuestros servicios</div>
+    <div class="services-grid">
+      <div class="service-card" data-val="Limpieza a vapor de vehículos">
+        <span class="service-icon">🚗</span>
+        <div class="service-name">Vehículos</div>
+      </div>
+      <div class="service-card" data-val="Limpieza a vapor de sofá">
+        <span class="service-icon">🛋️</span>
+        <div class="service-name">Sofá</div>
+      </div>
+      <div class="service-card" data-val="Limpieza a vapor de colchón">
+        <span class="service-icon">🛏️</span>
+        <div class="service-name">Colchón</div>
+      </div>
+      <div class="service-card" data-val="Pulido de suelos">
+        <span class="service-icon">🧹</span>
+        <div class="service-name">Pulido suelos</div>
+      </div>
+      <div class="service-card" data-val="Limpieza general de casa">
+        <span class="service-icon">🏠</span>
+        <div class="service-name">Limpieza general</div>
+      </div>
+      <div class="service-card" data-val="Otro">
+        <span class="service-icon">🔧</span>
+        <div class="service-name">Otros</div>
+      </div>
     </div>
 
-    <!-- Back to top button -->
-    <div class="go-top" id="goTop" title="Go to top"><i class="fas fa-arrow-up"></i></div>
+    <!-- ── STEP INDICATOR ── -->
+    <div class="steps" id="stepIndicator">
+      <div class="step">
+        <div class="step-dot active" id="dot1">1</div>
+        <span class="step-label active" id="lbl1">Reserva</span>
+      </div>
+      <div class="step-line" id="line1"></div>
+      <div class="step">
+        <div class="step-dot" id="dot2">2</div>
+        <span class="step-label" id="lbl2">Pago MMG</span>
+      </div>
+      <div class="step-line" id="line2"></div>
+      <div class="step">
+        <div class="step-dot" id="dot3">3</div>
+        <span class="step-label" id="lbl3">Confirmado</span>
+      </div>
+    </div>
 
-    <script>
-        (function() {
-            // Dark mode toggle
-            const toggle = document.getElementById('darkModeToggle');
-            const body = document.body;
-            const sunIcon = toggle.querySelector('.fa-sun');
-            const moonIcon = toggle.querySelector('.fa-moon');
+    <!-- ── FORMULARIO ── -->
+    <div id="formReserva">
+      <div class="section-label mb-1">Paso 1</div>
+      <div class="section-title mb-3">Solicitar servicio</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nombre completo *</label>
+          <input type="text" id="nombre" placeholder="Ej: Ana Pérez" />
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico *</label>
+          <input type="email" id="email" placeholder="ana@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Teléfono (WhatsApp) *</label>
+          <input type="tel" id="telefono" placeholder="+592 123 4567" />
+        </div>
+        <div class="form-group">
+          <label>Servicio *</label>
+          <select id="servicio">
+            <option value="Limpieza a vapor de vehículos">🚗 Vehículos</option>
+            <option value="Limpieza a vapor de sofá">🛋️ Sofá</option>
+            <option value="Limpieza a vapor de colchón">🛏️ Colchón</option>
+            <option value="Pulido de suelos">🧹 Pulido suelos</option>
+            <option value="Limpieza general de casa">🏠 Limpieza general</option>
+            <option value="Otro">🔧 Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Fecha y hora *</label>
+          <input type="datetime-local" id="fechaHora" />
+        </div>
+        <div class="form-group">
+          <label>Dirección *</label>
+          <input type="text" id="direccion" placeholder="Calle, ciudad" />
+        </div>
+      </div>
+      <div class="mt-3">
+        <button class="btn btn-primary btn-lg" id="btnReservar">
+          📲 Reservar y solicitar pago
+        </button>
+      </div>
+    </div>
 
-            if (localStorage.getItem('darkMode') === 'enabled') {
-                body.classList.add('dark-mode');
-                sunIcon.style.opacity = '0.5';
-                moonIcon.style.opacity = '1';
-            } else {
-                sunIcon.style.opacity = '1';
-                moonIcon.style.opacity = '0.5';
-            }
+    <!-- ── PANEL PAGO ── -->
+    <div id="panelPago" class="hidden">
+      <div class="payment-step anim">
+        <div class="payment-icon">💳</div>
+        <div>
+          <div class="section-label mb-1">Paso 2</div>
+          <div class="section-title mb-2">Esperando pago con MMG</div>
+          <div class="dots"><span></span><span></span><span></span></div>
+        </div>
+        <div class="wa-box">
+          <strong>📱 WhatsApp:</strong> Hemos enviado un enlace de pago a <strong id="telefonoMostrar"></strong>
+        </div>
+        <button class="btn btn-gold btn-lg" id="btnSimularPago">
+          💰 Simular pago con MMG
+        </button>
+        <p style="font-size:0.8rem; color:var(--text-muted);">
+          <em>En producción, MMG llamaría a tu webhook al confirmar el pago.</em>
+        </p>
+      </div>
+    </div>
 
-            toggle.addEventListener('click', () => {
-                body.classList.toggle('dark-mode');
-                const isDark = body.classList.contains('dark-mode');
-                if (isDark) {
-                    localStorage.setItem('darkMode', 'enabled');
-                    sunIcon.style.opacity = '0.5';
-                    moonIcon.style.opacity = '1';
-                } else {
-                    localStorage.setItem('darkMode', 'disabled');
-                    sunIcon.style.opacity = '1';
-                    moonIcon.style.opacity = '0.5';
-                }
-            });
+    <!-- ── CONFIRMACIÓN ── -->
+    <div id="panelConfirmacion" class="hidden">
+      <div class="text-center anim">
+        <div class="confirm-icon">✅</div>
+        <div class="section-label mb-1">Paso 3</div>
+        <div class="section-title mb-3">¡Reserva confirmada!</div>
+        <div class="receipt">
+          <div class="receipt-row">
+            <span>Cliente</span>
+            <span id="reciboNombre"></span>
+          </div>
+          <div class="receipt-row">
+            <span>Servicio</span>
+            <span id="reciboServicio"></span>
+          </div>
+          <div class="receipt-row">
+            <span>Fecha y hora</span>
+            <span id="reciboFecha"></span>
+          </div>
+          <div class="receipt-row">
+            <span>Dirección</span>
+            <span id="reciboDireccion"></span>
+          </div>
+          <div class="receipt-row">
+            <span>Estado de pago</span>
+            <span class="pill pill-ok">✓ Confirmado</span>
+          </div>
+        </div>
+        <div class="badge-row">
+          <span class="badge badge-green">📲 Recibo enviado por WhatsApp</span>
+          <span class="badge badge-blue">📅 Evento en Google Calendar</span>
+          <span class="badge badge-yellow">📊 Registrado en CRM</span>
+        </div>
+      </div>
+    </div>
 
-            // Back to top button
-            const goTopBtn = document.getElementById('goTop');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    goTopBtn.classList.add('visible');
-                } else {
-                    goTopBtn.classList.remove('visible');
-                }
-            });
-            goTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+  </div><!-- /glass-card -->
 
-            // Smooth scroll for internal links
-            document.querySelectorAll('.quick-nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const target = document.getElementById(targetId);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-        })();
-    </script>
+  <!-- ── CRM ── -->
+  <div class="glass-card anim" style="animation-delay:0.2s">
+    <div class="section-label">Panel interno</div>
+    <div class="section-title mb-3">🗂️ Últimas reservas</div>
+    <div class="crm-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Servicio</th>
+            <th>Fecha &amp; Hora</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="crm-body">
+          <tr>
+            <td>Carlos Gómez</td>
+            <td>Limpieza de sofá</td>
+            <td>2025-04-15 · 10:00</td>
+            <td><span class="pill pill-ok">✓ Confirmado</span></td>
+          </tr>
+          <tr>
+            <td>María López</td>
+            <td>Pulido suelos</td>
+            <td>2025-04-16 · 14:30</td>
+            <td><span class="pill pill-ok">✓ Confirmado</span></td>
+          </tr>
+          <tr>
+            <td>Juan Díaz</td>
+            <td>Limpieza general</td>
+            <td>2025-04-17 · 09:00</td>
+            <td><span class="pill pill-pend">⏳ Pendiente</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── MARKETING BANNER ── -->
+  <div class="marketing-banner anim" style="animation-delay:0.3s">
+    <div class="m-icon">📢</div>
+    <p>
+      <strong>Marketing automático activo:</strong> Cada semana enviamos ofertas personalizadas
+      por WhatsApp a clientes anteriores. Campañas integradas con redes sociales y Google Ads.
+    </p>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>⚡ Prototipo funcional basado en workflow automatizado</p>
+    <div class="footer-tech">
+      <span class="tech-tag">n8n</span>
+      <span class="tech-tag">MMG Payments</span>
+      <span class="tech-tag">WhatsApp API</span>
+      <span class="tech-tag">Google Calendar</span>
+      <span class="tech-tag">CRM Integrado</span>
+    </div>
+  </footer>
+
+</div><!-- /wrapper -->
+
+<!-- ══════════════════════════════════
+     CHATBOT WIDGET
+══════════════════════════════════ -->
+
+<!-- Botón flotante -->
+<button id="chatToggle" title="Chatea con nosotros">
+  <span id="chatIcon">💬</span>
+  <span class="chat-notif" id="chatNotif">1</span>
+</button>
+
+<!-- Ventana del chat -->
+<div id="chatWindow">
+
+  <!-- Header -->
+  <div class="chat-header">
+    <div class="chat-avatar">🧽</div>
+    <div class="chat-info">
+      <h3>VaporBot · MMG</h3>
+      <p>● En línea ahora</p>
+    </div>
+    <button class="chat-close" id="chatCloseBtn" title="Cerrar">✕</button>
+  </div>
+
+  <!-- Mensajes -->
+  <div class="chat-messages" id="chatMessages"></div>
+
+  <!-- Sugerencias rápidas -->
+  <div class="chat-suggestions" id="chatSugs">
+    <button class="sug-btn" data-sug="¿Cuáles son sus servicios?">🧹 Servicios</button>
+    <button class="sug-btn" data-sug="¿Cuáles son los precios?">💲 Precios</button>
+    <button class="sug-btn" data-sug="¿Cómo hago una reserva?">📅 Reservar</button>
+    <button class="sug-btn" data-sug="¿Cómo funciona MMG?">💳 Pago MMG</button>
+    <button class="sug-btn" data-sug="¿En qué zonas trabajan?">📍 Cobertura</button>
+    <button class="sug-btn" data-sug="Hablar con un agente">👤 Agente</button>
+  </div>
+
+  <!-- Input -->
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Escribe tu mensaje…" autocomplete="off" />
+    <button id="chatSend">➤</button>
+  </div>
+
+</div>
+
+<script>
+  /* ─── Partículas de vapor ─── */
+  (function() {
+    const bg = document.getElementById('steamBg');
+    for (let i = 0; i < 28; i++) {
+      const s = document.createElement('span');
+      const size = 4 + Math.random() * 8;
+      s.style.cssText = `
+        left: ${Math.random()*100}%;
+        width: ${size}px; height: ${size}px;
+        animation-duration: ${6 + Math.random()*10}s;
+        animation-delay: ${Math.random()*10}s;
+      `;
+      bg.appendChild(s);
+    }
+  })();
+
+  /* ─── Selección de servicios en tarjetas ─── */
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      const val = card.dataset.val;
+      const sel = document.getElementById('servicio');
+      for (let o of sel.options) { if (o.value === val) { sel.value = val; break; } }
+    });
+  });
+  document.getElementById('servicio').addEventListener('change', function() {
+    document.querySelectorAll('.service-card').forEach(c => {
+      c.classList.toggle('active', c.dataset.val === this.value);
+    });
+  });
+
+  /* ─── Steps helper ─── */
+  function setStep(step) {
+    [1,2,3].forEach(n => {
+      const dot = document.getElementById('dot' + n);
+      const lbl = document.getElementById('lbl' + n);
+      if (n < step)  { dot.className = 'step-dot done';   lbl.className = 'step-label done';   dot.textContent = '✓'; }
+      if (n === step){ dot.className = 'step-dot active'; lbl.className = 'step-label active'; dot.textContent = n; }
+      if (n > step)  { dot.className = 'step-dot';        lbl.className = 'step-label';        dot.textContent = n; }
+    });
+    if (document.getElementById('line1')) {
+      document.getElementById('line1').className = 'step-line' + (step > 1 ? ' done' : (step === 1 ? ' active' : ''));
+      document.getElementById('line2').className = 'step-line' + (step > 2 ? ' done' : (step === 2 ? ' active' : ''));
+    }
+  }
+  setStep(1);
+
+  /* ─── Validación ─── */
+  function validar(nombre, email, telefono, fechaHora, direccion) {
+    if (!nombre || !email || !telefono || !fechaHora || !direccion) return false;
+    if (!email.includes('@') || !email.includes('.')) return false;
+    if (telefono.length < 7) return false;
+    if (new Date(fechaHora) <= new Date()) return false;
+    return true;
+  }
+
+  let reservaActual = {};
+
+  /* ─── Paso 1 → 2 ─── */
+  document.getElementById('btnReservar').addEventListener('click', e => {
+    e.preventDefault();
+    const nombre   = document.getElementById('nombre').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const servicio = document.getElementById('servicio').value;
+    const fechaHora= document.getElementById('fechaHora').value;
+    const direccion= document.getElementById('direccion').value.trim();
+
+    if (!validar(nombre, email, telefono, fechaHora, direccion)) {
+      alert('❌ Por favor revisa los campos. La fecha debe ser futura y todos los campos son obligatorios.');
+      return;
+    }
+    reservaActual = { nombre, email, telefono, servicio, fechaHora, direccion };
+    document.getElementById('telefonoMostrar').textContent = telefono;
+    document.getElementById('formReserva').classList.add('hidden');
+    document.getElementById('panelPago').classList.remove('hidden');
+    setStep(2);
+
+    /* Añadir al CRM como pendiente */
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${nombre}</td><td>${servicio}</td><td>${fechaHora.replace('T',' · ')}</td><td><span class="pill pill-pend">⏳ Pendiente</span></td>`;
+    row.id = 'crm-new-row';
+    document.getElementById('crm-body').prepend(row);
+  });
+
+  /* ─── Paso 2 → 3 ─── */
+  document.getElementById('btnSimularPago').addEventListener('click', () => {
+    const { nombre, servicio, fechaHora, direccion } = reservaActual;
+    document.getElementById('reciboNombre').textContent    = nombre;
+    document.getElementById('reciboServicio').textContent  = servicio;
+    document.getElementById('reciboFecha').textContent     = fechaHora.replace('T', ' a las ');
+    document.getElementById('reciboDireccion').textContent = direccion;
+    document.getElementById('panelPago').classList.add('hidden');
+    document.getElementById('panelConfirmacion').classList.remove('hidden');
+    setStep(3);
+
+    /* Actualizar CRM */
+    const row = document.getElementById('crm-new-row');
+    if (row) {
+      const celdas = row.querySelectorAll('td');
+      if (celdas[3]) celdas[3].innerHTML = '<span class="pill pill-ok">✓ Confirmado</span>';
+    }
+  });
+
+
+  /* ════════════════════════════════════
+     CHATBOT LOGIC
+  ════════════════════════════════════ */
+  (function() {
+    const toggle   = document.getElementById('chatToggle');
+    const win      = document.getElementById('chatWindow');
+    const closeBtn = document.getElementById('chatCloseBtn');
+    const msgs     = document.getElementById('chatMessages');
+    const input    = document.getElementById('chatInput');
+    const sendBtn  = document.getElementById('chatSend');
+    const notif    = document.getElementById('chatNotif');
+    const chatIcon = document.getElementById('chatIcon');
+    const sugs     = document.getElementById('chatSugs');
+    let isOpen     = false;
+
+    /* ── Base de conocimiento ── */
+    const KB = [
+      {
+        keys: ['servicio','servicios','ofrecen','hacen','limpian','tipos'],
+        reply: `¡Ofrecemos **6 servicios** de limpieza al vapor: \n\n🚗 <strong>Vehículos</strong> — interior completo\n🛋️ <strong>Sofá</strong> — tejidos y tapicería\n🛏️ <strong>Colchón</strong> — higienización profunda\n🧹 <strong>Pulido de suelos</strong> — baldosa y mármol\n🏠 <strong>Limpieza general</strong> — hogar completo\n🔧 <strong>Otros</strong> — ¡consúltanos!\n\n¿Te interesa alguno en particular?`
+      },
+      {
+        keys: ['precio','precios','cuesta','cuánto','costo','tarifa','cobran'],
+        reply: `Nuestras tarifas orientativas son:\n\n🚗 Vehículo — desde <strong>$25</strong>\n🛋️ Sofá — desde <strong>$30</strong>\n🛏️ Colchón — desde <strong>$20</strong>\n🧹 Pulido suelos — desde <strong>$40</strong>\n🏠 Limpieza general — desde <strong>$60</strong>\n\nEl precio final depende del tamaño y el estado. <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">Solicita un presupuesto gratis →</a>`
+      },
+      {
+        keys: ['reserva','reservar','cita','agendar','solicitar','pedir'],
+        reply: `Reservar es muy sencillo 📅\n\n<strong>1.</strong> Elige tu servicio arriba\n<strong>2.</strong> Rellena el formulario con tus datos\n<strong>3.</strong> Paga con MMG de forma segura\n<strong>4.</strong> ¡Recibe confirmación por WhatsApp!\n\n<a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">👉 Ir al formulario de reserva</a>`
+      },
+      {
+        keys: ['mmg','pago','pagar','método','cobro','transferencia','seguro'],
+        reply: `Aceptamos pago 100% seguro a través de <strong>MMG</strong> 💳\n\n✅ Pago en línea seguro\n✅ Recibes enlace por WhatsApp\n✅ Confirmación automática al instante\n✅ Recibo digital en tu correo\n\n¿Tienes algún problema con el pago? Escríbenos al <strong>+592 000 0000</strong>.`
+      },
+      {
+        keys: ['zona','zonas','ciudad','área','trabajan','atienden','cobertura','llegan','domicilio'],
+        reply: `📍 Actualmente cubrimos las siguientes zonas:\n\n🏙️ Ciudad capital y alrededores\n🌆 Zona residencial norte y sur\n🏘️ Área metropolitana (radio ~30 km)\n\nSi no estás seguro de si llegamos a tu zona, <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">reserva y te confirmamos →</a>`
+      },
+      {
+        keys: ['tiempo','demora','cuánto tarda','duración','horas','tarda'],
+        reply: `⏱️ Los tiempos aproximados son:\n\n🚗 Vehículo — <strong>1 a 2 horas</strong>\n🛋️ Sofá — <strong>45 a 90 min</strong>\n🛏️ Colchón — <strong>30 a 60 min</strong>\n🧹 Suelos — <strong>1 a 3 horas</strong>\n🏠 Limpieza general — <strong>3 a 6 horas</strong>\n\nSiempre llegamos puntuales a la hora reservada 😊`
+      },
+      {
+        keys: ['vapor','producto','químico','seguro','niños','mascotas','alérgico'],
+        reply: `💧 Nuestra limpieza es <strong>100% al vapor</strong>, sin productos químicos agresivos.\n\n✅ Seguro para niños\n✅ Seguro para mascotas\n✅ Sin residuos tóxicos\n✅ Elimina ácaros, bacterias y gérmenes\n✅ Eco-friendly 🌱\n\n¡La opción más saludable para tu hogar!`
+      },
+      {
+        keys: ['cancelar','cancelación','política','reembolso','devolver','cambiar'],
+        reply: `🔄 Nuestra política de cancelación es flexible:\n\n✅ Cancelación gratuita con <strong>24h de antelación</strong>\n✅ Reagendamiento sin coste adicional\n⚠️ Cancelaciones con <12h pueden tener un pequeño cargo\n\nPara cancelar o reagendar, contáctanos por WhatsApp al <strong>+592 000 0000</strong>.`
+      },
+      {
+        keys: ['whatsapp','contacto','teléfono','llamar','escribir','contactar'],
+        reply: `📱 Puedes contactarnos por:\n\n💬 <strong>WhatsApp:</strong> +592 000 0000\n📧 <strong>Email:</strong> info@limpiezavapor.com\n🕐 <strong>Horario:</strong> Lun–Sáb 8:00–18:00\n\nTambién puedes <a onclick="document.getElementById('nombre').focus(); document.getElementById('chatToggle').click()">reservar directamente en línea →</a>`
+      },
+      {
+        keys: ['agente','humano','persona','hablar','asesor','ayuda real'],
+        reply: `👤 ¡Con gusto te conecto con un asesor!\n\nEscríbenos ahora mismo por WhatsApp:\n<strong>+592 000 0000</strong>\n\nO si prefieres, déjame tu nombre y número y te llamamos en menos de 10 minutos 📞`
+      },
+      {
+        keys: ['hola','buenas','hello','buenos días','buenas tardes','buenas noches','saludos'],
+        reply: `¡Hola! 👋 Bienvenido a <strong>Limpieza al Vapor MMG</strong>.\n\nEstoy aquí para ayudarte. Puedes preguntarme sobre nuestros servicios, precios, reservas o cualquier duda que tengas. ¿En qué te puedo ayudar hoy?`
+      },
+      {
+        keys: ['gracias','thank','perfecto','genial','excelente','ok','listo'],
+        reply: `¡De nada! 😊 Ha sido un placer ayudarte.\n\nSi necesitas algo más, aquí estaré. ¡Que tengas un excelente día y esperamos atenderte pronto! 🧽✨`
+      }
+    ];
+
+    /* ── Hora actual ── */
+    function now() {
+      return new Date().toLocaleTimeString('es-ES', { hour:'2-digit', minute:'2-digit' });
+    }
+
+    /* ── Agregar mensaje ── */
+    function addMsg(text, who) {
+      const wrap = document.createElement('div');
+      wrap.className = 'msg ' + who;
+      if (who === 'bot') {
+        wrap.innerHTML = `
+          <div class="msg-avatar">🧽</div>
+          <div>
+            <div class="bubble">${text.replace(/\n/g,'<br>')}</div>
+            <div class="msg-time">${now()}</div>
+          </div>`;
+      } else {
+        wrap.innerHTML = `
+          <div>
+            <div class="bubble">${text}</div>
+            <div class="msg-time">${now()}</div>
+          </div>`;
+      }
+      msgs.appendChild(wrap);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    /* ── Indicador de escritura ── */
+    function showTyping(cb, delay = 900) {
+      const wrap = document.createElement('div');
+      wrap.className = 'msg bot';
+      wrap.id = 'typingIndicator';
+      wrap.innerHTML = `
+        <div class="msg-avatar">🧽</div>
+        <div class="typing-bubble"><span></span><span></span><span></span></div>`;
+      msgs.appendChild(wrap);
+      msgs.scrollTop = msgs.scrollHeight;
+      setTimeout(() => {
+        const el = document.getElementById('typingIndicator');
+        if (el) el.remove();
+        cb();
+      }, delay);
+    }
+
+    /* ── Motor de respuestas ── */
+    function getReply(txt) {
+      const t = txt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      for (const item of KB) {
+        if (item.keys.some(k => t.includes(k))) return item.reply;
+      }
+      return `Hmm, no estoy seguro de cómo responder eso 🤔\n\nPuedes preguntarme sobre nuestros <strong>servicios</strong>, <strong>precios</strong>, <strong>formas de pago</strong> o cómo <strong>hacer una reserva</strong>.\n\nO si prefieres, escríbenos por WhatsApp: <strong>+592 000 0000</strong>`;
+    }
+
+    /* ── Enviar mensaje ── */
+    function sendMessage(text) {
+      const t = text.trim();
+      if (!t) return;
+      addMsg(t, 'user');
+      input.value = '';
+      showTyping(() => addMsg(getReply(t), 'bot'), 700 + Math.random()*600);
+    }
+
+    /* ── Toggle ── */
+    toggle.addEventListener('click', () => {
+      isOpen = !isOpen;
+      win.classList.toggle('open', isOpen);
+      toggle.classList.toggle('open', isOpen);
+      chatIcon.textContent = isOpen ? '✕' : '💬';
+      notif.classList.add('hide');
+      if (isOpen && msgs.children.length === 0) {
+        // Mensaje de bienvenida
+        showTyping(() => {
+          addMsg(
+            `¡Hola! 👋 Soy <strong>VaporBot</strong>, el asistente de <strong>Limpieza al Vapor MMG</strong>.\n\n¿En qué puedo ayudarte hoy? Puedes usar las sugerencias de abajo o escribir tu consulta 💬`,
+            'bot'
+          );
+        }, 600);
+      }
+    });
+
+    closeBtn.addEventListener('click', () => {
+      isOpen = false;
+      win.classList.remove('open');
+      toggle.classList.remove('open');
+      chatIcon.textContent = '💬';
+    });
+
+    /* ── Envío con botón y Enter ── */
+    sendBtn.addEventListener('click', () => sendMessage(input.value));
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(input.value); });
+
+    /* ── Sugerencias rápidas ── */
+    sugs.querySelectorAll('.sug-btn').forEach(btn => {
+      btn.addEventListener('click', () => sendMessage(btn.dataset.sug));
+    });
+
+    /* ── Notificación inicial después de 3s ── */
+    setTimeout(() => {
+      if (!isOpen) notif.classList.remove('hide');
+    }, 3000);
+
+  })();
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
