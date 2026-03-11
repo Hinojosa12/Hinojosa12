@@ -1,171 +1,569 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Livity Projects Inc · Steam Cleaning</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livity Projects Inc · Dry Cleaning & Steam Cleaning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    :root {
-      --primary: #0a1628;
-      --accent: #00c6ff;
-      --accent2: #f4b400;
-      --steam: #e0f7fa;
-      --glass: rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.12);
-      --card-bg: rgba(255,255,255,0.04);
-      --text: #e8edf2;
-      --text-muted: #8a99ae;
-      --success: #00e676;
-      --whatsapp: #25D366;
-      --radius: 20px;
-      --radius-lg: 32px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      background: var(--primary);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background-color: #fefcf5;
+      color: #1e2b2e;
+      line-height: 1.5;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,198,255,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(244,180,0,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0,198,255,0.05) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
+    /* ----- BARRA SUPERIOR SOLO CON CONTACTO (NO STICKY) ----- */
+    .top-header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e8e5;
+      padding: 0.75rem 5%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
 
-    .steam-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .steam-bg span {
-      position: absolute;
-      bottom: -60px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(0,198,255,0.18);
-      animation: floatUp linear infinite;
-    }
-    @keyframes floatUp {
-      0%   { transform: translateY(0) scale(1); opacity: 0; }
-      10%  { opacity: 1; }
-      90%  { opacity: 0.3; }
-      100% { transform: translateY(-100vh) scale(2.5); opacity: 0; }
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #f9fbfc;
     }
 
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem 1.2rem 4rem;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 4rem 1rem 3rem;
-    }
-    .hero-badge {
+    .contact-details span {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(0,198,255,0.1);
-      border: 1px solid rgba(0,198,255,0.3);
-      border-radius: 60px;
-      padding: 0.4rem 1.2rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      backdrop-filter: blur(8px);
+      white-space: nowrap;
     }
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-    }
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent), #0057b7, var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-sub {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 540px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-      font-weight: 400;
-    }
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-    }
-    .stat {
+
+    .contact-details i {
+      color: #886902;
+      font-size: 1rem;
+      width: 1.2rem;
       text-align: center;
     }
-    .stat-num {
-      font-size: 1.8rem;
+
+    /* ----- BARRA DE NAVEGACIÓN PRINCIPAL (STICKY) con LOGO + LINKS ----- */
+    .main-nav-bar {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      border-bottom: 1px solid #e0e8e5;
+      padding: 0.5rem 5%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: background-color 0.3s, color 0.3s;
+      z-index: 1000;
+    }
+
+   top-header
+
+    .main-nav-bar.scrolled .nav-links a {
+      color: rgb(8, 8, 8);
+    }
+
+    .main-nav-bar .logo img {
+      display: block;
+      height: 60px;
+      width: auto;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      margin: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4a5a5e;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #886902;
+    }
+
+    .main-nav-bar.scrolled .nav-links a:hover {
+      color: #fefcf5;
+    }
+
+    .nav-links a.active {
+      color: #1e2b2e;
+      font-weight: 600;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #4a5a5e;
+      order: 3;
+    }
+
+    /* Hero Section con fondo de imagen */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 4rem;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-right {
+      flex-direction: row-reverse;
+    }
+
+    .hero-content {
+      flex: 1;
+      color: white;
+    }
+
+    .hero-tag {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
       font-weight: 800;
-      color: var(--accent);
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    .hero-title span {
+      color: #886902;
+    }
+
+    .intro-text {
+      color: white;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .features-list li {
+      color: white;
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .features-list li::before {
+      content: "|";
+      position: absolute;
+      left: 0;
+      color: #886902;
+      font-weight: bold;
+      font-size: 1.2rem;
       line-height: 1;
     }
+
+    .hero-btn {
+      background: #886902;
+      color: white;
+      border: none;
+      padding: 0.9rem 2.5rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 8px 18px rgba(136,105,2,0.15);
+      border: 1px solid #886902;
+      margin-top: 1.5rem;
+    }
+
+    .hero-btn:hover {
+      background: #6b5201;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      max-width: 450px;
+      height: 450px;
+      border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(136,105,2,0.3);
+      border: 4px solid rgba(255,255,255,0.2);
+    }
+
+    .image-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Sección de tres tarjetas de servicios (con imágenes locales) */
+    .how-it-works {
+      padding: 4rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #886902;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 0.5rem;
+      color: #1e2b2e;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: #5b6e73;
+      font-weight: 400;
+      margin-bottom: 3rem;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .step-card {
+      text-align: left;
+      padding: 1.5rem;
+      background: #886902;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      color: white;
+    }
+
+    .step-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .step-icon {
+      width: 100%;
+      height: 200px;
+      background: #f0f7fa;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .step-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: white;
+    }
+
+    .step-card p {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Sección de estadísticas */
+    .stats-section {
+      background-color: #f5f2e8;
+      padding: 3rem 5%;
+      text-align: center;
+    }
+
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      flex: 1 1 200px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #886902;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
     .stat-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #4a5a5e;
+      letter-spacing: 0.5px;
+    }
+
+    /* Sección Why Choose */
+    .why-choose-section {
+      padding: 4rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .why-choose-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .why-left h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e2b2e;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .why-left p {
+      color: #5b6e73;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 1.8rem 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      border: 1px solid #eae2d6;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(136,105,2,0.1);
+      border-color: #886902;
+    }
+
+    .feature-icon {
+      font-size: 2.2rem;
+      color: #886902;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1e2b2e;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #5b6e73;
+      line-height: 1.6;
+    }
+
+    /* Sección About Us oculta */
+    .about-section {
+      display: none;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 3rem;
+      position: relative;
+      border: 1px solid #eae2d6;
+    }
+
+    .about-section.visible {
+      display: block;
+    }
+
+    .about-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      color: #886902;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .about-close:hover {
+      background: #f5f2e8;
+    }
+
+    .about-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e2b2e;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    .about-section h2 span {
+      color: #886902;
+    }
+
+    .about-section p {
+      color: #5b6e73;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-section .mission {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 2px solid #eae2d6;
       font-weight: 500;
     }
 
-    .section-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      color: var(--text);
+    /* ----- NUEVA SECCIÓN DE SERVICIOS Y PAGO (adaptada al diseño claro) ----- */
+    .payment-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 5%;
     }
 
-    /* Flip Card Styles */
+    .payment-section .section-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #886902;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .payment-section .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 2rem;
+      color: #1e2b2e;
+    }
+
+    /* Grid de flip cards */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.2rem;
-      margin-bottom: 2rem;
+      margin: 2rem 0;
       perspective: 1000px;
     }
 
     .flip-card {
       background-color: transparent;
-      height: 220px;
+      height: 240px;
       cursor: pointer;
     }
 
@@ -176,7 +574,7 @@
       text-align: center;
       transition: transform 0.6s;
       transform-style: preserve-3d;
-      border-radius: var(--radius);
+      border-radius: 20px;
     }
 
     .flip-card.flipped .flip-card-inner {
@@ -189,44 +587,39 @@
       height: 100%;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-      border-radius: var(--radius);
+      border-radius: 20px;
       padding: 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(12px);
-    }
-
-    .flip-card-front {
-      transform: rotateY(0deg);
+      background: white;
+      border: 1px solid #eae2d6;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
 
     .flip-card-back {
       transform: rotateY(180deg);
-      background: linear-gradient(135deg, rgba(0,198,255,0.15), rgba(0,87,183,0.15));
-      border-color: var(--accent);
-      text-align: center;
+      background: #fefcf5;
+      border-color: #886902;
     }
 
     .service-icon {
       font-size: 2.8rem;
       margin-bottom: 0.7rem;
-      filter: drop-shadow(0 4px 12px rgba(0,198,255,0.3));
+      color: #886902;
     }
 
     .service-name {
       font-size: 1rem;
       font-weight: 600;
-      color: var(--text);
+      color: #1e2b2e;
       margin-bottom: 0.3rem;
     }
 
     .service-desc-back {
       font-size: 0.85rem;
-      color: var(--text);
+      color: #5b6e73;
       margin-bottom: 0.8rem;
       line-height: 1.4;
     }
@@ -234,65 +627,131 @@
     .service-price-back {
       font-size: 1.2rem;
       font-weight: 700;
-      color: var(--accent2);
+      color: #886902;
       margin-bottom: 0.3rem;
     }
 
     .service-price-detail {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: #5b6e73;
     }
 
-    .glass-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      backdrop-filter: blur(20px);
-      margin-bottom: 2rem;
+    /* Steps indicator */
+    .steps {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
     }
 
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .step-dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      border: 2px solid #d9d0c0;
+      color: #5b6e73;
+      background: white;
+      transition: all 0.3s;
+    }
+
+    .step-dot.active {
+      background: #886902;
+      border-color: #886902;
+      color: white;
+      box-shadow: 0 0 0 4px rgba(136,105,2,0.2);
+    }
+
+    .step-dot.done {
+      background: #886902;
+      border-color: #886902;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    .step-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #5b6e73;
+    }
+
+    .step-label.active { color: #886902; }
+    .step-label.done { color: #886902; }
+
+    .step-line {
+      width: 40px; height: 2px;
+      background: #e0d9cd;
+      margin: 0 0.4rem;
+      border-radius: 2px;
+    }
+
+    .step-line.done { background: #886902; }
+
+    /* Formulario */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.2rem;
+      margin-top: 1.5rem;
     }
-    @media (max-width: 640px) {
-      .form-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2rem; }
-      .hero-stats { gap: 1.5rem; }
-    }
+
     .form-group {
       display: flex;
       flex-direction: column;
       gap: 0.45rem;
     }
+
     .form-group.full { grid-column: 1 / -1; }
+
     label {
       font-size: 0.82rem;
       font-weight: 600;
-      color: var(--text-muted);
+      color: #5b6e73;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
+
     input, select, textarea {
-      background: rgba(255,255,255,0.05);
-      border: 1.5px solid rgba(255,255,255,0.1);
+      background: white;
+      border: 1.5px solid #e0d9cd;
       border-radius: 12px;
       padding: 0.85rem 1.1rem;
       font-family: inherit;
       font-size: 0.97rem;
-      color: var(--text);
+      color: #1e2b2e;
       transition: all 0.25s;
     }
-    input::placeholder { color: rgba(255,255,255,0.25); }
+
+    input::placeholder { color: #b0a99a; }
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: var(--accent);
-      background: rgba(0,198,255,0.06);
-      box-shadow: 0 0 0 3px rgba(0,198,255,0.12);
+      border-color: #886902;
+      box-shadow: 0 0 0 3px rgba(136,105,2,0.1);
     }
-    select option { background: #0a1628; color: white; }
+
+    .pickup-info {
+      margin-top: 1rem;
+      background: #f5f2e8;
+      border-radius: 12px;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #1e2b2e;
+    }
+
+    .pickup-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+    }
 
     .btn {
       display: inline-flex;
@@ -309,38 +768,45 @@
       transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
       letter-spacing: 0.01em;
     }
+
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #0057b7);
+      background: #886902;
       color: white;
-      box-shadow: 0 8px 24px rgba(0,198,255,0.3);
+      box-shadow: 0 8px 18px rgba(136,105,2,0.15);
     }
+
     .btn-primary:hover {
+      background: #6b5201;
       transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(0,198,255,0.45);
+      box-shadow: 0 14px 28px rgba(136,105,2,0.25);
     }
+
     .btn-gold {
-      background: linear-gradient(135deg, #f4b400, #ff8c00);
-      color: #0a1628;
-      box-shadow: 0 8px 24px rgba(244,180,0,0.35);
+      background: #f5f2e8;
+      color: #886902;
+      border: 2px solid #886902;
     }
+
     .btn-gold:hover {
+      background: #886902;
+      color: white;
       transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(244,180,0,0.5);
     }
+
     .btn-lg { padding: 1.1rem 2.5rem; font-size: 1.05rem; }
     .btn-full { width: 100%; }
 
     .dots { display: inline-flex; gap: 4px; align-items: center; }
     .dots span {
       width: 7px; height: 7px; border-radius: 50%;
-      background: var(--accent);
+      background: #886902;
       animation: dot 1.2s infinite ease-in-out;
     }
     .dots span:nth-child(2) { animation-delay: 0.2s; }
     .dots span:nth-child(3) { animation-delay: 0.4s; }
     @keyframes dot { 0%,80%,100% { transform: scale(0.7); opacity:0.4; } 40% { transform: scale(1.1); opacity:1; } }
 
-    .payment-step {
+    .payment-step, .confirmation-step {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -348,105 +814,104 @@
       gap: 1.5rem;
       padding: 2rem 0;
     }
-    .payment-icon {
+
+    .payment-icon, .confirm-icon {
       width: 90px; height: 90px;
       border-radius: 50%;
-      background: rgba(0,198,255,0.1);
-      border: 2px solid rgba(0,198,255,0.3);
+      background: #f5f2e8;
+      border: 2px solid #886902;
       display: flex; align-items: center; justify-content: center;
       font-size: 2.5rem;
-      animation: pulse 2s infinite;
+      color: #886902;
     }
-    @keyframes pulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(0,198,255,0.3); }
-      50%      { box-shadow: 0 0 0 18px rgba(0,198,255,0); }
-    }
+
     .wa-box {
-      background: rgba(37,211,102,0.08);
-      border: 1px solid rgba(37,211,102,0.25);
-      border-radius: var(--radius);
+      background: #f5f2e8;
+      border: 1px solid #886902;
+      border-radius: 16px;
       padding: 1rem 1.5rem;
       font-size: 0.93rem;
-      color: #a8f0c0;
-      max-width: 480px;
+      color: #1e2b2e;
     }
-    .wa-box strong { color: var(--whatsapp); }
 
-    .confirm-icon {
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      background: rgba(0,230,118,0.1);
-      border: 2px solid rgba(0,230,118,0.4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem;
-      margin: 0 auto 1.5rem;
-    }
     .receipt {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius);
+      background: #f5f2e8;
+      border: 1px solid #eae2d6;
+      border-radius: 20px;
       padding: 1.5rem;
       text-align: left;
       max-width: 500px;
       margin: 0 auto;
     }
+
     .receipt-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.7rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid #e0d9cd;
       font-size: 0.93rem;
     }
+
     .receipt-row:last-child { border-bottom: none; }
-    .receipt-row span:first-child { color: var(--text-muted); font-weight: 500; }
-    .receipt-row span:last-child  { color: var(--text); font-weight: 600; }
+    .receipt-row span:first-child { color: #5b6e73; font-weight: 500; }
+    .receipt-row span:last-child  { color: #1e2b2e; font-weight: 600; }
 
     .badge-row {
       display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem;
       margin-top: 1.5rem;
     }
+
     .badge {
       display: inline-flex; align-items: center; gap: 0.4rem;
       padding: 0.5rem 1.2rem;
       border-radius: 60px;
       font-size: 0.82rem;
       font-weight: 700;
+      background: #f5f2e8;
+      color: #886902;
+      border: 1px solid #886902;
     }
-    .badge-green  { background: rgba(0,230,118,0.12); border: 1px solid rgba(0,230,118,0.3); color: var(--success); }
-    .badge-blue   { background: rgba(0,198,255,0.12); border: 1px solid rgba(0,198,255,0.3); color: var(--accent); }
-    .badge-yellow { background: rgba(244,180,0,0.12); border: 1px solid rgba(244,180,0,0.3); color: var(--accent2); }
 
+    /* Tabla CRM */
     .crm-wrap {
       overflow-x: auto;
-      border-radius: var(--radius);
+      border-radius: 20px;
+      margin-top: 2rem;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
+
     thead th {
-      background: rgba(0,198,255,0.08);
-      color: var(--text-muted);
+      background: #f5f2e8;
+      color: #886902;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 0.9rem 1rem;
       text-align: left;
-      border-bottom: 1px solid var(--glass-border);
+      border-bottom: 1px solid #e0d9cd;
     }
+
     tbody tr {
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid #f0ebe2;
       transition: background 0.2s;
     }
-    tbody tr:hover { background: rgba(255,255,255,0.03); }
+    tbody tr:hover { background: #fcf9f2; }
     tbody td {
       padding: 0.9rem 1rem;
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: #5b6e73;
     }
-    tbody td:first-child { color: var(--text); font-weight: 600; }
+    tbody td:first-child { color: #1e2b2e; font-weight: 600; }
+
     .pill {
       display: inline-flex; align-items: center; gap: 0.3rem;
       padding: 0.28rem 0.9rem;
@@ -454,71 +919,8 @@
       font-size: 0.77rem;
       font-weight: 700;
     }
-    .pill-ok  { background: rgba(0,230,118,0.1); color: var(--success); border: 1px solid rgba(0,230,118,0.2); }
-    .pill-pend{ background: rgba(244,180,0,0.1);  color: var(--accent2); border: 1px solid rgba(244,180,0,0.2); }
-
-    .pickup-info {
-      margin-top: 1rem;
-      background: rgba(0,198,255,0.08);
-      border-radius: 8px;
-      padding: 1rem;
-    }
-    .pickup-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.3rem 0;
-    }
-
-    .marketing-banner {
-      background: linear-gradient(135deg, rgba(0,198,255,0.08), rgba(244,180,0,0.06));
-      border: 1px solid rgba(0,198,255,0.15);
-      border-radius: var(--radius);
-      padding: 1.4rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .marketing-banner .m-icon {
-      font-size: 2rem;
-      flex-shrink: 0;
-    }
-    .marketing-banner p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-    .marketing-banner strong { color: var(--accent); }
-
-    footer {
-      text-align: center;
-      padding: 3rem 1rem 1rem;
-      color: var(--text-muted);
-      font-size: 0.82rem;
-    }
-    footer .footer-tech {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1rem;
-    }
-    .tech-tag {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 60px;
-      padding: 0.3rem 0.9rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      backdrop-filter: blur(8px);
-    }
-
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
-      margin: 2.5rem 0;
-    }
+    .pill-ok  { background: #e3f2e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+    .pill-pend{ background: #fff3e0; color: #b26a00; border: 1px solid #ffe0b2; }
 
     .hidden { display: none !important; }
     .text-center { text-align: center; }
@@ -526,973 +928,604 @@
     .mb-2 { margin-bottom: 1rem; }
     .mb-3 { margin-bottom: 1.5rem; }
     .mt-3 { margin-top: 1.5rem; }
-    .gap-row { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
 
-    .steps {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      margin-bottom: 2.5rem;
-      flex-wrap: wrap;
-    }
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .step-dot {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.78rem;
-      font-weight: 800;
-      border: 2px solid rgba(255,255,255,0.15);
-      color: var(--text-muted);
-      background: rgba(255,255,255,0.04);
-      transition: all 0.3s;
-    }
-    .step-dot.active {
-      background: linear-gradient(135deg, var(--accent), #0057b7);
-      border-color: var(--accent);
-      color: white;
-      box-shadow: 0 0 16px rgba(0,198,255,0.4);
-    }
-    .step-dot.done {
-      background: rgba(0,230,118,0.15);
-      border-color: var(--success);
-      color: var(--success);
-    }
-    .step-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-    .step-label.active { color: var(--accent); }
-    .step-label.done { color: var(--success); }
-    .step-line {
-      width: 40px; height: 2px;
-      background: rgba(255,255,255,0.1);
-      margin: 0 0.4rem;
-      border-radius: 2px;
-    }
-    .step-line.done { background: rgba(0,230,118,0.4); }
-    .step-line.active { background: rgba(0,198,255,0.4); }
-
-    @keyframes fadeSlideUp {
-      from { opacity:0; transform: translateY(24px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
-    .anim { animation: fadeSlideUp 0.5s ease both; }
-
-    #chatToggle {
+    /* Botones flotantes */
+    .whatsapp-float {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      z-index: 1000;
-      width: 62px;
-      height: 62px;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      background: linear-gradient(135deg, #00c6ff, #0057b7);
-      box-shadow: 0 8px 30px rgba(0,198,255,0.45), 0 0 0 0 rgba(0,198,255,0.3);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.7rem;
-      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
-      animation: chatPulse 2.5s infinite;
+      font-size: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      text-decoration: none;
     }
-    @keyframes chatPulse {
-      0%,100% { box-shadow: 0 8px 30px rgba(0,198,255,0.45), 0 0 0 0 rgba(0,198,255,0.3); }
-      50%      { box-shadow: 0 8px 30px rgba(0,198,255,0.45), 0 0 0 14px rgba(0,198,255,0); }
-    }
-    #chatToggle:hover { transform: scale(1.1); }
-    #chatToggle.open  { animation: none; background: linear-gradient(135deg, #ff4d6d, #c9184a); }
 
-    .chat-notif {
-      position: absolute;
-      top: -3px; right: -3px;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: #f4b400;
-      border: 2px solid var(--primary);
-      font-size: 0.65rem;
-      font-weight: 800;
-      color: #0a1628;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.3s;
+    .whatsapp-float:hover {
+      background-color: #20b859;
+      transform: scale(1.1);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     }
-    .chat-notif.hide { transform: scale(0); }
 
-    #chatWindow {
+    .scroll-top-float {
       position: fixed;
-      bottom: 6.5rem;
+      bottom: 5rem;
       right: 2rem;
-      z-index: 999;
-      width: 370px;
-      max-height: 580px;
+      background-color: #886902;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
       display: flex;
-      flex-direction: column;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #0d1f35;
-      border: 1px solid rgba(0,198,255,0.2);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,198,255,0.1);
-      transform: scale(0.85) translateY(30px);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
-      transform-origin: bottom right;
-    }
-    #chatWindow.open {
-      transform: scale(1) translateY(0);
-      opacity: 1;
-      pointer-events: all;
-    }
-    @media (max-width: 440px) {
-      #chatWindow { width: calc(100vw - 2rem); right: 1rem; }
-      #chatToggle  { bottom: 1.2rem; right: 1.2rem; }
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      cursor: pointer;
+      border: none;
     }
 
-    .chat-header {
-      background: linear-gradient(135deg, rgba(0,198,255,0.15), rgba(0,87,183,0.15));
-      border-bottom: 1px solid rgba(0,198,255,0.15);
-      padding: 1rem 1.2rem;
+    .scroll-top-float:hover {
+      background-color: #6b5201;
+      transform: scale(1.1);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Footer con fondo negro */
+    .footer-dark {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      padding: 3rem 5% 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-info {
+      flex: 2;
+      min-width: 250px;
+    }
+
+    .footer-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #886902;
+    }
+
+    .footer-info p {
+      margin-bottom: 0.8rem;
       display: flex;
       align-items: center;
       gap: 0.8rem;
-      flex-shrink: 0;
+      color: #e0e0e0;
     }
-    .chat-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #00c6ff, #0057b7);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      position: relative;
-    }
-    .chat-avatar::after {
-      content: '';
-      position: absolute;
-      bottom: 1px; right: 1px;
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: #00e676;
-      border: 2px solid #0d1f35;
-    }
-    .chat-info h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #e8edf2;
-      margin-bottom: 0.1rem;
-    }
-    .chat-info p {
-      font-size: 0.73rem;
-      color: #00e676;
-      font-weight: 600;
-    }
-    .chat-close {
-      margin-left: auto;
-      background: rgba(255,255,255,0.07);
-      border: none;
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      color: #8a99ae;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, color 0.2s;
-    }
-    .chat-close:hover { background: rgba(255,77,109,0.2); color: #ff4d6d; }
 
-    .chat-messages {
+    .footer-info i {
+      color: #886902;
+      width: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-social {
       flex: 1;
-      overflow-y: auto;
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      scroll-behavior: smooth;
+      min-width: 200px;
     }
-    .chat-messages::-webkit-scrollbar { width: 4px; }
-    .chat-messages::-webkit-scrollbar-track { background: transparent; }
-    .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
 
-    .msg {
-      display: flex;
-      gap: 0.5rem;
-      align-items: flex-end;
-      animation: msgIn 0.3s ease both;
+    .footer-social h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #886902;
     }
-    @keyframes msgIn {
-      from { opacity:0; transform: translateY(10px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
-    .msg.bot  { justify-content: flex-start; }
-    .msg.user { justify-content: flex-end; }
 
-    .msg-avatar {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #00c6ff, #0057b7);
-      display: flex; align-items: center; justify-content: center;
+    .social-icons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-icons a {
+      color: #ffffff;
+      font-size: 1.8rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .social-icons a:hover {
+      color: #886902;
+      transform: translateY(-3px);
+    }
+
+    .footer-copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #333;
+      color: #aaa;
       font-size: 0.9rem;
-      flex-shrink: 0;
     }
 
-    .bubble {
-      max-width: 82%;
-      padding: 0.7rem 1rem;
-      border-radius: 18px;
-      font-size: 0.88rem;
-      line-height: 1.55;
-    }
-    .msg.bot  .bubble {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #dde4ed;
-      border-bottom-left-radius: 4px;
-    }
-    .msg.user .bubble {
-      background: linear-gradient(135deg, #00c6ff, #0057b7);
-      color: white;
-      border-bottom-right-radius: 4px;
-    }
-    .bubble a {
-      color: #f4b400;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-    .bubble strong { color: #ffffff; font-weight: 700; }
-
-    .msg-time {
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.25);
-      margin-top: 0.15rem;
-      padding: 0 0.2rem;
-    }
-    .msg.user .msg-time { text-align: right; }
-
-    .typing-bubble {
-      display: flex; gap: 4px; align-items: center;
-      padding: 0.7rem 1rem;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 18px;
-      border-bottom-left-radius: 4px;
-      width: fit-content;
-    }
-    .typing-bubble span {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: #8a99ae;
-      animation: typingDot 1.2s infinite ease-in-out;
-    }
-    .typing-bubble span:nth-child(2) { animation-delay: 0.2s; }
-    .typing-bubble span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typingDot {
-      0%,80%,100% { transform: scale(0.7); opacity:0.4; }
-      40%          { transform: scale(1.1); opacity:1; }
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-title { font-size: 2.8rem; }
+      .why-choose-grid { grid-template-columns: 1fr; }
     }
 
-    .chat-suggestions {
-      padding: 0.6rem 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      flex-shrink: 0;
-      background: rgba(0,0,0,0.15);
-    }
-    .sug-btn {
-      background: rgba(0,198,255,0.08);
-      border: 1px solid rgba(0,198,255,0.25);
-      border-radius: 60px;
-      padding: 0.35rem 0.85rem;
-      font-family: inherit;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #00c6ff;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .sug-btn:hover {
-      background: rgba(0,198,255,0.2);
-      transform: translateY(-2px);
+    @media (max-width: 768px) {
+      .top-header { justify-content: flex-start; }
+      .main-nav-bar { 
+        display: flex; 
+        flex-wrap: wrap; 
+        align-items: center; 
+        justify-content: space-between;
+      }
+      .nav-links { 
+        display: none; 
+        flex: 0 0 100%; 
+        order: 3; 
+        flex-direction: column; 
+        width: 100%; 
+        gap: 1rem; 
+        padding: 1rem 0; 
+      }
+      .nav-links.show { display: flex; }
+      .menu-toggle { display: block; order: 2; }
+      .main-nav-bar .logo { order: 1; }
+      .hero, .hero-right { flex-direction: column; text-align: center; }
+      .hero-title { font-size: 2.2rem; }
+      .hero-btn { margin-left: auto; margin-right: auto; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .features-list li { text-align: left; }
+      .stats-container { flex-direction: column; gap: 1rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .about-section { padding: 2rem; }
+      .whatsapp-float { width: 50px; height: 50px; font-size: 1.8rem; bottom: 1.5rem; right: 1.5rem; }
+      .scroll-top-float { width: 50px; height: 50px; font-size: 1.8rem; bottom: 4.5rem; right: 1.5rem; }
+      .form-grid { grid-template-columns: 1fr; }
     }
 
-    .chat-input-row {
-      display: flex;
-      gap: 0.5rem;
-      padding: 1rem;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      flex-shrink: 0;
-      background: rgba(0,0,0,0.1);
+    @media (max-width: 480px) {
+      .contact-details span { white-space: normal; }
     }
-    #chatInput {
-      flex: 1;
-      background: rgba(255,255,255,0.06);
-      border: 1.5px solid rgba(255,255,255,0.1);
-      border-radius: 60px;
-      padding: 0.65rem 1.1rem;
-      font-family: inherit;
-      font-size: 0.9rem;
-      color: #e8edf2;
-      transition: border-color 0.2s;
-    }
-    #chatInput::placeholder { color: rgba(255,255,255,0.25); }
-    #chatInput:focus {
-      outline: none;
-      border-color: #00c6ff;
-      box-shadow: 0 0 0 3px rgba(0,198,255,0.12);
-    }
-    #chatSend {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      border: none;
-      background: linear-gradient(135deg, #00c6ff, #0057b7);
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 14px rgba(0,198,255,0.35);
-    }
-    #chatSend:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(0,198,255,0.5); }
   </style>
 </head>
 <body>
+  <!-- BARRA SUPERIOR SOLO CON CONTACTO (NO STICKY) -->
+  <header class="top-header">
+   
+  </header>
 
-<div class="steam-bg" id="steamBg"></div>
-
-<div class="wrapper">
-
-  <div class="hero anim">
-    <div class="hero-badge">🧼 LIVITY PROJECTS Inc · operations@livitygy.com</div>
-    <h1>Professional steam cleaning<br><span>for your home & vehicles</span></h1>
-    <p class="hero-sub">
-      High-pressure steam technology for furniture, mattresses, cars, and carpets.
-      Book in minutes, pay with MMG. CSR have discretion to give discounts up to 15%.
-    </p>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">18+</div><div class="stat-label">Specialized services</div></div>
-      <div class="stat"><div class="stat-num">15%</div><div class="stat-label">Max discount</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Secure MMG payment</div></div>
+  <!-- BARRA DE NAVEGACIÓN STICKY CON LOGO Y LINKS -->
+  <div class="main-nav-bar" id="mainNavBar">
+    <div class="logo" id="logo">
+      <img src="livity.jpeg" alt="Livity DryClean logo">
     </div>
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#" id="homeLink" class="active">Home</a>
+      <a id="aboutLink">About</a>
+      <a id="serviceLink">Service</a>
+    </nav>
   </div>
 
-  <div class="glass-card anim" style="animation-delay:0.1s">
-    <div class="section-label">Click on any service to flip and see details</div>
-    <div class="section-title">Our services</div>
-    
-    <div class="services-grid" id="servicesGrid"></div>
+  <!-- Hero Section 1 -->
+  <section class="hero" style="background-image: url('Inicio.png');">
+    <div class="hero-content">
+      <div class="hero-tag">BEST CLEENY AGENCY</div>
+      <h1 class="hero-title">Enjoy the Qualityful Cleaning Services <span>And Stay Safe</span></h1>
+      <button class="hero-btn" id="bookCleanBtn">Book Your Clean</button>
+    </div>
+    <div class="hero-image">
+      
+    </div>
+  </section>
 
-    <div class="steps" id="stepIndicator">
-      <div class="step">
-        <div class="step-dot active" id="dot1">1</div>
-        <span class="step-label active" id="lbl1">Booking</span>
+  <!-- Sección de servicios (con imágenes locales) -->
+  <section class="how-it-works">
+    <div class="section-tag">SERVICE</div>
+    <h2 class="section-title">Our Cleaning Services</h2>
+    <p class="section-subtitle">Discover a range of services designed to bring comfort and cleanliness into every corner of your home or office.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon"><img src="primera.png" alt="Standard Home Cleaning"></div>
+        <h3>Standard Home Cleaning</h3>
+        <p>Keep your space fresh with regular dusting, mopping and surface care.</p>
       </div>
-      <div class="step-line" id="line1"></div>
-      <div class="step">
-        <div class="step-dot" id="dot2">2</div>
-        <span class="step-label" id="lbl2">MMG Payment</span>
+      <div class="step-card">
+        <div class="step-icon"><img src="segunda.jpg" alt="Deep Cleaning"></div>
+        <h3>Deep Cleaning</h3>
+        <p>Intensive cleaning for kitchens, bathrooms and overlooked areas.</p>
       </div>
-      <div class="step-line" id="line2"></div>
-      <div class="step">
-        <div class="step-dot" id="dot3">3</div>
-        <span class="step-label" id="lbl3">Confirmed</span>
+      <div class="step-card">
+        <div class="step-icon"><img src="tercera.png" alt="Move-In/Move-Out Cleaning"></div>
+        <h3>Move-In/Move-Out Cleaning</h3>
+        <p>Ensure your new beginning or final handover is spotless.</p>
       </div>
     </div>
+  </section>
 
+  <!-- Hero Section 2 (invertida) -->
+  <section class="hero hero-right" style="background-image: url('Section2.png');">
+    <div class="hero-content">
+      <div class="hero-tag">About US</div>
+      <h1 class="hero-title">Making Your House Clean<span>For Looks As a New</span></h1>
+      <p class="intro-text">Competently repurpose go forward bonefits whithout good-oriented ROI conveniently target e-business opportunities whereas parailet task multimedia based web services</p>
+      <ul class="features-list">
+        <li>Cleeny Your Home or Office</li>
+        <li>24/7 Emmergency Quanty Services</li>
+        <li>Online Booking System Available</li>
+      </ul>
+      <button class="hero-btn" id="moreAboutBtn">More About us ➡️</button>
+    </div>
+    <div class="hero-image">
+      
+    </div>
+  </section>
+
+  <!-- Sección de estadísticas -->
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item"><div class="stat-number">100+</div><div class="stat-label">Happy Customer</div></div>
+      <div class="stat-item"><div class="stat-number">10</div><div class="stat-label">Team Members</div></div>
+      <div class="stat-item"><div class="stat-number">100+</div><div class="stat-label">Completed Projects</div></div>
+      <div class="stat-item"><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div>
+    </div>
+  </section>
+
+  <!-- Sección Why Choose Livity Projects Inc. -->
+  <section class="why-choose-section">
+    <div class="why-choose-grid">
+      <div class="why-left">
+        <h2>Why Choose Livity Projects Inc.</h2>
+        <p>At Livity Projects Inc., we are committed to providing reliable, high-quality cleaning and maintenance services you can depend on. Our team focuses on attention to detail, professionalism, and customer satisfaction to ensure every space we service is clean, safe, and well maintained. Whether it’s residential or commercial work, we take pride in delivering consistent results and building lasting relationships with our clients.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-handshake"></i></div><h3>Reliable & Professional Service</h3><p>Our team is committed to showing up on time and delivering dependable cleaning and maintenance services you can trust.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-broom"></i></div><h3>High-Quality Cleaning Standards</h3><p>We focus on the details — removing dirt, stains, and buildup to leave your space spotless, fresh, and well maintained.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-users"></i></div><h3>Experienced & Trained Team</h3><p>Our staff is trained to handle residential and commercial spaces using proper techniques and equipment.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-tag"></i></div><h3>Affordable & Transparent Pricing</h3><p>Quality service shouldn’t break the bank. We offer competitive pricing with no hidden costs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN: Servicios de Steam Cleaning y Pasarela de Pago -->
+  <section class="payment-section" id="paymentSection">
+    <div class="section-label">🧼 PROFESSIONAL STEAM CLEANING</div>
+    <h2 class="section-title">Book your service in minutes</h2>
+    <p class="section-subtitle">High‑pressure steam technology for furniture, mattresses, cars, and carpets. CSR can give discounts up to 15%.</p>
+
+    <!-- Grid de flip cards (servicios) -->
+    <div class="services-grid" id="servicesGrid"></div>
+
+    <!-- Indicador de pasos -->
+    <div class="steps" id="stepIndicator">
+      <div class="step"><div class="step-dot active" id="dot1">1</div><span class="step-label active" id="lbl1">Booking</span></div>
+      <div class="step-line" id="line1"></div>
+      <div class="step"><div class="step-dot" id="dot2">2</div><span class="step-label" id="lbl2">MMG Payment</span></div>
+      <div class="step-line" id="line2"></div>
+      <div class="step"><div class="step-dot" id="dot3">3</div><span class="step-label" id="lbl3">Confirmed</span></div>
+    </div>
+
+    <!-- Paso 1: Formulario de reserva -->
     <div id="formReserva">
       <div class="section-label mb-1">Step 1</div>
       <div class="section-title mb-3">Request service</div>
       <div class="form-grid">
-        <div class="form-group">
-          <label>Full name *</label>
-          <input type="text" id="nombre" placeholder="e.g., John Smith" />
-        </div>
-        <div class="form-group">
-          <label>Email *</label>
-          <input type="email" id="email" placeholder="john@email.com" />
-        </div>
-        <div class="form-group">
-          <label>Phone (WhatsApp) *</label>
-          <input type="tel" id="telefono" placeholder="+592 123 4567" />
-        </div>
-        <div class="form-group">
-          <label>Service *</label>
-          <select id="servicio"></select>
-        </div>
-        <div class="form-group">
-          <label>Date and time *</label>
-          <input type="datetime-local" id="fechaHora" />
-        </div>
-        <div class="form-group">
-          <label>Address *</label>
-          <input type="text" id="direccion" placeholder="Street, city" />
-        </div>
+        <div class="form-group"><label>Full name *</label><input type="text" id="nombre" placeholder="e.g., John Smith"></div>
+        <div class="form-group"><label>Email *</label><input type="email" id="email" placeholder="john@email.com"></div>
+        <div class="form-group"><label>Phone (WhatsApp) *</label><input type="tel" id="telefono" placeholder="+592 123 4567"></div>
+        <div class="form-group"><label>Service *</label><select id="servicio"></select></div>
+        <div class="form-group"><label>Date and time *</label><input type="datetime-local" id="fechaHora"></div>
+        <div class="form-group"><label>Address *</label><input type="text" id="direccion" placeholder="Street, city"></div>
       </div>
       <div class="pickup-info" id="pickupInfo">
         <strong>🚚 Carpet Pickup Service:</strong>
         <div class="pickup-row"><span>West Coast, Georgetown, West Bank:</span> <span>$2,000</span></div>
         <div class="pickup-row"><span>Linden & New Amsterdam:</span> <span>$3,000</span></div>
       </div>
-      <div class="mt-3">
-        <button class="btn btn-primary btn-lg" id="btnReservar">
-          📲 Book and request payment
-        </button>
-      </div>
+      <div class="mt-3"><button class="btn btn-primary btn-lg" id="btnReservar">📲 Book and request payment</button></div>
     </div>
 
+    <!-- Paso 2: Simulación de pago MMG -->
     <div id="panelPago" class="hidden">
-      <div class="payment-step anim">
+      <div class="payment-step">
         <div class="payment-icon">💳</div>
-        <div>
-          <div class="section-label mb-1">Step 2</div>
-          <div class="section-title mb-2">Waiting for MMG payment</div>
-          <div class="dots"><span></span><span></span><span></span></div>
-        </div>
-        <div class="wa-box">
-          <strong>📱 WhatsApp:</strong> We have sent a payment link to <strong id="telefonoMostrar"></strong>
-        </div>
-        <button class="btn btn-gold btn-lg" id="btnSimularPago">
-          💰 Simulate payment with MMG
-        </button>
-        <p style="font-size:0.8rem; color:var(--text-muted);">
-          <em>CSR: Discounts up to 15% · Above 5% must be justified</em>
-        </p>
+        <div><div class="section-label mb-1">Step 2</div><div class="section-title mb-2">Waiting for MMG payment</div><div class="dots"><span></span><span></span><span></span></div></div>
+        <div class="wa-box"><strong>📱 WhatsApp:</strong> We have sent a payment link to <strong id="telefonoMostrar"></strong></div>
+        <button class="btn btn-gold btn-lg" id="btnSimularPago">💰 Simulate payment with MMG</button>
+        <p style="font-size:0.8rem; color:#5b6e73;"><em>CSR: Discounts up to 15% · Above 5% must be justified</em></p>
       </div>
     </div>
 
+    <!-- Paso 3: Confirmación (ahora incluye el total) -->
     <div id="panelConfirmacion" class="hidden">
-      <div class="text-center anim">
+      <div class="confirmation-step">
         <div class="confirm-icon">✅</div>
-        <div class="section-label mb-1">Step 3</div>
-        <div class="section-title mb-3">Booking confirmed!</div>
+        <div><div class="section-label mb-1">Step 3</div><div class="section-title mb-3">Booking confirmed!</div></div>
         <div class="receipt">
-          <div class="receipt-row">
-            <span>Customer</span>
-            <span id="reciboNombre"></span>
-          </div>
-          <div class="receipt-row">
-            <span>Service</span>
-            <span id="reciboServicio"></span>
-          </div>
-          <div class="receipt-row">
-            <span>Date and time</span>
-            <span id="reciboFecha"></span>
-          </div>
-          <div class="receipt-row">
-            <span>Address</span>
-            <span id="reciboDireccion"></span>
-          </div>
-          <div class="receipt-row">
-            <span>Payment status</span>
-            <span class="pill pill-ok">✓ Confirmed</span>
-          </div>
+          <div class="receipt-row"><span>Customer</span><span id="reciboNombre"></span></div>
+          <div class="receipt-row"><span>Service</span><span id="reciboServicio"></span></div>
+          <div class="receipt-row"><span>Date and time</span><span id="reciboFecha"></span></div>
+          <div class="receipt-row"><span>Address</span><span id="reciboDireccion"></span></div>
+          <div class="receipt-row"><span>Total</span><span id="reciboTotal" style="color:#886902; font-weight:700;"></span></div>
+          <div class="receipt-row"><span>Payment status</span><span class="pill pill-ok">✓ Confirmed</span></div>
         </div>
         <div class="badge-row">
-          <span class="badge badge-green">📲 Receipt sent by WhatsApp</span>
-          <span class="badge badge-blue">📅 Event in Google Calendar</span>
-          <span class="badge badge-yellow">📊 Registered in CRM</span>
+          <span class="badge">📲 Receipt sent by WhatsApp</span>
+          <span class="badge">📅 Event in Google Calendar</span>
+          <span class="badge">📊 Registered in CRM</span>
         </div>
       </div>
     </div>
 
-  </div>
-
-  <div class="glass-card anim" style="animation-delay:0.2s">
-    <div class="section-label">Internal panel</div>
-    <div class="section-title mb-3">🗂️ Latest bookings</div>
+    <!-- Tabla de reservas recientes (CRM) - SIN FILAS DE EJEMPLO -->
     <div class="crm-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Customer</th>
-            <th>Service</th>
-            <th>Date & Time</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Customer</th><th>Service</th><th>Date & Time</th><th>Status</th></tr></thead>
         <tbody id="crm-body">
-          <tr>
-            <td>Carlos Gómez</td>
-            <td>3-2-1 Suite</td>
-            <td>2025-04-15 · 10:00</td>
-            <td><span class="pill pill-ok">✓ Confirmed</span></td>
-          </tr>
-          <tr>
-            <td>María López</td>
-            <td>SUV</td>
-            <td>2025-04-16 · 14:30</td>
-            <td><span class="pill pill-ok">✓ Confirmed</span></td>
-          </tr>
-          <tr>
-            <td>Juan Díaz</td>
-            <td>King Mattress</td>
-            <td>2025-04-17 · 09:00</td>
-            <td><span class="pill pill-pend">⏳ Pending</span></td>
-          </tr>
+          <!-- Las filas se agregarán dinámicamente -->
         </tbody>
       </table>
     </div>
-  </div>
+  </section>
 
-  <div class="marketing-banner anim" style="animation-delay:0.3s">
-    <div class="m-icon">📢</div>
-    <p>
-      <strong>CSR Policy:</strong> Discretionary discounts up to 15%. Any discount above 5% must be justified.
-      Carpet pickup available: West Coast, Georgetown, West Bank ($2,000) · Linden & New Amsterdam ($3,000)
-    </p>
-  </div>
+  <!-- Sección About Us oculta -->
+  <section id="aboutSection" class="about-section">
+    <button class="about-close" id="closeAboutBtn"><i class="fas fa-times"></i></button>
+    <h2>About Us – <span>Livity Projects Inc.</span></h2>
+    <p>At Livity Projects Inc., we are dedicated to providing reliable, high-quality cleaning and maintenance services for homes and businesses. Our goal is simple — to help our clients maintain clean, healthy, and well-kept spaces they can feel proud of.</p>
+    <p>With a team that values professionalism, efficiency, and attention to detail, we approach every project with care and commitment. Whether it’s routine cleaning, deep cleaning, or property maintenance, we focus on delivering results that meet the highest standards.</p>
+    <p>We understand that every client and every space is different, which is why we work closely with our customers to provide services that fit their needs. At Livity Projects Inc., customer satisfaction isn’t just a promise — it’s the foundation of everything we do.</p>
+    <p class="mission">Our mission is to build lasting relationships with our clients by providing dependable service, consistent quality, and a team you can trust to get the job done right.</p>
+  </section>
 
-  <footer>
-    <p>⚡ Livity Projects Inc · operations@livitygy.com</p>
-    <div class="footer-tech">
-      <span class="tech-tag">n8n</span>
-      <span class="tech-tag">MMG Payments</span>
-      <span class="tech-tag">WhatsApp API</span>
-      <span class="tech-tag">Google Calendar</span>
-      <span class="tech-tag">Integrated CRM</span>
+  <!-- Botones flotantes -->
+  <button class="scroll-top-float" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+  <a href="https://wa.me/5926437296" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+
+  <!-- Footer oscuro -->
+  <footer class="footer-dark">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Livity Projects Inc.</h3>
+        <p><i class="fas fa-phone-alt"></i> +592 643-7296</p>
+        <p><i class="fas fa-envelope"></i> info@livitygy.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Address-8811 Tuschen Housing Scheme, East Bank Essequibo</p>
+      </div>
+      <div class="footer-social">
+        <h3>Síguenos</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100093188593546" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.instagram.com/livity_projects/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@livity_projects.gy" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
     </div>
+    <div class="footer-copyright">&copy; 2026 Livity Projects Inc. Todos los derechos reservados.</div>
   </footer>
 
-</div>
+  <script>
+    // Toggle menú móvil
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('show'));
+    window.addEventListener('resize', () => { if (window.innerWidth > 768) navLinks.classList.remove('show'); });
 
-<button id="chatToggle" title="Chat with us">
-  <span id="chatIcon">💬</span>
-  <span class="chat-notif" id="chatNotif">1</span>
-</button>
+    // Cambio de color de la barra de navegación al hacer scroll
+    const mainNavBar = document.getElementById('mainNavBar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+        mainNavBar.classList.add('scrolled');
+      } else {
+        mainNavBar.classList.remove('scrolled');
+      }
+    });
 
-<div id="chatWindow">
-  <div class="chat-header">
-    <div class="chat-avatar">🧽</div>
-    <div class="chat-info">
-      <h3>Livity Assistant</h3>
-      <p>● Online now</p>
-    </div>
-    <button class="chat-close" id="chatCloseBtn" title="Close">✕</button>
-  </div>
-  <div class="chat-messages" id="chatMessages"></div>
-  <div class="chat-suggestions" id="chatSugs">
-    <button class="sug-btn" data-sug="What are your services?">🧹 Services</button>
-    <button class="sug-btn" data-sug="What are the prices?">💲 Prices</button>
-    <button class="sug-btn" data-sug="How do I book?">📅 Book</button>
-    <button class="sug-btn" data-sug="Do you offer discounts?">💰 Discounts</button>
-    <button class="sug-btn" data-sug="Carpet pickup?">🚚 Pickup</button>
-  </div>
-  <div class="chat-input-row">
-    <input type="text" id="chatInput" placeholder="Type your message…" autocomplete="off" />
-    <button id="chatSend">➤</button>
-  </div>
-</div>
+    // Funcionalidad sección About oculta
+    const aboutSection = document.getElementById('aboutSection');
+    const aboutLink = document.getElementById('aboutLink');
+    const moreAboutBtn = document.getElementById('moreAboutBtn');
+    const closeAboutBtn = document.getElementById('closeAboutBtn');
+    function showAboutSection() { aboutSection.classList.add('visible'); aboutSection.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    function hideAboutSection() { aboutSection.classList.remove('visible'); }
+    aboutLink.addEventListener('click', (e) => { e.preventDefault(); showAboutSection(); });
+    moreAboutBtn.addEventListener('click', showAboutSection);
+    closeAboutBtn.addEventListener('click', hideAboutSection);
+    window.addEventListener('click', (e) => { if (aboutSection.classList.contains('visible') && !aboutSection.contains(e.target) && e.target !== aboutLink && e.target !== moreAboutBtn) hideAboutSection(); });
 
-<script>
-  (function() {
-    const bg = document.getElementById('steamBg');
-    for (let i = 0; i < 28; i++) {
-      const s = document.createElement('span');
-      const size = 4 + Math.random() * 8;
-      s.style.cssText = `
-        left: ${Math.random()*100}%;
-        width: ${size}px; height: ${size}px;
-        animation-duration: ${6 + Math.random()*10}s;
-        animation-delay: ${Math.random()*10}s;
-      `;
-      bg.appendChild(s);
-    }
-  })();
+    // Funcionalidad del logo para ir al inicio
+    document.getElementById('logo').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-  const servicesData = {
-    'sofa-1seat': { 
-      name: '1 Seat Sofa', 
-      price: '$6,000', 
-      icon: '🛋️',
-      desc: 'Deep steam cleaning for 1-seat sofas. Removes stains, bacteria, and odors.',
-      detail: 'Standard pricing'
-    },
-    'sofa-2seat': { 
-      name: '2 Seat Sofa', 
-      price: '$10,000', 
-      icon: '🛋️',
-      desc: 'Complete cleaning for 2-seat sofas. Restores fabric appearance.',
-      detail: 'Standard pricing'
-    },
-    'sofa-3seat': { 
-      name: '3 Seat Sofa', 
-      price: '$14,000', 
-      icon: '🛋️',
-      desc: 'Professional steam cleaning for 3-seat sofas.',
-      detail: 'Standard pricing'
-    },
-    'l-shaped': { 
-      name: 'L Shaped Sofa', 
-      price: '$16,000', 
-      icon: '🛋️',
-      desc: 'Deep cleaning for L-shaped sofas, including all sections.',
-      detail: 'Standard pricing'
-    },
-    'suite-321': { 
-      name: '3-2-1 Suite', 
-      price: '$24,000', 
-      icon: '🛋️',
-      desc: 'Complete suite cleaning: 3-seat, 2-seat, and 1-seat sofa.',
-      detail: 'Standard pricing'
-    },
-    'suite-311': { 
-      name: '3-1-1 Suite', 
-      price: '$20,000', 
-      icon: '🛋️',
-      desc: 'Suite cleaning: 3-seat and two 1-seat sofas.',
-      detail: 'Standard pricing'
-    },
-    'suite-32': { 
-      name: '3-2 Suite', 
-      price: '$20,000', 
-      icon: '🛋️',
-      desc: 'Suite cleaning: 3-seat and 2-seat sofa.',
-      detail: 'Standard pricing'
-    },
-    'suite-211': { 
-      name: '2-1-1 Suite', 
-      price: '$16,000', 
-      icon: '🛋️',
-      desc: 'Suite cleaning: 2-seat and two 1-seat sofas.',
-      detail: 'Standard pricing'
-    },
-    'office-chairs': { 
-      name: 'Office Chairs', 
-      price: '$2,500', 
-      icon: '💺',
-      desc: 'Per chair cleaning. Removes dirt and bacteria.',
-      detail: 'Per chair'
-    },
-    'dining-chairs': { 
-      name: 'Dining Chairs', 
-      price: '$2,000', 
-      icon: '🍽️',
-      desc: 'Per chair cleaning for dining room chairs.',
-      detail: 'Per chair'
-    },
-    'mattress-king': { 
-      name: 'King Mattress', 
-      price: '$10,000', 
-      icon: '🛏️',
-      desc: 'Includes 2 pillows. Deep sanitization and stain removal.',
-      detail: 'Includes 2 pillows'
-    },
-    'mattress-queen': { 
-      name: 'Queen Mattress', 
-      price: '$8,000', 
-      icon: '🛏️',
-      desc: 'Includes 2 pillows. Complete mattress cleaning.',
-      detail: 'Includes 2 pillows'
-    },
-    'car': { 
-      name: 'Car', 
-      price: '$12,000', 
-      icon: '🚗',
-      desc: 'Includes mats. Interior steam cleaning for cars.',
-      detail: 'Includes mats'
-    },
-    'suv': { 
-      name: 'SUV', 
-      price: '$16,000', 
-      icon: '🚙',
-      desc: 'Includes mats. Full interior cleaning for SUVs.',
-      detail: 'Includes mats'
-    },
-    'carpet-uninstalled': { 
-      name: 'Carpet (uninstalled)', 
-      price: '$115/sq ft', 
-      icon: '🧹',
-      desc: 'Per square foot. L x W measurement. Pickup service available.',
-      detail: 'Uninstalled - pickup available'
-    },
-    'carpet-installed': { 
-      name: 'Carpet (installed)', 
-      price: '$95/sq ft', 
-      icon: '🧹',
-      desc: 'Per square foot. L x W measurement. Cleaning on-site.',
-      detail: 'Installed - on-site cleaning'
-    },
-    'pressure-washing': { 
-      name: 'Pressure Washing', 
-      price: '$30/sq ft', 
-      icon: '💧',
-      desc: 'Per square foot. High-pressure cleaning for exterior surfaces.',
-      detail: 'Exterior surfaces'
-    },
-    'recliners': { 
-      name: 'Recliners', 
-      price: '$6,000 / $10,000', 
-      icon: '🪑',
-      desc: 'Single $6,000 · Joined $10,000',
-      detail: 'Single or joined pricing'
-    }
-  };
+    // Funcionalidad del botón Home para ir al inicio
+    document.getElementById('homeLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-  function createFlipCards() {
-    const grid = document.getElementById('servicesGrid');
-    grid.innerHTML = '';
-    
-    for (const [key, data] of Object.entries(servicesData)) {
-      const flipCard = document.createElement('div');
-      flipCard.className = 'flip-card';
-      flipCard.dataset.service = key;
-      
-      flipCard.innerHTML = `
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <span class="service-icon">${data.icon}</span>
-            <div class="service-name">${data.name}</div>
+    // Funcionalidad del botón Service para ir a payment-section
+    document.getElementById('serviceLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('paymentSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Botón "Book Your Clean" lleva a la sección de reserva
+    document.getElementById('bookCleanBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('paymentSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Botón flotante para volver arriba
+    document.getElementById('scrollTopBtn').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ---------- NUEVA SECCIÓN DE PAGO ----------
+    const servicesData = {
+      'sofa-1seat': { name: '1 Seat Sofa', price: '$6,000', icon: '🛋️', desc: 'Deep steam cleaning for 1-seat sofas. Removes stains, bacteria, and odors.', detail: 'Standard pricing' },
+      'sofa-2seat': { name: '2 Seat Sofa', price: '$10,000', icon: '🛋️', desc: 'Complete cleaning for 2-seat sofas. Restores fabric appearance.', detail: 'Standard pricing' },
+      'sofa-3seat': { name: '3 Seat Sofa', price: '$14,000', icon: '🛋️', desc: 'Professional steam cleaning for 3-seat sofas.', detail: 'Standard pricing' },
+      'l-shaped': { name: 'L Shaped Sofa', price: '$16,000', icon: '🛋️', desc: 'Deep cleaning for L-shaped sofas, including all sections.', detail: 'Standard pricing' },
+      'suite-321': { name: '3-2-1 Suite', price: '$24,000', icon: '🛋️', desc: 'Complete suite cleaning: 3-seat, 2-seat, and 1-seat sofa.', detail: 'Standard pricing' },
+      'suite-311': { name: '3-1-1 Suite', price: '$20,000', icon: '🛋️', desc: 'Suite cleaning: 3-seat and two 1-seat sofas.', detail: 'Standard pricing' },
+      'suite-32': { name: '3-2 Suite', price: '$20,000', icon: '🛋️', desc: 'Suite cleaning: 3-seat and 2-seat sofa.', detail: 'Standard pricing' },
+      'suite-211': { name: '2-1-1 Suite', price: '$16,000', icon: '🛋️', desc: 'Suite cleaning: 2-seat and two 1-seat sofas.', detail: 'Standard pricing' },
+      'office-chairs': { name: 'Office Chairs', price: '$2,500', icon: '💺', desc: 'Per chair cleaning. Removes dirt and bacteria.', detail: 'Per chair' },
+      'dining-chairs': { name: 'Dining Chairs', price: '$2,000', icon: '🍽️', desc: 'Per chair cleaning for dining room chairs.', detail: 'Per chair' },
+      'mattress-king': { name: 'King Mattress', price: '$10,000', icon: '🛏️', desc: 'Includes 2 pillows. Deep sanitization and stain removal.', detail: 'Includes 2 pillows' },
+      'mattress-queen': { name: 'Queen Mattress', price: '$8,000', icon: '🛏️', desc: 'Includes 2 pillows. Complete mattress cleaning.', detail: 'Includes 2 pillows' },
+      'car': { name: 'Car', price: '$12,000', icon: '🚗', desc: 'Includes mats. Interior steam cleaning for cars.', detail: 'Includes mats' },
+      'suv': { name: 'SUV', price: '$16,000', icon: '🚙', desc: 'Includes mats. Full interior cleaning for SUVs.', detail: 'Includes mats' },
+      'carpet-uninstalled': { name: 'Carpet (uninstalled)', price: '$115/sq ft', icon: '🧹', desc: 'Per square foot. L x W measurement. Pickup service available.', detail: 'Uninstalled - pickup available' },
+      'carpet-installed': { name: 'Carpet (installed)', price: '$95/sq ft', icon: '🧹', desc: 'Per square foot. L x W measurement. Cleaning on-site.', detail: 'Installed - on-site cleaning' },
+      'pressure-washing': { name: 'Pressure Washing', price: '$30/sq ft', icon: '💧', desc: 'Per square foot. High-pressure cleaning for exterior surfaces.', detail: 'Exterior surfaces' },
+      'recliners': { name: 'Recliners', price: '$6,000 / $10,000', icon: '🪑', desc: 'Single $6,000 · Joined $10,000', detail: 'Single or joined pricing' }
+    };
+
+    function createFlipCards() {
+      const grid = document.getElementById('servicesGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      for (const [key, data] of Object.entries(servicesData)) {
+        const flipCard = document.createElement('div');
+        flipCard.className = 'flip-card';
+        flipCard.dataset.service = key;
+        flipCard.innerHTML = `
+          <div class="flip-card-inner">
+            <div class="flip-card-front"><span class="service-icon">${data.icon}</span><div class="service-name">${data.name}</div></div>
+            <div class="flip-card-back"><div class="service-name">${data.name}</div><div class="service-desc-back">${data.desc}</div><div class="service-price-back">${data.price}</div><div class="service-price-detail">${data.detail}</div></div>
           </div>
-          <div class="flip-card-back">
-            <div class="service-name">${data.name}</div>
-            <div class="service-desc-back">${data.desc}</div>
-            <div class="service-price-back">${data.price}</div>
-            <div class="service-price-detail">${data.detail}</div>
-          </div>
-        </div>
-      `;
-      
-      flipCard.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.classList.toggle('flipped');
-        document.getElementById('servicio').value = key;
+        `;
+        flipCard.addEventListener('click', function(e) {
+          e.stopPropagation();
+          this.classList.toggle('flipped');
+          document.getElementById('servicio').value = key;
+        });
+        grid.appendChild(flipCard);
+      }
+    }
+
+    function populateServiceSelect() {
+      const select = document.getElementById('servicio');
+      if (!select) return;
+      select.innerHTML = '';
+      for (const [key, data] of Object.entries(servicesData)) {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = `${data.name} - ${data.price}`;
+        select.appendChild(option);
+      }
+    }
+
+    createFlipCards();
+    populateServiceSelect();
+
+    const servicioSelect = document.getElementById('servicio');
+    if (servicioSelect) {
+      servicioSelect.addEventListener('change', function() {
+        const selectedKey = this.value;
+        document.querySelectorAll('.flip-card').forEach(card => {
+          if (card.dataset.service === selectedKey) card.classList.add('flipped');
+          else card.classList.remove('flipped');
+        });
       });
+    }
+
+    function setStep(step) {
+      [1,2,3].forEach(n => {
+        const dot = document.getElementById('dot' + n);
+        const lbl = document.getElementById('lbl' + n);
+        if (!dot || !lbl) return;
+        if (n < step)  { dot.className = 'step-dot done';   lbl.className = 'step-label done';   dot.textContent = '✓'; }
+        if (n === step){ dot.className = 'step-dot active'; lbl.className = 'step-label active'; dot.textContent = n; }
+        if (n > step)  { dot.className = 'step-dot';        lbl.className = 'step-label';        dot.textContent = n; }
+      });
+      const line1 = document.getElementById('line1');
+      const line2 = document.getElementById('line2');
+      if (line1) line1.className = 'step-line' + (step > 1 ? ' done' : '');
+      if (line2) line2.className = 'step-line' + (step > 2 ? ' done' : '');
+    }
+    setStep(1);
+
+    function validar(nombre, email, telefono, fechaHora, direccion) {
+      if (!nombre || !email || !telefono || !fechaHora || !direccion) return false;
+      if (!email.includes('@') || !email.includes('.')) return false;
+      if (telefono.length < 7) return false;
+      if (new Date(fechaHora) <= new Date()) return false;
+      return true;
+    }
+
+    let reservaActual = {};
+
+    document.getElementById('btnReservar')?.addEventListener('click', e => {
+      e.preventDefault();
+      const nombre   = document.getElementById('nombre').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const telefono = document.getElementById('telefono').value.trim();
+      const servicioKey = document.getElementById('servicio').value;
+      const fechaHora= document.getElementById('fechaHora').value;
+      const direccion= document.getElementById('direccion').value.trim();
+
+      if (!validar(nombre, email, telefono, fechaHora, direccion)) {
+        alert('❌ Please check the fields. The date must be in the future and all fields are required.');
+        return;
+      }
       
-      grid.appendChild(flipCard);
-    }
-  }
+      const servicioData = servicesData[servicioKey];
+      reservaActual = { 
+        nombre, 
+        email, 
+        telefono, 
+        servicio: servicioData.name, 
+        precio: servicioData.price,
+        fechaHora, 
+        direccion 
+      };
+      
+      document.getElementById('telefonoMostrar').textContent = telefono;
+      document.getElementById('formReserva').classList.add('hidden');
+      document.getElementById('panelPago').classList.remove('hidden');
+      setStep(2);
 
-  function populateServiceSelect() {
-    const select = document.getElementById('servicio');
-    select.innerHTML = '';
-    for (const [key, data] of Object.entries(servicesData)) {
-      const option = document.createElement('option');
-      option.value = key;
-      option.textContent = `${data.name} - ${data.price}`;
-      select.appendChild(option);
-    }
-  }
-
-  createFlipCards();
-  populateServiceSelect();
-
-  document.getElementById('servicio').addEventListener('change', function() {
-    const selectedKey = this.value;
-    document.querySelectorAll('.flip-card').forEach(card => {
-      if (card.dataset.service === selectedKey) {
-        card.classList.add('flipped');
-      } else {
-        card.classList.remove('flipped');
-      }
-    });
-  });
-
-  function setStep(step) {
-    [1,2,3].forEach(n => {
-      const dot = document.getElementById('dot' + n);
-      const lbl = document.getElementById('lbl' + n);
-      if (n < step)  { dot.className = 'step-dot done';   lbl.className = 'step-label done';   dot.textContent = '✓'; }
-      if (n === step){ dot.className = 'step-dot active'; lbl.className = 'step-label active'; dot.textContent = n; }
-      if (n > step)  { dot.className = 'step-dot';        lbl.className = 'step-label';        dot.textContent = n; }
-    });
-    if (document.getElementById('line1')) {
-      document.getElementById('line1').className = 'step-line' + (step > 1 ? ' done' : (step === 1 ? ' active' : ''));
-      document.getElementById('line2').className = 'step-line' + (step > 2 ? ' done' : (step === 2 ? ' active' : ''));
-    }
-  }
-  setStep(1);
-
-  function validar(nombre, email, telefono, fechaHora, direccion) {
-    if (!nombre || !email || !telefono || !fechaHora || !direccion) return false;
-    if (!email.includes('@') || !email.includes('.')) return false;
-    if (telefono.length < 7) return false;
-    if (new Date(fechaHora) <= new Date()) return false;
-    return true;
-  }
-
-  let reservaActual = {};
-
-  document.getElementById('btnReservar').addEventListener('click', e => {
-    e.preventDefault();
-    const nombre   = document.getElementById('nombre').value.trim();
-    const email    = document.getElementById('email').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const servicio = document.getElementById('servicio').value;
-    const fechaHora= document.getElementById('fechaHora').value;
-    const direccion= document.getElementById('direccion').value.trim();
-
-    if (!validar(nombre, email, telefono, fechaHora, direccion)) {
-      alert('❌ Please check the fields. The date must be in the future and all fields are required.');
-      return;
-    }
-    reservaActual = { nombre, email, telefono, servicio: servicesData[servicio].name, fechaHora, direccion };
-    document.getElementById('telefonoMostrar').textContent = telefono;
-    document.getElementById('formReserva').classList.add('hidden');
-    document.getElementById('panelPago').classList.remove('hidden');
-    setStep(2);
-
-    const row = document.createElement('tr');
-    row.innerHTML = `<td>${nombre}</td><td>${servicesData[servicio].name}</td><td>${fechaHora.replace('T',' · ')}</td><td><span class="pill pill-pend">⏳ Pending</span></td>`;
-    row.id = 'crm-new-row';
-    document.getElementById('crm-body').prepend(row);
-  });
-
-  document.getElementById('btnSimularPago').addEventListener('click', () => {
-    const { nombre, servicio, fechaHora, direccion } = reservaActual;
-    document.getElementById('reciboNombre').textContent    = nombre;
-    document.getElementById('reciboServicio').textContent  = servicio;
-    document.getElementById('reciboFecha').textContent     = fechaHora.replace('T', ' at ');
-    document.getElementById('reciboDireccion').textContent = direccion;
-    document.getElementById('panelPago').classList.add('hidden');
-    document.getElementById('panelConfirmacion').classList.remove('hidden');
-    setStep(3);
-
-    const row = document.getElementById('crm-new-row');
-    if (row) {
-      const celdas = row.querySelectorAll('td');
-      if (celdas[3]) celdas[3].innerHTML = '<span class="pill pill-ok">✓ Confirmed</span>';
-    }
-  });
-
-  (function() {
-    const toggle   = document.getElementById('chatToggle');
-    const win      = document.getElementById('chatWindow');
-    const closeBtn = document.getElementById('chatCloseBtn');
-    const msgs     = document.getElementById('chatMessages');
-    const input    = document.getElementById('chatInput');
-    const sendBtn  = document.getElementById('chatSend');
-    const notif    = document.getElementById('chatNotif');
-    const chatIcon = document.getElementById('chatIcon');
-    const sugs     = document.getElementById('chatSugs');
-    let isOpen     = false;
-
-    const KB = [
-      {
-        keys: ['service','services','offer','do','clean'],
-        reply: `We offer **18 professional cleaning services**:\n\n🛋️ Sofas (1,2,3 seat, L-shaped)\n🛋️ Suites (3-2-1, 3-1-1, 3-2, 2-1-1)\n💺 Office & Dining Chairs\n🛏️ King & Queen Mattresses (incl. pillows)\n🚗 Cars & SUVs (incl. mats)\n🧹 Carpet cleaning (installed/uninstalled)\n💧 Pressure washing\n🪑 Recliners (single/joined)\n\nClick on any service above to flip and see details!`
-      },
-      {
-        keys: ['price','prices','cost','how much','charge'],
-        reply: `💰 Our rates:\n\n1 Seat Sofa: $6,000\n2 Seat Sofa: $10,000\n3 Seat Sofa: $14,000\nL Shaped: $16,000\n3-2-1 Suite: $24,000\n3-1-1 Suite: $20,000\n3-2 Suite: $20,000\n2-1-1 Suite: $16,000\nOffice Chairs: $2,500 each\nDining Chairs: $2,000 each\nKing Mattress: $10,000 (2 pillows)\nQueen Mattress: $8,000 (2 pillows)\nCar: $12,000 (incl. mats)\nSUV: $16,000 (incl. mats)\nCarpet (uninstalled): $115/sq ft\nCarpet (installed): $95/sq ft\nPressure Washing: $30/sq ft\nRecliners: Single $6,000 / Joined $10,000`
-      },
-      {
-        keys: ['discount','discounts','off','save','csr'],
-        reply: `🎯 CSR have discretion to give discounts of up to 15%.\n⚠️ Any discount issued above 5% must be justified by the CSR.\n\nAsk our team about available discounts!`
-      },
-      {
-        keys: ['pickup','carpet pickup','delivery','west coast','georgetown','linden','amsterdam'],
-        reply: `🚚 Carpet Pickup Service:\n\nWest Coast, Georgetown, West Bank: $2,000\nLinden & New Amsterdam: $3,000\n\nWe pick up your carpets, clean them, and return them!`
-      },
-      {
-        keys: ['booking','book','appointment','schedule','request'],
-        reply: `📅 Booking is easy:\n\n1. Select your service above\n2. Fill out the form\n3. Pay securely with MMG\n4. Get WhatsApp confirmation!\n\nCSR can apply discounts during booking.`
-      },
-      {
-        keys: ['hello','hi','hey','greetings','hola'],
-        reply: `Hello! 👋 Welcome to Livity Projects Inc.\n\nI can help you with service info, prices, discounts, and bookings. How can I assist you today?`
-      }
-    ];
-
-    function now() {
-      return new Date().toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
-    }
-
-    function addMsg(text, who) {
-      const wrap = document.createElement('div');
-      wrap.className = 'msg ' + who;
-      if (who === 'bot') {
-        wrap.innerHTML = `
-          <div class="msg-avatar">🧽</div>
-          <div>
-            <div class="bubble">${text.replace(/\n/g,'<br>')}</div>
-            <div class="msg-time">${now()}</div>
-          </div>`;
-      } else {
-        wrap.innerHTML = `
-          <div>
-            <div class="bubble">${text}</div>
-            <div class="msg-time">${now()}</div>
-          </div>`;
-      }
-      msgs.appendChild(wrap);
-      msgs.scrollTop = msgs.scrollHeight;
-    }
-
-    function showTyping(cb, delay = 900) {
-      const wrap = document.createElement('div');
-      wrap.className = 'msg bot';
-      wrap.id = 'typingIndicator';
-      wrap.innerHTML = `
-        <div class="msg-avatar">🧽</div>
-        <div class="typing-bubble"><span></span><span></span><span></span></div>`;
-      msgs.appendChild(wrap);
-      msgs.scrollTop = msgs.scrollHeight;
-      setTimeout(() => {
-        const el = document.getElementById('typingIndicator');
-        if (el) el.remove();
-        cb();
-      }, delay);
-    }
-
-    function getReply(txt) {
-      const t = txt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-      for (const item of KB) {
-        if (item.keys.some(k => t.includes(k))) return item.reply;
-      }
-      return `I'm not sure about that 🤔\n\nYou can ask me about:\n• Services & prices\n• Discounts (up to 15%)\n• Carpet pickup\n• How to book\n\nOr contact us at operations@livitygy.com`;
-    }
-
-    function sendMessage(text) {
-      const t = text.trim();
-      if (!t) return;
-      addMsg(t, 'user');
-      input.value = '';
-      showTyping(() => addMsg(getReply(t), 'bot'), 700 + Math.random()*600);
-    }
-
-    toggle.addEventListener('click', () => {
-      isOpen = !isOpen;
-      win.classList.toggle('open', isOpen);
-      toggle.classList.toggle('open', isOpen);
-      chatIcon.textContent = isOpen ? '✕' : '💬';
-      notif.classList.add('hide');
-      if (isOpen && msgs.children.length === 0) {
-        showTyping(() => {
-          addMsg(
-            `Hello! 👋 I'm the Livity Projects assistant.\n\nWe offer professional steam cleaning for sofas, suites, mattresses, cars, and carpets. CSR can give up to 15% discount. Click on any service above to flip it and see details!`,
-            'bot'
-          );
-        }, 600);
-      }
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${nombre}</td><td>${servicioData.name}</td><td>${fechaHora.replace('T',' · ')}</td><td><span class="pill pill-pend">⏳ Pending</span></td>`;
+      row.id = 'crm-new-row';
+      document.getElementById('crm-body').prepend(row);
     });
 
-    closeBtn.addEventListener('click', () => {
-      isOpen = false;
-      win.classList.remove('open');
-      toggle.classList.remove('open');
-      chatIcon.textContent = '💬';
+    document.getElementById('btnSimularPago')?.addEventListener('click', () => {
+      const { nombre, servicio, precio, fechaHora, direccion } = reservaActual;
+      document.getElementById('reciboNombre').textContent    = nombre;
+      document.getElementById('reciboServicio').textContent  = servicio;
+      document.getElementById('reciboFecha').textContent     = fechaHora.replace('T', ' at ');
+      document.getElementById('reciboDireccion').textContent = direccion;
+      document.getElementById('reciboTotal').textContent     = precio;
+      document.getElementById('panelPago').classList.add('hidden');
+      document.getElementById('panelConfirmacion').classList.remove('hidden');
+      setStep(3);
+
+      const row = document.getElementById('crm-new-row');
+      if (row) {
+        const celdas = row.querySelectorAll('td');
+        if (celdas[3]) celdas[3].innerHTML = '<span class="pill pill-ok">✓ Confirmed</span>';
+      }
     });
-
-    sendBtn.addEventListener('click', () => sendMessage(input.value));
-    input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(input.value); });
-
-    sugs.querySelectorAll('.sug-btn').forEach(btn => {
-      btn.addEventListener('click', () => sendMessage(btn.dataset.sug));
-    });
-
-    setTimeout(() => {
-      if (!isOpen) notif.classList.remove('hide');
-    }, 3000);
-  })();
-</script>
+  </script>
 </body>
 </html>
