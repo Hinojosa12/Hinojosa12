@@ -1,14 +1,14 @@
-
-<html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Livity Projects Inc · Dry Cleaning & Steam Cleaning</title>
+  <!-- Fuentes e iconos -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* ===== VARIABLES ===== */
     :root {
       --gold: #886902;
       --gold-dark: #6b5201;
@@ -32,12 +32,11 @@
       --radius-md: 20px;
       --radius-lg: 28px;
       --radius-pill: 60px;
+      --transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
     }
 
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--cream);
@@ -46,34 +45,62 @@
       overflow-x: hidden;
     }
 
-    /* ========== SCROLLBAR ========== */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+    /* ===== UTILIDADES ===== */
+    .hidden { display: none !important; }
+    .text-center { text-align: center; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .section-tag::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 2px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
 
-    /* ========== SELECTION ========== */
-    ::selection { background: rgba(136,105,2,0.2); color: var(--dark); }
-
-    /* ========== TOP HEADER ========== */
+    /* ===== HEADER TOP ===== */
     .top-header {
       background: linear-gradient(90deg, var(--dark) 0%, #2a3d41 100%);
       padding: 0.6rem 5%;
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
-      align-items: center;
       gap: 1rem 2rem;
     }
-
     .contact-details {
       display: flex;
       flex-wrap: wrap;
       gap: 1.5rem;
-      align-items: center;
       font-size: 0.82rem;
       color: rgba(255,255,255,0.85);
     }
-
     .contact-details span {
       display: inline-flex;
       align-items: center;
@@ -81,75 +108,63 @@
       white-space: nowrap;
       transition: color 0.2s;
     }
-
     .contact-details span:hover { color: #f0c84a; }
-
     .contact-details i {
       color: var(--gold);
       font-size: 0.9rem;
       width: 1.1rem;
-      text-align: center;
     }
 
-    /* ========== MAIN NAV ========== */
+    /* ===== NAVEGACIÓN PRINCIPAL ===== */
     .main-nav-bar {
       position: sticky;
       top: 0;
       background: rgba(254,252,245,0.92);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(234,226,214,0.7);
       padding: 0 5%;
       height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      transition: all 0.35s ease;
       z-index: 1000;
+      transition: var(--transition);
     }
-
     .main-nav-bar.scrolled {
       background: rgba(30,43,46,0.97);
-      backdrop-filter: blur(20px);
       border-bottom-color: rgba(136,105,2,0.3);
       box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     }
-
     .main-nav-bar.scrolled .nav-links a { color: rgba(255,255,255,0.8); }
     .main-nav-bar.scrolled .nav-links a:hover { color: #f0c84a; }
-    .main-nav-bar.scrolled .nav-links a.active { color: var(--white); }
     .main-nav-bar.scrolled .menu-toggle { color: rgba(255,255,255,0.8); }
 
-    .main-nav-bar .logo img {
+    .logo img {
       display: block;
       height: 52px;
       width: auto;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.3s ease, opacity 0.2s;
+      transition: transform 0.3s ease;
     }
-
-    .main-nav-bar .logo img:hover { transform: scale(1.05); opacity: 0.9; }
+    .logo img:hover { transform: scale(1.05); opacity: 0.9; }
 
     .nav-links {
       display: flex;
       gap: 0.5rem;
       align-items: center;
     }
-
     .nav-links a {
       text-decoration: none;
       color: var(--muted-light);
       font-weight: 500;
       font-size: 0.95rem;
-      transition: all 0.25s;
-      cursor: pointer;
       padding: 0.5rem 1rem;
       border-radius: var(--radius-sm);
+      cursor: pointer;
       position: relative;
+      transition: var(--transition);
     }
-
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -160,12 +175,10 @@
       height: 2px;
       background: var(--gold);
       border-radius: 2px;
-      transition: width 0.3s ease;
+      transition: width 0.3s;
     }
-
     .nav-links a:hover::after,
     .nav-links a.active::after { width: 60%; }
-
     .nav-links a:hover { color: var(--gold); background: var(--gold-xlight); }
     .nav-links a.active { color: var(--dark); font-weight: 700; }
 
@@ -174,14 +187,13 @@
       font-size: 1.4rem;
       cursor: pointer;
       color: var(--muted-light);
-      order: 3;
       padding: 0.5rem;
       border-radius: var(--radius-sm);
       transition: background 0.2s;
     }
     .menu-toggle:hover { background: var(--gold-xlight); }
 
-    /* ========== HERO ========== */
+    /* ===== HERO ===== */
     .hero {
       position: relative;
       display: flex;
@@ -192,23 +204,16 @@
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      overflow: hidden;
       min-height: 600px;
+      color: white;
     }
-
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(10,18,20,0.72) 0%,
-        rgba(136,105,2,0.18) 60%,
-        rgba(10,18,20,0.55) 100%
-      );
+      background: linear-gradient(135deg, rgba(10,18,20,0.72) 0%, rgba(136,105,2,0.18) 60%, rgba(10,18,20,0.55) 100%);
       z-index: 1;
     }
-
     .hero::after {
       content: '';
       position: absolute;
@@ -219,11 +224,8 @@
       background: linear-gradient(to top, var(--cream) 0%, transparent 100%);
       z-index: 2;
     }
-
     .hero > * { position: relative; z-index: 3; }
     .hero-right { flex-direction: row-reverse; }
-
-    .hero-content { flex: 1; color: white; }
 
     .hero-tag {
       display: inline-flex;
@@ -240,65 +242,38 @@
       background: rgba(136,105,2,0.25);
       border: 1px solid rgba(240,200,74,0.4);
       backdrop-filter: blur(6px);
-      animation: fadeSlideDown 0.8s ease both;
     }
-
-    .hero-tag::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: #f0c84a;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.7); } }
-
     .hero-title {
       font-size: 3.4rem;
       font-weight: 900;
       line-height: 1.1;
       letter-spacing: -2px;
-      color: white;
       margin-bottom: 1.5rem;
-      animation: fadeSlideUp 0.9s ease 0.1s both;
     }
-
     .hero-title span { color: #f0c84a; }
-
     .intro-text {
       color: rgba(255,255,255,0.85);
       margin-bottom: 1.5rem;
       font-size: 1rem;
-      line-height: 1.7;
-      animation: fadeSlideUp 0.9s ease 0.2s both;
     }
-
     .features-list {
       list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem 0;
-      animation: fadeSlideUp 0.9s ease 0.3s both;
+      margin-bottom: 1.5rem;
     }
-
     .features-list li {
       color: rgba(255,255,255,0.9);
       margin-bottom: 0.7rem;
       padding-left: 1.6rem;
       position: relative;
-      font-size: 0.97rem;
       display: flex;
       align-items: center;
     }
-
     .features-list li::before {
       content: "✦";
       position: absolute;
       left: 0;
       color: #f0c84a;
-      font-size: 0.7rem;
     }
-
     .hero-btn {
       display: inline-flex;
       align-items: center;
@@ -311,235 +286,73 @@
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      transition: var(--transition);
       box-shadow: 0 10px 28px rgba(136,105,2,0.45);
-      margin-top: 1.5rem;
-      position: relative;
-      overflow: hidden;
-      animation: fadeSlideUp 0.9s ease 0.4s both;
     }
-
-    .hero-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
-    }
-
     .hero-btn:hover {
       transform: translateY(-3px) scale(1.03);
       box-shadow: 0 18px 40px rgba(136,105,2,0.55);
     }
 
-    .hero-btn:active { transform: translateY(0) scale(0.98); }
-
-    .hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 1.2s ease 0.3s both;
-    }
-
-    .image-placeholder {
-      width: 100%;
-      max-width: 430px;
-      height: 430px;
-      border-radius: 50% 50% 35% 35% / 55% 55% 45% 45%;
-      overflow: hidden;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.35), 0 0 0 6px rgba(240,200,74,0.25);
-    }
-
-    .image-placeholder img { width:100%; height:100%; object-fit:cover; display:block; }
-
-    /* ========== SECTION COMMON ========== */
-    .section-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 3px;
-      color: var(--gold);
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    .section-tag::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 10px;
-      height: 2px;
-      background: var(--gold);
-    }
-
-    .section-title {
-      font-size: 2.6rem;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      margin-bottom: 0.5rem;
-      color: var(--dark);
-      line-height: 1.15;
-    }
-
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--muted);
-      font-weight: 400;
-      margin-bottom: 3rem;
-      max-width: 600px;
-    }
-
-    /* ========== HOW IT WORKS ========== */
+    /* ===== CÓMO FUNCIONA / SERVICIOS ===== */
     .how-it-works {
       padding: 5rem 5%;
       max-width: 1400px;
       margin: 0 auto;
       text-align: center;
     }
-
-    .how-it-works .section-tag,
-    .how-it-works .section-subtitle { margin-left: auto; margin-right: auto; }
-
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
       margin-top: 2rem;
     }
-
     .step-card {
       text-align: left;
-      padding: 0;
       background: var(--gold);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-gold);
-      transition: all 0.4s cubic-bezier(0.34,1.2,0.64,1);
-      position: relative;
+      transition: var(--transition);
       color: white;
     }
-
-    .step-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 120px;
-      height: 120px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 0 0 0 100%;
-      transition: all 0.4s ease;
-    }
-
-    .step-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 28px 55px rgba(136,105,2,0.38);
-    }
-
-    .step-card:hover::before {
-      width: 180px;
-      height: 180px;
-    }
-
+    .step-card:hover { transform: translateY(-8px) scale(1.02); }
     .step-icon {
       width: 100%;
       height: 210px;
       overflow: hidden;
-      position: relative;
     }
-
-    .step-icon::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      background: linear-gradient(to top, var(--gold), transparent);
-    }
-
-    .step-icon img { width:100%; height:100%; object-fit:cover; display:block; }
-
+    .step-icon img { width: 100%; height: 100%; object-fit: cover; }
     .step-card-body { padding: 1.5rem 1.8rem 2rem; }
-
     .step-card h3 {
       font-size: 1.35rem;
       font-weight: 800;
       margin-bottom: 0.7rem;
-      color: white;
       letter-spacing: -0.5px;
     }
+    .step-card p { color: rgba(255,255,255,0.85); font-size: 0.93rem; }
 
-    .step-card p { color: rgba(255,255,255,0.85); font-size: 0.93rem; line-height: 1.65; }
-
-    /* ========== STATS ========== */
+    /* ===== ESTADÍSTICAS ===== */
     .stats-section {
       background: linear-gradient(135deg, var(--dark) 0%, #2a3d41 100%);
       padding: 4rem 5%;
       position: relative;
       overflow: hidden;
     }
-
-    .stats-section::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 280px;
-      height: 280px;
-      background: radial-gradient(circle, rgba(136,105,2,0.2) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    .stats-section::after {
-      content: '';
-      position: absolute;
-      bottom: -40px;
-      left: -40px;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(136,105,2,0.15) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
     .stats-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      align-items: center;
-      gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
     }
-
     .stat-item {
       flex: 1 1 200px;
       padding: 2rem 1.5rem;
       text-align: center;
-      position: relative;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
-
-    .stat-item::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 20%;
-      height: 60%;
-      width: 1px;
-      background: rgba(255,255,255,0.08);
-    }
-
-    .stat-item:last-child::after { display: none; }
-
     .stat-item:hover { transform: translateY(-6px); }
-
     .stat-number {
       font-size: 3.2rem;
       font-weight: 900;
@@ -550,7 +363,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .stat-label {
       font-size: 0.88rem;
       font-weight: 600;
@@ -559,75 +371,49 @@
       text-transform: uppercase;
     }
 
-    /* ========== WHY CHOOSE ========== */
+    /* ===== POR QUÉ NOSOTROS ===== */
     .why-choose-section {
       padding: 5rem 5%;
       max-width: 1400px;
       margin: 0 auto;
     }
-
     .why-choose-grid {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
       gap: 4rem;
       align-items: center;
     }
-
     .why-left h2 {
       font-size: 2.6rem;
       font-weight: 800;
       color: var(--dark);
       margin-bottom: 1.5rem;
-      line-height: 1.15;
-      letter-spacing: -1.5px;
     }
-
     .why-left h2 span { color: var(--gold); }
-
     .why-left p {
       color: var(--muted);
       font-size: 1rem;
       line-height: 1.85;
       margin-bottom: 2rem;
     }
-
     .features-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
     }
-
     .feature-card {
       background: white;
       padding: 1.8rem 1.5rem;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
-      transition: all 0.35s cubic-bezier(0.34,1.2,0.64,1);
       border: 1px solid var(--cream-border);
+      transition: var(--transition);
       position: relative;
-      overflow: hidden;
     }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 0;
-      background: linear-gradient(to bottom, var(--gold), var(--gold-light));
-      border-radius: 0 0 3px 3px;
-      transition: height 0.35s ease;
-    }
-
-    .feature-card:hover::before { height: 100%; }
-
     .feature-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-gold);
-      border-color: rgba(136,105,2,0.2);
     }
-
     .feature-icon-wrap {
       width: 52px;
       height: 52px;
@@ -637,32 +423,247 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 1rem;
-      transition: all 0.3s ease;
     }
+    .feature-icon { font-size: 1.4rem; color: var(--gold); }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .feature-card p { font-size: 0.87rem; color: var(--muted); }
 
-    .feature-card:hover .feature-icon-wrap {
+    /* ===== SECCIÓN DE RESERVAS ===== */
+    .payment-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5rem 5%;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .flip-card {
+      background: transparent;
+      height: 220px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.65s cubic-bezier(0.645,0.045,0.355,1.000);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .flip-card-front {
+      background: white;
+      border: 1.5px solid var(--cream-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, var(--cream-mid) 0%, white 100%);
+      border: 1.5px solid var(--gold);
+    }
+    .service-icon { font-size: 2.8rem; margin-bottom: 0.6rem; }
+    .service-name { font-size: 0.9rem; font-weight: 700; }
+    .service-desc-back { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.7rem; }
+    .service-price-back { font-size: 1.15rem; font-weight: 800; color: var(--gold); }
+
+    /* ===== INDICADOR DE PASOS ===== */
+    .steps {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 3rem;
+    }
+    .step { display: flex; align-items: center; gap: 0.6rem; }
+    .step-dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      border: 2px solid var(--border);
+      color: var(--muted);
+      background: white;
+      transition: var(--transition);
+    }
+    .step-dot.active {
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      border-color: var(--gold);
+      color: white;
+      box-shadow: 0 0 0 5px rgba(136,105,2,0.18);
     }
-
-    .feature-icon {
-      font-size: 1.4rem;
-      color: var(--gold);
-      transition: color 0.3s ease;
+    .step-dot.done {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      border-color: var(--gold);
+      color: white;
     }
+    .step-line {
+      width: 50px; height: 2px;
+      background: var(--border);
+      margin: 0 0.6rem;
+      border-radius: 2px;
+    }
+    .step-line.done { background: var(--gold); }
 
-    .feature-card:hover .feature-icon { color: white; }
-
-    .feature-card h3 {
-      font-size: 1rem;
+    /* ===== FORMULARIO ===== */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-size: 0.77rem;
       font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.4rem;
-      letter-spacing: -0.3px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    input, select, textarea {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.25s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(136,105,2,0.1);
+    }
+    .pickup-info {
+      margin-top: 1.2rem;
+      background: linear-gradient(135deg, var(--cream-mid) 0%, rgba(245,242,232,0.5) 100%);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem 1.5rem;
+      border: 1px solid var(--cream-border);
+      border-left: 3px solid var(--gold);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 2rem;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: white;
+      box-shadow: 0 8px 20px rgba(136,105,2,0.28);
+    }
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(136,105,2,0.42);
+    }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-gold {
+      background: white;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+    .btn-gold:hover:not(:disabled) {
+      background: var(--gold);
+      color: white;
+      transform: translateY(-3px);
     }
 
-    .feature-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
+    /* ===== PANELES DE PAGO Y CONFIRMACIÓN ===== */
+    .payment-step, .confirmation-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.8rem;
+      padding: 3rem 0;
+    }
+    .payment-icon, .confirm-icon {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cream-mid) 0%, white 100%);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem;
+      box-shadow: var(--shadow-gold);
+    }
+    .wa-box {
+      background: var(--cream-mid);
+      border: 1px solid rgba(136,105,2,0.3);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem 1.8rem;
+    }
+    .receipt {
+      background: white;
+      border: 1.5px solid var(--cream-border);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .receipt-row span:last-child { font-weight: 700; color: var(--dark); }
 
-    /* ========== ABOUT SECTION ========== */
+    /* ===== TABLA CRM ===== */
+    .crm-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      margin-top: 3rem;
+      border: 1.5px solid var(--cream-border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+    thead th {
+      background: var(--cream-mid);
+      color: var(--gold);
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 1rem 1.2rem;
+      text-align: left;
+    }
+    tbody td { padding: 0.9rem 1.2rem; font-size: 0.9rem; color: var(--muted); }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.28rem 0.95rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .pill-ok   { background: #e8f5ed; color: #1e7c3a; border: 1px solid #a8d8b5; }
+    .pill-pend { background: #fff5e6; color: #9a5c00; border: 1px solid #ffcc80; }
+
+    /* ===== ABOUT SECTION ===== */
     .about-section {
       display: none;
       background: white;
@@ -673,21 +674,8 @@
       padding: 3.5rem;
       position: relative;
       border: 1px solid var(--cream-border);
-      overflow: hidden;
     }
-
-    .about-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--gold) 0%, #f0c84a 50%, var(--gold) 100%);
-    }
-
     .about-section.visible { display: block; }
-
     .about-close {
       position: absolute;
       top: 1.5rem;
@@ -697,472 +685,16 @@
       cursor: pointer;
       background: var(--cream-mid);
       border: 1px solid var(--cream-border);
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: all 0.2s;
-    }
-
-    .about-close:hover { background: var(--gold); color: white; border-color: var(--gold); }
-
-    .about-section h2 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 1.5rem;
-      letter-spacing: -1.5px;
-    }
-
-    .about-section h2 span { color: var(--gold); }
-
-    .about-section p {
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.85;
-      margin-bottom: 1.3rem;
-    }
-
-    .about-section .mission {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      border-radius: var(--radius-sm);
-      background: var(--cream-mid);
-      border-left: 3px solid var(--gold);
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--dark);
-    }
-
-    /* ========== PAYMENT SECTION ========== */
-    .payment-section {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 5rem 5%;
-    }
-
-    .payment-section .section-label {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 3px;
-      color: var(--gold);
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-    .payment-section .section-label::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 10px;
-      height: 2px;
-      background: var(--gold);
-    }
-
-    /* ========== FLIP CARDS ========== */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-      perspective: 1200px;
-    }
-
-    .flip-card {
-      background-color: transparent;
-      height: 220px;
-      cursor: pointer;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.65s cubic-bezier(0.645,0.045,0.355,1.000);
-      transform-style: preserve-3d;
-      border-radius: var(--radius-md);
-    }
-
-    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-
-    .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      border-radius: var(--radius-md);
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .flip-card-front {
-      background: white;
-      border: 1.5px solid var(--cream-border);
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
-    }
-
-    .flip-card:hover .flip-card-front {
-      border-color: rgba(136,105,2,0.4);
-      box-shadow: var(--shadow-gold);
-    }
-
-    .flip-card-back {
-      transform: rotateY(180deg);
-      background: linear-gradient(135deg, var(--cream-mid) 0%, white 100%);
-      border: 1.5px solid var(--gold);
-      box-shadow: var(--shadow-gold);
-    }
-
-    .service-icon {
-      font-size: 2.8rem;
-      margin-bottom: 0.6rem;
-      line-height: 1;
-    }
-
-    .service-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--dark);
-      letter-spacing: -0.2px;
-    }
-
-    .service-desc-back {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.7rem;
-      line-height: 1.45;
-    }
-
-    .service-price-back {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--gold);
-      margin-bottom: 0.2rem;
-      letter-spacing: -0.5px;
-    }
-
-    .service-price-detail {
-      font-size: 0.75rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    /* ========== STEPS INDICATOR ========== */
-    .steps {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .step { display: flex; align-items: center; gap: 0.6rem; }
-
-    .step-dot {
-      width: 36px; height: 36px;
-      border-radius: 50%;
+      width: 38px; height: 38px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.78rem;
-      font-weight: 800;
-      border: 2px solid var(--border);
-      color: var(--muted);
-      background: white;
-      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
-    }
-
-    .step-dot.active {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      border-color: var(--gold);
-      color: white;
-      box-shadow: 0 0 0 5px rgba(136,105,2,0.18);
-      transform: scale(1.1);
-    }
-
-    .step-dot.done {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      border-color: var(--gold);
-      color: white;
-    }
-
-    .step-label { font-size: 0.78rem; font-weight: 700; color: var(--muted); }
-    .step-label.active { color: var(--gold); }
-    .step-label.done { color: var(--gold); }
-
-    .step-line {
-      width: 50px; height: 2px;
-      background: var(--border);
-      margin: 0 0.6rem;
-      border-radius: 2px;
-      transition: background 0.5s ease;
-    }
-
-    .step-line.done { background: var(--gold); }
-
-    /* ========== FORM ========== */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-      margin-top: 1.5rem;
-    }
-
-    .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
-    .form-group.full { grid-column: 1 / -1; }
-
-    label {
-      font-size: 0.77rem;
-      font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    input, select, textarea {
-      background: white;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 0.85rem 1.1rem;
-      font-family: inherit;
-      font-size: 0.95rem;
-      color: var(--dark);
-      transition: all 0.25s;
-    }
-
-    input::placeholder { color: #c0b8a8; }
-
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 4px rgba(136,105,2,0.1);
-      background: white;
-    }
-
-    .pickup-info {
-      margin-top: 1.2rem;
-      background: linear-gradient(135deg, var(--cream-mid) 0%, rgba(245,242,232,0.5) 100%);
-      border-radius: var(--radius-sm);
-      padding: 1.2rem 1.5rem;
-      font-size: 0.88rem;
-      color: var(--dark);
-      border: 1px solid var(--cream-border);
-      border-left: 3px solid var(--gold);
-    }
-
-    .pickup-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.3rem 0;
-      color: var(--muted);
-      font-size: 0.87rem;
-    }
-
-    .pickup-row span:last-child { font-weight: 700; color: var(--gold); }
-
-    /* ========== BUTTONS ========== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.95rem 2rem;
-      border-radius: var(--radius-pill);
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-      letter-spacing: 0.01em;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(255,255,255,0.1);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    .btn:hover::before { opacity: 1; }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: white;
-      box-shadow: 0 8px 20px rgba(136,105,2,0.28);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 16px 36px rgba(136,105,2,0.42);
-    }
-
-    .btn-primary:active { transform: translateY(0) scale(0.98); }
-
-    .btn-gold {
-      background: white;
-      color: var(--gold);
-      border: 2px solid var(--gold);
-    }
-
-    .btn-gold:hover {
-      background: var(--gold);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(136,105,2,0.3);
-    }
-
-    .btn-lg { padding: 1.1rem 2.8rem; font-size: 1.02rem; }
-    .btn-full { width: 100%; }
-
-    /* ========== LOADING DOTS ========== */
-    .dots { display: inline-flex; gap: 5px; align-items: center; }
-    .dots span {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold);
-      animation: dot 1.4s infinite ease-in-out;
-    }
-    .dots span:nth-child(2) { animation-delay: 0.2s; }
-    .dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes dot { 0%,80%,100% { transform:scale(0.65); opacity:0.35; } 40% { transform:scale(1.2); opacity:1; } }
-
-    /* ========== PAYMENT / CONFIRM PANELS ========== */
-    .payment-step, .confirmation-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1.8rem;
-      padding: 3rem 0;
-    }
-
-    .payment-icon, .confirm-icon {
-      width: 96px; height: 96px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--cream-mid) 0%, white 100%);
-      border: 2px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.8rem;
-      box-shadow: var(--shadow-gold);
     }
+    .about-close:hover { background: var(--gold); color: white; }
 
-    .wa-box {
-      background: var(--cream-mid);
-      border: 1px solid rgba(136,105,2,0.3);
-      border-radius: var(--radius-sm);
-      padding: 1.1rem 1.8rem;
-      font-size: 0.92rem;
-      color: var(--dark);
-    }
-
-    /* ========== RECEIPT ========== */
-    .receipt {
-      background: white;
-      border: 1.5px solid var(--cream-border);
-      border-radius: var(--radius-md);
-      padding: 1.8rem;
-      text-align: left;
-      max-width: 480px;
-      margin: 0 auto;
-      box-shadow: var(--shadow-md);
-      width: 100%;
-    }
-
-    .receipt-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 0;
-      border-bottom: 1px dashed var(--border);
-      font-size: 0.92rem;
-    }
-
-    .receipt-row:last-child { border-bottom: none; }
-    .receipt-row span:first-child { color: var(--muted); font-weight: 500; }
-    .receipt-row span:last-child { color: var(--dark); font-weight: 700; }
-
-    /* ========== BADGES ========== */
-    .badge-row {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem;
-      margin-top: 1rem;
-    }
-
-    .badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.5rem 1.2rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.8rem;
-      font-weight: 700;
-      background: var(--cream-mid);
-      color: var(--gold);
-      border: 1px solid rgba(136,105,2,0.25);
-    }
-
-    /* ========== CRM TABLE ========== */
-    .crm-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius-md);
-      margin-top: 3rem;
-      border: 1.5px solid var(--cream-border);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-    }
-
-    thead th {
-      background: var(--cream-mid);
-      color: var(--gold);
-      font-size: 0.73rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 1rem 1.2rem;
-      text-align: left;
-      border-bottom: 1.5px solid var(--border);
-    }
-
-    tbody tr {
-      border-bottom: 1px solid #f5f0e8;
-      transition: background 0.2s;
-    }
-
-    tbody tr:hover { background: #fdfaf4; }
-    tbody td { padding: 0.9rem 1.2rem; font-size: 0.9rem; color: var(--muted); }
-    tbody td:first-child { color: var(--dark); font-weight: 700; }
-
-    .pill {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      padding: 0.28rem 0.95rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .pill-ok   { background: #e8f5ed; color: #1e7c3a; border: 1px solid #a8d8b5; }
-    .pill-pend { background: #fff5e6; color: #9a5c00; border: 1px solid #ffcc80; }
-
-    /* ========== FLOATS ========== */
+    /* ===== BOTONES FLOTANTES ===== */
     .whatsapp-float {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
+      bottom: 2rem; right: 2rem;
       background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
       color: white;
       width: 58px; height: 58px;
@@ -1170,20 +702,14 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 1.8rem;
       box-shadow: 0 8px 20px rgba(37,211,102,0.4);
-      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      transition: var(--transition);
       z-index: 1000;
       text-decoration: none;
     }
-
-    .whatsapp-float:hover {
-      transform: scale(1.15) translateY(-2px);
-      box-shadow: 0 16px 32px rgba(37,211,102,0.5);
-    }
-
+    .whatsapp-float:hover { transform: scale(1.15); }
     .scroll-top-float {
       position: fixed;
-      bottom: 5.2rem;
-      right: 2rem;
+      bottom: 5.2rem; right: 2rem;
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
       color: white;
       width: 46px; height: 46px;
@@ -1191,61 +717,37 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 1.1rem;
       box-shadow: var(--shadow-gold);
-      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-      z-index: 1000;
       cursor: pointer;
       border: none;
+      transition: var(--transition);
     }
+    .scroll-top-float:hover { transform: scale(1.15); }
 
-    .scroll-top-float:hover {
-      transform: scale(1.15) translateY(-2px);
-      box-shadow: 0 14px 28px rgba(136,105,2,0.4);
+    /* ===== ANIMACIONES ===== */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
-    /* ========== DIVIDER ========== */
-    .section-divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0 5%;
-      max-width: 1400px;
-      margin: 0 auto;
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    .section-divider::before,
-    .section-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cream-border), transparent);
-    }
-
-    .section-divider-dot {
-      width: 8px; height: 8px;
+    .spinner {
+      width: 20px; height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: white;
       border-radius: 50%;
-      background: var(--gold);
-      opacity: 0.6;
+      animation: spin 1s linear infinite;
     }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ========== FOOTER ========== */
+    /* ===== FOOTER ===== */
     .footer-dark {
       background: var(--dark-footer);
       color: white;
       padding: 4rem 5% 2rem;
-      position: relative;
-      overflow: hidden;
     }
-
-    .footer-dark::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold) 0%, #f0c84a 50%, var(--gold) 100%);
-    }
-
     .footer-content {
       max-width: 1400px;
       margin: 0 auto;
@@ -1254,45 +756,24 @@
       justify-content: space-between;
       gap: 3rem;
     }
-
-    .footer-info { flex: 2; min-width: 250px; }
-
-    .footer-info h3 {
+    .footer-info h3, .footer-social h3 {
       font-size: 1.4rem;
       font-weight: 800;
       margin-bottom: 1.5rem;
       color: var(--gold);
-      letter-spacing: -0.5px;
     }
-
     .footer-info p {
       margin-bottom: 0.9rem;
       display: flex;
       align-items: center;
       gap: 0.9rem;
       color: rgba(255,255,255,0.7);
-      font-size: 0.93rem;
     }
-
-    .footer-info i {
-      color: var(--gold);
-      width: 1.4rem;
-      font-size: 1rem;
-      flex-shrink: 0;
+    .footer-info i { color: var(--gold); width: 1.4rem; }
+    .social-icons {
+      display: flex;
+      gap: 1rem;
     }
-
-    .footer-social { flex: 1; min-width: 200px; }
-
-    .footer-social h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      color: var(--gold);
-      letter-spacing: -0.5px;
-    }
-
-    .social-icons { display: flex; gap: 1rem; }
-
     .social-icons a {
       width: 46px; height: 46px;
       border-radius: 50%;
@@ -1301,403 +782,331 @@
       font-size: 1.3rem;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.1);
-      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-      text-decoration: none;
+      transition: var(--transition);
     }
-
     .social-icons a:hover {
       background: var(--gold);
       color: white;
-      border-color: var(--gold);
-      transform: translateY(-4px) scale(1.1);
-      box-shadow: 0 10px 22px rgba(136,105,2,0.4);
+      transform: translateY(-4px);
     }
-
     .footer-copyright {
       text-align: center;
       margin-top: 3rem;
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255,255,255,0.07);
       color: rgba(255,255,255,0.35);
-      font-size: 0.85rem;
     }
 
-    /* ========== UTILITIES ========== */
-    .hidden  { display: none !important; }
-    .text-center { text-align: center; }
-    .mb-1 { margin-bottom: 0.5rem; }
-    .mb-2 { margin-bottom: 1rem; }
-    .mb-3 { margin-bottom: 1.5rem; }
-    .mt-3 { margin-top: 1.5rem; }
-
-    /* ========== ANIMATIONS ========== */
-    @keyframes fadeSlideUp {
-      from { opacity:0; transform:translateY(30px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    @keyframes fadeSlideDown {
-      from { opacity:0; transform:translateY(-15px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity:0; }
-      to   { opacity:1; }
-    }
-
-    @keyframes scaleIn {
-      from { opacity:0; transform:scale(0.92); }
-      to   { opacity:1; transform:scale(1); }
-    }
-
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ========== RESPONSIVE ========== */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
-      .hero-title { font-size: 2.8rem; }
       .why-choose-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
-
     @media (max-width: 768px) {
-      .top-header { justify-content: flex-start; }
-      .main-nav-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
-      .nav-links { display: none; flex: 0 0 100%; order: 3; flex-direction: column; width: 100%; gap: 0.5rem; padding: 1rem 0; background: white; border-top: 1px solid var(--cream-border); }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        border-top: 1px solid var(--cream-border);
+        position: absolute;
+        top: 72px;
+        left: 0;
+        padding: 1rem;
+      }
       .main-nav-bar.scrolled .nav-links { background: rgba(30,43,46,0.98); }
       .nav-links.show { display: flex; }
-      .menu-toggle { display: block; order: 2; }
-      .main-nav-bar .logo { order: 1; }
-      .hero, .hero-right { flex-direction: column; text-align: center; padding: 4rem 5%; }
+      .menu-toggle { display: block; }
+      .hero, .hero-right { flex-direction: column; text-align: center; }
       .hero-title { font-size: 2.2rem; }
-      .hero-btn { margin-left: auto; margin-right: auto; }
       .steps-grid { grid-template-columns: 1fr; }
-      .features-list li { text-align: left; }
-      .stats-container { flex-direction: column; gap: 0; }
-      .stat-item::after { display: none; }
       .features-grid { grid-template-columns: 1fr; }
-      .about-section { padding: 2rem; margin: 1.5rem; }
-      .whatsapp-float { width: 52px; height: 52px; font-size: 1.6rem; bottom: 1.5rem; right: 1.5rem; }
-      .scroll-top-float { width: 42px; height: 42px; font-size: 1rem; bottom: 4.8rem; right: 1.5rem; }
       .form-grid { grid-template-columns: 1fr; }
-      .section-title { font-size: 2rem; }
-      .hero::after { display: none; }
+      .about-section { padding: 2rem; margin: 1.5rem; }
     }
-
     @media (max-width: 480px) {
-      .contact-details span { white-space: normal; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
-
-  <!-- TOP HEADER -->
-  <header class="top-header">
-    <div class="contact-details">
-      <span><i class="fas fa-phone-alt"></i> +592 643-7296</span>
-      <span><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9df4f3fbf2ddf1f4ebf4e9e4fae4b3fef2f0">[email&#160;protected]</a></span>
-      <span><i class="fas fa-map-marker-alt"></i> Tuschen Housing Scheme, EBE</span>
+  <header>
+    <div class="top-header">
+      <div class="contact-details">
+        <span><i class="fas fa-phone-alt"></i> +592 643-7296</span>
+        <span><i class="fas fa-envelope"></i> info@livityprojects.com</span>
+        <span><i class="fas fa-map-marker-alt"></i> Tuschen Housing Scheme, EBE</span>
+      </div>
+    </div>
+    <div class="main-nav-bar" id="mainNavBar">
+      <div class="logo" id="logo">
+        <img src="livity.jpeg" alt="Livity DryClean logo">
+      </div>
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#" id="homeLink" class="active">Home</a>
+        <a id="aboutLink">About</a>
+        <a id="serviceLink">Service</a>
+      </nav>
     </div>
   </header>
 
-  <!-- MAIN NAV -->
-  <div class="main-nav-bar" id="mainNavBar">
-    <div class="logo" id="logo">
-      <img src="livity.jpeg" alt="Livity DryClean logo">
-    </div>
-    <div class="menu-toggle" id="menuToggle">
-      <i class="fas fa-bars"></i>
-    </div>
-    <nav class="nav-links" id="navLinks">
-      <a href="#" id="homeLink" class="active">Home</a>
-      <a id="aboutLink">About</a>
-      <a id="serviceLink">Service</a>
-    </nav>
-  </div>
-
-  <!-- HERO 1 -->
-  <section class="hero" style="background-image: url('Inicio.png');">
-    <div class="hero-content">
-      <div class="hero-tag">BEST CLEENY AGENCY</div>
-      <h1 class="hero-title">Enjoy the Quality<br>Cleaning Services <span>And Stay Safe</span></h1>
-      <button class="hero-btn" id="bookCleanBtn">
-        <i class="fas fa-calendar-check"></i> Book Your Clean
-      </button>
-    </div>
-    <div class="hero-image"></div>
-  </section>
-
-  <!-- SERVICES SECTION -->
-  <section class="how-it-works">
-    <div class="section-tag">SERVICE</div>
-    <h2 class="section-title">Our Cleaning Services</h2>
-    <p class="section-subtitle">Discover a range of services designed to bring comfort and cleanliness into every corner of your home or office.</p>
-    <div class="steps-grid">
-      <div class="step-card animate-on-scroll">
-        <div class="step-icon"><img src="primera.png" alt="Standard Home Cleaning"></div>
-        <div class="step-card-body">
-          <h3>Standard Home Cleaning</h3>
-          <p>Keep your space fresh with regular dusting, mopping and surface care.</p>
-        </div>
-      </div>
-      <div class="step-card animate-on-scroll" style="transition-delay:0.1s">
-        <div class="step-icon"><img src="segunda.jpg" alt="Deep Cleaning"></div>
-        <div class="step-card-body">
-          <h3>Deep Cleaning</h3>
-          <p>Intensive cleaning for kitchens, bathrooms and overlooked areas.</p>
-        </div>
-      </div>
-      <div class="step-card animate-on-scroll" style="transition-delay:0.2s">
-        <div class="step-icon"><img src="tercera.png" alt="Move-In/Move-Out Cleaning"></div>
-        <div class="step-card-body">
-          <h3>Move-In/Move-Out Cleaning</h3>
-          <p>Ensure your new beginning or final handover is spotless.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION DIVIDER -->
-  <div class="section-divider">
-    <div class="section-divider-dot"></div>
-    <div class="section-divider-dot"></div>
-    <div class="section-divider-dot"></div>
-  </div>
-
-  <!-- HERO 2 (invertida) -->
-  <section class="hero hero-right" style="background-image: url('Section2.png');">
-    <div class="hero-content">
-      <div class="hero-tag">About US</div>
-      <h1 class="hero-title">Making Your House<br>Clean <span>As a New</span></h1>
-      <p class="intro-text">We deliver professional-grade cleaning solutions with proven techniques, premium equipment, and a team that genuinely cares about every detail of your space.</p>
-      <ul class="features-list">
-        <li>Clean Your Home or Office — Any Size</li>
-        <li>24/7 Emergency Quality Services</li>
-        <li>Online Booking System Available</li>
-      </ul>
-      <button class="hero-btn" id="moreAboutBtn">
-        More About us <i class="fas fa-arrow-right"></i>
-      </button>
-    </div>
-    <div class="hero-image"></div>
-  </section>
-
-  <!-- STATS -->
-  <section class="stats-section">
-    <div class="stats-container">
-      <div class="stat-item animate-on-scroll">
-        <div class="stat-number">100+</div>
-        <div class="stat-label">Happy Customers</div>
-      </div>
-      <div class="stat-item animate-on-scroll" style="transition-delay:0.1s">
-        <div class="stat-number">10</div>
-        <div class="stat-label">Team Members</div>
-      </div>
-      <div class="stat-item animate-on-scroll" style="transition-delay:0.2s">
-        <div class="stat-number">100+</div>
-        <div class="stat-label">Completed Projects</div>
-      </div>
-      <div class="stat-item animate-on-scroll" style="transition-delay:0.3s">
-        <div class="stat-number">5+</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY CHOOSE -->
-  <section class="why-choose-section">
-    <div class="why-choose-grid">
-      <div class="why-left animate-on-scroll">
-        <div class="section-tag">WHY US</div>
-        <h2>Why Choose <span>Livity Projects Inc.</span></h2>
-        <p>At Livity Projects Inc., we are committed to providing reliable, high-quality cleaning and maintenance services you can depend on. Our team focuses on attention to detail, professionalism, and customer satisfaction to ensure every space we service is clean, safe, and well maintained.</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card animate-on-scroll">
-          <div class="feature-icon-wrap"><i class="fas fa-handshake feature-icon"></i></div>
-          <h3>Reliable & Professional</h3>
-          <p>Showing up on time and delivering dependable cleaning services you can trust.</p>
-        </div>
-        <div class="feature-card animate-on-scroll" style="transition-delay:0.1s">
-          <div class="feature-icon-wrap"><i class="fas fa-broom feature-icon"></i></div>
-          <h3>High-Quality Standards</h3>
-          <p>We focus on the details — leaving your space spotless, fresh, and well maintained.</p>
-        </div>
-        <div class="feature-card animate-on-scroll" style="transition-delay:0.15s">
-          <div class="feature-icon-wrap"><i class="fas fa-users feature-icon"></i></div>
-          <h3>Experienced Team</h3>
-          <p>Trained staff handling residential and commercial spaces with care.</p>
-        </div>
-        <div class="feature-card animate-on-scroll" style="transition-delay:0.2s">
-          <div class="feature-icon-wrap"><i class="fas fa-tag feature-icon"></i></div>
-          <h3>Transparent Pricing</h3>
-          <p>Quality service at competitive rates with absolutely no hidden costs.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAYMENT / BOOKING SECTION -->
-  <section class="payment-section" id="paymentSection">
-    <div class="section-label">🧼 PROFESSIONAL STEAM CLEANING</div>
-    <h2 class="section-title">Book your service in minutes</h2>
-    <p class="section-subtitle">High‑pressure steam technology for furniture, mattresses, cars, and carpets. CSR can give discounts up to 15%.</p>
-
-    <div class="services-grid" id="servicesGrid"></div>
-
-    <div class="steps" id="stepIndicator">
-      <div class="step">
-        <div class="step-dot active" id="dot1">1</div>
-        <span class="step-label active" id="lbl1">Booking</span>
-      </div>
-      <div class="step-line" id="line1"></div>
-      <div class="step">
-        <div class="step-dot" id="dot2">2</div>
-        <span class="step-label" id="lbl2">MMG Payment</span>
-      </div>
-      <div class="step-line" id="line2"></div>
-      <div class="step">
-        <div class="step-dot" id="dot3">3</div>
-        <span class="step-label" id="lbl3">Confirmed</span>
-      </div>
-    </div>
-
-    <!-- Step 1: Form -->
-    <div id="formReserva">
-      <div class="section-label mb-1">Step 1</div>
-      <div class="section-title mb-3">Request service</div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label><i class="fas fa-user" style="color:var(--gold);margin-right:4px"></i> Full name *</label>
-          <input type="text" id="nombre" placeholder="e.g., John Smith">
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-envelope" style="color:var(--gold);margin-right:4px"></i> Email *</label>
-          <input type="email" id="email" placeholder="john@email.com">
-        </div>
-        <div class="form-group">
-          <label><i class="fab fa-whatsapp" style="color:var(--gold);margin-right:4px"></i> Phone (WhatsApp) *</label>
-          <input type="tel" id="telefono" placeholder="+592 123 4567">
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-concierge-bell" style="color:var(--gold);margin-right:4px"></i> Service *</label>
-          <select id="servicio"></select>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-calendar-alt" style="color:var(--gold);margin-right:4px"></i> Date and time *</label>
-          <input type="datetime-local" id="fechaHora">
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:4px"></i> Address *</label>
-          <input type="text" id="direccion" placeholder="Street, city">
-        </div>
-      </div>
-      <div class="pickup-info" id="pickupInfo">
-        <strong>🚚 Carpet Pickup Service:</strong>
-        <div class="pickup-row"><span>West Coast, Georgetown, West Bank:</span><span>$2,000</span></div>
-        <div class="pickup-row"><span>Linden & New Amsterdam:</span><span>$3,000</span></div>
-      </div>
-      <div class="mt-3">
-        <button class="btn btn-primary btn-lg" id="btnReservar">
-          <i class="fas fa-paper-plane"></i> Book and request payment
+  <main>
+    <!-- HERO 1 -->
+    <section class="hero" style="background-image: url('Inicio.png');">
+      <div class="hero-content">
+        <div class="hero-tag">BEST CLEANING AGENCY</div>
+        <h1 class="hero-title">Enjoy the Quality<br>Cleaning Services <span>And Stay Safe</span></h1>
+        <button class="hero-btn" id="bookCleanBtn">
+          <i class="fas fa-calendar-check"></i> Book Your Clean
         </button>
       </div>
-    </div>
+      <div class="hero-image"></div>
+    </section>
 
-    <!-- Step 2: Payment -->
-    <div id="panelPago" class="hidden">
-      <div class="payment-step">
-        <div class="payment-icon">💳</div>
-        <div>
-          <div class="section-label mb-1">Step 2</div>
-          <div class="section-title mb-2">Waiting for MMG payment</div>
-          <div class="dots"><span></span><span></span><span></span></div>
+    <!-- SERVICIOS DESTACADOS -->
+    <section class="how-it-works">
+      <div class="section-tag">SERVICE</div>
+      <h2 class="section-title">Our Cleaning Services</h2>
+      <p class="section-subtitle">Discover a range of services designed to bring comfort and cleanliness into every corner of your home or office.</p>
+      <div class="steps-grid">
+        <div class="step-card animate-on-scroll">
+          <div class="step-icon"><img src="primera.png" alt="Standard Home Cleaning"></div>
+          <div class="step-card-body">
+            <h3>Standard Home Cleaning</h3>
+            <p>Keep your space fresh with regular dusting, mopping and surface care.</p>
+          </div>
         </div>
-        <div class="wa-box">
-          <strong>📱 WhatsApp:</strong> We have sent a payment link to <strong id="telefonoMostrar"></strong>
+        <div class="step-card animate-on-scroll" style="transition-delay:0.1s">
+          <div class="step-icon"><img src="segunda.jpg" alt="Deep Cleaning"></div>
+          <div class="step-card-body">
+            <h3>Deep Cleaning</h3>
+            <p>Intensive cleaning for kitchens, bathrooms and overlooked areas.</p>
+          </div>
         </div>
-        <button class="btn btn-gold btn-lg" id="btnSimularPago">
-          <i class="fas fa-credit-card"></i> Simulate payment with MMG
+        <div class="step-card animate-on-scroll" style="transition-delay:0.2s">
+          <div class="step-icon"><img src="tercera.png" alt="Move-In/Move-Out Cleaning"></div>
+          <div class="step-card-body">
+            <h3>Move-In/Move-Out Cleaning</h3>
+            <p>Ensure your new beginning or final handover is spotless.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVISOR -->
+    <div class="section-divider"></div>
+
+    <!-- HERO 2 -->
+    <section class="hero hero-right" style="background-image: url('Section2.png');">
+      <div class="hero-content">
+        <div class="hero-tag">About US</div>
+        <h1 class="hero-title">Making Your House<br>Clean <span>As a New</span></h1>
+        <p class="intro-text">We deliver professional-grade cleaning solutions with proven techniques, premium equipment, and a team that genuinely cares about every detail of your space.</p>
+        <ul class="features-list">
+          <li>Clean Your Home or Office — Any Size</li>
+          <li>24/7 Emergency Quality Services</li>
+          <li>Online Booking System Available</li>
+        </ul>
+        <button class="hero-btn" id="moreAboutBtn">
+          More About us <i class="fas fa-arrow-right"></i>
         </button>
-        <p style="font-size:0.8rem; color:var(--muted);">
-          <em>CSR: Discounts up to 15% · Above 5% must be justified</em>
-        </p>
       </div>
-    </div>
+      <div class="hero-image"></div>
+    </section>
 
-    <!-- Step 3: Confirmation -->
-    <div id="panelConfirmacion" class="hidden">
-      <div class="confirmation-step">
-        <div class="confirm-icon">✅</div>
-        <div>
-          <div class="section-label mb-1">Step 3</div>
-          <div class="section-title mb-3">Booking confirmed!</div>
+    <!-- ESTADÍSTICAS -->
+    <section class="stats-section">
+      <div class="stats-container">
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Happy Customers</div>
         </div>
-        <div class="receipt">
-          <div class="receipt-row"><span>Customer</span><span id="reciboNombre"></span></div>
-          <div class="receipt-row"><span>Service</span><span id="reciboServicio"></span></div>
-          <div class="receipt-row"><span>Date and time</span><span id="reciboFecha"></span></div>
-          <div class="receipt-row"><span>Address</span><span id="reciboDireccion"></span></div>
-          <div class="receipt-row"><span>Total</span><span id="reciboTotal" style="color:var(--gold);font-weight:800;"></span></div>
-          <div class="receipt-row"><span>Payment status</span><span class="pill pill-ok">✓ Confirmed</span></div>
+        <div class="stat-item animate-on-scroll" style="transition-delay:0.1s">
+          <div class="stat-number">10</div>
+          <div class="stat-label">Team Members</div>
         </div>
-        <div class="badge-row">
-          <span class="badge">📲 Receipt sent by WhatsApp</span>
-          <span class="badge">📅 Event in Google Calendar</span>
-          <span class="badge">📊 Registered in CRM</span>
+        <div class="stat-item animate-on-scroll" style="transition-delay:0.2s">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Completed Projects</div>
+        </div>
+        <div class="stat-item animate-on-scroll" style="transition-delay:0.3s">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Years Experience</div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- CRM TABLE -->
-    <div class="crm-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Customer</th>
-            <th>Service</th>
-            <th>Date & Time</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="crm-body"></tbody>
-      </table>
-    </div>
-  </section>
+    <!-- POR QUÉ NOSOTROS -->
+    <section class="why-choose-section">
+      <div class="why-choose-grid">
+        <div class="why-left animate-on-scroll">
+          <div class="section-tag">WHY US</div>
+          <h2>Why Choose <span>Livity Projects Inc.</span></h2>
+          <p>At Livity Projects Inc., we are committed to providing reliable, high-quality cleaning and maintenance services you can depend on. Our team focuses on attention to detail, professionalism, and customer satisfaction to ensure every space we service is clean, safe, and well maintained.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card animate-on-scroll">
+            <div class="feature-icon-wrap"><i class="fas fa-handshake feature-icon"></i></div>
+            <h3>Reliable & Professional</h3>
+            <p>Showing up on time and delivering dependable cleaning services you can trust.</p>
+          </div>
+          <div class="feature-card animate-on-scroll" style="transition-delay:0.1s">
+            <div class="feature-icon-wrap"><i class="fas fa-broom feature-icon"></i></div>
+            <h3>High-Quality Standards</h3>
+            <p>We focus on the details — leaving your space spotless, fresh, and well maintained.</p>
+          </div>
+          <div class="feature-card animate-on-scroll" style="transition-delay:0.15s">
+            <div class="feature-icon-wrap"><i class="fas fa-users feature-icon"></i></div>
+            <h3>Experienced Team</h3>
+            <p>Trained staff handling residential and commercial spaces with care.</p>
+          </div>
+          <div class="feature-card animate-on-scroll" style="transition-delay:0.2s">
+            <div class="feature-icon-wrap"><i class="fas fa-tag feature-icon"></i></div>
+            <h3>Transparent Pricing</h3>
+            <p>Quality service at competitive rates with absolutely no hidden costs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- ABOUT SECTION (hidden) -->
-  <section id="aboutSection" class="about-section">
-    <button class="about-close" id="closeAboutBtn"><i class="fas fa-times"></i></button>
-    <div class="section-tag" style="margin-bottom:0.5rem">Our Story</div>
-    <h2>About Us – <span>Livity Projects Inc.</span></h2>
-    <p>At Livity Projects Inc., we are dedicated to providing reliable, high-quality cleaning and maintenance services for homes and businesses. Our goal is simple — to help our clients maintain clean, healthy, and well-kept spaces they can feel proud of.</p>
-    <p>With a team that values professionalism, efficiency, and attention to detail, we approach every project with care and commitment. Whether it's routine cleaning, deep cleaning, or property maintenance, we focus on delivering results that meet the highest standards.</p>
-    <p>We understand that every client and every space is different, which is why we work closely with our customers to provide services that fit their needs. At Livity Projects Inc., customer satisfaction isn't just a promise — it's the foundation of everything we do.</p>
-    <p class="mission">Our mission is to build lasting relationships with our clients by providing dependable service, consistent quality, and a team you can trust to get the job done right.</p>
-  </section>
+    <!-- SECCIÓN DE RESERVAS -->
+    <section class="payment-section" id="paymentSection">
+      <div class="section-tag">🧼 PROFESSIONAL STEAM CLEANING</div>
+      <h2 class="section-title">Book your service in minutes</h2>
+      <p class="section-subtitle">High‑pressure steam technology for furniture, mattresses, cars, and carpets. CSR can give discounts up to 15%.</p>
 
-  <!-- FLOATS -->
+      <div class="services-grid" id="servicesGrid"></div>
+
+      <div class="steps" id="stepIndicator">
+        <div class="step"><div class="step-dot active" id="dot1">1</div><span class="step-label active" id="lbl1">Booking</span></div>
+        <div class="step-line" id="line1"></div>
+        <div class="step"><div class="step-dot" id="dot2">2</div><span class="step-label" id="lbl2">MMG Payment</span></div>
+        <div class="step-line" id="line2"></div>
+        <div class="step"><div class="step-dot" id="dot3">3</div><span class="step-label" id="lbl3">Confirmed</span></div>
+      </div>
+
+      <!-- PASO 1: FORMULARIO -->
+      <div id="formReserva">
+        <div class="section-tag mb-1">Step 1</div>
+        <div class="section-title mb-3">Request service</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label><i class="fas fa-user" style="color:var(--gold);margin-right:4px"></i> Full name *</label>
+            <input type="text" id="nombre" placeholder="e.g., John Smith">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-envelope" style="color:var(--gold);margin-right:4px"></i> Email *</label>
+            <input type="email" id="email" placeholder="john@email.com">
+          </div>
+          <div class="form-group">
+            <label><i class="fab fa-whatsapp" style="color:var(--gold);margin-right:4px"></i> Phone (WhatsApp) *</label>
+            <input type="tel" id="telefono" placeholder="+592 123 4567">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-concierge-bell" style="color:var(--gold);margin-right:4px"></i> Service *</label>
+            <select id="servicio"></select>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-calendar-alt" style="color:var(--gold);margin-right:4px"></i> Date and time *</label>
+            <input type="datetime-local" id="fechaHora">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:4px"></i> Address *</label>
+            <input type="text" id="direccion" placeholder="Street, city">
+          </div>
+        </div>
+        <div class="pickup-info" id="pickupInfo">
+          <strong>🚚 Carpet Pickup Service:</strong>
+          <div class="pickup-row"><span>West Coast, Georgetown, West Bank:</span><span>$2,000</span></div>
+          <div class="pickup-row"><span>Linden & New Amsterdam:</span><span>$3,000</span></div>
+        </div>
+        <div class="mt-3">
+          <button class="btn btn-primary btn-lg" id="btnReservar">
+            <i class="fas fa-paper-plane"></i> Book and request payment
+          </button>
+        </div>
+      </div>
+
+      <!-- PASO 2: PAGO -->
+      <div id="panelPago" class="hidden">
+        <div class="payment-step">
+          <div class="payment-icon">💳</div>
+          <div>
+            <div class="section-tag mb-1">Step 2</div>
+            <div class="section-title mb-2">Waiting for MMG payment</div>
+            <div id="pagoSpinner" class="hidden"><div class="spinner"></div></div>
+          </div>
+          <div class="wa-box">
+            <strong>📱 WhatsApp:</strong> We have sent a payment link to <strong id="telefonoMostrar"></strong>
+          </div>
+          <button class="btn btn-gold btn-lg" id="btnSimularPago">
+            <i class="fas fa-credit-card"></i> Simulate payment with MMG
+          </button>
+          <p style="font-size:0.8rem; color:var(--muted);">
+            <em>CSR: Discounts up to 15% · Above 5% must be justified</em>
+          </p>
+        </div>
+      </div>
+
+      <!-- PASO 3: CONFIRMACIÓN -->
+      <div id="panelConfirmacion" class="hidden">
+        <div class="confirmation-step">
+          <div class="confirm-icon">✅</div>
+          <div>
+            <div class="section-tag mb-1">Step 3</div>
+            <div class="section-title mb-3">Booking confirmed!</div>
+          </div>
+          <div class="receipt">
+            <div class="receipt-row"><span>Customer</span><span id="reciboNombre"></span></div>
+            <div class="receipt-row"><span>Service</span><span id="reciboServicio"></span></div>
+            <div class="receipt-row"><span>Date and time</span><span id="reciboFecha"></span></div>
+            <div class="receipt-row"><span>Address</span><span id="reciboDireccion"></span></div>
+            <div class="receipt-row"><span>Total</span><span id="reciboTotal" style="color:var(--gold);font-weight:800;"></span></div>
+            <div class="receipt-row"><span>Payment status</span><span class="pill pill-ok">✓ Confirmed</span></div>
+          </div>
+          <div class="badge-row">
+            <span class="badge">📲 Receipt sent by WhatsApp</span>
+            <span class="badge">📅 Event in Google Calendar</span>
+            <span class="badge">📊 Registered in CRM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLA CRM -->
+      <div class="crm-wrap">
+        <table>
+          <thead><tr><th>Customer</th><th>Service</th><th>Date & Time</th><th>Status</th></tr></thead>
+          <tbody id="crm-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCIÓN ABOUT (OCULTA) -->
+    <section id="aboutSection" class="about-section">
+      <button class="about-close" id="closeAboutBtn"><i class="fas fa-times"></i></button>
+      <div class="section-tag">Our Story</div>
+      <h2>About Us – <span>Livity Projects Inc.</span></h2>
+      <p>At Livity Projects Inc., we are dedicated to providing reliable, high-quality cleaning and maintenance services for homes and businesses. Our goal is simple — to help our clients maintain clean, healthy, and well-kept spaces they can feel proud of.</p>
+      <p>With a team that values professionalism, efficiency, and attention to detail, we approach every project with care and commitment. Whether it's routine cleaning, deep cleaning, or property maintenance, we focus on delivering results that meet the highest standards.</p>
+      <p>We understand that every client and every space is different, which is why we work closely with our customers to provide services that fit their needs. At Livity Projects Inc., customer satisfaction isn't just a promise — it's the foundation of everything we do.</p>
+      <p class="mission">Our mission is to build lasting relationships with our clients by providing dependable service, consistent quality, and a team you can trust to get the job done right.</p>
+    </section>
+  </main>
+
+  <!-- BOTONES FLOTANTES -->
   <button class="scroll-top-float" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
   <a href="https://wa.me/5926437296" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- FOOTER -->
   <footer class="footer-dark">
     <div class="footer-content">
       <div class="footer-info">
         <h3>Livity Projects Inc.</h3>
         <p><i class="fas fa-phone-alt"></i> +592 643-7296</p>
-        <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="620b0c040d220e0b140b161b051b4c010d0f">[email&#160;protected]</a></p>
+        <p><i class="fas fa-envelope"></i> info@livityprojects.com</p>
         <p><i class="fas fa-map-marker-alt"></i> 8811 Tuschen Housing Scheme, East Bank Essequibo</p>
       </div>
       <div class="footer-social">
@@ -1712,223 +1121,363 @@
     <div class="footer-copyright">&copy; 2026 Livity Projects Inc. All rights reserved.</div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ---- MENU TOGGLE ----
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks   = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('show'));
-    window.addEventListener('resize', () => { if (window.innerWidth > 768) navLinks.classList.remove('show'); });
+  <script>
+    (function() {
+      "use strict";
 
-    // ---- SCROLLED NAV ----
-    const mainNavBar = document.getElementById('mainNavBar');
-    window.addEventListener('scroll', () => {
-      mainNavBar.classList.toggle('scrolled', window.scrollY > 0);
-    });
+      // --- CONSTANTES Y DATOS ---
+      const servicesData = {
+        'sofa-1seat':         { name:'1 Seat Sofa',           price:'$6,000',          icon:'🛋️', desc:'Deep steam cleaning. Removes stains, bacteria, and odors.',           detail:'Standard pricing' },
+        'sofa-2seat':         { name:'2 Seat Sofa',           price:'$10,000',         icon:'🛋️', desc:'Complete cleaning. Restores fabric appearance.',                       detail:'Standard pricing' },
+        'sofa-3seat':         { name:'3 Seat Sofa',           price:'$14,000',         icon:'🛋️', desc:'Professional steam cleaning for 3-seat sofas.',                        detail:'Standard pricing' },
+        'l-shaped':           { name:'L Shaped Sofa',         price:'$16,000',         icon:'🛋️', desc:'Deep cleaning including all sections.',                                 detail:'Standard pricing' },
+        'suite-321':          { name:'3-2-1 Suite',           price:'$24,000',         icon:'🛋️', desc:'Complete suite: 3-seat, 2-seat, and 1-seat sofa.',                     detail:'Standard pricing' },
+        'suite-311':          { name:'3-1-1 Suite',           price:'$20,000',         icon:'🛋️', desc:'Suite: 3-seat and two 1-seat sofas.',                                  detail:'Standard pricing' },
+        'suite-32':           { name:'3-2 Suite',             price:'$20,000',         icon:'🛋️', desc:'Suite: 3-seat and 2-seat sofa.',                                       detail:'Standard pricing' },
+        'suite-211':          { name:'2-1-1 Suite',           price:'$16,000',         icon:'🛋️', desc:'Suite: 2-seat and two 1-seat sofas.',                                  detail:'Standard pricing' },
+        'office-chairs':      { name:'Office Chairs',         price:'$2,500',          icon:'💺', desc:'Per chair cleaning. Removes dirt and bacteria.',                        detail:'Per chair' },
+        'dining-chairs':      { name:'Dining Chairs',         price:'$2,000',          icon:'🍽️', desc:'Per chair cleaning for dining room chairs.',                            detail:'Per chair' },
+        'mattress-king':      { name:'King Mattress',         price:'$10,000',         icon:'🛏️', desc:'Includes 2 pillows. Deep sanitization and stain removal.',              detail:'Includes 2 pillows' },
+        'mattress-queen':     { name:'Queen Mattress',        price:'$8,000',          icon:'🛏️', desc:'Includes 2 pillows. Complete mattress cleaning.',                       detail:'Includes 2 pillows' },
+        'car':                { name:'Car',                   price:'$12,000',         icon:'🚗', desc:'Includes mats. Interior steam cleaning.',                               detail:'Includes mats' },
+        'suv':                { name:'SUV',                   price:'$16,000',         icon:'🚙', desc:'Includes mats. Full interior cleaning for SUVs.',                       detail:'Includes mats' },
+        'carpet-uninstalled': { name:'Carpet (uninstalled)',  price:'$115/sq ft',      icon:'🧹', desc:'Per sq ft. Pickup service available.',                                  detail:'Uninstalled - pickup available' },
+        'carpet-installed':   { name:'Carpet (installed)',    price:'$95/sq ft',       icon:'🧹', desc:'Per sq ft. Cleaning on-site.',                                          detail:'Installed - on-site cleaning' },
+        'pressure-washing':   { name:'Pressure Washing',      price:'$30/sq ft',       icon:'💧', desc:'Per sq ft. High-pressure exterior surfaces.',                           detail:'Exterior surfaces' },
+        'recliners':          { name:'Recliners',             price:'$6,000 / $10,000', icon:'🪑', desc:'Single $6,000 · Joined $10,000',                                       detail:'Single or joined pricing' }
+      };
 
-    // ---- ABOUT SECTION ----
-    const aboutSection  = document.getElementById('aboutSection');
-    const aboutLink     = document.getElementById('aboutLink');
-    const moreAboutBtn  = document.getElementById('moreAboutBtn');
-    const closeAboutBtn = document.getElementById('closeAboutBtn');
+      // --- ESTADO DE LA APLICACIÓN ---
+      let bookings = JSON.parse(localStorage.getItem('livityBookings')) || [];
+      let currentBooking = null;  // reserva en proceso
+      let paymentTimer = null;
 
-    function showAboutSection() {
-      aboutSection.classList.add('visible');
-      aboutSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    function hideAboutSection() { aboutSection.classList.remove('visible'); }
+      // --- ELEMENTOS DEL DOM ---
+      const elements = {
+        mainNavBar: document.getElementById('mainNavBar'),
+        menuToggle: document.getElementById('menuToggle'),
+        navLinks: document.getElementById('navLinks'),
+        logo: document.getElementById('logo'),
+        homeLink: document.getElementById('homeLink'),
+        aboutLink: document.getElementById('aboutLink'),
+        serviceLink: document.getElementById('serviceLink'),
+        bookCleanBtn: document.getElementById('bookCleanBtn'),
+        moreAboutBtn: document.getElementById('moreAboutBtn'),
+        aboutSection: document.getElementById('aboutSection'),
+        closeAboutBtn: document.getElementById('closeAboutBtn'),
+        scrollTopBtn: document.getElementById('scrollTopBtn'),
+        paymentSection: document.getElementById('paymentSection'),
+        servicesGrid: document.getElementById('servicesGrid'),
+        servicioSelect: document.getElementById('servicio'),
+        formReserva: document.getElementById('formReserva'),
+        panelPago: document.getElementById('panelPago'),
+        panelConfirmacion: document.getElementById('panelConfirmacion'),
+        btnReservar: document.getElementById('btnReservar'),
+        btnSimularPago: document.getElementById('btnSimularPago'),
+        telefonoMostrar: document.getElementById('telefonoMostrar'),
+        pagoSpinner: document.getElementById('pagoSpinner'),
+        reciboNombre: document.getElementById('reciboNombre'),
+        reciboServicio: document.getElementById('reciboServicio'),
+        reciboFecha: document.getElementById('reciboFecha'),
+        reciboDireccion: document.getElementById('reciboDireccion'),
+        reciboTotal: document.getElementById('reciboTotal'),
+        crmBody: document.getElementById('crm-body'),
+        // inputs
+        nombre: document.getElementById('nombre'),
+        email: document.getElementById('email'),
+        telefono: document.getElementById('telefono'),
+        fechaHora: document.getElementById('fechaHora'),
+        direccion: document.getElementById('direccion'),
+        // step indicators
+        dot1: document.getElementById('dot1'), dot2: document.getElementById('dot2'), dot3: document.getElementById('dot3'),
+        lbl1: document.getElementById('lbl1'), lbl2: document.getElementById('lbl2'), lbl3: document.getElementById('lbl3'),
+        line1: document.getElementById('line1'), line2: document.getElementById('line2')
+      };
 
-    aboutLink.addEventListener('click',    e => { e.preventDefault(); showAboutSection(); });
-    moreAboutBtn.addEventListener('click', showAboutSection);
-    closeAboutBtn.addEventListener('click', hideAboutSection);
-    window.addEventListener('click', e => {
-      if (aboutSection.classList.contains('visible') &&
-          !aboutSection.contains(e.target) &&
-          e.target !== aboutLink && e.target !== moreAboutBtn) hideAboutSection();
-    });
+      // --- FUNCIONES AUXILIARES ---
+      function saveBookings() {
+        localStorage.setItem('livityBookings', JSON.stringify(bookings));
+      }
 
-    // ---- LOGO / HOME / SERVICE LINKS ----
-    document.getElementById('logo').addEventListener('click',     () => window.scrollTo({ top:0, behavior:'smooth' }));
-    document.getElementById('homeLink').addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top:0, behavior:'smooth' }); });
-    document.getElementById('serviceLink').addEventListener('click', e => {
-      e.preventDefault();
-      document.getElementById('paymentSection').scrollIntoView({ behavior:'smooth', block:'start' });
-    });
-    document.getElementById('bookCleanBtn').addEventListener('click', e => {
-      e.preventDefault();
-      document.getElementById('paymentSection').scrollIntoView({ behavior:'smooth', block:'start' });
-    });
-
-    // ---- SCROLL TOP ----
-    document.getElementById('scrollTopBtn').addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
-
-    // ---- SCROLL ANIMATIONS ----
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-    // ---- SERVICES DATA ----
-    const servicesData = {
-      'sofa-1seat':         { name:'1 Seat Sofa',           price:'$6,000',          icon:'🛋️', desc:'Deep steam cleaning. Removes stains, bacteria, and odors.',           detail:'Standard pricing' },
-      'sofa-2seat':         { name:'2 Seat Sofa',           price:'$10,000',         icon:'🛋️', desc:'Complete cleaning. Restores fabric appearance.',                       detail:'Standard pricing' },
-      'sofa-3seat':         { name:'3 Seat Sofa',           price:'$14,000',         icon:'🛋️', desc:'Professional steam cleaning for 3-seat sofas.',                        detail:'Standard pricing' },
-      'l-shaped':           { name:'L Shaped Sofa',         price:'$16,000',         icon:'🛋️', desc:'Deep cleaning including all sections.',                                 detail:'Standard pricing' },
-      'suite-321':          { name:'3-2-1 Suite',           price:'$24,000',         icon:'🛋️', desc:'Complete suite: 3-seat, 2-seat, and 1-seat sofa.',                     detail:'Standard pricing' },
-      'suite-311':          { name:'3-1-1 Suite',           price:'$20,000',         icon:'🛋️', desc:'Suite: 3-seat and two 1-seat sofas.',                                  detail:'Standard pricing' },
-      'suite-32':           { name:'3-2 Suite',             price:'$20,000',         icon:'🛋️', desc:'Suite: 3-seat and 2-seat sofa.',                                       detail:'Standard pricing' },
-      'suite-211':          { name:'2-1-1 Suite',           price:'$16,000',         icon:'🛋️', desc:'Suite: 2-seat and two 1-seat sofas.',                                  detail:'Standard pricing' },
-      'office-chairs':      { name:'Office Chairs',         price:'$2,500',          icon:'💺', desc:'Per chair cleaning. Removes dirt and bacteria.',                        detail:'Per chair' },
-      'dining-chairs':      { name:'Dining Chairs',         price:'$2,000',          icon:'🍽️', desc:'Per chair cleaning for dining room chairs.',                            detail:'Per chair' },
-      'mattress-king':      { name:'King Mattress',         price:'$10,000',         icon:'🛏️', desc:'Includes 2 pillows. Deep sanitization and stain removal.',              detail:'Includes 2 pillows' },
-      'mattress-queen':     { name:'Queen Mattress',        price:'$8,000',          icon:'🛏️', desc:'Includes 2 pillows. Complete mattress cleaning.',                       detail:'Includes 2 pillows' },
-      'car':                { name:'Car',                   price:'$12,000',         icon:'🚗', desc:'Includes mats. Interior steam cleaning.',                               detail:'Includes mats' },
-      'suv':                { name:'SUV',                   price:'$16,000',         icon:'🚙', desc:'Includes mats. Full interior cleaning for SUVs.',                       detail:'Includes mats' },
-      'carpet-uninstalled': { name:'Carpet (uninstalled)',  price:'$115/sq ft',      icon:'🧹', desc:'Per sq ft. Pickup service available.',                                  detail:'Uninstalled - pickup available' },
-      'carpet-installed':   { name:'Carpet (installed)',    price:'$95/sq ft',       icon:'🧹', desc:'Per sq ft. Cleaning on-site.',                                          detail:'Installed - on-site cleaning' },
-      'pressure-washing':   { name:'Pressure Washing',      price:'$30/sq ft',       icon:'💧', desc:'Per sq ft. High-pressure exterior surfaces.',                           detail:'Exterior surfaces' },
-      'recliners':          { name:'Recliners',             price:'$6,000 / $10,000', icon:'🪑', desc:'Single $6,000 · Joined $10,000',                                       detail:'Single or joined pricing' }
-    };
-
-    // ---- CREATE FLIP CARDS ----
-    function createFlipCards() {
-      const grid = document.getElementById('servicesGrid');
-      if (!grid) return;
-      grid.innerHTML = '';
-      let i = 0;
-      for (const [key, data] of Object.entries(servicesData)) {
-        const flipCard = document.createElement('div');
-        flipCard.className = 'flip-card animate-on-scroll';
-        flipCard.style.transitionDelay = (i * 0.04) + 's';
-        flipCard.dataset.service = key;
-        flipCard.innerHTML = `
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <span class="service-icon">${data.icon}</span>
-              <div class="service-name">${data.name}</div>
-            </div>
-            <div class="flip-card-back">
-              <div class="service-name">${data.name}</div>
-              <div class="service-desc-back">${data.desc}</div>
-              <div class="service-price-back">${data.price}</div>
-              <div class="service-price-detail">${data.detail}</div>
-            </div>
-          </div>
-        `;
-        flipCard.addEventListener('click', function(e) {
-          e.stopPropagation();
-          this.classList.toggle('flipped');
-          document.getElementById('servicio').value = key;
+      function renderCRM() {
+        if (!elements.crmBody) return;
+        elements.crmBody.innerHTML = '';
+        bookings.slice().reverse().forEach(b => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${b.nombre}</td>
+            <td>${b.servicio}</td>
+            <td>${b.fechaHora.replace('T', ' · ')}</td>
+            <td><span class="pill ${b.estado === 'confirmado' ? 'pill-ok' : 'pill-pend'}">${b.estado === 'confirmado' ? '✓ Confirmed' : '⏳ Pending'}</span></td>
+          `;
+          elements.crmBody.appendChild(row);
         });
-        grid.appendChild(flipCard);
-        i++;
-      }
-      // Re-observe new elements
-      document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => observer.observe(el));
-    }
-
-    // ---- POPULATE SELECT ----
-    function populateServiceSelect() {
-      const select = document.getElementById('servicio');
-      if (!select) return;
-      select.innerHTML = '';
-      for (const [key, data] of Object.entries(servicesData)) {
-        const option = document.createElement('option');
-        option.value = key;
-        option.textContent = `${data.name} — ${data.price}`;
-        select.appendChild(option);
-      }
-    }
-
-    createFlipCards();
-    populateServiceSelect();
-
-    document.getElementById('servicio')?.addEventListener('change', function() {
-      const k = this.value;
-      document.querySelectorAll('.flip-card').forEach(card => {
-        card.classList.toggle('flipped', card.dataset.service === k);
-      });
-    });
-
-    // ---- STEP INDICATOR ----
-    function setStep(step) {
-      [1,2,3].forEach(n => {
-        const dot = document.getElementById('dot' + n);
-        const lbl = document.getElementById('lbl' + n);
-        if (!dot || !lbl) return;
-        if (n < step)  { dot.className='step-dot done';   lbl.className='step-label done';   dot.textContent='✓'; }
-        if (n===step)  { dot.className='step-dot active'; lbl.className='step-label active'; dot.textContent=n; }
-        if (n > step)  { dot.className='step-dot';        lbl.className='step-label';        dot.textContent=n; }
-      });
-      document.getElementById('line1').className = 'step-line' + (step > 1 ? ' done' : '');
-      document.getElementById('line2').className = 'step-line' + (step > 2 ? ' done' : '');
-    }
-    setStep(1);
-
-    // ---- VALIDATION ----
-    function validar(nombre, email, telefono, fechaHora, direccion) {
-      if (!nombre || !email || !telefono || !fechaHora || !direccion) return false;
-      if (!email.includes('@') || !email.includes('.')) return false;
-      if (telefono.length < 7) return false;
-      if (new Date(fechaHora) <= new Date()) return false;
-      return true;
-    }
-
-    let reservaActual = {};
-
-    // ---- BOOK BUTTON ----
-    document.getElementById('btnReservar')?.addEventListener('click', e => {
-      e.preventDefault();
-      const nombre      = document.getElementById('nombre').value.trim();
-      const email       = document.getElementById('email').value.trim();
-      const telefono    = document.getElementById('telefono').value.trim();
-      const servicioKey = document.getElementById('servicio').value;
-      const fechaHora   = document.getElementById('fechaHora').value;
-      const direccion   = document.getElementById('direccion').value.trim();
-
-      if (!validar(nombre, email, telefono, fechaHora, direccion)) {
-        alert('❌ Please check the fields. The date must be in the future and all fields are required.');
-        return;
       }
 
-      const servicioData = servicesData[servicioKey];
-      reservaActual = { nombre, email, telefono, servicio: servicioData.name, precio: servicioData.price, fechaHora, direccion };
-
-      document.getElementById('telefonoMostrar').textContent = telefono;
-      document.getElementById('formReserva').classList.add('hidden');
-      document.getElementById('panelPago').classList.remove('hidden');
-      setStep(2);
-
-      const row = document.createElement('tr');
-      row.innerHTML = `<td>${nombre}</td><td>${servicioData.name}</td><td>${fechaHora.replace('T',' · ')}</td><td><span class="pill pill-pend">⏳ Pending</span></td>`;
-      row.id = 'crm-new-row';
-      document.getElementById('crm-body').prepend(row);
-    });
-
-    // ---- SIMULATE PAYMENT ----
-    document.getElementById('btnSimularPago')?.addEventListener('click', () => {
-      const { nombre, servicio, precio, fechaHora, direccion } = reservaActual;
-      document.getElementById('reciboNombre').textContent    = nombre;
-      document.getElementById('reciboServicio').textContent  = servicio;
-      document.getElementById('reciboFecha').textContent     = fechaHora.replace('T', ' at ');
-      document.getElementById('reciboDireccion').textContent = direccion;
-      document.getElementById('reciboTotal').textContent     = precio;
-      document.getElementById('panelPago').classList.add('hidden');
-      document.getElementById('panelConfirmacion').classList.remove('hidden');
-      setStep(3);
-
-      const row = document.getElementById('crm-new-row');
-      if (row) {
-        const celdas = row.querySelectorAll('td');
-        if (celdas[3]) celdas[3].innerHTML = '<span class="pill pill-ok">✓ Confirmed</span>';
+      function setStep(step) {
+        const steps = [1,2,3];
+        steps.forEach(n => {
+          const dot = document.getElementById(`dot${n}`);
+          const lbl = document.getElementById(`lbl${n}`);
+          if (!dot || !lbl) return;
+          if (n < step) {
+            dot.className = 'step-dot done';
+            lbl.className = 'step-label done';
+            dot.textContent = '✓';
+          } else if (n === step) {
+            dot.className = 'step-dot active';
+            lbl.className = 'step-label active';
+            dot.textContent = n;
+          } else {
+            dot.className = 'step-dot';
+            lbl.className = 'step-label';
+            dot.textContent = n;
+          }
+        });
+        if (elements.line1) elements.line1.className = `step-line ${step > 1 ? 'done' : ''}`;
+        if (elements.line2) elements.line2.className = `step-line ${step > 2 ? 'done' : ''}`;
       }
-    });
+
+      function validateForm() {
+        const nombre = elements.nombre.value.trim();
+        const email = elements.email.value.trim();
+        const telefono = elements.telefono.value.trim();
+        const fechaHora = elements.fechaHora.value;
+        const direccion = elements.direccion.value.trim();
+
+        if (!nombre || !email || !telefono || !fechaHora || !direccion) {
+          alert('❌ Todos los campos son obligatorios.');
+          return false;
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert('❌ Correo electrónico no válido.');
+          return false;
+        }
+        const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+        if (!phoneRegex.test(telefono.replace(/\s/g, ''))) {
+          alert('❌ Teléfono no válido. Debe incluir código de área y número.');
+          return false;
+        }
+        const fechaSeleccionada = new Date(fechaHora);
+        if (fechaSeleccionada <= new Date()) {
+          alert('❌ La fecha y hora deben ser futuras.');
+          return false;
+        }
+        return true;
+      }
+
+      function resetPaymentTimer() {
+        if (paymentTimer) clearTimeout(paymentTimer);
+        if (elements.pagoSpinner) elements.pagoSpinner.classList.add('hidden');
+        if (elements.btnSimularPago) elements.btnSimularPago.disabled = false;
+      }
+
+      // --- INICIALIZACIÓN DE COMPONENTES ---
+      function initFlipCards() {
+        if (!elements.servicesGrid) return;
+        elements.servicesGrid.innerHTML = '';
+        let i = 0;
+        for (const [key, data] of Object.entries(servicesData)) {
+          const card = document.createElement('div');
+          card.className = 'flip-card animate-on-scroll';
+          card.style.transitionDelay = (i * 0.04) + 's';
+          card.dataset.service = key;
+          card.innerHTML = `
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="service-icon">${data.icon}</span>
+                <div class="service-name">${data.name}</div>
+              </div>
+              <div class="flip-card-back">
+                <div class="service-name">${data.name}</div>
+                <div class="service-desc-back">${data.desc}</div>
+                <div class="service-price-back">${data.price}</div>
+                <div class="service-price-detail">${data.detail}</div>
+              </div>
+            </div>
+          `;
+          card.addEventListener('click', (e) => {
+            e.stopPropagation();
+            card.classList.toggle('flipped');
+            if (elements.servicioSelect) elements.servicioSelect.value = key;
+          });
+          elements.servicesGrid.appendChild(card);
+          i++;
+        }
+        // observar animaciones
+        document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => observer.observe(el));
+      }
+
+      function populateSelect() {
+        if (!elements.servicioSelect) return;
+        elements.servicioSelect.innerHTML = '';
+        for (const [key, data] of Object.entries(servicesData)) {
+          const opt = document.createElement('option');
+          opt.value = key;
+          opt.textContent = `${data.name} — ${data.price}`;
+          elements.servicioSelect.appendChild(opt);
+        }
+      }
+
+      // --- EVENTOS ---
+      function setupEventListeners() {
+        // Menú toggle
+        elements.menuToggle?.addEventListener('click', () => {
+          elements.navLinks?.classList.toggle('show');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+          elements.mainNavBar?.classList.toggle('scrolled', window.scrollY > 0);
+        });
+
+        // Logo y home link
+        elements.logo?.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+        elements.homeLink?.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top:0, behavior:'smooth' });
+        });
+
+        // Service link
+        elements.serviceLink?.addEventListener('click', (e) => {
+          e.preventDefault();
+          elements.paymentSection?.scrollIntoView({ behavior:'smooth', block:'start' });
+        });
+
+        // Book button
+        elements.bookCleanBtn?.addEventListener('click', (e) => {
+          e.preventDefault();
+          elements.paymentSection?.scrollIntoView({ behavior:'smooth', block:'start' });
+        });
+
+        // About section
+        elements.aboutLink?.addEventListener('click', (e) => {
+          e.preventDefault();
+          elements.aboutSection?.classList.add('visible');
+          elements.aboutSection?.scrollIntoView({ behavior:'smooth', block:'center' });
+        });
+        elements.moreAboutBtn?.addEventListener('click', () => {
+          elements.aboutSection?.classList.add('visible');
+          elements.aboutSection?.scrollIntoView({ behavior:'smooth', block:'center' });
+        });
+        elements.closeAboutBtn?.addEventListener('click', () => {
+          elements.aboutSection?.classList.remove('visible');
+        });
+        window.addEventListener('click', (e) => {
+          if (elements.aboutSection?.classList.contains('visible') &&
+              !elements.aboutSection.contains(e.target) &&
+              e.target !== elements.aboutLink && e.target !== elements.moreAboutBtn) {
+            elements.aboutSection.classList.remove('visible');
+          }
+        });
+
+        // Scroll top
+        elements.scrollTopBtn?.addEventListener('click', () => {
+          window.scrollTo({ top:0, behavior:'smooth' });
+        });
+
+        // Cambio de servicio en select -> voltear card correspondiente
+        elements.servicioSelect?.addEventListener('change', (e) => {
+          const key = e.target.value;
+          document.querySelectorAll('.flip-card').forEach(card => {
+            card.classList.toggle('flipped', card.dataset.service === key);
+          });
+        });
+
+        // Reservar
+        elements.btnReservar?.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (!validateForm()) return;
+
+          const servicioKey = elements.servicioSelect.value;
+          const servicioData = servicesData[servicioKey];
+          currentBooking = {
+            nombre: elements.nombre.value.trim(),
+            email: elements.email.value.trim(),
+            telefono: elements.telefono.value.trim(),
+            servicio: servicioData.name,
+            precio: servicioData.price,
+            fechaHora: elements.fechaHora.value,
+            direccion: elements.direccion.value.trim(),
+            estado: 'pendiente'
+          };
+
+          // Añadir a bookings y renderizar
+          bookings.push(currentBooking);
+          saveBookings();
+          renderCRM();
+
+          // Mostrar panel de pago
+          elements.telefonoMostrar.textContent = currentBooking.telefono;
+          elements.formReserva.classList.add('hidden');
+          elements.panelPago.classList.remove('hidden');
+          setStep(2);
+        });
+
+        // Simular pago
+        elements.btnSimularPago?.addEventListener('click', function() {
+          if (!currentBooking) return;
+          resetPaymentTimer();
+          // Deshabilitar botón y mostrar spinner
+          this.disabled = true;
+          if (elements.pagoSpinner) elements.pagoSpinner.classList.remove('hidden');
+
+          // Simular proceso de pago
+          paymentTimer = setTimeout(() => {
+            // Actualizar estado de la reserva actual
+            currentBooking.estado = 'confirmado';
+            const index = bookings.findIndex(b => b.fechaHora === currentBooking.fechaHora && b.nombre === currentBooking.nombre);
+            if (index !== -1) bookings[index] = currentBooking;
+            saveBookings();
+            renderCRM();
+
+            // Mostrar confirmación
+            elements.reciboNombre.textContent = currentBooking.nombre;
+            elements.reciboServicio.textContent = currentBooking.servicio;
+            elements.reciboFecha.textContent = currentBooking.fechaHora.replace('T', ' at ');
+            elements.reciboDireccion.textContent = currentBooking.direccion;
+            elements.reciboTotal.textContent = currentBooking.precio;
+
+            elements.panelPago.classList.add('hidden');
+            elements.panelConfirmacion.classList.remove('hidden');
+            setStep(3);
+
+            // Limpiar timer y spinner
+            resetPaymentTimer();
+          }, 2000);
+        });
+      }
+
+      // --- INTERSECTION OBSERVER PARA ANIMACIONES ---
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      // --- INICIALIZACIÓN ---
+      function init() {
+        initFlipCards();
+        populateSelect();
+        renderCRM();
+        setStep(1);
+        setupEventListeners();
+
+        // Observar elementos con clase animate-on-scroll
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+      }
+
+      // Arrancar cuando el DOM esté listo
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
   </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
