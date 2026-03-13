@@ -99,7 +99,7 @@
       margin-bottom: 3rem;
       max-width: 600px;
       transition: var(--transition);
-      text-align: center; /* Forzamos centrado */
+      text-align: center;
       margin-left: auto;
       margin-right: auto;
     }
@@ -508,6 +508,7 @@
       box-shadow: var(--shadow-gold);
       transition: var(--transition);
       color: white;
+      cursor: pointer;
     }
     .step-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 20px 40px rgba(136,105,2,0.4); }
     .step-icon {
@@ -727,94 +728,6 @@
       max-width: 1400px;
       margin: 0 auto;
       padding: 5rem 5%;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-    .flip-card {
-      background: transparent;
-      height: 220px;
-      cursor: pointer;
-    }
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.65s cubic-bezier(0.645,0.045,0.355,1.000);
-      transform-style: preserve-3d;
-    }
-    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-    .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: var(--radius-md);
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: box-shadow 0.3s;
-    }
-    .flip-card-front {
-      background: white;
-      border: 1.5px solid var(--cream-border);
-      box-shadow: var(--shadow-sm);
-    }
-    .flip-card-front:hover {
-      box-shadow: var(--shadow-gold);
-      border-color: var(--gold);
-    }
-    .flip-card-back {
-      transform: rotateY(180deg);
-      background: linear-gradient(135deg, var(--cream-mid) 0%, white 100%);
-      border: 1.5px solid var(--gold);
-    }
-    .flip-card-back:hover {
-      box-shadow: 0 0 20px rgba(136,105,2,0.3);
-    }
-    .service-icon { 
-      font-size: 2.8rem; 
-      margin-bottom: 0.6rem;
-      transition: var(--transition);
-    }
-    .flip-card:hover .service-icon {
-      transform: scale(1.2) rotate(5deg);
-    }
-    .service-name { 
-      font-size: 0.9rem; 
-      font-weight: 700;
-      transition: var(--transition);
-    }
-    .service-name:hover {
-      color: var(--gold);
-      transform: scale(1.1);
-    }
-    .service-desc-back { 
-      font-size: 0.8rem; 
-      color: var(--muted); 
-      margin-bottom: 0.7rem;
-      transition: var(--transition);
-    }
-    .service-desc-back:hover {
-      color: var(--dark);
-      background: rgba(136,105,2,0.05);
-      padding: 0.2rem;
-      border-radius: 4px;
-    }
-    .service-price-back { 
-      font-size: 1.15rem; 
-      font-weight: 800; 
-      color: var(--gold);
-      transition: var(--transition);
-    }
-    .service-price-back:hover {
-      transform: scale(1.2);
-      color: var(--gold-dark);
     }
 
     /* ===== INDICADOR DE PASOS ===== */
@@ -1352,9 +1265,6 @@
         order: 3;
       }
     }
-    @media (max-width: 480px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-    }
   </style>
 </head>
 <body>
@@ -1405,7 +1315,7 @@
         <button class="carousel-btn" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
         <div class="carousel-track" id="carouselTrack">
           <!-- Tarjeta 1 - Standard Home Cleaning -->
-          <div class="step-card animate-on-scroll fade-up">
+          <div class="step-card animate-on-scroll fade-up" data-service="residential-cleaning">
             <div class="step-icon"><img src="primera.png" alt="Standard Home Cleaning"></div>
             <div class="step-card-body">
               <h3>Standard Home Cleaning</h3>
@@ -1413,7 +1323,7 @@
             </div>
           </div>
           <!-- Tarjeta 2 - Deep Cleaning (ya existente) -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.1s">
+          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.1s" data-service="deep-cleaning">
             <div class="step-icon"><img src="segunda.jpg" alt="Deep Cleaning"></div>
             <div class="step-card-body">
               <h3>Deep Cleaning</h3>
@@ -1421,7 +1331,7 @@
             </div>
           </div>
           <!-- Tarjeta 3 - Move-In/Move-Out Cleaning (ya existente) -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.2s">
+          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.2s" data-service="move-in-out-cleaning">
             <div class="step-icon"><img src="tercera.png" alt="Move-In/Move-Out Cleaning"></div>
             <div class="step-card-body">
               <h3>Move-In/Move-Out Cleaning</h3>
@@ -1429,7 +1339,7 @@
             </div>
           </div>
           <!-- Tarjeta 4 - Residential Cleaning -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.3s">
+          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.3s" data-service="residential-cleaning">
             <div class="step-icon"><img src="residentialCleaning.jpg" alt="Residential Cleaning"></div>
             <div class="step-card-body">
               <h3>Residential Cleaning</h3>
@@ -1437,7 +1347,7 @@
             </div>
           </div>
           <!-- Tarjeta 5 - Commercial & Office Cleaning -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.4s">
+          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.4s" data-service="commercial-cleaning">
             <div class="step-icon"><img src="commercialCleaning.jpg" alt="Commercial & Office Cleaning"></div>
             <div class="step-card-body">
               <h3>Commercial & Office Cleaning</h3>
@@ -1445,7 +1355,7 @@
             </div>
           </div>
           <!-- Tarjeta 6 - Steam Cleaning & Sanitization -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.5s">
+          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.5s" data-service="steam-cleaning">
             <div class="step-icon"><img src="cleaningSanitization.jpg" alt="Steam Cleaning & Sanitization"></div>
             <div class="step-card-body">
               <h3>Steam Cleaning & Sanitization</h3>
@@ -1453,7 +1363,7 @@
             </div>
           </div>
           <!-- Tarjeta 7 - Carpet Cleaning (opcional, pero ya existe en el sistema de reservas) -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.6s">
+          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.6s" data-service="steam-cleaning">
             <div class="step-icon"><img src="carpetUpholstery.jpg" alt="Carpet Cleaning"></div>
             <div class="step-card-body">
               <h3>Carpet & Upholstery</h3>
@@ -1461,7 +1371,7 @@
             </div>
           </div>
           <!-- Tarjeta 8 - Pressure Washing -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.7s">
+          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.7s" data-service="pressure-washing">
             <div class="step-icon"><img src="pressureWashing.jpg" alt="Pressure Washing"></div>
             <div class="step-card-body">
               <h3>Pressure Washing</h3>
@@ -1549,13 +1459,9 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DE RESERVAS -->
+    <!-- SECCIÓN DE RESERVAS (sin el encabezado eliminado y sin las tablas giratorias) -->
     <section class="payment-section" id="paymentSection">
-      <div class="section-tag">🧼 PROFESSIONAL STEAM CLEANING</div>
-      <h2 class="section-title">Book your service in minutes</h2>
-      <p class="section-subtitle">High‑pressure steam technology for furniture, mattresses, cars, and carpets. CSR can give discounts up to 15%.</p>
-
-      <div class="services-grid" id="servicesGrid"></div>
+      <!-- Eliminado el div services-grid que contenía las tarjetas giratorias -->
 
       <div class="steps" id="stepIndicator">
         <div class="step"><div class="step-dot active" id="dot1">1</div><span class="step-label active" id="lbl1">Booking</span></div>
@@ -1746,7 +1652,7 @@
         closeAboutBtn: document.getElementById('closeAboutBtn'),
         scrollTopBtn: document.getElementById('scrollTopBtn'),
         paymentSection: document.getElementById('paymentSection'),
-        servicesGrid: document.getElementById('servicesGrid'),
+        // servicesGrid eliminado
         servicioSelect: document.getElementById('servicio'),
         formReserva: document.getElementById('formReserva'),
         panelPago: document.getElementById('panelPago'),
@@ -1880,41 +1786,6 @@
       }
 
       // --- INICIALIZACIÓN DE COMPONENTES ---
-      function initFlipCards() {
-        if (!elements.servicesGrid) return;
-        elements.servicesGrid.innerHTML = '';
-        let i = 0;
-        for (const [key, data] of Object.entries(servicesData)) {
-          const card = document.createElement('div');
-          card.className = 'flip-card animate-on-scroll zoom-in';
-          card.style.transitionDelay = (i * 0.04) + 's';
-          card.dataset.service = key;
-          card.innerHTML = `
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <span class="service-icon">${data.icon}</span>
-                <div class="service-name">${data.name}</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="service-name">${data.name}</div>
-                <div class="service-desc-back">${data.desc}</div>
-                <div class="service-price-back">${data.price}</div>
-                <div class="service-price-detail">${data.detail}</div>
-              </div>
-            </div>
-          `;
-          card.addEventListener('click', (e) => {
-            e.stopPropagation();
-            card.classList.toggle('flipped');
-            if (elements.servicioSelect) elements.servicioSelect.value = key;
-          });
-          elements.servicesGrid.appendChild(card);
-          i++;
-        }
-        // observar animaciones
-        document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => observer.observe(el));
-      }
-
       function populateSelect() {
         if (!elements.servicioSelect) return;
         elements.servicioSelect.innerHTML = '';
@@ -1940,6 +1811,22 @@
           }
         });
       }, { threshold: 0.15 });
+
+      // --- FUNCIÓN PARA REDIRIGIR A LA PÁGINA DE SERVICIOS ---
+      function setupCardLinks() {
+        const cards = document.querySelectorAll('.step-card');
+        cards.forEach(card => {
+          card.addEventListener('click', (e) => {
+            // Evitar que el clic en el botón del carrusel también dispare esto
+            if (e.target.closest('.carousel-btn')) return;
+            
+            const service = card.dataset.service; // obtenemos el valor de data-service
+            if (service) {
+              window.location.href = `standardhomecleaning.html#${service}`;
+            }
+          });
+        });
+      }
 
       // --- EVENTOS ---
       function setupEventListeners() {
@@ -1998,13 +1885,7 @@
           window.scrollTo({ top:0, behavior:'smooth' });
         });
 
-        // Cambio de servicio en select -> voltear card correspondiente
-        elements.servicioSelect?.addEventListener('change', (e) => {
-          const key = e.target.value;
-          document.querySelectorAll('.flip-card').forEach(card => {
-            card.classList.toggle('flipped', card.dataset.service === key);
-          });
-        });
+        // Eliminado el event listener de cambio de select que volteaba las cards
 
         // Reservar y enviar a n8n
         elements.btnReservar?.addEventListener('click', (e) => {
@@ -2083,11 +1964,13 @@
             elements.carouselTrack.scrollBy({ left: 320, behavior: 'smooth' });
           });
         }
+
+        // Configurar enlaces de las tarjetas
+        setupCardLinks();
       }
 
       // --- INICIALIZACIÓN ---
       function init() {
-        initFlipCards();
         populateSelect();
         renderCRM();
         setStep(1);
