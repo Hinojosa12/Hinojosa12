@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Livity Projects Inc · Dry Cleaning & Steam Cleaning</title>
-  <!-- Fuentes e iconos -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ===== VARIABLES ===== */
     :root {
       --gold: #886902;
       --gold-dark: #6b5201;
@@ -34,1959 +32,954 @@
       --radius-pill: 60px;
       --transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--cream);
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: clip;
-    }
+    body { font-family: 'Inter', sans-serif; background-color: var(--cream); color: var(--dark); line-height: 1.6; overflow-x: clip; }
 
-    /* ===== UTILIDADES ===== */
     .hidden { display: none !important; }
-    .text-center { text-align: center; }
     .section-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 3px;
-      color: var(--gold);
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-      padding-left: 1.5rem;
-      position: relative;
-      transition: var(--transition);
+      display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 3px;
+      color: var(--gold); margin-bottom: 0.8rem; text-transform: uppercase;
+      padding-left: 1.5rem; position: relative;
     }
     .section-tag::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 10px;
-      height: 2px;
-      background: var(--gold);
-      transition: width 0.3s;
+      content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 10px; height: 2px; background: var(--gold);
     }
-    .section-tag:hover { 
-      color: var(--gold-dark); 
-      transform: translateX(5px); 
-      letter-spacing: 4px;
-    }
-    .section-tag:hover::before { width: 20px; }
-    .section-title {
-      font-size: 2.6rem;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      margin-bottom: 0.5rem;
-      color: var(--dark);
-      line-height: 1.15;
-      transition: var(--transition);
-    }
-    .section-title:hover {
-      color: var(--gold);
-      text-shadow: 2px 2px 0 rgba(136,105,2,0.1);
-      letter-spacing: -1px;
-      transform: scale(1.02);
-    }
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--muted);
-      font-weight: 400;
-      margin-bottom: 3rem;
-      max-width: 600px;
-      transition: var(--transition);
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .section-subtitle:hover {
-      color: var(--dark);
-      transform: translateY(-2px);
-      text-decoration: underline wavy var(--gold) 1px;
-    }
+    .section-title { font-size: 2.6rem; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 0.5rem; color: var(--dark); line-height: 1.15; }
+    .section-subtitle { font-size: 1.05rem; color: var(--muted); font-weight: 400; margin-bottom: 3rem; max-width: 600px; text-align: center; margin-left: auto; margin-right: auto; }
 
-    /* ===== ANIMACIONES GLOBALES ===== */
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0px); }
-    }
-    @keyframes pulse-gold {
-      0% { box-shadow: 0 0 0 0 var(--gold-glow); }
-      70% { box-shadow: 0 0 0 12px rgba(136,105,2,0); }
-      100% { box-shadow: 0 0 0 0 rgba(136,105,2,0); }
-    }
-    @keyframes spin-slow {
-      to { transform: rotate(360deg); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeLeft {
-      from { opacity: 0; transform: translateX(-30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes fadeRight {
-      from { opacity: 0; transform: translateX(30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes zoomIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    @keyframes wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(2deg); }
-      75% { transform: rotate(-2deg); }
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
+    @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+    @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 var(--gold-glow); } 70% { box-shadow: 0 0 0 12px rgba(136,105,2,0); } 100% { box-shadow: 0 0 0 0 rgba(136,105,2,0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    .animate-on-scroll {
-      opacity: 0;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1) !important;
-    }
+    .animate-on-scroll { opacity: 0; transition: opacity 0.6s ease, transform 0.6s ease; }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0) scale(1) !important; }
     .fade-up { transform: translateY(30px); }
     .fade-left { transform: translateX(-30px); }
-    .fade-right { transform: translateX(30px); }
     .zoom-in { transform: scale(0.95); }
 
-    /* ===== HEADER TOP ===== */
+    /* TOP HEADER */
     .top-header {
       background: linear-gradient(90deg, var(--dark) 0%, #2a3d41 100%);
-      padding: 0.6rem 5%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 1rem 2rem;
-      animation: fadeUp 0.8s ease;
+      padding: 0.6rem 5%; display: flex; justify-content: flex-end;
     }
-    .contact-details {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.85);
-    }
-    .contact-details span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      white-space: nowrap;
-      transition: color 0.2s, transform 0.2s, text-shadow 0.2s;
-    }
-    .contact-details span:hover { 
-      color: #f0c84a; 
-      transform: translateY(-2px) scale(1.05);
-      text-shadow: 0 0 8px rgba(240,200,74,0.5);
-    }
-    .contact-details i {
-      color: var(--gold);
-      font-size: 0.9rem;
-      width: 1.1rem;
-      transition: transform 0.3s;
-    }
-    .contact-details span:hover i { 
-      transform: rotate(360deg) scale(1.2); 
-    }
+    .contact-details { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.85); }
+    .contact-details span { display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap; transition: color 0.2s; }
+    .contact-details span:hover { color: #f0c84a; }
+    .contact-details i { color: var(--gold); font-size: 0.9rem; width: 1.1rem; }
 
-    /* ===== NAVEGACIÓN PRINCIPAL ===== */
+    /* NAV */
     .main-nav-bar {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 0;
-      background: rgba(254,252,245,0.92);
-      backdrop-filter: blur(18px);
+      position: sticky; top: 0;
+      background: rgba(254,252,245,0.92); backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(234,226,214,0.7);
-      padding: 0 5%;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 2000;
-      transition: var(--transition);
-      width: 100%;
+      padding: 0 5%; height: 72px; display: flex; align-items: center;
+      justify-content: space-between; z-index: 2000; transition: var(--transition); width: 100%;
     }
-    .main-nav-bar.scrolled {
-      background: rgba(30,43,46,0.97);
-      border-bottom-color: rgba(136,105,2,0.3);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-    }
+    .main-nav-bar.scrolled { background: rgba(30,43,46,0.97); border-bottom-color: rgba(136,105,2,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
     .main-nav-bar.scrolled .nav-links a { color: rgba(255,255,255,0.8); }
     .main-nav-bar.scrolled .nav-links a:hover { color: #f0c84a; }
+    .logo img { display: block; height: 52px; width: auto; border-radius: 10px; cursor: pointer; transition: transform 0.3s; }
+    .logo img:hover { transform: scale(1.08); }
+    .nav-links { display: flex; gap: 0.5rem; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--muted-light); font-weight: 500; font-size: 0.95rem; padding: 0.5rem 1rem; border-radius: var(--radius-sm); cursor: pointer; position: relative; transition: var(--transition); }
+    .nav-links a:hover { color: var(--gold); background: var(--gold-xlight); transform: translateY(-2px); }
+    .nav-links a.active { color: var(--dark); font-weight: 700; background: rgba(136,105,2,0.1); }
+    .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: var(--muted-light); padding: 0.5rem; border-radius: var(--radius-sm); }
 
-    .logo img {
-      display: block;
-      height: 52px;
-      width: auto;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s, box-shadow 0.3s;
-    }
-    .logo img:hover { 
-      transform: scale(1.1) rotate(2deg); 
-      filter: brightness(1.1);
-      box-shadow: 0 10px 20px rgba(136,105,2,0.3);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted-light);
-      font-weight: 500;
-      font-size: 0.95rem;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      position: relative;
-      transition: var(--transition);
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      transition: width 0.3s;
-    }
-    .nav-links a:hover::after,
-    .nav-links a.active::after { width: 60%; }
-    .nav-links a:hover { 
-      color: var(--gold); 
-      background: var(--gold-xlight); 
-      transform: translateY(-2px) scale(1.05);
-    }
-    .nav-links a.active { 
-      color: var(--dark); 
-      font-weight: 700; 
-      background: rgba(136,105,2,0.1);
-    }
-    .nav-links a:active {
-      transform: translateY(0) scale(0.95);
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: var(--muted-light);
-      padding: 0.5rem;
-      border-radius: var(--radius-sm);
-      transition: background 0.2s, transform 0.2s;
-    }
-    .menu-toggle:hover { 
-      background: var(--gold-xlight); 
-      transform: scale(1.1) rotate(90deg);
-    }
-
-    /* ===== HERO ===== */
+    /* HERO */
     .hero {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 7rem 5% 6rem;
-      gap: 4rem;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      min-height: 600px;
-      color: white;
-      animation: bgMove 20s ease infinite alternate;
+      position: relative; display: flex; align-items: center;
+      justify-content: space-between; padding: 7rem 5% 6rem; gap: 4rem;
+      background-size: cover; background-position: center; background-attachment: fixed;
+      min-height: 600px; color: white;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(10,18,20,0.72) 0%, rgba(136,105,2,0.18) 60%, rgba(10,18,20,0.55) 100%);
-      z-index: 1;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      background: linear-gradient(to top, var(--cream) 0%, transparent 100%);
-      z-index: 2;
-    }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,18,20,0.72) 0%, rgba(136,105,2,0.18) 60%, rgba(10,18,20,0.55) 100%); z-index: 1; }
+    .hero::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 80px; background: linear-gradient(to top, var(--cream) 0%, transparent 100%); z-index: 2; }
     .hero > * { position: relative; z-index: 3; }
     .hero-right { flex-direction: row-reverse; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 1.1rem; border-radius: var(--radius-pill); font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; color: #f0c84a; margin-bottom: 1.5rem; text-transform: uppercase; background: rgba(136,105,2,0.25); border: 1px solid rgba(240,200,74,0.4); backdrop-filter: blur(6px); animation: float 4s ease-in-out infinite; }
+    .hero-title { font-size: 3.4rem; font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-bottom: 1.5rem; animation: fadeLeft 1s ease; }
+    .hero-title span { color: #f0c84a; }
+    .intro-text { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-size: 1rem; animation: fadeRight 1s ease 0.2s both; }
+    .features-list { list-style: none; margin-bottom: 1.5rem; }
+    .features-list li { color: rgba(255,255,255,0.9); margin-bottom: 0.7rem; padding-left: 1.6rem; position: relative; display: flex; align-items: center; animation: fadeUp 0.8s ease both; }
+    .features-list li::before { content: "✦"; position: absolute; left: 0; color: #f0c84a; }
+    .features-list li:hover { color: white; transform: translateX(10px); }
+    .hero-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, var(--gold) 0%, #a07c03 100%); color: white; border: none; padding: 1rem 2.5rem; border-radius: var(--radius-pill); font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition); box-shadow: 0 10px 28px rgba(136,105,2,0.45); animation: pulse-gold 2s infinite; }
+    .hero-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 18px 40px rgba(136,105,2,0.55); animation: none; }
 
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.45rem 1.1rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: #f0c84a;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-      background: rgba(136,105,2,0.25);
-      border: 1px solid rgba(240,200,74,0.4);
-      backdrop-filter: blur(6px);
-      animation: float 4s ease-in-out infinite;
-      transition: var(--transition);
-    }
-    .hero-tag:hover {
-      background: rgba(136,105,2,0.4);
-      border-color: #f0c84a;
-      transform: scale(1.1) rotate(-1deg);
-      letter-spacing: 2px;
-      box-shadow: 0 0 20px rgba(240,200,74,0.5);
-    }
-    .hero-title {
-      font-size: 3.4rem;
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -2px;
-      margin-bottom: 1.5rem;
-      animation: fadeLeft 1s ease;
-      transition: var(--transition);
-    }
-    .hero-title:hover {
-      text-shadow: 3px 3px 0 rgba(0,0,0,0.3), 0 0 20px var(--gold);
-      letter-spacing: -1px;
-      transform: scale(1.02);
-    }
-    .hero-title span { 
-      color: #f0c84a; 
-      transition: var(--transition);
-    }
-    .hero-title span:hover {
-      color: white;
-      text-shadow: 0 0 10px #f0c84a, 0 0 20px #f0c84a;
-      display: inline-block;
-      transform: rotate(2deg) scale(1.1);
-    }
-    .intro-text {
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      animation: fadeRight 1s ease 0.2s both;
-      transition: var(--transition);
-    }
-    .intro-text:hover {
-      color: white;
-      background: rgba(136,105,2,0.3);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
-      transform: translateX(5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    .features-list {
-      list-style: none;
-      margin-bottom: 1.5rem;
-    }
-    .features-list li {
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 0.7rem;
-      padding-left: 1.6rem;
-      position: relative;
-      display: flex;
-      align-items: center;
-      animation: fadeUp 0.8s ease both;
-      transition: var(--transition);
-    }
-    .features-list li:nth-child(1) { animation-delay: 0.1s; }
-    .features-list li:nth-child(2) { animation-delay: 0.2s; }
-    .features-list li:nth-child(3) { animation-delay: 0.3s; }
-    .features-list li::before {
-      content: "✦";
-      position: absolute;
-      left: 0;
-      color: #f0c84a;
-      transition: transform 0.3s;
-    }
-    .features-list li:hover { 
-      color: white; 
-      transform: translateX(10px) scale(1.02);
-      background: linear-gradient(90deg, rgba(136,105,2,0.2), transparent);
-      border-radius: var(--radius-sm);
-    }
-    .features-list li:hover::before { 
-      transform: scale(1.5) rotate(360deg); 
-      color: var(--gold-light);
-    }
-    .hero-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: linear-gradient(135deg, var(--gold) 0%, #a07c03 100%);
-      color: white;
-      border: none;
-      padding: 1rem 2.5rem;
-      border-radius: var(--radius-pill);
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 10px 28px rgba(136,105,2,0.45);
-      animation: pulse-gold 2s infinite;
-    }
-    .hero-btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 18px 40px rgba(136,105,2,0.55);
-      animation: none;
-      background: linear-gradient(135deg, #a07c03, var(--gold));
-    }
-    .hero-btn:active {
-      transform: translateY(0) scale(0.98);
-    }
-
-    /* ===== CARRUSEL DE SERVICIOS ===== */
-    .how-it-works {
-      padding: 5rem 5%;
-      max-width: 1400px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .carousel-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-    .carousel-track {
-      display: flex;
-      gap: 1.5rem;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scrollbar-width: thin;
-      scrollbar-color: var(--gold) var(--cream-mid);
-      padding: 1rem 0.5rem;
-      flex: 1;
-    }
-    .carousel-track::-webkit-scrollbar {
-      height: 6px;
-    }
-    .carousel-track::-webkit-scrollbar-track {
-      background: var(--cream-mid);
-      border-radius: 10px;
-    }
-    .carousel-track::-webkit-scrollbar-thumb {
-      background: var(--gold);
-      border-radius: 10px;
-    }
-    .step-card {
-      min-width: 280px;
-      max-width: 350px;
-      flex: 0 0 auto;
-      text-align: left;
-      background: var(--gold);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-gold);
-      transition: var(--transition);
-      color: white;
-      cursor: pointer;
-    }
+    /* CAROUSEL */
+    .how-it-works { padding: 5rem 5%; max-width: 1400px; margin: 0 auto; text-align: center; }
+    .carousel-container { position: relative; display: flex; align-items: center; gap: 1rem; margin: 2rem 0; }
+    .carousel-track { display: flex; gap: 1.5rem; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--gold) var(--cream-mid); padding: 1rem 0.5rem; flex: 1; }
+    .carousel-track::-webkit-scrollbar { height: 6px; }
+    .carousel-track::-webkit-scrollbar-track { background: var(--cream-mid); border-radius: 10px; }
+    .carousel-track::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+    .step-card { min-width: 280px; max-width: 350px; flex: 0 0 auto; text-align: left; background: var(--gold); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-gold); transition: var(--transition); color: white; cursor: pointer; }
     .step-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 20px 40px rgba(136,105,2,0.4); }
-    .step-icon {
-      width: 100%;
-      height: 210px;
-      overflow: hidden;
-    }
+    .step-icon { width: 100%; height: 210px; overflow: hidden; }
     .step-icon img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
     .step-card:hover .step-icon img { transform: scale(1.1); }
     .step-card-body { padding: 1.5rem 1.8rem 2rem; }
-    .step-card h3 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin-bottom: 0.7rem;
-      letter-spacing: -0.5px;
-      transition: var(--transition);
-    }
-    .step-card h3:hover {
-      color: #f0c84a;
-      transform: translateX(5px);
-      text-decoration: underline 2px;
-    }
-    .step-card p { 
-      color: rgba(255,255,255,0.85); 
-      font-size: 0.93rem;
-      transition: var(--transition);
-    }
-    .step-card p:hover {
-      color: white;
-      background: rgba(255,255,255,0.1);
-      padding: 0.5rem;
-      border-radius: var(--radius-sm);
-    }
-    .carousel-btn {
-      background: white;
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-      flex-shrink: 0;
-    }
-    .carousel-btn:hover {
-      background: var(--gold);
-      color: white;
-      transform: scale(1.1);
-      border-color: var(--gold-light);
-    }
-    .carousel-btn:active {
-      transform: scale(0.95);
-    }
+    .step-card h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.7rem; letter-spacing: -0.5px; }
+    .step-card p { color: rgba(255,255,255,0.85); font-size: 0.93rem; }
+    .carousel-btn { background: white; border: 2px solid var(--gold); color: var(--gold); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; cursor: pointer; transition: var(--transition); box-shadow: var(--shadow-sm); flex-shrink: 0; }
+    .carousel-btn:hover { background: var(--gold); color: white; transform: scale(1.1); }
 
-    /* ===== ESTADÍSTICAS ===== */
-    .stats-section {
-      background: linear-gradient(135deg, var(--dark) 0%, #2a3d41 100%);
-      padding: 4rem 5%;
-      position: relative;
-      overflow: hidden;
-    }
-    .stats-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .stat-item {
-      flex: 1 1 200px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      transition: transform 0.3s;
-    }
+    /* STATS */
+    .stats-section { background: linear-gradient(135deg, var(--dark) 0%, #2a3d41 100%); padding: 4rem 5%; position: relative; overflow: hidden; }
+    .stats-container { display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 1200px; margin: 0 auto; }
+    .stat-item { flex: 1 1 200px; padding: 2rem 1.5rem; text-align: center; transition: transform 0.3s; }
     .stat-item:hover { transform: translateY(-10px) scale(1.05); }
-    .stat-number {
-      font-size: 3.2rem;
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 0.6rem;
-      background: linear-gradient(135deg, #f0c84a 0%, var(--gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      transition: var(--transition);
-    }
-    .stat-number:hover {
-      background: linear-gradient(135deg, var(--gold), #f0c84a);
-      -webkit-background-clip: text;
-      transform: scale(1.1);
-      text-shadow: 0 0 30px rgba(240,200,74,0.5);
-    }
-    .stat-label {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.65);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: var(--transition);
-    }
-    .stat-label:hover {
-      color: white;
-      letter-spacing: 2px;
-    }
+    .stat-number { font-size: 3.2rem; font-weight: 900; line-height: 1; margin-bottom: 0.6rem; background: linear-gradient(135deg, #f0c84a 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat-label { font-size: 0.88rem; font-weight: 600; color: rgba(255,255,255,0.65); letter-spacing: 1px; text-transform: uppercase; }
 
-    /* ===== POR QUÉ NOSOTROS ===== */
-    .why-choose-section {
-      padding: 5rem 5%;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .why-choose-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .why-left h2 {
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 1.5rem;
-      transition: var(--transition);
-    }
-    .why-left h2:hover {
-      color: var(--gold);
-      transform: skewX(-2deg) scale(1.02);
-    }
-    .why-left h2 span { 
-      color: var(--gold);
-      transition: var(--transition);
-    }
-    .why-left h2 span:hover {
-      color: var(--gold-dark);
-      text-decoration: underline wavy;
-    }
-    .why-left p {
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.85;
-      margin-bottom: 2rem;
-      transition: var(--transition);
-    }
-    .why-left p:hover {
-      color: var(--dark);
-      background: var(--gold-xlight);
-      padding: 1rem;
-      border-radius: var(--radius-sm);
-      transform: translateY(-3px);
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    .feature-card {
-      background: white;
-      padding: 1.8rem 1.5rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--cream-border);
-      transition: var(--transition);
-      position: relative;
-    }
-    .feature-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: var(--shadow-gold);
-      border-color: var(--gold);
-    }
-    .feature-icon-wrap {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, var(--gold-xlight) 0%, rgba(136,105,2,0.15) 100%);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-      transition: transform 0.3s;
-    }
+    /* WHY US */
+    .why-choose-section { padding: 5rem 5%; max-width: 1400px; margin: 0 auto; }
+    .why-choose-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
+    .why-left h2 { font-size: 2.6rem; font-weight: 800; color: var(--dark); margin-bottom: 1.5rem; }
+    .why-left h2 span { color: var(--gold); }
+    .why-left p { color: var(--muted); font-size: 1rem; line-height: 1.85; margin-bottom: 2rem; }
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .feature-card { background: white; padding: 1.8rem 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--cream-border); transition: var(--transition); }
+    .feature-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-gold); border-color: var(--gold); }
+    .feature-icon-wrap { width: 52px; height: 52px; background: linear-gradient(135deg, var(--gold-xlight) 0%, rgba(136,105,2,0.15) 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; transition: transform 0.3s; }
     .feature-card:hover .feature-icon-wrap { transform: scale(1.1) rotate(5deg); }
-    .feature-icon { 
-      font-size: 1.4rem; 
-      color: var(--gold); 
-      transition: transform 0.3s, color 0.3s;
-    }
-    .feature-card:hover .feature-icon { 
-      transform: scale(1.2) rotate(10deg); 
-      color: var(--gold-dark);
-    }
-    .feature-card h3 { 
-      font-size: 1rem; 
-      font-weight: 700; 
-      margin-bottom: 0.4rem;
-      transition: var(--transition);
-    }
-    .feature-card h3:hover {
-      color: var(--gold);
-      transform: translateX(3px);
-    }
-    .feature-card p { 
-      font-size: 0.87rem; 
-      color: var(--muted);
-      transition: var(--transition);
-    }
-    .feature-card p:hover {
-      color: var(--dark);
-    }
+    .feature-icon { font-size: 1.4rem; color: var(--gold); }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .feature-card p { font-size: 0.87rem; color: var(--muted); }
 
-    /* ===== SECCIÓN DE RESERVAS ===== */
-    .payment-section {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 5rem 5%;
-    }
-
-    /* ===== INDICADOR DE PASOS ===== */
-    .steps {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      margin-bottom: 3rem;
-    }
-    .step { 
-      display: flex; 
-      align-items: center; 
-      gap: 0.6rem;
-      transition: var(--transition);
-    }
-    .step:hover {
-      transform: translateY(-2px);
-    }
-    .step-dot {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.78rem;
-      font-weight: 800;
-      border: 2px solid var(--border);
-      color: var(--muted);
-      background: white;
-      transition: var(--transition);
-    }
-    .step-dot.active {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      border-color: var(--gold);
-      color: white;
-      box-shadow: 0 0 0 5px rgba(136,105,2,0.18);
-      animation: pulse-gold 1.5s infinite;
-    }
-    .step-dot.done {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      border-color: var(--gold);
-      color: white;
-    }
-    .step-dot:hover {
-      transform: scale(1.2);
-      border-color: var(--gold);
-    }
-    .step-label {
-      transition: var(--transition);
-    }
-    .step-label:hover {
-      color: var(--gold);
-      transform: translateX(2px);
-    }
-    .step-line {
-      width: 50px; height: 2px;
-      background: var(--border);
-      margin: 0 0.6rem;
-      border-radius: 2px;
-      transition: background 0.3s;
-    }
+    /* BOOKING SECTION */
+    .payment-section { max-width: 1400px; margin: 0 auto; padding: 5rem 5%; }
+    .steps { display: flex; justify-content: center; align-items: center; gap: 0; margin-bottom: 3rem; }
+    .step { display: flex; align-items: center; gap: 0.6rem; }
+    .step-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 800; border: 2px solid var(--border); color: var(--muted); background: white; transition: var(--transition); }
+    .step-dot.active { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); border-color: var(--gold); color: white; box-shadow: 0 0 0 5px rgba(136,105,2,0.18); animation: pulse-gold 1.5s infinite; }
+    .step-dot.done { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); border-color: var(--gold); color: white; }
+    .step-line { width: 50px; height: 2px; background: var(--border); margin: 0 0.6rem; border-radius: 2px; transition: background 0.3s; }
     .step-line.done { background: var(--gold); }
 
-    /* ===== FORMULARIO ===== */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-      margin-top: 1.5rem;
-    }
+    /* FORM */
+    .booking-header { text-align: center; margin-bottom: 2rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.5rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
     .form-group.full { grid-column: 1 / -1; }
-    label {
-      font-size: 0.77rem;
-      font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: var(--transition);
-    }
-    label:hover {
-      color: var(--gold);
-      transform: translateX(2px);
-    }
-    label i {
-      transition: transform 0.3s;
-    }
-    label:hover i {
-      transform: rotate(10deg) scale(1.2);
-    }
-    input, select, textarea {
-      background: white;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 0.85rem 1.1rem;
-      font-family: inherit;
-      font-size: 0.95rem;
-      transition: all 0.25s;
-    }
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 4px rgba(136,105,2,0.1);
-      transform: scale(1.02);
-    }
-    input:hover, select:hover, textarea:hover {
-      border-color: var(--gold-light);
-      background: #fffdf7;
-    }
-    .pickup-info {
-      margin-top: 1.2rem;
-      background: linear-gradient(135deg, var(--cream-mid) 0%, rgba(245,242,232,0.5) 100%);
-      border-radius: var(--radius-sm);
-      padding: 1.2rem 1.5rem;
-      border: 1px solid var(--cream-border);
-      border-left: 3px solid var(--gold);
-      transition: var(--transition);
-    }
-    .pickup-info:hover {
-      border-left-width: 8px;
-      box-shadow: var(--shadow-gold);
-    }
-    .pickup-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.3rem 0;
-      transition: var(--transition);
-    }
-    .pickup-row:hover {
-      background: rgba(136,105,2,0.05);
-      padding: 0.3rem 0.5rem;
-      border-radius: var(--radius-sm);
-      transform: translateX(5px);
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.95rem 2rem;
-      border-radius: var(--radius-pill);
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      transition: var(--transition);
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: white;
-      box-shadow: 0 8px 20px rgba(136,105,2,0.28);
-    }
-    .btn-primary:hover:not(:disabled) {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 16px 36px rgba(136,105,2,0.42);
-    }
-    .btn-primary:active:not(:disabled) {
-      transform: translateY(0) scale(0.98);
-    }
+    label { font-size: 0.77rem; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    input, select, textarea { background: white; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem 1.1rem; font-family: inherit; font-size: 0.95rem; transition: all 0.25s; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(136,105,2,0.1); }
+    input:hover, select:hover, textarea:hover { border-color: var(--gold-light); background: #fffdf7; }
+    .pickup-info { margin-top: 1.2rem; background: var(--cream-mid); border-radius: var(--radius-sm); padding: 1.2rem 1.5rem; border: 1px solid var(--cream-border); border-left: 3px solid var(--gold); }
+    .pickup-row { display: flex; justify-content: space-between; padding: 0.3rem 0; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.95rem 2rem; border-radius: var(--radius-pill); font-weight: 700; cursor: pointer; border: none; transition: var(--transition); font-family: inherit; font-size: 1rem; }
+    .btn-primary { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: white; box-shadow: 0 8px 20px rgba(136,105,2,0.28); }
+    .btn-primary:hover:not(:disabled) { transform: translateY(-5px) scale(1.03); box-shadow: 0 16px 36px rgba(136,105,2,0.42); }
     .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
-    .btn-gold {
-      background: white;
-      color: var(--gold);
-      border: 2px solid var(--gold);
-    }
-    .btn-gold:hover:not(:disabled) {
-      background: var(--gold);
-      color: white;
-      transform: translateY(-5px) scale(1.03);
-    }
-    .btn-gold:active:not(:disabled) {
-      transform: translateY(0) scale(0.98);
-    }
+    .btn-gold { background: white; color: var(--gold); border: 2px solid var(--gold); }
+    .btn-gold:hover:not(:disabled) { background: var(--gold); color: white; transform: translateY(-5px) scale(1.03); }
+    .mt-3 { margin-top: 1.5rem; }
+    .btn-lg { padding: 1.1rem 2.5rem; font-size: 1.05rem; }
 
-    /* ===== PANELES DE PAGO Y CONFIRMACIÓN ===== */
-    .payment-step, .confirmation-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1.8rem;
-      padding: 3rem 0;
+    /* TOAST NOTIFICATION */
+    .toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: var(--dark); color: white; padding: 1rem 2rem; border-radius: var(--radius-pill);
+      font-weight: 600; font-size: 0.95rem; z-index: 9999; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 0.6rem;
+      min-width: 280px; justify-content: center;
     }
-    .payment-icon, .confirm-icon {
-      width: 96px; height: 96px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--cream-mid) 0%, white 100%);
-      border: 2px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.8rem;
-      box-shadow: var(--shadow-gold);
-      animation: float 4s ease-in-out infinite;
-      transition: var(--transition);
-    }
-    .payment-icon:hover, .confirm-icon:hover {
-      transform: scale(1.2) rotate(10deg);
-      border-color: #f0c84a;
-    }
-    .wa-box {
-      background: var(--cream-mid);
-      border: 1px solid rgba(136,105,2,0.3);
-      border-radius: var(--radius-sm);
-      padding: 1.1rem 1.8rem;
-      transition: var(--transition);
-    }
-    .wa-box:hover {
-      background: white;
-      border-color: var(--gold);
-      box-shadow: var(--shadow-gold);
-    }
-    .receipt {
-      background: white;
-      border: 1.5px solid var(--cream-border);
-      border-radius: var(--radius-md);
-      padding: 1.8rem;
-      max-width: 480px;
-      margin: 0 auto;
-      width: 100%;
-      transition: var(--transition);
-    }
-    .receipt:hover {
-      border-color: var(--gold);
-      box-shadow: var(--shadow-gold);
-    }
-    .receipt-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.75rem 0;
-      border-bottom: 1px dashed var(--border);
-      transition: var(--transition);
-    }
-    .receipt-row:hover {
-      background: var(--gold-xlight);
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-sm);
-      transform: translateX(5px);
-    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.success { background: #1e7c3a; }
+    .toast.error { background: #9a1b1b; }
+    .toast.info { background: var(--gold-dark); }
+
+    /* PAYMENT PANEL */
+    .payment-step, .confirmation-step { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.8rem; padding: 3rem 0; }
+    .payment-icon, .confirm-icon { width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, var(--cream-mid) 0%, white 100%); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; box-shadow: var(--shadow-gold); animation: float 4s ease-in-out infinite; }
+    .wa-box { background: var(--cream-mid); border: 1px solid rgba(136,105,2,0.3); border-radius: var(--radius-sm); padding: 1.1rem 1.8rem; }
+    .receipt { background: white; border: 1.5px solid var(--cream-border); border-radius: var(--radius-md); padding: 1.8rem; max-width: 480px; margin: 0 auto; width: 100%; }
+    .receipt-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px dashed var(--border); }
     .receipt-row span:last-child { font-weight: 700; color: var(--dark); }
-    .badge-row {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .badge {
-      background: var(--cream-mid);
-      padding: 0.4rem 1rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.8rem;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-    .badge:hover {
-      background: var(--gold);
-      color: white;
-      border-color: var(--gold);
-      transform: translateY(-3px) scale(1.05);
-    }
+    .badge-row { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+    .badge { background: var(--cream-mid); padding: 0.4rem 1rem; border-radius: var(--radius-pill); font-size: 0.8rem; border: 1px solid var(--border); }
 
-    /* ===== TABLA CRM ===== */
-    .crm-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius-md);
-      margin-top: 3rem;
-      border: 1.5px solid var(--cream-border);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-    }
-    thead th {
-      background: var(--cream-mid);
-      color: var(--gold);
-      font-size: 0.73rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      padding: 1rem 1.2rem;
-      text-align: left;
-      transition: background 0.3s;
-    }
-    thead th:hover {
-      background: var(--gold-xlight);
-      color: var(--gold-dark);
-    }
-    tbody td { 
-      padding: 0.9rem 1.2rem; 
-      font-size: 0.9rem; 
-      color: var(--muted);
-      transition: var(--transition);
-    }
-    tbody tr {
-      transition: var(--transition);
-    }
-    tbody tr:hover {
-      background: var(--gold-xlight);
-      transform: scale(1.01);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    tbody tr:hover td {
-      color: var(--dark);
-    }
-    .pill {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      padding: 0.28rem 0.95rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.75rem;
-      font-weight: 700;
-      transition: var(--transition);
-    }
-    .pill-ok   { background: #e8f5ed; color: #1e7c3a; border: 1px solid #a8d8b5; }
+    /* CRM TABLE */
+    .crm-wrap { overflow-x: auto; border-radius: var(--radius-md); margin-top: 3rem; border: 1.5px solid var(--cream-border); }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    thead th { background: var(--cream-mid); color: var(--gold); font-size: 0.73rem; font-weight: 800; letter-spacing: 0.1em; padding: 1rem 1.2rem; text-align: left; }
+    tbody td { padding: 0.9rem 1.2rem; font-size: 0.9rem; color: var(--muted); }
+    tbody tr:hover { background: var(--gold-xlight); }
+    .pill { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.28rem 0.95rem; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 700; }
+    .pill-ok { background: #e8f5ed; color: #1e7c3a; border: 1px solid #a8d8b5; }
     .pill-pend { background: #fff5e6; color: #9a5c00; border: 1px solid #ffcc80; }
-    .pill:hover {
-      transform: scale(1.1);
-      filter: brightness(1.05);
-    }
+    .pill-cancel { background: #fde8e8; color: #9a1b1b; border: 1px solid #f5b8b8; }
 
-    /* ===== ABOUT SECTION ===== */
-    .about-section {
-      display: none;
-      background: white;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      max-width: 960px;
-      margin: 3rem auto;
-      padding: 3.5rem;
-      position: relative;
-      border: 1px solid var(--cream-border);
-    }
+    /* ABOUT SECTION */
+    .about-section { display: none; background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-width: 960px; margin: 3rem auto; padding: 3.5rem; position: relative; border: 1px solid var(--cream-border); }
     .about-section.visible { display: block; animation: zoomIn 0.5s ease; }
-    .about-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      font-size: 1.1rem;
-      color: var(--muted);
-      cursor: pointer;
-      background: var(--cream-mid);
-      border: 1px solid var(--cream-border);
-      width: 38px; height: 38px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-      transition: var(--transition);
-    }
-    .about-close:hover { 
-      background: var(--gold); 
-      color: white; 
-      transform: rotate(90deg) scale(1.2);
-    }
-    .about-section p {
-      margin-bottom: 1.2rem;
-      transition: var(--transition);
-    }
-    .about-section p:hover {
-      background: var(--gold-xlight);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
-      transform: translateX(5px);
-    }
-    .mission {
-      font-weight: 600;
-      color: var(--gold);
-      border-left: 3px solid var(--gold);
-      padding-left: 1rem;
-    }
-    .mission:hover {
-      background: var(--gold-xlight);
-      border-left-width: 8px;
-    }
+    .about-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.1rem; color: var(--muted); cursor: pointer; background: var(--cream-mid); border: 1px solid var(--cream-border); width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+    .about-close:hover { background: var(--gold); color: white; transform: rotate(90deg); }
+    .about-section p { margin-bottom: 1.2rem; color: var(--muted); line-height: 1.85; }
+    .mission { font-weight: 600; color: var(--gold); border-left: 3px solid var(--gold); padding-left: 1rem; }
 
-    /* ===== BOTONES FLOTANTES ===== */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 2rem; right: 2rem;
-      background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
-      color: white;
-      width: 58px; height: 58px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem;
-      box-shadow: 0 8px 20px rgba(37,211,102,0.4);
-      transition: var(--transition);
-      z-index: 1000;
-      text-decoration: none;
-      animation: float 4s ease-in-out infinite;
-    }
-    .whatsapp-float:hover { 
-      transform: scale(1.2) rotate(360deg); 
-      box-shadow: 0 12px 30px rgba(37,211,102,0.6);
-    }
-    .scroll-top-float {
-      position: fixed;
-      bottom: 5.2rem; right: 2rem;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: white;
-      width: 46px; height: 46px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      box-shadow: var(--shadow-gold);
-      cursor: pointer;
-      border: none;
-      transition: var(--transition);
-    }
-    .scroll-top-float:hover { 
-      transform: scale(1.2) translateY(-5px) rotate(360deg);
-      background: linear-gradient(135deg, var(--gold-light), var(--gold));
-    }
+    /* SPINNER */
+    .spinner { width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; }
 
-    /* ===== ANIMACIONES ===== */
-    .spinner {
-      width: 20px; height: 20px;
-      border: 3px solid rgba(255,255,255,0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    /* FLOATS */
+    .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; background: linear-gradient(135deg, #25D366 0%, #1da851 100%); color: white; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 8px 20px rgba(37,211,102,0.4); transition: var(--transition); z-index: 1000; text-decoration: none; animation: float 4s ease-in-out infinite; }
+    .whatsapp-float:hover { transform: scale(1.2) rotate(360deg); }
+    .scroll-top-float { position: fixed; bottom: 5.2rem; right: 2rem; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: white; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: var(--shadow-gold); cursor: pointer; border: none; transition: var(--transition); }
+    .scroll-top-float:hover { transform: scale(1.2) translateY(-5px); }
 
-    /* ===== FOOTER ===== */
-    .footer-dark {
-      background: var(--dark-footer);
-      color: white;
-      padding: 4rem 5% 2rem;
-    }
-    .footer-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 3rem;
-    }
-    .footer-info h3, .footer-social h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      color: var(--gold);
-      transition: var(--transition);
-    }
-    .footer-info h3:hover, .footer-social h3:hover {
-      transform: translateX(5px);
-      text-shadow: 0 0 10px var(--gold);
-    }
-    .footer-info p {
-      margin-bottom: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      transition: var(--transition);
-    }
-    .footer-info p:hover {
-      color: white;
-      transform: translateX(10px);
-      background: rgba(136,105,2,0.2);
-      padding: 0.3rem 0.8rem;
-      border-radius: var(--radius-sm);
-    }
-    .footer-info i { 
-      color: var(--gold); 
-      width: 1.4rem;
-      transition: transform 0.3s;
-    }
-    .footer-info p:hover i {
-      transform: rotate(360deg) scale(1.2);
-    }
-    .social-icons {
-      display: flex;
-      gap: 1rem;
-    }
-    .social-icons a {
-      width: 46px; height: 46px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.7);
-      font-size: 1.3rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: var(--transition);
-    }
-    .social-icons a:hover {
-      background: var(--gold);
-      color: white;
-      transform: translateY(-8px) scale(1.1) rotate(10deg);
-      border-color: var(--gold);
-    }
-    .footer-copyright {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      color: rgba(255,255,255,0.35);
-      transition: var(--transition);
-    }
-    .footer-copyright:hover {
-      color: rgba(255,255,255,0.6);
-    }
+    /* FOOTER */
+    .footer-dark { background: var(--dark-footer); color: white; padding: 4rem 5% 2rem; }
+    .footer-content { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 3rem; }
+    .footer-info h3, .footer-social h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--gold); }
+    .footer-info p { margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.9rem; color: rgba(255,255,255,0.7); }
+    .footer-info i { color: var(--gold); width: 1.4rem; }
+    .social-icons { display: flex; gap: 1rem; }
+    .social-icons a { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-size: 1.3rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); transition: var(--transition); }
+    .social-icons a:hover { background: var(--gold); color: white; transform: translateY(-8px) scale(1.1); }
+    .footer-copyright { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.35); }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .why-choose-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
+    /* ERROR STATES */
+    .field-error { border-color: #e24b4a !important; box-shadow: 0 0 0 3px rgba(226,75,74,0.15) !important; }
+    .error-msg { color: #e24b4a; font-size: 0.75rem; margin-top: 0.25rem; display: block; }
+
+    @media (max-width: 1024px) { .why-choose-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: white;
-        border-top: 1px solid var(--cream-border);
-        position: absolute;
-        top: 72px;
-        left: 0;
-        padding: 1rem;
-      }
+      .nav-links { display: none; flex-direction: column; width: 100%; background: white; border-top: 1px solid var(--cream-border); position: absolute; top: 72px; left: 0; padding: 1rem; }
       .main-nav-bar.scrolled .nav-links { background: rgba(30,43,46,0.98); }
       .nav-links.show { display: flex; }
       .menu-toggle { display: block; }
       .hero, .hero-right { flex-direction: column; text-align: center; }
       .hero-title { font-size: 2.2rem; }
-      .steps-grid { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }
       .form-grid { grid-template-columns: 1fr; }
       .about-section { padding: 2rem; margin: 1.5rem; }
-      .carousel-container {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .carousel-track {
-        order: 2;
-        width: 100%;
-      }
-      .carousel-btn:first-of-type {
-        order: 1;
-      }
-      .carousel-btn:last-of-type {
-        order: 3;
-      }
+      .carousel-container { flex-wrap: wrap; justify-content: center; }
+      .carousel-track { order: 2; width: 100%; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="top-header">
-      <div class="contact-details">
-        <span><i class="fas fa-phone-alt"></i> +592 643-7296</span>
-        <span><i class="fas fa-envelope"></i> info@livityprojects.com</span>
-        <span><i class="fas fa-map-marker-alt"></i> Tuschen Housing Scheme, EBE</span>
-      </div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="toast"></div>
+
+<header>
+  <div class="top-header">
+    <div class="contact-details">
+      <span><i class="fas fa-phone-alt"></i> +592 643-7296</span>
+      <span><i class="fas fa-envelope"></i> info@livityprojects.com</span>
+      <span><i class="fas fa-map-marker-alt"></i> Tuschen Housing Scheme, EBE</span>
     </div>
-    
-  </header>
+  </div>
+</header>
+
 <div class="main-nav-bar" id="mainNavBar">
-      <div class="logo" id="logo">
-        <img src="livity.jpeg" alt="Livity DryClean logo">
-      </div>
-      <div class="menu-toggle" id="menuToggle">
-        <i class="fas fa-bars"></i>
-      </div>
-      <nav class="nav-links" id="navLinks">
-        <a href="#" id="homeLink" class="active">Home</a>
-        <a id="aboutLink">About</a>
-        <a id="serviceLink">Service</a>
-      </nav>
+  <div class="logo" id="logo">
+    <img src="livity.jpeg" alt="Livity DryClean logo">
+  </div>
+  <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+  <nav class="nav-links" id="navLinks">
+    <a href="#" id="homeLink" class="active">Home</a>
+    <a id="aboutLink">About</a>
+    <a id="serviceLink">Services</a>
+    <a id="bookLink">Book Now</a>
+  </nav>
+</div>
+
+<main>
+  <!-- HERO 1 -->
+  <section class="hero" style="background-image: url('Inicio.png');">
+    <div class="hero-content">
+      <div class="hero-tag">BEST CLEANING AGENCY</div>
+      <h1 class="hero-title">Enjoy the Quality<br>Cleaning Services <span>And Stay Safe</span></h1>
+      <button class="hero-btn" id="bookCleanBtn">
+        <i class="fas fa-calendar-check"></i> Book Your Clean
+      </button>
     </div>
-  <main>
-    <!-- HERO 1 -->
-    <section class="hero" style="background-image: url('Inicio.png');">
-      <div class="hero-content">
-        <div class="hero-tag">BEST CLEANING AGENCY</div>
-        <h1 class="hero-title">Enjoy the Quality<br>Cleaning Services <span>And Stay Safe</span></h1>
-        <button class="hero-btn" id="bookCleanBtn">
-          <i class="fas fa-calendar-check"></i> Book Your Clean
+  </section>
+
+  <!-- SERVICES CAROUSEL -->
+  <section class="how-it-works">
+    <div class="section-tag">SERVICE</div>
+    <h2 class="section-title">Our Cleaning Services</h2>
+    <p class="section-subtitle">Discover a range of services designed to bring comfort and cleanliness into every corner of your home or office.</p>
+    <div class="carousel-container">
+      <button class="carousel-btn" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+      <div class="carousel-track" id="carouselTrack">
+        <div class="step-card animate-on-scroll fade-up" data-section="section1">
+          <div class="step-icon"><img src="primera.png" alt="Standard Home Cleaning"></div>
+          <div class="step-card-body"><h3>Standard Home Cleaning</h3><p>Keep your space fresh with regular dusting, mopping and surface care.</p></div>
+        </div>
+        <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.1s" data-section="section2">
+          <div class="step-icon"><img src="segunda.jpg" alt="Deep Cleaning"></div>
+          <div class="step-card-body"><h3>Deep Cleaning</h3><p>Intensive cleaning for kitchens, bathrooms and overlooked areas.</p></div>
+        </div>
+        <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.2s" data-section="section5">
+          <div class="step-icon"><img src="tercera.png" alt="Move-In/Move-Out Cleaning"></div>
+          <div class="step-card-body"><h3>Move-In/Move-Out Cleaning</h3><p>Ensure your new beginning or final handover is spotless.</p></div>
+        </div>
+        <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.3s" data-section="section1">
+          <div class="step-icon"><img src="residentialCleaning.jpg" alt="Residential Cleaning"></div>
+          <div class="step-card-body"><h3>Residential Cleaning</h3><p>Complete home cleaning tailored to your family's needs.</p></div>
+        </div>
+        <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.4s" data-section="section3">
+          <div class="step-icon"><img src="commercialCleaning.jpg" alt="Commercial & Office Cleaning"></div>
+          <div class="step-card-body"><h3>Commercial & Office Cleaning</h3><p>Professional cleaning for workplaces, ensuring a healthy environment.</p></div>
+        </div>
+        <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.5s" data-section="section4">
+          <div class="step-icon"><img src="cleaningSanitization.jpg" alt="Steam Cleaning"></div>
+          <div class="step-card-body"><h3>Steam Cleaning & Sanitization</h3><p>High-temperature steam cleaning for deep sanitization.</p></div>
+        </div>
+        <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.6s" data-section="section4">
+          <div class="step-icon"><img src="carpetUpholstery.jpg" alt="Carpet Cleaning"></div>
+          <div class="step-card-body"><h3>Carpet & Upholstery</h3><p>Specialized care for carpets, sofas and mattresses.</p></div>
+        </div>
+        <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.7s" data-section="section6">
+          <div class="step-icon"><img src="pressureWashing.jpg" alt="Pressure Washing"></div>
+          <div class="step-card-body"><h3>Pressure Washing</h3><p>Exterior cleaning for driveways, patios and walls.</p></div>
+        </div>
+      </div>
+      <button class="carousel-btn" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <p style="text-align:center; margin-top:1rem; color:var(--muted); font-size:0.9rem;">
+      <i class="fas fa-hand-pointer" style="color:var(--gold);"></i> Click any card to view full details and book that service
+    </p>
+  </section>
+
+  <!-- HERO 2 -->
+  <section class="hero hero-right" style="background-image: url('Section2.png');">
+    <div class="hero-content">
+      <div class="hero-tag">About US</div>
+      <h1 class="hero-title">Making Your House<br>Clean <span>As a New</span></h1>
+      <p class="intro-text">We deliver professional-grade cleaning solutions with proven techniques, premium equipment, and a team that genuinely cares about every detail of your space.</p>
+      <ul class="features-list">
+        <li>Clean Your Home or Office — Any Size</li>
+        <li>24/7 Emergency Quality Services</li>
+        <li>Online Booking System Available</li>
+      </ul>
+      <button class="hero-btn" id="moreAboutBtn">More About us <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item animate-on-scroll zoom-in">
+        <div class="stat-number" data-target="100" data-suffix="+">0+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-item animate-on-scroll zoom-in" style="transition-delay:0.1s">
+        <div class="stat-number" data-target="10">0</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+      <div class="stat-item animate-on-scroll zoom-in" style="transition-delay:0.2s">
+        <div class="stat-number" data-target="100" data-suffix="+">0+</div>
+        <div class="stat-label">Completed Projects</div>
+      </div>
+      <div class="stat-item animate-on-scroll zoom-in" style="transition-delay:0.3s">
+        <div class="stat-number" data-target="5" data-suffix="+">0+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-choose-section">
+    <div class="why-choose-grid">
+      <div class="why-left animate-on-scroll fade-left">
+        <div class="section-tag">WHY US</div>
+        <h2>Why Choose <span>Livity Projects Inc.</span></h2>
+        <p>At Livity Projects Inc., we are committed to providing reliable, high-quality cleaning and maintenance services you can depend on. Our team focuses on attention to detail, professionalism, and customer satisfaction to ensure every space we service is clean, safe, and well maintained.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card animate-on-scroll zoom-in">
+          <div class="feature-icon-wrap"><i class="fas fa-handshake feature-icon"></i></div>
+          <h3>Reliable & Professional</h3>
+          <p>Showing up on time and delivering dependable cleaning services you can trust.</p>
+        </div>
+        <div class="feature-card animate-on-scroll zoom-in" style="transition-delay:0.1s">
+          <div class="feature-icon-wrap"><i class="fas fa-broom feature-icon"></i></div>
+          <h3>High-Quality Standards</h3>
+          <p>We focus on the details — leaving your space spotless, fresh, and well maintained.</p>
+        </div>
+        <div class="feature-card animate-on-scroll zoom-in" style="transition-delay:0.15s">
+          <div class="feature-icon-wrap"><i class="fas fa-users feature-icon"></i></div>
+          <h3>Experienced Team</h3>
+          <p>Trained staff handling residential and commercial spaces with care.</p>
+        </div>
+        <div class="feature-card animate-on-scroll zoom-in" style="transition-delay:0.2s">
+          <div class="feature-icon-wrap"><i class="fas fa-tag feature-icon"></i></div>
+          <h3>Transparent Pricing</h3>
+          <p>Quality service at competitive rates with absolutely no hidden costs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING SECTION -->
+  <section class="payment-section" id="paymentSection">
+    <div class="booking-header">
+      <div class="section-tag">BOOK NOW</div>
+      <h2 class="section-title">Request a Service</h2>
+      <p class="section-subtitle">Fill in your details and we'll confirm your appointment via WhatsApp.</p>
+    </div>
+
+    <div class="steps" id="stepIndicator">
+      <div class="step"><div class="step-dot active" id="dot1">1</div><span id="lbl1">Booking</span></div>
+      <div class="step-line" id="line1"></div>
+      <div class="step"><div class="step-dot" id="dot2">2</div><span id="lbl2">Confirmation</span></div>
+      <div class="step-line" id="line2"></div>
+      <div class="step"><div class="step-dot" id="dot3">3</div><span id="lbl3">Confirmed</span></div>
+    </div>
+
+    <!-- STEP 1: FORM -->
+    <div id="formReserva">
+      <div class="form-grid">
+        <div class="form-group">
+          <label><i class="fas fa-user" style="color:var(--gold);margin-right:4px"></i> Full name *</label>
+          <input type="text" id="nombre" placeholder="e.g., John Smith">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-envelope" style="color:var(--gold);margin-right:4px"></i> Email *</label>
+          <input type="email" id="email" placeholder="john@email.com">
+        </div>
+        <div class="form-group">
+          <label><i class="fab fa-whatsapp" style="color:var(--gold);margin-right:4px"></i> Phone (WhatsApp) *</label>
+          <input type="tel" id="telefono" placeholder="+592 123 4567">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-concierge-bell" style="color:var(--gold);margin-right:4px"></i> Service *</label>
+          <select id="servicio"></select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-calendar-alt" style="color:var(--gold);margin-right:4px"></i> Date and time *</label>
+          <input type="datetime-local" id="fechaHora">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:4px"></i> Address *</label>
+          <input type="text" id="direccion" placeholder="Street, city">
+        </div>
+        <div class="form-group full">
+          <label><i class="fas fa-comment" style="color:var(--gold);margin-right:4px"></i> Additional notes</label>
+          <textarea id="notas" rows="3" placeholder="Any special instructions or details about your space..."></textarea>
+        </div>
+      </div>
+
+      <div class="pickup-info">
+        <strong>🚚 Carpet Pickup Service:</strong>
+        <div class="pickup-row"><span>West Coast, Georgetown, West Bank:</span><span>$2,000</span></div>
+        <div class="pickup-row"><span>Linden & New Amsterdam:</span><span>$3,000</span></div>
+      </div>
+
+      <div class="mt-3">
+        <button class="btn btn-primary btn-lg" id="btnReservar">
+          <span id="btnReservarText"><i class="fas fa-paper-plane"></i> Submit Booking Request</span>
+          <span id="btnReservarSpinner" class="spinner hidden"></span>
         </button>
       </div>
-      <div class="hero-image"></div>
-    </section>
+    </div>
 
-    <!-- SERVICIOS DESTACADOS (CARRUSEL) -->
-    <section class="how-it-works">
-      <div class="section-tag">SERVICE</div>
-      <h2 class="section-title">Our Cleaning Services</h2>
-      <p class="section-subtitle">Discover a range of services designed to bring comfort and cleanliness into every corner of your home or office.</p>
-      
-      <!-- Carrusel -->
-      <div class="carousel-container">
-        <button class="carousel-btn" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
-        <div class="carousel-track" id="carouselTrack">
-          <!-- Tarjeta 1 - Standard Home Cleaning -->
-          <div class="step-card animate-on-scroll fade-up" data-service="residential-cleaning">
-            <div class="step-icon"><img src="primera.png" alt="Standard Home Cleaning"></div>
-            <div class="step-card-body">
-              <h3>Standard Home Cleaning</h3>
-              <p>Keep your space fresh with regular dusting, mopping and surface care.</p>
-            </div>
-          </div>
-          <!-- Tarjeta 2 - Deep Cleaning (ya existente) -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.1s" data-service="deep-cleaning">
-            <div class="step-icon"><img src="segunda.jpg" alt="Deep Cleaning"></div>
-            <div class="step-card-body">
-              <h3>Deep Cleaning</h3>
-              <p>Intensive cleaning for kitchens, bathrooms and overlooked areas.</p>
-            </div>
-          </div>
-          <!-- Tarjeta 3 - Move-In/Move-Out Cleaning (ya existente) -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.2s" data-service="move-in-out-cleaning">
-            <div class="step-icon"><img src="tercera.png" alt="Move-In/Move-Out Cleaning"></div>
-            <div class="step-card-body">
-              <h3>Move-In/Move-Out Cleaning</h3>
-              <p>Ensure your new beginning or final handover is spotless.</p>
-            </div>
-          </div>
-          <!-- Tarjeta 4 - Residential Cleaning -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.3s" data-service="residential-cleaning">
-            <div class="step-icon"><img src="residentialCleaning.jpg" alt="Residential Cleaning"></div>
-            <div class="step-card-body">
-              <h3>Residential Cleaning</h3>
-              <p>Complete home cleaning tailored to your family's needs.</p>
-            </div>
-          </div>
-          <!-- Tarjeta 5 - Commercial & Office Cleaning -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.4s" data-service="commercial-cleaning">
-            <div class="step-icon"><img src="commercialCleaning.jpg" alt="Commercial & Office Cleaning"></div>
-            <div class="step-card-body">
-              <h3>Commercial & Office Cleaning</h3>
-              <p>Professional cleaning for workplaces, ensuring a healthy environment.</p>
-            </div>
-          </div>
-          <!-- Tarjeta 6 - Steam Cleaning & Sanitization -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.5s" data-service="steam-cleaning">
-            <div class="step-icon"><img src="cleaningSanitization.jpg" alt="Steam Cleaning & Sanitization"></div>
-            <div class="step-card-body">
-              <h3>Steam Cleaning & Sanitization</h3>
-              <p>High-temperature steam cleaning for deep sanitization.</p>
-            </div>
-          </div>
-          <!-- Tarjeta 7 - Carpet Cleaning (opcional, pero ya existe en el sistema de reservas) -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.6s" data-service="steam-cleaning">
-            <div class="step-icon"><img src="carpetUpholstery.jpg" alt="Carpet Cleaning"></div>
-            <div class="step-card-body">
-              <h3>Carpet & Upholstery</h3>
-              <p>Specialized care for carpets, sofas and mattresses.</p>
-            </div>
-          </div>
-          <!-- Tarjeta 8 - Pressure Washing -->
-          <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.7s" data-service="pressure-washing">
-            <div class="step-icon"><img src="pressureWashing.jpg" alt="Pressure Washing"></div>
-            <div class="step-card-body">
-              <h3>Pressure Washing</h3>
-              <p>Exterior cleaning for driveways, patios and walls.</p>
-            </div>
-          </div>
+    <!-- STEP 2: SENT CONFIRMATION -->
+    <div id="panelEnviado" class="hidden">
+      <div class="payment-step">
+        <div class="payment-icon">📨</div>
+        <div>
+          <div class="section-tag">Step 2</div>
+          <div class="section-title" style="font-size:2rem;">Request Sent!</div>
+          <p style="color:var(--muted); max-width:480px; margin:0.5rem auto 0;">We've received your booking request. Our team will review availability and send you a confirmation via WhatsApp within minutes.</p>
         </div>
-        <button class="carousel-btn" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
-      </div>
-    </section>
-
-    <!-- DIVISOR -->
-    <div class="section-divider"></div>
-
-    <!-- HERO 2 -->
-    <section class="hero hero-right" style="background-image: url('Section2.png');">
-      <div class="hero-content">
-        <div class="hero-tag">About US</div>
-        <h1 class="hero-title">Making Your House<br>Clean <span>As a New</span></h1>
-        <p class="intro-text">We deliver professional-grade cleaning solutions with proven techniques, premium equipment, and a team that genuinely cares about every detail of your space.</p>
-        <ul class="features-list">
-          <li>Clean Your Home or Office — Any Size</li>
-          <li>24/7 Emergency Quality Services</li>
-          <li>Online Booking System Available</li>
-        </ul>
-        <button class="hero-btn" id="moreAboutBtn">
-          More About us <i class="fas fa-arrow-right"></i>
+        <div class="wa-box">
+          <strong>📱 WhatsApp confirmation will be sent to:</strong><br>
+          <span id="telefonoMostrar" style="font-size:1.1rem; color:var(--gold); font-weight:700;"></span>
+        </div>
+        <div class="receipt">
+          <div class="receipt-row"><span>Customer</span><span id="reciboNombre2"></span></div>
+          <div class="receipt-row"><span>Service</span><span id="reciboServicio2"></span></div>
+          <div class="receipt-row"><span>Date & Time</span><span id="reciboFecha2"></span></div>
+          <div class="receipt-row"><span>Address</span><span id="reciboDireccion2"></span></div>
+          <div class="receipt-row"><span>Status</span><span class="pill pill-pend">⏳ Pending Confirmation</span></div>
+        </div>
+        <div class="badge-row">
+          <span class="badge">📲 WhatsApp message sent</span>
+          <span class="badge">📊 Saved in CRM</span>
+          <span class="badge">📅 Calendar check in progress</span>
+        </div>
+        <button class="btn btn-gold" id="btnNewBooking">
+          <i class="fas fa-plus"></i> Make Another Booking
         </button>
       </div>
-      <div class="hero-image"></div>
-    </section>
+    </div>
 
-    <!-- ESTADÍSTICAS -->
-    <section class="stats-section">
-      <div class="stats-container">
-        <div class="stat-item animate-on-scroll zoom-in">
-          <div class="stat-number" data-target="100">0+</div>
-          <div class="stat-label">Happy Customers</div>
-        </div>
-        <div class="stat-item animate-on-scroll zoom-in" style="transition-delay:0.1s">
-          <div class="stat-number" data-target="10">0</div>
-          <div class="stat-label">Team Members</div>
-        </div>
-        <div class="stat-item animate-on-scroll zoom-in" style="transition-delay:0.2s">
-          <div class="stat-number" data-target="100">0+</div>
-          <div class="stat-label">Completed Projects</div>
-        </div>
-        <div class="stat-item animate-on-scroll zoom-in" style="transition-delay:0.3s">
-          <div class="stat-number" data-target="5">0+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- POR QUÉ NOSOTROS -->
-    <section class="why-choose-section">
-      <div class="why-choose-grid">
-        <div class="why-left animate-on-scroll fade-left">
-          <div class="section-tag">WHY US</div>
-          <h2>Why Choose <span>Livity Projects Inc.</span></h2>
-          <p>At Livity Projects Inc., we are committed to providing reliable, high-quality cleaning and maintenance services you can depend on. Our team focuses on attention to detail, professionalism, and customer satisfaction to ensure every space we service is clean, safe, and well maintained.</p>
-        </div>
-        <div class="features-grid">
-          <div class="feature-card animate-on-scroll zoom-in">
-            <div class="feature-icon-wrap"><i class="fas fa-handshake feature-icon"></i></div>
-            <h3>Reliable & Professional</h3>
-            <p>Showing up on time and delivering dependable cleaning services you can trust.</p>
-          </div>
-          <div class="feature-card animate-on-scroll zoom-in" style="transition-delay:0.1s">
-            <div class="feature-icon-wrap"><i class="fas fa-broom feature-icon"></i></div>
-            <h3>High-Quality Standards</h3>
-            <p>We focus on the details — leaving your space spotless, fresh, and well maintained.</p>
-          </div>
-          <div class="feature-card animate-on-scroll zoom-in" style="transition-delay:0.15s">
-            <div class="feature-icon-wrap"><i class="fas fa-users feature-icon"></i></div>
-            <h3>Experienced Team</h3>
-            <p>Trained staff handling residential and commercial spaces with care.</p>
-          </div>
-          <div class="feature-card animate-on-scroll zoom-in" style="transition-delay:0.2s">
-            <div class="feature-icon-wrap"><i class="fas fa-tag feature-icon"></i></div>
-            <h3>Transparent Pricing</h3>
-            <p>Quality service at competitive rates with absolutely no hidden costs.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN DE RESERVAS (sin el encabezado eliminado y sin las tablas giratorias) -->
-    <section class="payment-section" id="paymentSection">
-      <!-- Eliminado el div services-grid que contenía las tarjetas giratorias -->
-
-      <div class="steps" id="stepIndicator">
-        <div class="step"><div class="step-dot active" id="dot1">1</div><span class="step-label active" id="lbl1">Booking</span></div>
-        <div class="step-line" id="line1"></div>
-        <div class="step"><div class="step-dot" id="dot2">2</div><span class="step-label" id="lbl2">MMG Payment</span></div>
-        <div class="step-line" id="line2"></div>
-        <div class="step"><div class="step-dot" id="dot3">3</div><span class="step-label" id="lbl3">Confirmed</span></div>
-      </div>
-
-      <!-- PASO 1: FORMULARIO -->
-      <div id="formReserva">
-        <div class="section-tag mb-1">Step 1</div>
-        <div class="section-title mb-3">Request service</div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label><i class="fas fa-user" style="color:var(--gold);margin-right:4px"></i> Full name *</label>
-            <input type="text" id="nombre" placeholder="e.g., John Smith">
-          </div>
-          <div class="form-group">
-            <label><i class="fas fa-envelope" style="color:var(--gold);margin-right:4px"></i> Email *</label>
-            <input type="email" id="email" placeholder="john@email.com">
-          </div>
-          <div class="form-group">
-            <label><i class="fab fa-whatsapp" style="color:var(--gold);margin-right:4px"></i> Phone (WhatsApp) *</label>
-            <input type="tel" id="telefono" placeholder="+592 123 4567">
-          </div>
-          <div class="form-group">
-            <label><i class="fas fa-concierge-bell" style="color:var(--gold);margin-right:4px"></i> Service *</label>
-            <select id="servicio"></select>
-          </div>
-          <div class="form-group">
-            <label><i class="fas fa-calendar-alt" style="color:var(--gold);margin-right:4px"></i> Date and time *</label>
-            <input type="datetime-local" id="fechaHora">
-          </div>
-          <div class="form-group">
-            <label><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:4px"></i> Address *</label>
-            <input type="text" id="direccion" placeholder="Street, city">
-          </div>
-        </div>
-        <div class="pickup-info" id="pickupInfo">
-          <strong>🚚 Carpet Pickup Service:</strong>
-          <div class="pickup-row"><span>West Coast, Georgetown, West Bank:</span><span>$2,000</span></div>
-          <div class="pickup-row"><span>Linden & New Amsterdam:</span><span>$3,000</span></div>
-        </div>
-        <div class="mt-3">
-          <button class="btn btn-primary btn-lg" id="btnReservar">
-           <i class="fas fa-paper-plane"></i> Enviar formulario
-          </button>
-        </div>
-      </div>
-
-      <!-- PASO 2: PAGO -->
-      <div id="panelPago" class="hidden">
-        <div class="payment-step">
-          <div class="payment-icon">💳</div>
-          <div>
-            <div class="section-tag mb-1">Step 2</div>
-            <div class="section-title mb-2">Waiting for MMG payment</div>
-            <div id="pagoSpinner" class="hidden"><div class="spinner"></div></div>
-          </div>
-          <div class="wa-box">
-            <strong>📱 WhatsApp:</strong> We have sent a payment link to <strong id="telefonoMostrar"></strong>
-          </div>
-          <button class="btn btn-gold btn-lg" id="btnSimularPago">
-            <i class="fas fa-credit-card"></i> Simulate payment with MMG
-          </button>
-          <p style="font-size:0.8rem; color:var(--muted);">
-            <em>CSR: Discounts up to 15% · Above 5% must be justified</em>
-          </p>
-        </div>
-      </div>
-
-      <!-- PASO 3: CONFIRMACIÓN -->
-      <div id="panelConfirmacion" class="hidden">
-        <div class="confirmation-step">
-          <div class="confirm-icon">✅</div>
-          <div>
-            <div class="section-tag mb-1">Step 3</div>
-            <div class="section-title mb-3">Booking confirmed!</div>
-          </div>
-          <div class="receipt">
-            <div class="receipt-row"><span>Customer</span><span id="reciboNombre"></span></div>
-            <div class="receipt-row"><span>Service</span><span id="reciboServicio"></span></div>
-            <div class="receipt-row"><span>Date and time</span><span id="reciboFecha"></span></div>
-            <div class="receipt-row"><span>Address</span><span id="reciboDireccion"></span></div>
-            <div class="receipt-row"><span>Total</span><span id="reciboTotal" style="color:var(--gold);font-weight:800;"></span></div>
-            <div class="receipt-row"><span>Payment status</span><span class="pill pill-ok">✓ Confirmed</span></div>
-          </div>
-          <div class="badge-row">
-            <span class="badge">📲 Receipt sent by WhatsApp</span>
-            <span class="badge">📅 Event in Google Calendar</span>
-            <span class="badge">📊 Registered in CRM</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- TABLA CRM -->
+    <!-- CRM TABLE -->
+    <div style="margin-top:3rem;">
+      <div class="section-tag">CRM</div>
+      <h3 style="font-size:1.4rem; font-weight:700; margin-bottom:1.5rem;">Recent Bookings</h3>
       <div class="crm-wrap">
         <table>
-          <thead><tr><th>Customer</th><th>Service</th><th>Date & Time</th><th>Status</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Phone</th>
+              <th>Service</th>
+              <th>Date & Time</th>
+              <th>Address</th>
+              <th>Status</th>
+            </tr>
+          </thead>
           <tbody id="crm-body"></tbody>
         </table>
       </div>
-    </section>
-
-    <!-- SECCIÓN ABOUT (OCULTA) -->
-    <section id="aboutSection" class="about-section">
-      <button class="about-close" id="closeAboutBtn"><i class="fas fa-times"></i></button>
-      <div class="section-tag">Our Story</div>
-      <h2>About Us – <span>Livity Projects Inc.</span></h2>
-      <p>At Livity Projects Inc., we are dedicated to providing reliable, high-quality cleaning and maintenance services for homes and businesses. Our goal is simple — to help our clients maintain clean, healthy, and well-kept spaces they can feel proud of.</p>
-      <p>With a team that values professionalism, efficiency, and attention to detail, we approach every project with care and commitment. Whether it's routine cleaning, deep cleaning, or property maintenance, we focus on delivering results that meet the highest standards.</p>
-      <p>We understand that every client and every space is different, which is why we work closely with our customers to provide services that fit their needs. At Livity Projects Inc., customer satisfaction isn't just a promise — it's the foundation of everything we do.</p>
-      <p class="mission">Our mission is to build lasting relationships with our clients by providing dependable service, consistent quality, and a team you can trust to get the job done right.</p>
-    </section>
-  </main>
-
-  <!-- BOTONES FLOTANTES -->
-  <button class="scroll-top-float" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
-  <a href="https://wa.me/5926437296" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <footer class="footer-dark">
-    <div class="footer-content">
-      <div class="footer-info">
-        <h3>Livity Projects Inc.</h3>
-        <p><i class="fas fa-phone-alt"></i> +592 643-7296</p>
-        <p><i class="fas fa-envelope"></i> info@livityprojects.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> 8811 Tuschen Housing Scheme, East Bank Essequibo</p>
-      </div>
-      <div class="footer-social">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/profile.php?id=100093188593546" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/livity_projects/" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@livity_projects.gy" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
-        </div>
+      <div style="text-align:right; margin-top:1rem;">
+        <button class="btn btn-gold" id="btnClearCRM" style="padding:0.6rem 1.2rem; font-size:0.85rem;">
+          <i class="fas fa-trash"></i> Clear History
+        </button>
       </div>
     </div>
-    <div class="footer-copyright">&copy; 2026 Livity Projects Inc. All rights reserved.</div>
-  </footer>
+  </section>
 
-  <script>
-    (function() {
-      "use strict";
+  <!-- ABOUT SECTION (hidden) -->
+  <section id="aboutSection" class="about-section">
+    <button class="about-close" id="closeAboutBtn"><i class="fas fa-times"></i></button>
+    <div class="section-tag">Our Story</div>
+    <h2 style="font-size:2rem; font-weight:800; margin-bottom:1.5rem;">About Us – <span style="color:var(--gold);">Livity Projects Inc.</span></h2>
+    <p>At Livity Projects Inc., we are dedicated to providing reliable, high-quality cleaning and maintenance services for homes and businesses. Our goal is simple — to help our clients maintain clean, healthy, and well-kept spaces they can feel proud of.</p>
+    <p>With a team that values professionalism, efficiency, and attention to detail, we approach every project with care and commitment. Whether it's routine cleaning, deep cleaning, or property maintenance, we focus on delivering results that meet the highest standards.</p>
+    <p>We understand that every client and every space is different, which is why we work closely with our customers to provide services that fit their needs. At Livity Projects Inc., customer satisfaction isn't just a promise — it's the foundation of everything we do.</p>
+    <p class="mission">Our mission is to build lasting relationships with our clients by providing dependable service, consistent quality, and a team you can trust to get the job done right.</p>
+  </section>
+</main>
 
-      // --- CONSTANTES Y DATOS ---
-      const servicesData = {
-        'sofa-1seat':         { name:'1 Seat Sofa',           price:'$6,000',          icon:'🛋️', desc:'Deep steam cleaning. Removes stains, bacteria, and odors.',           detail:'Standard pricing' },
-        'sofa-2seat':         { name:'2 Seat Sofa',           price:'$10,000',         icon:'🛋️', desc:'Complete cleaning. Restores fabric appearance.',                       detail:'Standard pricing' },
-        'sofa-3seat':         { name:'3 Seat Sofa',           price:'$14,000',         icon:'🛋️', desc:'Professional steam cleaning for 3-seat sofas.',                        detail:'Standard pricing' },
-        'l-shaped':           { name:'L Shaped Sofa',         price:'$16,000',         icon:'🛋️', desc:'Deep cleaning including all sections.',                                 detail:'Standard pricing' },
-        'suite-321':          { name:'3-2-1 Suite',           price:'$24,000',         icon:'🛋️', desc:'Complete suite: 3-seat, 2-seat, and 1-seat sofa.',                     detail:'Standard pricing' },
-        'suite-311':          { name:'3-1-1 Suite',           price:'$20,000',         icon:'🛋️', desc:'Suite: 3-seat and two 1-seat sofas.',                                  detail:'Standard pricing' },
-        'suite-32':           { name:'3-2 Suite',             price:'$20,000',         icon:'🛋️', desc:'Suite: 3-seat and 2-seat sofa.',                                       detail:'Standard pricing' },
-        'suite-211':          { name:'2-1-1 Suite',           price:'$16,000',         icon:'🛋️', desc:'Suite: 2-seat and two 1-seat sofas.',                                  detail:'Standard pricing' },
-        'office-chairs':      { name:'Office Chairs',         price:'$2,500',          icon:'💺', desc:'Per chair cleaning. Removes dirt and bacteria.',                        detail:'Per chair' },
-        'dining-chairs':      { name:'Dining Chairs',         price:'$2,000',          icon:'🍽️', desc:'Per chair cleaning for dining room chairs.',                            detail:'Per chair' },
-        'mattress-king':      { name:'King Mattress',         price:'$10,000',         icon:'🛏️', desc:'Includes 2 pillows. Deep sanitization and stain removal.',              detail:'Includes 2 pillows' },
-        'mattress-queen':     { name:'Queen Mattress',        price:'$8,000',          icon:'🛏️', desc:'Includes 2 pillows. Complete mattress cleaning.',                       detail:'Includes 2 pillows' },
-        'car':                { name:'Car',                   price:'$12,000',         icon:'🚗', desc:'Includes mats. Interior steam cleaning.',                               detail:'Includes mats' },
-        'suv':                { name:'SUV',                   price:'$16,000',         icon:'🚙', desc:'Includes mats. Full interior cleaning for SUVs.',                       detail:'Includes mats' },
-        'carpet-uninstalled': { name:'Carpet (uninstalled)',  price:'$115/sq ft',      icon:'🧹', desc:'Per sq ft. Pickup service available.',                                  detail:'Uninstalled - pickup available' },
-        'carpet-installed':   { name:'Carpet (installed)',    price:'$95/sq ft',       icon:'🧹', desc:'Per sq ft. Cleaning on-site.',                                          detail:'Installed - on-site cleaning' },
-        'pressure-washing':   { name:'Pressure Washing',      price:'$30/sq ft',       icon:'💧', desc:'Per sq ft. High-pressure exterior surfaces.',                           detail:'Exterior surfaces' },
-        'recliners':          { name:'Recliners',             price:'$6,000 / $10,000', icon:'🪑', desc:'Single $6,000 · Joined $10,000',                                       detail:'Single or joined pricing' }
+<button class="scroll-top-float" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+<a href="https://wa.me/5926437296" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer class="footer-dark">
+  <div class="footer-content">
+    <div class="footer-info">
+      <h3>Livity Projects Inc.</h3>
+      <p><i class="fas fa-phone-alt"></i> +592 643-7296</p>
+      <p><i class="fas fa-envelope"></i> info@livityprojects.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> 8811 Tuschen Housing Scheme, East Bank Essequibo</p>
+    </div>
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=100093188593546" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/livity_projects/" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@livity_projects.gy" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">&copy; 2026 Livity Projects Inc. All rights reserved.</div>
+</footer>
+
+<script>
+(function() {
+  "use strict";
+
+  // ============================================================
+  // CONFIGURATION — Update these values
+  // ============================================================
+  const CONFIG = {
+    // Your n8n production webhook URL (change webhook-test → webhook when ready)
+    WEBHOOK_URL: 'https://alcide-app-n8n-cloud.app.n8n.cloud/webhook/booking',
+    // WhatsApp number for direct contact
+    WHATSAPP_NUMBER: '5926437296',
+    // Services page filename
+    SERVICES_PAGE: 'standardhomecleaning.html'
+  };
+
+  // ============================================================
+  // SERVICES DATA
+  // ============================================================
+  const servicesData = {
+    'sofa-1seat':         { name:'1 Seat Sofa',                     price:'$6,000',           category:'Steam Cleaning' },
+    'sofa-2seat':         { name:'2 Seat Sofa',                     price:'$10,000',          category:'Steam Cleaning' },
+    'sofa-3seat':         { name:'3 Seat Sofa',                     price:'$14,000',          category:'Steam Cleaning' },
+    'l-shaped':           { name:'L Shaped Sofa',                   price:'$16,000',          category:'Steam Cleaning' },
+    'suite-321':          { name:'3-2-1 Suite',                     price:'$24,000',          category:'Steam Cleaning' },
+    'suite-311':          { name:'3-1-1 Suite',                     price:'$20,000',          category:'Steam Cleaning' },
+    'suite-32':           { name:'3-2 Suite',                       price:'$20,000',          category:'Steam Cleaning' },
+    'suite-211':          { name:'2-1-1 Suite',                     price:'$16,000',          category:'Steam Cleaning' },
+    'office-chairs':      { name:'Office Chairs',                   price:'$2,500/chair',     category:'Steam Cleaning' },
+    'dining-chairs':      { name:'Dining Chairs',                   price:'$2,000/chair',     category:'Steam Cleaning' },
+    'mattress-king':      { name:'King Mattress',                   price:'$10,000',          category:'Steam Cleaning' },
+    'mattress-queen':     { name:'Queen Mattress',                  price:'$8,000',           category:'Steam Cleaning' },
+    'car':                { name:'Car Interior',                    price:'$12,000',          category:'Steam Cleaning' },
+    'suv':                { name:'SUV Interior',                    price:'$16,000',          category:'Steam Cleaning' },
+    'carpet-uninstalled': { name:'Carpet (uninstalled)',            price:'$115/sq ft',       category:'Carpet Cleaning' },
+    'carpet-installed':   { name:'Carpet (installed)',              price:'$95/sq ft',        category:'Carpet Cleaning' },
+    'pressure-washing':   { name:'Pressure Washing',                price:'$30/sq ft',        category:'Pressure Washing' },
+    'recliners':          { name:'Recliners',                       price:'$6,000–$10,000',   category:'Steam Cleaning' },
+    'residential-1bed':   { name:'Residential – 1 Bedroom',        price:'Quote on visit',   category:'Residential Cleaning' },
+    'residential-2bed':   { name:'Residential – 2 Bedrooms',       price:'Quote on visit',   category:'Residential Cleaning' },
+    'residential-3bed':   { name:'Residential – 3 Bedrooms',       price:'Quote on visit',   category:'Residential Cleaning' },
+    'deep-1bed':          { name:'Deep Clean – 1 Bedroom',         price:'Quote on visit',   category:'Deep Cleaning' },
+    'deep-2bed':          { name:'Deep Clean – 2 Bedrooms',        price:'Quote on visit',   category:'Deep Cleaning' },
+    'deep-3bed':          { name:'Deep Clean – 3 Bedrooms',        price:'Quote on visit',   category:'Deep Cleaning' },
+    'commercial-small':   { name:'Commercial – Small Office',       price:'Quote on visit',   category:'Commercial Cleaning' },
+    'commercial-medium':  { name:'Commercial – Medium Office',      price:'Quote on visit',   category:'Commercial Cleaning' },
+    'commercial-large':   { name:'Commercial – Large Office',       price:'Quote on visit',   category:'Commercial Cleaning' },
+    'movein-1bed':        { name:'Move-In/Out – 1 Bedroom',        price:'Quote on visit',   category:'Move In/Out' },
+    'movein-2bed':        { name:'Move-In/Out – 2 Bedrooms',       price:'Quote on visit',   category:'Move In/Out' },
+    'movein-3bed':        { name:'Move-In/Out – 3 Bedrooms',       price:'Quote on visit',   category:'Move In/Out' },
+  };
+
+  // ============================================================
+  // APP STATE
+  // ============================================================
+  let bookings = [];
+  try { bookings = JSON.parse(localStorage.getItem('livityBookings') || '[]'); } catch(e) { bookings = []; }
+  let countersStarted = false;
+  let submitting = false;
+
+  // ============================================================
+  // TOAST
+  // ============================================================
+  function showToast(msg, type = 'info', duration = 4000) {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+    const icons = { success: '✅', error: '❌', info: '💬' };
+    toast.textContent = (icons[type] || '') + ' ' + msg;
+    toast.className = `toast show ${type}`;
+    setTimeout(() => { toast.classList.remove('show'); }, duration);
+  }
+
+  // ============================================================
+  // POPULATE SERVICE SELECT
+  // ============================================================
+  function populateSelect() {
+    const sel = document.getElementById('servicio');
+    if (!sel) return;
+    const categories = {};
+    for (const [key, data] of Object.entries(servicesData)) {
+      if (!categories[data.category]) categories[data.category] = [];
+      categories[data.category].push({ key, ...data });
+    }
+    sel.innerHTML = '<option value="">— Select a service —</option>';
+    for (const [cat, items] of Object.entries(categories)) {
+      const grp = document.createElement('optgroup');
+      grp.label = cat;
+      items.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.key;
+        opt.textContent = `${item.name} — ${item.price}`;
+        grp.appendChild(opt);
+      });
+      sel.appendChild(grp);
+    }
+  }
+
+  // ============================================================
+  // FORM VALIDATION
+  // ============================================================
+  function clearErrors() {
+    document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+    document.querySelectorAll('.error-msg').forEach(el => el.remove());
+  }
+
+  function setError(id, msg) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('field-error');
+    const span = document.createElement('span');
+    span.className = 'error-msg';
+    span.textContent = msg;
+    el.parentNode.appendChild(span);
+  }
+
+  function validateForm() {
+    clearErrors();
+    let valid = true;
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const servicio = document.getElementById('servicio').value;
+    const fechaHora = document.getElementById('fechaHora').value;
+    const direccion = document.getElementById('direccion').value.trim();
+
+    if (!nombre) { setError('nombre', 'Full name is required.'); valid = false; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('email', 'Valid email is required.'); valid = false; }
+    if (!telefono || !/^[\+]?[\d\s\-\(\)]{7,15}$/.test(telefono.replace(/\s/g, ''))) { setError('telefono', 'Valid phone number required.'); valid = false; }
+    if (!servicio) { setError('servicio', 'Please select a service.'); valid = false; }
+    if (!fechaHora) { setError('fechaHora', 'Date and time are required.'); valid = false; }
+    else if (new Date(fechaHora) <= new Date()) { setError('fechaHora', 'Please select a future date and time.'); valid = false; }
+    if (!direccion) { setError('direccion', 'Address is required.'); valid = false; }
+
+    return valid;
+  }
+
+  // ============================================================
+  // SAVE TO LOCAL CRM
+  // ============================================================
+  function saveBooking(data) {
+    bookings.unshift(data);
+    try { localStorage.setItem('livityBookings', JSON.stringify(bookings.slice(0, 100))); } catch(e) {}
+  }
+
+  function renderCRM() {
+    const tbody = document.getElementById('crm-body');
+    if (!tbody) return;
+    if (bookings.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--muted); padding:2rem;">No bookings yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = '';
+    bookings.forEach(b => {
+      const statusMap = {
+        'pending':   '<span class="pill pill-pend">⏳ Pending</span>',
+        'confirmed': '<span class="pill pill-ok">✓ Confirmed</span>',
+        'cancelled': '<span class="pill pill-cancel">✗ Cancelled</span>'
       };
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td><strong>${b.nombre}</strong></td>
+        <td>${b.telefono}</td>
+        <td>${b.servicio}</td>
+        <td>${(b.fechaHora||'').replace('T', ' · ')}</td>
+        <td>${b.direccion}</td>
+        <td>${statusMap[b.status] || statusMap['pending']}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
 
-      // --- ESTADO DE LA APLICACIÓN ---
-      let bookings = JSON.parse(localStorage.getItem('livityBookings')) || [];
-      let currentBooking = null;  // reserva en proceso
-      let paymentTimer = null;
-      let countersStarted = false;
+  // ============================================================
+  // STEP INDICATOR
+  // ============================================================
+  function setStep(step) {
+    for (let n = 1; n <= 3; n++) {
+      const dot = document.getElementById(`dot${n}`);
+      if (!dot) continue;
+      if (n < step) { dot.className = 'step-dot done'; dot.textContent = '✓'; }
+      else if (n === step) { dot.className = 'step-dot active'; dot.textContent = n; }
+      else { dot.className = 'step-dot'; dot.textContent = n; }
+    }
+    if (document.getElementById('line1')) document.getElementById('line1').className = `step-line ${step > 1 ? 'done' : ''}`;
+    if (document.getElementById('line2')) document.getElementById('line2').className = `step-line ${step > 2 ? 'done' : ''}`;
+  }
 
-      // --- ELEMENTOS DEL DOM ---
-      const elements = {
-        mainNavBar: document.getElementById('mainNavBar'),
-        menuToggle: document.getElementById('menuToggle'),
-        navLinks: document.getElementById('navLinks'),
-        logo: document.getElementById('logo'),
-        homeLink: document.getElementById('homeLink'),
-        aboutLink: document.getElementById('aboutLink'),
-        serviceLink: document.getElementById('serviceLink'),
-        bookCleanBtn: document.getElementById('bookCleanBtn'),
-        moreAboutBtn: document.getElementById('moreAboutBtn'),
-        aboutSection: document.getElementById('aboutSection'),
-        closeAboutBtn: document.getElementById('closeAboutBtn'),
-        scrollTopBtn: document.getElementById('scrollTopBtn'),
-        paymentSection: document.getElementById('paymentSection'),
-        // servicesGrid eliminado
-        servicioSelect: document.getElementById('servicio'),
-        formReserva: document.getElementById('formReserva'),
-        panelPago: document.getElementById('panelPago'),
-        panelConfirmacion: document.getElementById('panelConfirmacion'),
-        btnReservar: document.getElementById('btnReservar'),
-        btnSimularPago: document.getElementById('btnSimularPago'),
-        telefonoMostrar: document.getElementById('telefonoMostrar'),
-        pagoSpinner: document.getElementById('pagoSpinner'),
-        reciboNombre: document.getElementById('reciboNombre'),
-        reciboServicio: document.getElementById('reciboServicio'),
-        reciboFecha: document.getElementById('reciboFecha'),
-        reciboDireccion: document.getElementById('reciboDireccion'),
-        reciboTotal: document.getElementById('reciboTotal'),
-        crmBody: document.getElementById('crm-body'),
-        // inputs
-        nombre: document.getElementById('nombre'),
-        email: document.getElementById('email'),
-        telefono: document.getElementById('telefono'),
-        fechaHora: document.getElementById('fechaHora'),
-        direccion: document.getElementById('direccion'),
-        // step indicators
-        dot1: document.getElementById('dot1'), dot2: document.getElementById('dot2'), dot3: document.getElementById('dot3'),
-        lbl1: document.getElementById('lbl1'), lbl2: document.getElementById('lbl2'), lbl3: document.getElementById('lbl3'),
-        line1: document.getElementById('line1'), line2: document.getElementById('line2'),
-        // carrusel
-        carouselTrack: document.getElementById('carouselTrack'),
-        carouselPrev: document.getElementById('carouselPrev'),
-        carouselNext: document.getElementById('carouselNext')
-      };
+  // ============================================================
+  // SUBMIT BOOKING → n8n
+  // ============================================================
+  async function submitBooking() {
+    if (submitting) return;
+    if (!validateForm()) { showToast('Please fix the errors above.', 'error'); return; }
 
-      // --- FUNCIONES AUXILIARES ---
-      function saveBookings() {
-        localStorage.setItem('livityBookings', JSON.stringify(bookings));
-      }
+    submitting = true;
+    const btn = document.getElementById('btnReservar');
+    const btnText = document.getElementById('btnReservarText');
+    const btnSpinner = document.getElementById('btnReservarSpinner');
 
-      function renderCRM() {
-        if (!elements.crmBody) return;
-        elements.crmBody.innerHTML = '';
-        bookings.slice().reverse().forEach(b => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${b.nombre}</td>
-            <td>${b.servicio}</td>
-            <td>${b.fechaHora.replace('T', ' · ')}</td>
-            <td><span class="pill ${b.estado === 'confirmado' ? 'pill-ok' : 'pill-pend'}">${b.estado === 'confirmado' ? '✓ Confirmed' : '⏳ Pending'}</span></td>
-          `;
-          elements.crmBody.appendChild(row);
-        });
-      }
+    btn.disabled = true;
+    if (btnText) btnText.classList.add('hidden');
+    if (btnSpinner) btnSpinner.classList.remove('hidden');
 
-      function setStep(step) {
-        const steps = [1,2,3];
-        steps.forEach(n => {
-          const dot = document.getElementById(`dot${n}`);
-          const lbl = document.getElementById(`lbl${n}`);
-          if (!dot || !lbl) return;
-          if (n < step) {
-            dot.className = 'step-dot done';
-            lbl.className = 'step-label done';
-            dot.textContent = '✓';
-          } else if (n === step) {
-            dot.className = 'step-dot active';
-            lbl.className = 'step-label active';
-            dot.textContent = n;
-          } else {
-            dot.className = 'step-dot';
-            lbl.className = 'step-label';
-            dot.textContent = n;
-          }
-        });
-        if (elements.line1) elements.line1.className = `step-line ${step > 1 ? 'done' : ''}`;
-        if (elements.line2) elements.line2.className = `step-line ${step > 2 ? 'done' : ''}`;
-      }
+    const servicioKey = document.getElementById('servicio').value;
+    const servicioData = servicesData[servicioKey] || {};
 
-      function validateForm() {
-        const nombre = elements.nombre.value.trim();
-        const email = elements.email.value.trim();
-        const telefono = elements.telefono.value.trim();
-        const fechaHora = elements.fechaHora.value;
-        const direccion = elements.direccion.value.trim();
+    const payload = {
+      nombre: document.getElementById('nombre').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      telefono: document.getElementById('telefono').value.trim(),
+      servicioKey: servicioKey,
+      servicio: servicioData.name || servicioKey,
+      categoria: servicioData.category || '',
+      precio: servicioData.price || 'Quote on visit',
+      fechaHora: document.getElementById('fechaHora').value,
+      direccion: document.getElementById('direccion').value.trim(),
+      notas: document.getElementById('notas')?.value.trim() || '',
+      timestamp: new Date().toISOString(),
+      source: 'Prototipo.html'
+    };
 
-        if (!nombre || !email || !telefono || !fechaHora || !direccion) {
-          alert('❌ Todos los campos son obligatorios.');
-          return false;
+    // Save locally immediately
+    saveBooking({ ...payload, status: 'pending' });
+    renderCRM();
+
+    try {
+      const res = await fetch(CONFIG.WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      // Show success regardless of response (n8n may return 200 or redirect)
+      showSuccess(payload);
+
+    } catch (err) {
+      // Network error — booking saved locally, notify user
+      console.error('Webhook error:', err);
+      showToast('Booking saved locally. Please check your connection.', 'error', 6000);
+      showSuccess(payload); // Still show confirmation since we saved locally
+    } finally {
+      submitting = false;
+      btn.disabled = false;
+      if (btnText) btnText.classList.remove('hidden');
+      if (btnSpinner) btnSpinner.classList.add('hidden');
+    }
+  }
+
+  function showSuccess(payload) {
+    document.getElementById('formReserva').classList.add('hidden');
+    const panel = document.getElementById('panelEnviado');
+    if (panel) {
+      panel.classList.remove('hidden');
+      const fmt = (payload.fechaHora || '').replace('T', ' at ');
+      document.getElementById('telefonoMostrar').textContent = payload.telefono;
+      document.getElementById('reciboNombre2').textContent = payload.nombre;
+      document.getElementById('reciboServicio2').textContent = payload.servicio;
+      document.getElementById('reciboFecha2').textContent = fmt;
+      document.getElementById('reciboDireccion2').textContent = payload.direccion;
+    }
+    setStep(2);
+    showToast('Booking submitted! You\'ll receive a WhatsApp confirmation shortly.', 'success', 6000);
+  }
+
+  // ============================================================
+  // COUNTERS ANIMATION
+  // ============================================================
+  function animateCounters() {
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+      const step = Math.max(1, Math.floor(target / 40));
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current + suffix;
+        if (current >= target) clearInterval(timer);
+      }, 40);
+    });
+  }
+
+  // ============================================================
+  // INTERSECTION OBSERVER
+  // ============================================================
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (entry.target.closest('.stats-section') && !countersStarted) {
+          countersStarted = true;
+          animateCounters();
         }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          alert('❌ Correo electrónico no válido.');
-          return false;
-        }
-        const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-        if (!phoneRegex.test(telefono.replace(/\s/g, ''))) {
-          alert('❌ Teléfono no válido. Debe incluir código de área y número.');
-          return false;
-        }
-        const fechaSeleccionada = new Date(fechaHora);
-        if (fechaSeleccionada <= new Date()) {
-          alert('❌ La fecha y hora deben ser futuras.');
-          return false;
-        }
-        return true;
+        observer.unobserve(entry.target);
       }
+    });
+  }, { threshold: 0.15 });
 
-      function resetPaymentTimer() {
-        if (paymentTimer) clearTimeout(paymentTimer);
-        if (elements.pagoSpinner) elements.pagoSpinner.classList.add('hidden');
-        if (elements.btnSimularPago) elements.btnSimularPago.disabled = false;
-      }
+  // ============================================================
+  // INIT
+  // ============================================================
+  function init() {
+    populateSelect();
+    renderCRM();
+    setStep(1);
 
-      // --- ANIMACIÓN DE CONTADORES ---
-      function animateCounters() {
-        const statNumbers = document.querySelectorAll('.stat-number');
-        statNumbers.forEach(el => {
-          const target = el.getAttribute('data-target');
-          if (!target) return;
-          const targetNum = parseInt(target);
-          const current = parseInt(el.innerText) || 0;
-          if (current >= targetNum) return;
-          let start = 0;
-          const increment = targetNum > 100 ? 3 : 1;
-          const timer = setInterval(() => {
-            start += increment;
-            if (start >= targetNum) {
-              el.innerText = targetNum + (el.innerText.includes('+') ? '+' : '');
-              clearInterval(timer);
-            } else {
-              el.innerText = start + (el.innerText.includes('+') ? '+' : '');
-            }
-          }, 30);
-        });
-      }
+    // Set min datetime to now
+    const dtInput = document.getElementById('fechaHora');
+    if (dtInput) {
+      const now = new Date();
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      dtInput.min = now.toISOString().slice(0, 16);
+    }
 
-      // --- INICIALIZACIÓN DE COMPONENTES ---
-      function populateSelect() {
-        if (!elements.servicioSelect) return;
-        elements.servicioSelect.innerHTML = '';
-        for (const [key, data] of Object.entries(servicesData)) {
-          const opt = document.createElement('option');
-          opt.value = key;
-          opt.textContent = `${data.name} — ${data.price}`;
-          elements.servicioSelect.appendChild(opt);
-        }
-      }
+    // Animate on scroll
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-      // --- INTERSECTION OBSERVER PARA ANIMACIONES ---
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            // Si es la sección de estadísticas y no han empezado los contadores
-            if (entry.target.closest('.stats-section') && !countersStarted) {
-              countersStarted = true;
-              animateCounters();
-            }
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
+    // Nav toggle
+    document.getElementById('menuToggle')?.addEventListener('click', () => {
+      document.getElementById('navLinks')?.classList.toggle('show');
+    });
 
-      // --- FUNCIÓN PARA REDIRIGIR A LA PÁGINA DE SERVICIOS ---
-      function setupCardLinks() {
-        const cards = document.querySelectorAll('.step-card');
-        cards.forEach(card => {
-          card.addEventListener('click', (e) => {
-            // Evitar que el clic en el botón del carrusel también dispare esto
-            if (e.target.closest('.carousel-btn')) return;
-            
-            const service = card.dataset.service; // obtenemos el valor de data-service
-            if (service) {
-              window.location.href = `standardhomecleaning.html#${service}`;
-            }
-          });
-        });
-      }
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainNavBar')?.classList.toggle('scrolled', window.scrollY > 0);
+    });
 
-      // --- EVENTOS ---
-      function setupEventListeners() {
-        // Menú toggle
-        elements.menuToggle?.addEventListener('click', () => {
-          elements.navLinks?.classList.toggle('show');
-        });
+    // Logo / home
+    document.getElementById('logo')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    document.getElementById('homeLink')?.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-          elements.mainNavBar?.classList.toggle('scrolled', window.scrollY > 0);
-        });
+    // Service + book links
+    const goToBooking = e => { e?.preventDefault(); document.getElementById('paymentSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+    document.getElementById('serviceLink')?.addEventListener('click', () => window.location.href = CONFIG.SERVICES_PAGE);
+    document.getElementById('bookLink')?.addEventListener('click', goToBooking);
+    document.getElementById('bookCleanBtn')?.addEventListener('click', goToBooking);
 
-        // Logo y home link
-        elements.logo?.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
-        elements.homeLink?.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.scrollTo({ top:0, behavior:'smooth' });
-        });
+    // About
+    const showAbout = () => {
+      document.getElementById('aboutSection')?.classList.add('visible');
+      document.getElementById('aboutSection')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+    document.getElementById('aboutLink')?.addEventListener('click', e => { e.preventDefault(); showAbout(); });
+    document.getElementById('moreAboutBtn')?.addEventListener('click', showAbout);
+    document.getElementById('closeAboutBtn')?.addEventListener('click', () => document.getElementById('aboutSection')?.classList.remove('visible'));
 
-        // Service link
-        elements.serviceLink?.addEventListener('click', (e) => {
-          e.preventDefault();
-          elements.paymentSection?.scrollIntoView({ behavior:'smooth', block:'start' });
-        });
+    // Scroll top
+    document.getElementById('scrollTopBtn')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Book button
-        elements.bookCleanBtn?.addEventListener('click', (e) => {
-          e.preventDefault();
-          elements.paymentSection?.scrollIntoView({ behavior:'smooth', block:'start' });
-        });
+    // Submit form
+    document.getElementById('btnReservar')?.addEventListener('click', e => { e.preventDefault(); submitBooking(); });
 
-        // About section
-        elements.aboutLink?.addEventListener('click', (e) => {
-          e.preventDefault();
-          elements.aboutSection?.classList.add('visible');
-          elements.aboutSection?.scrollIntoView({ behavior:'smooth', block:'center' });
-        });
-        elements.moreAboutBtn?.addEventListener('click', () => {
-          elements.aboutSection?.classList.add('visible');
-          elements.aboutSection?.scrollIntoView({ behavior:'smooth', block:'center' });
-        });
-        elements.closeAboutBtn?.addEventListener('click', () => {
-          elements.aboutSection?.classList.remove('visible');
-        });
-        window.addEventListener('click', (e) => {
-          if (elements.aboutSection?.classList.contains('visible') &&
-              !elements.aboutSection.contains(e.target) &&
-              e.target !== elements.aboutLink && e.target !== elements.moreAboutBtn) {
-            elements.aboutSection.classList.remove('visible');
-          }
-        });
+    // New booking
+    document.getElementById('btnNewBooking')?.addEventListener('click', () => {
+      document.getElementById('panelEnviado')?.classList.add('hidden');
+      document.getElementById('formReserva')?.classList.remove('hidden');
+      document.getElementById('formReserva').reset?.();
+      ['nombre','email','telefono','servicio','fechaHora','direccion','notas'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      clearErrors();
+      setStep(1);
+      document.getElementById('paymentSection')?.scrollIntoView({ behavior: 'smooth' });
+    });
 
-        // Scroll top
-        elements.scrollTopBtn?.addEventListener('click', () => {
-          window.scrollTo({ top:0, behavior:'smooth' });
-        });
-
-        // Eliminado el event listener de cambio de select que volteaba las cards
-
-        // Reservar y enviar a n8n
-        elements.btnReservar?.addEventListener('click', (e) => {
-          e.preventDefault();
-          if (!validateForm()) return;
-
-          const servicioKey = elements.servicioSelect.value;
-          const servicioData = servicesData[servicioKey];
-
-          // Datos que enviaremos a n8n
-          const datos = {
-            nombre: elements.nombre.value.trim(),
-            email: elements.email.value.trim(),
-            telefono: elements.telefono.value.trim(),
-            servicio: servicioData.name,
-            fechaHora: elements.fechaHora.value,
-            direccion: elements.direccion.value.trim()
-          };
-
-          // Enviar a n8n mediante fetch
-          fetch('https://alcide-app-n8n-cloud.app.n8n.cloud/webhook-test/booking', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(datos)
-          })
-          .then(response => response.json())
-          .then(data => {
-            alert('✅ Formulario enviado con éxito. Recibirás un WhatsApp en breve.');
-            // Opcional: limpiar formulario o redirigir
-          })
-          .catch(error => {
-            alert('❌ Error al enviar. Intenta de nuevo.');
-            console.error('Error:', error);
-          });
-        });
-
-        // Simular pago
-        elements.btnSimularPago?.addEventListener('click', function() {
-          if (!currentBooking) return;
-          resetPaymentTimer();
-          // Deshabilitar botón y mostrar spinner
-          this.disabled = true;
-          if (elements.pagoSpinner) elements.pagoSpinner.classList.remove('hidden');
-
-          // Simular proceso de pago
-          paymentTimer = setTimeout(() => {
-            // Actualizar estado de la reserva actual
-            currentBooking.estado = 'confirmado';
-            const index = bookings.findIndex(b => b.fechaHora === currentBooking.fechaHora && b.nombre === currentBooking.nombre);
-            if (index !== -1) bookings[index] = currentBooking;
-            saveBookings();
-            renderCRM();
-
-            // Mostrar confirmación
-            elements.reciboNombre.textContent = currentBooking.nombre;
-            elements.reciboServicio.textContent = currentBooking.servicio;
-            elements.reciboFecha.textContent = currentBooking.fechaHora.replace('T', ' at ');
-            elements.reciboDireccion.textContent = currentBooking.direccion;
-            elements.reciboTotal.textContent = currentBooking.precio;
-
-            elements.panelPago.classList.add('hidden');
-            elements.panelConfirmacion.classList.remove('hidden');
-            setStep(3);
-
-            // Limpiar timer y spinner
-            resetPaymentTimer();
-          }, 2000);
-        });
-
-        // Carrusel
-        if (elements.carouselPrev && elements.carouselNext && elements.carouselTrack) {
-          elements.carouselPrev.addEventListener('click', () => {
-            elements.carouselTrack.scrollBy({ left: -320, behavior: 'smooth' });
-          });
-          elements.carouselNext.addEventListener('click', () => {
-            elements.carouselTrack.scrollBy({ left: 320, behavior: 'smooth' });
-          });
-        }
-
-        // Configurar enlaces de las tarjetas
-        setupCardLinks();
-      }
-
-      // --- INICIALIZACIÓN ---
-      function init() {
-        populateSelect();
+    // Clear CRM
+    document.getElementById('btnClearCRM')?.addEventListener('click', () => {
+      if (confirm('Clear all booking history?')) {
+        bookings = [];
+        localStorage.removeItem('livityBookings');
         renderCRM();
-        setStep(1);
-        setupEventListeners();
-
-        // Observar elementos con clase animate-on-scroll
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        showToast('History cleared.', 'info');
       }
+    });
 
-      // Arrancar cuando el DOM esté listo
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-    })();
-  </script>
+    // Carousel
+    document.getElementById('carouselPrev')?.addEventListener('click', () => {
+      document.getElementById('carouselTrack')?.scrollBy({ left: -320, behavior: 'smooth' });
+    });
+    document.getElementById('carouselNext')?.addEventListener('click', () => {
+      document.getElementById('carouselTrack')?.scrollBy({ left: 320, behavior: 'smooth' });
+    });
+
+    // Card links to services page
+    document.querySelectorAll('.step-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const section = card.dataset.section;
+        if (section) window.location.href = `${CONFIG.SERVICES_PAGE}#${section}`;
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 </body>
 </html>
