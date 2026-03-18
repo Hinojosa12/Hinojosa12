@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Livity Projects Inc · Dry Cleaning & Steam Cleaning</title>
+  <title>Livity Projects Inc · Cleaning Services</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -185,7 +185,7 @@
     .mt-3 { margin-top: 1.5rem; }
     .btn-lg { padding: 1.1rem 2.5rem; font-size: 1.05rem; }
 
-    /* TOAST NOTIFICATION */
+    /* TOAST */
     .toast {
       position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
       background: var(--dark); color: white; padding: 1rem 2rem; border-radius: var(--radius-pill);
@@ -236,6 +236,10 @@
     .scroll-top-float { position: fixed; bottom: 5.2rem; right: 2rem; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: white; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: var(--shadow-gold); cursor: pointer; border: none; transition: var(--transition); }
     .scroll-top-float:hover { transform: scale(1.2) translateY(-5px); }
 
+    /* ERROR STATES */
+    .field-error { border-color: #e24b4a !important; box-shadow: 0 0 0 3px rgba(226,75,74,0.15) !important; }
+    .error-msg { color: #e24b4a; font-size: 0.75rem; margin-top: 0.25rem; display: block; }
+
     /* FOOTER */
     .footer-dark { background: var(--dark-footer); color: white; padding: 4rem 5% 2rem; }
     .footer-content { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 3rem; }
@@ -247,29 +251,135 @@
     .social-icons a:hover { background: var(--gold); color: white; transform: translateY(-8px) scale(1.1); }
     .footer-copyright { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.35); }
 
-    /* ERROR STATES */
-    .field-error { border-color: #e24b4a !important; box-shadow: 0 0 0 3px rgba(226,75,74,0.15) !important; }
-    .error-msg { color: #e24b4a; font-size: 0.75rem; margin-top: 0.25rem; display: block; }
+    /* ============================================================
+       MOBILE STYLES — Everything under 768px
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .why-choose-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
 
-    @media (max-width: 1024px) { .why-choose-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
     @media (max-width: 768px) {
-      .nav-links { display: none; flex-direction: column; width: 100%; background: white; border-top: 1px solid var(--cream-border); position: absolute; top: 72px; left: 0; padding: 1rem; }
+      /* NAV */
+      .top-header { display: none; } /* hide contact bar on mobile */
+      .nav-links {
+        display: none; flex-direction: column; width: 100%; background: white;
+        border-top: 1px solid var(--cream-border); position: absolute; top: 72px; left: 0;
+        padding: 1rem; box-shadow: var(--shadow-md);
+      }
       .main-nav-bar.scrolled .nav-links { background: rgba(30,43,46,0.98); }
       .nav-links.show { display: flex; }
       .menu-toggle { display: block; }
-      .hero, .hero-right { flex-direction: column; text-align: center; }
-      .hero-title { font-size: 2.2rem; }
+      .logo img { height: 40px; }
+      .main-nav-bar { height: 60px; padding: 0 4%; }
+
+      /* HERO */
+      .hero {
+        flex-direction: column; text-align: center; padding: 4rem 5% 3.5rem;
+        min-height: auto; background-attachment: scroll;
+      }
+      .hero-right { flex-direction: column; }
+      .hero-tag { font-size: 0.6rem; padding: 0.35rem 0.9rem; margin-bottom: 1rem; }
+      .hero-title { font-size: 1.75rem; letter-spacing: -1px; margin-bottom: 1rem; }
+      .hero-title span { display: inline; }
+      .intro-text { font-size: 0.88rem; margin-bottom: 1rem; }
+      .features-list { text-align: left; display: inline-block; }
+      .features-list li { font-size: 0.85rem; margin-bottom: 0.5rem; }
+      .hero-btn { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
+      .hero::after { height: 50px; }
+
+      /* SECTION TYPOGRAPHY */
+      .section-title { font-size: 1.6rem; letter-spacing: -0.8px; }
+      .section-subtitle { font-size: 0.88rem; margin-bottom: 1.5rem; }
+      .section-tag { font-size: 0.65rem; letter-spacing: 2px; }
+
+      /* CAROUSEL — Compact mobile version */
+      .how-it-works { padding: 2.5rem 4%; }
+      .carousel-container { gap: 0.5rem; margin: 1rem 0; }
+      .carousel-btn { width: 36px; height: 36px; font-size: 1rem; flex-shrink: 0; }
+      .carousel-track { gap: 0.8rem; padding: 0.5rem 0.25rem; }
+      .step-card {
+        min-width: 160px; max-width: 190px;
+        border-radius: 14px;
+      }
+      .step-icon { height: 110px; }
+      .step-card-body { padding: 0.8rem 1rem 1rem; }
+      .step-card h3 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.3rem; letter-spacing: -0.2px; }
+      .step-card p { font-size: 0.72rem; line-height: 1.4; }
+      .how-it-works > p:last-child { font-size: 0.78rem; margin-top: 0.5rem; }
+
+      /* STATS */
+      .stats-section { padding: 2rem 5%; }
+      .stat-item { flex: 1 1 140px; padding: 1rem; }
+      .stat-number { font-size: 2rem; }
+      .stat-label { font-size: 0.72rem; letter-spacing: 0.5px; }
+
+      /* WHY CHOOSE */
+      .why-choose-section { padding: 2.5rem 4%; }
+      .why-choose-grid { gap: 1.5rem; }
+      .why-left h2 { font-size: 1.6rem; }
+      .why-left p { font-size: 0.88rem; margin-bottom: 1.2rem; }
+      .features-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+      .feature-card { padding: 1.1rem 1rem; border-radius: 14px; }
+      .feature-icon-wrap { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 0.6rem; }
+      .feature-icon { font-size: 1.1rem; }
+      .feature-card h3 { font-size: 0.82rem; }
+      .feature-card p { font-size: 0.75rem; }
+
+      /* BOOKING FORM */
+      .payment-section { padding: 2.5rem 4%; }
+      .booking-header .section-title { font-size: 1.5rem; }
+      .steps { gap: 0; margin-bottom: 1.5rem; }
+      .step-dot { width: 28px; height: 28px; font-size: 0.7rem; }
+      .step-line { width: 30px; }
+      .form-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+      .form-group.full { grid-column: 1; }
+      label { font-size: 0.7rem; }
+      input, select, textarea { padding: 0.7rem 0.9rem; font-size: 0.88rem; }
+      .pickup-info { padding: 0.9rem 1rem; font-size: 0.82rem; }
+      .pickup-row { font-size: 0.8rem; }
+      .btn-lg { padding: 0.9rem 1.8rem; font-size: 0.95rem; width: 100%; }
+
+      /* RECEIPT */
+      .receipt { padding: 1.2rem; }
+      .receipt-row { font-size: 0.8rem; }
+      .badge { font-size: 0.72rem; padding: 0.3rem 0.7rem; }
+
+      /* CRM TABLE */
+      .crm-wrap { border-radius: 12px; }
+      thead th { font-size: 0.65rem; padding: 0.7rem 0.8rem; }
+      tbody td { padding: 0.65rem 0.8rem; font-size: 0.78rem; }
+
+      /* ABOUT */
+      .about-section { padding: 1.8rem; margin: 1rem; border-radius: 16px; }
+      .about-section h2 { font-size: 1.4rem; }
+      .about-section p { font-size: 0.85rem; }
+
+      /* FOOTER */
+      .footer-dark { padding: 2.5rem 4% 1.5rem; }
+      .footer-content { gap: 1.5rem; }
+      .footer-info h3, .footer-social h3 { font-size: 1.1rem; margin-bottom: 0.8rem; }
+      .footer-info p { font-size: 0.82rem; }
+      .social-icons a { width: 38px; height: 38px; font-size: 1.1rem; }
+      .footer-copyright { font-size: 0.72rem; margin-top: 1.5rem; }
+
+      /* FLOATS */
+      .whatsapp-float { width: 48px; height: 48px; font-size: 1.4rem; bottom: 1.2rem; right: 1.2rem; }
+      .scroll-top-float { width: 38px; height: 38px; font-size: 0.9rem; bottom: 4.5rem; right: 1.2rem; }
+    }
+
+    /* Extra small phones */
+    @media (max-width: 400px) {
+      .hero-title { font-size: 1.5rem; }
+      .step-card { min-width: 140px; }
+      .step-icon { height: 90px; }
+      .step-card-body { padding: 0.6rem 0.8rem 0.8rem; }
+      .step-card h3 { font-size: 0.75rem; }
       .features-grid { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-      .about-section { padding: 2rem; margin: 1.5rem; }
-      .carousel-container { flex-wrap: wrap; justify-content: center; }
-      .carousel-track { order: 2; width: 100%; }
     }
   </style>
 </head>
 <body>
 
-<!-- TOAST NOTIFICATION -->
 <div id="toast" class="toast"></div>
 
 <header>
@@ -284,7 +394,7 @@
 
 <div class="main-nav-bar" id="mainNavBar">
   <div class="logo" id="logo">
-    <img src="livity.jpeg" alt="Livity DryClean logo">
+    <img src="livity.jpeg" alt="Livity Projects logo">
   </div>
   <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
   <nav class="nav-links" id="navLinks">
@@ -325,7 +435,7 @@
         </div>
         <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.2s" data-section="section5">
           <div class="step-icon"><img src="tercera.png" alt="Move-In/Move-Out Cleaning"></div>
-          <div class="step-card-body"><h3>Move-In/Move-Out Cleaning</h3><p>Ensure your new beginning or final handover is spotless.</p></div>
+          <div class="step-card-body"><h3>Move-In/Move-Out</h3><p>Ensure your new beginning or final handover is spotless.</p></div>
         </div>
         <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.3s" data-section="section1">
           <div class="step-icon"><img src="residentialCleaning.jpg" alt="Residential Cleaning"></div>
@@ -333,11 +443,11 @@
         </div>
         <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.4s" data-section="section3">
           <div class="step-icon"><img src="commercialCleaning.jpg" alt="Commercial & Office Cleaning"></div>
-          <div class="step-card-body"><h3>Commercial & Office Cleaning</h3><p>Professional cleaning for workplaces, ensuring a healthy environment.</p></div>
+          <div class="step-card-body"><h3>Commercial & Office</h3><p>Professional cleaning for workplaces, ensuring a healthy environment.</p></div>
         </div>
         <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.5s" data-section="section4">
           <div class="step-icon"><img src="cleaningSanitization.jpg" alt="Steam Cleaning"></div>
-          <div class="step-card-body"><h3>Steam Cleaning & Sanitization</h3><p>High-temperature steam cleaning for deep sanitization.</p></div>
+          <div class="step-card-body"><h3>Steam Cleaning</h3><p>High-temperature steam cleaning for deep sanitization.</p></div>
         </div>
         <div class="step-card animate-on-scroll fade-up" style="transition-delay:0.6s" data-section="section4">
           <div class="step-icon"><img src="carpetUpholstery.jpg" alt="Carpet Cleaning"></div>
@@ -351,7 +461,7 @@
       <button class="carousel-btn" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
     </div>
     <p style="text-align:center; margin-top:1rem; color:var(--muted); font-size:0.9rem;">
-      <i class="fas fa-hand-pointer" style="color:var(--gold);"></i> Click any card to view full details and book that service
+      <i class="fas fa-hand-pointer" style="color:var(--gold);"></i> Click any card to view details and book
     </p>
   </section>
 
@@ -398,7 +508,7 @@
       <div class="why-left animate-on-scroll fade-left">
         <div class="section-tag">WHY US</div>
         <h2>Why Choose <span>Livity Projects Inc.</span></h2>
-        <p>At Livity Projects Inc., we are committed to providing reliable, high-quality cleaning and maintenance services you can depend on. Our team focuses on attention to detail, professionalism, and customer satisfaction to ensure every space we service is clean, safe, and well maintained.</p>
+        <p>At Livity Projects Inc., we are committed to providing reliable, high-quality cleaning and maintenance services you can depend on. Our team focuses on attention to detail, professionalism, and customer satisfaction.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card animate-on-scroll zoom-in">
@@ -574,9 +684,9 @@
     <div class="footer-social">
       <h3>Follow Us</h3>
       <div class="social-icons">
-        <a href="https://www.facebook.com/profile.php?id=100093188593546" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/livity_projects/" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@livity_projects.gy" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100093188593546" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/livity_projects/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@livity_projects.gy" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
       </div>
     </div>
   </div>
@@ -587,21 +697,12 @@
 (function() {
   "use strict";
 
-  // ============================================================
-  // CONFIGURATION — Update these values
-  // ============================================================
   const CONFIG = {
-    // Your n8n production webhook URL (change webhook-test → webhook when ready)
     WEBHOOK_URL: 'https://alcide-app-n8n-cloud.app.n8n.cloud/webhook/booking',
-    // WhatsApp number for direct contact
     WHATSAPP_NUMBER: '5926437296',
-    // Services page filename
     SERVICES_PAGE: 'standardhomecleaning.html'
   };
 
-  // ============================================================
-  // SERVICES DATA
-  // ============================================================
   const servicesData = {
     'sofa-1seat':         { name:'1 Seat Sofa',                     price:'$6,000',           category:'Steam Cleaning' },
     'sofa-2seat':         { name:'2 Seat Sofa',                     price:'$10,000',          category:'Steam Cleaning' },
@@ -613,51 +714,53 @@
     'suite-211':          { name:'2-1-1 Suite',                     price:'$16,000',          category:'Steam Cleaning' },
     'office-chairs':      { name:'Office Chairs',                   price:'$2,500/chair',     category:'Steam Cleaning' },
     'dining-chairs':      { name:'Dining Chairs',                   price:'$2,000/chair',     category:'Steam Cleaning' },
-    'mattress-king':      { name:'King Mattress',                   price:'$10,000',          category:'Steam Cleaning' },
-    'mattress-queen':     { name:'Queen Mattress',                  price:'$8,000',           category:'Steam Cleaning' },
-    'car':                { name:'Car Interior',                    price:'$12,000',          category:'Steam Cleaning' },
-    'suv':                { name:'SUV Interior',                    price:'$16,000',          category:'Steam Cleaning' },
+    'mattress-king':      { name:'King Mattress + 2 Pillows',       price:'$10,000',          category:'Steam Cleaning' },
+    'mattress-queen':     { name:'Queen Mattress + 2 Pillows',      price:'$8,000',           category:'Steam Cleaning' },
+    'car':                { name:'Car Interior (with mats)',        price:'$12,000',          category:'Steam Cleaning' },
+    'suv':                { name:'SUV Interior (with mats)',        price:'$16,000',          category:'Steam Cleaning' },
+    'recliners':          { name:'Single Recliner',                 price:'$6,000',           category:'Steam Cleaning' },
+    'recliners-joined':   { name:'Joined Recliners',               price:'$10,000',          category:'Steam Cleaning' },
     'carpet-uninstalled': { name:'Carpet (uninstalled)',            price:'$115/sq ft',       category:'Carpet Cleaning' },
     'carpet-installed':   { name:'Carpet (installed)',              price:'$95/sq ft',        category:'Carpet Cleaning' },
-    'pressure-washing':   { name:'Pressure Washing',                price:'$30/sq ft',        category:'Pressure Washing' },
-    'recliners':          { name:'Recliners',                       price:'$6,000–$10,000',   category:'Steam Cleaning' },
-    'residential-1bed':   { name:'Residential – 1 Bedroom',        price:'Quote on visit',   category:'Residential Cleaning' },
-    'residential-2bed':   { name:'Residential – 2 Bedrooms',       price:'Quote on visit',   category:'Residential Cleaning' },
-    'residential-3bed':   { name:'Residential – 3 Bedrooms',       price:'Quote on visit',   category:'Residential Cleaning' },
-    'deep-1bed':          { name:'Deep Clean – 1 Bedroom',         price:'Quote on visit',   category:'Deep Cleaning' },
-    'deep-2bed':          { name:'Deep Clean – 2 Bedrooms',        price:'Quote on visit',   category:'Deep Cleaning' },
-    'deep-3bed':          { name:'Deep Clean – 3 Bedrooms',        price:'Quote on visit',   category:'Deep Cleaning' },
-    'commercial-small':   { name:'Commercial – Small Office',       price:'Quote on visit',   category:'Commercial Cleaning' },
-    'commercial-medium':  { name:'Commercial – Medium Office',      price:'Quote on visit',   category:'Commercial Cleaning' },
-    'commercial-large':   { name:'Commercial – Large Office',       price:'Quote on visit',   category:'Commercial Cleaning' },
-    'movein-1bed':        { name:'Move-In/Out – 1 Bedroom',        price:'Quote on visit',   category:'Move In/Out' },
-    'movein-2bed':        { name:'Move-In/Out – 2 Bedrooms',       price:'Quote on visit',   category:'Move In/Out' },
-    'movein-3bed':        { name:'Move-In/Out – 3 Bedrooms',       price:'Quote on visit',   category:'Move In/Out' },
+    'pressure-driveway':  { name:'Pressure Washing – Driveway & Walkway',  price:'$30/sq ft', category:'Pressure Washing' },
+    'pressure-patio':     { name:'Pressure Washing – Patio/Terrace',       price:'$30/sq ft', category:'Pressure Washing' },
+    'pressure-building':  { name:'Pressure Washing – Building Exterior',   price:'$30/sq ft', category:'Pressure Washing' },
+    'pressure-fence':     { name:'Pressure Washing – Fence',               price:'$30/sq ft', category:'Pressure Washing' },
+    'pressure-parking':   { name:'Pressure Washing – Parking Lot',         price:'$30/sq ft', category:'Pressure Washing' },
+    'residential-1bed':   { name:'Residential – 1 Bedroom Apartment',      price:'Quote on visit', category:'Residential Cleaning' },
+    'residential-2bed':   { name:'Residential – 2 Bedroom House',          price:'Quote on visit', category:'Residential Cleaning' },
+    'residential-3bed':   { name:'Residential – 3 Bedroom House',          price:'Quote on visit', category:'Residential Cleaning' },
+    'residential-general':{ name:'Residential – General Home Cleaning',    price:'Quote on visit', category:'Residential Cleaning' },
+    'residential-onetime':{ name:'Residential – One-Time Refresh',         price:'Quote on visit', category:'Residential Cleaning' },
+    'deep-1bed':          { name:'Deep Clean – 1 Bedroom',                 price:'Quote on visit', category:'Deep Cleaning' },
+    'deep-2bed':          { name:'Deep Clean – 2 Bedrooms',                price:'Quote on visit', category:'Deep Cleaning' },
+    'deep-3bed':          { name:'Deep Clean – 3 Bedrooms',                price:'Quote on visit', category:'Deep Cleaning' },
+    'deep-4bed':          { name:'Deep Clean – 4+ Bedrooms',               price:'Quote on visit', category:'Deep Cleaning' },
+    'commercial-small':   { name:'Commercial – Small Office (up to 500 sq ft)',  price:'Quote on visit', category:'Commercial Cleaning' },
+    'commercial-medium':  { name:'Commercial – Medium Office (500–1,500 sq ft)', price:'Quote on visit', category:'Commercial Cleaning' },
+    'commercial-large':   { name:'Commercial – Large Office (1,500+ sq ft)',     price:'Quote on visit', category:'Commercial Cleaning' },
+    'commercial-retail':  { name:'Commercial – Retail Store',               price:'Quote on visit', category:'Commercial Cleaning' },
+    'commercial-warehouse':{ name:'Commercial – Warehouse/Industrial',      price:'Quote on visit', category:'Commercial Cleaning' },
+    'movein-1bed':        { name:'Move-In/Out – 1 Bedroom Apartment',       price:'Quote on visit', category:'Move In/Out' },
+    'movein-2bed':        { name:'Move-In/Out – 2 Bedroom House',           price:'Quote on visit', category:'Move In/Out' },
+    'movein-3bed':        { name:'Move-In/Out – 3 Bedroom House',           price:'Quote on visit', category:'Move In/Out' },
+    'movein-4bed':        { name:'Move-In/Out – 4+ Bedroom House',          price:'Quote on visit', category:'Move In/Out' },
   };
 
-  // ============================================================
-  // APP STATE
-  // ============================================================
   let bookings = [];
   try { bookings = JSON.parse(localStorage.getItem('livityBookings') || '[]'); } catch(e) { bookings = []; }
   let countersStarted = false;
   let submitting = false;
 
-  // ============================================================
-  // TOAST
-  // ============================================================
   function showToast(msg, type = 'info', duration = 4000) {
     const toast = document.getElementById('toast');
     if (!toast) return;
     const icons = { success: '✅', error: '❌', info: '💬' };
     toast.textContent = (icons[type] || '') + ' ' + msg;
     toast.className = `toast show ${type}`;
-    setTimeout(() => { toast.classList.remove('show'); }, duration);
+    setTimeout(() => toast.classList.remove('show'), duration);
   }
 
-  // ============================================================
-  // POPULATE SERVICE SELECT
-  // ============================================================
   function populateSelect() {
     const sel = document.getElementById('servicio');
     if (!sel) return;
@@ -680,9 +783,6 @@
     }
   }
 
-  // ============================================================
-  // FORM VALIDATION
-  // ============================================================
   function clearErrors() {
     document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
     document.querySelectorAll('.error-msg').forEach(el => el.remove());
@@ -719,9 +819,6 @@
     return valid;
   }
 
-  // ============================================================
-  // SAVE TO LOCAL CRM
-  // ============================================================
   function saveBooking(data) {
     bookings.unshift(data);
     try { localStorage.setItem('livityBookings', JSON.stringify(bookings.slice(0, 100))); } catch(e) {}
@@ -754,9 +851,6 @@
     });
   }
 
-  // ============================================================
-  // STEP INDICATOR
-  // ============================================================
   function setStep(step) {
     for (let n = 1; n <= 3; n++) {
       const dot = document.getElementById(`dot${n}`);
@@ -769,9 +863,6 @@
     if (document.getElementById('line2')) document.getElementById('line2').className = `step-line ${step > 2 ? 'done' : ''}`;
   }
 
-  // ============================================================
-  // SUBMIT BOOKING → n8n
-  // ============================================================
   async function submitBooking() {
     if (submitting) return;
     if (!validateForm()) { showToast('Please fix the errors above.', 'error'); return; }
@@ -797,31 +888,32 @@
       categoria: servicioData.category || '',
       precio: servicioData.price || 'Quote on visit',
       fechaHora: document.getElementById('fechaHora').value,
+      horario: document.getElementById('fechaHora').value.split('T')[1] || '',
+      fecha: document.getElementById('fechaHora').value.split('T')[0] || '',
       direccion: document.getElementById('direccion').value.trim(),
       notas: document.getElementById('notas')?.value.trim() || '',
+      cantidad: null,
+      sqft: null,
+      pickup: null,
+      tipoMudanza: null,
       timestamp: new Date().toISOString(),
-      source: 'Prototipo.html'
+      source: 'index.html'
     };
 
-    // Save locally immediately
     saveBooking({ ...payload, status: 'pending' });
     renderCRM();
 
     try {
-      const res = await fetch(CONFIG.WEBHOOK_URL, {
+      await fetch(CONFIG.WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-
-      // Show success regardless of response (n8n may return 200 or redirect)
       showSuccess(payload);
-
     } catch (err) {
-      // Network error — booking saved locally, notify user
       console.error('Webhook error:', err);
       showToast('Booking saved locally. Please check your connection.', 'error', 6000);
-      showSuccess(payload); // Still show confirmation since we saved locally
+      showSuccess(payload);
     } finally {
       submitting = false;
       btn.disabled = false;
@@ -843,12 +935,9 @@
       document.getElementById('reciboDireccion2').textContent = payload.direccion;
     }
     setStep(2);
-    showToast('Booking submitted! You\'ll receive a WhatsApp confirmation shortly.', 'success', 6000);
+    showToast("Booking submitted! You'll receive a WhatsApp confirmation shortly.", 'success', 6000);
   }
 
-  // ============================================================
-  // COUNTERS ANIMATION
-  // ============================================================
   function animateCounters() {
     document.querySelectorAll('.stat-number[data-target]').forEach(el => {
       const target = parseInt(el.dataset.target);
@@ -863,9 +952,6 @@
     });
   }
 
-  // ============================================================
-  // INTERSECTION OBSERVER
-  // ============================================================
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -879,15 +965,11 @@
     });
   }, { threshold: 0.15 });
 
-  // ============================================================
-  // INIT
-  // ============================================================
   function init() {
     populateSelect();
     renderCRM();
     setStep(1);
 
-    // Set min datetime to now
     const dtInput = document.getElementById('fechaHora');
     if (dtInput) {
       const now = new Date();
@@ -895,30 +977,24 @@
       dtInput.min = now.toISOString().slice(0, 16);
     }
 
-    // Animate on scroll
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-    // Nav toggle
     document.getElementById('menuToggle')?.addEventListener('click', () => {
       document.getElementById('navLinks')?.classList.toggle('show');
     });
 
-    // Navbar scroll
     window.addEventListener('scroll', () => {
       document.getElementById('mainNavBar')?.classList.toggle('scrolled', window.scrollY > 0);
     });
 
-    // Logo / home
     document.getElementById('logo')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     document.getElementById('homeLink')?.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-    // Service + book links
     const goToBooking = e => { e?.preventDefault(); document.getElementById('paymentSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
     document.getElementById('serviceLink')?.addEventListener('click', () => window.location.href = CONFIG.SERVICES_PAGE);
     document.getElementById('bookLink')?.addEventListener('click', goToBooking);
     document.getElementById('bookCleanBtn')?.addEventListener('click', goToBooking);
 
-    // About
     const showAbout = () => {
       document.getElementById('aboutSection')?.classList.add('visible');
       document.getElementById('aboutSection')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -927,17 +1003,12 @@
     document.getElementById('moreAboutBtn')?.addEventListener('click', showAbout);
     document.getElementById('closeAboutBtn')?.addEventListener('click', () => document.getElementById('aboutSection')?.classList.remove('visible'));
 
-    // Scroll top
     document.getElementById('scrollTopBtn')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Submit form
     document.getElementById('btnReservar')?.addEventListener('click', e => { e.preventDefault(); submitBooking(); });
 
-    // New booking
     document.getElementById('btnNewBooking')?.addEventListener('click', () => {
       document.getElementById('panelEnviado')?.classList.add('hidden');
       document.getElementById('formReserva')?.classList.remove('hidden');
-      document.getElementById('formReserva').reset?.();
       ['nombre','email','telefono','servicio','fechaHora','direccion','notas'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = '';
@@ -947,7 +1018,6 @@
       document.getElementById('paymentSection')?.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Clear CRM
     document.getElementById('btnClearCRM')?.addEventListener('click', () => {
       if (confirm('Clear all booking history?')) {
         bookings = [];
@@ -957,7 +1027,6 @@
       }
     });
 
-    // Carousel
     document.getElementById('carouselPrev')?.addEventListener('click', () => {
       document.getElementById('carouselTrack')?.scrollBy({ left: -320, behavior: 'smooth' });
     });
@@ -965,7 +1034,6 @@
       document.getElementById('carouselTrack')?.scrollBy({ left: 320, behavior: 'smooth' });
     });
 
-    // Card links to services page
     document.querySelectorAll('.step-card').forEach(card => {
       card.addEventListener('click', () => {
         const section = card.dataset.section;
