@@ -27,89 +27,51 @@
     @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
     @keyframes spin     { to{transform:rotate(360deg)} }
     @keyframes float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
-    @keyframes pulse    { 0%,100%{opacity:1} 50%{opacity:.7} }
 
-    /* ── TOAST ── */
     .toast { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%) translateY(100px); background:var(--dark); color:white; padding:.85rem 1.8rem; border-radius:var(--radius-pill); font-weight:600; font-size:.9rem; z-index:9999; transition:transform .4s cubic-bezier(.34,1.56,.64,1); box-shadow:0 10px 30px rgba(0,0,0,.3); min-width:260px; text-align:center; }
     .toast.show { transform:translateX(-50%) translateY(0); }
     .toast.success { background:#1e7c3a; }
     .toast.error   { background:#9a1b1b; }
     .toast.info    { background:var(--gold-dark); }
 
-    /* ── BACK BUTTON ── */
     .back-home { position:fixed; top:1rem; left:1rem; display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1.2rem; background:var(--gold); color:white; text-decoration:none; border-radius:var(--radius-pill); font-weight:700; font-size:.85rem; box-shadow:var(--shadow-gold); transition:var(--transition); z-index:200; }
     .back-home:hover { background:var(--gold-dark); transform:translateX(-3px); }
 
-    /* ── QUICK NAV ── */
-    .quick-nav {
-      position:sticky; top:0; background:rgba(255,255,255,.97); backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--cream-border); z-index:100; box-shadow:var(--shadow-sm);
-    }
-    .quick-nav-inner {
-      max-width:1200px; margin:0 auto; padding:.75rem 2rem .75rem 170px;
-      display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem 1rem;
-    }
+    .quick-nav { position:sticky; top:0; background:rgba(255,255,255,.97); backdrop-filter:blur(14px); border-bottom:1px solid var(--cream-border); z-index:100; box-shadow:var(--shadow-sm); }
+    .quick-nav-inner { max-width:1200px; margin:0 auto; padding:.75rem 2rem .75rem 170px; display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem 1rem; }
     .quick-nav a { color:var(--muted); text-decoration:none; font-weight:600; font-size:.83rem; padding:.35rem .9rem; border-radius:var(--radius-pill); transition:var(--transition); border:1px solid transparent; white-space:nowrap; }
     .quick-nav a:hover, .quick-nav a.active { background:var(--gold-xlight); color:var(--gold); border-color:rgba(136,105,2,.2); }
 
-    /* ── SERVICE SECTION ── */
     .service-section { position:relative; background-size:cover; background-position:center; scroll-margin-top:60px; padding-bottom:2.5rem; width:100%; }
     .service-section::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,.25); z-index:1; pointer-events:none; }
     .service-section > * { position:relative; z-index:2; }
-
-    .service-content {
-      max-width:1200px; margin:2rem auto; padding:2.5rem;
-      background:rgba(255,255,255,.95); backdrop-filter:blur(6px);
-      border-radius:var(--radius-lg); box-shadow:var(--shadow-md);
-      border:1px solid var(--cream-border); animation:fadeInUp .5s ease both;
-    }
-
-    /* ── SERVICE GRID ── */
+    .service-content { max-width:1200px; margin:2rem auto; padding:2.5rem; background:rgba(255,255,255,.95); backdrop-filter:blur(6px); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); border:1px solid var(--cream-border); animation:fadeInUp .5s ease both; }
     .service-grid { display:grid; grid-template-columns:1fr 320px; gap:2.5rem; align-items:start; }
     .service-image img { width:100%; height:260px; object-fit:cover; border-radius:var(--radius-md); box-shadow:var(--shadow-lg); border:2px solid rgba(136,105,2,.15); transition:var(--transition); }
     .service-image img:hover { transform:scale(1.02); box-shadow:var(--shadow-gold); }
-
-    /* ── SERVICE TEXT ── */
     .section-tag { display:inline-block; font-size:.68rem; font-weight:800; letter-spacing:3px; color:var(--gold); margin-bottom:.6rem; text-transform:uppercase; padding-left:1.4rem; position:relative; }
     .section-tag::before { content:''; position:absolute; left:0; top:50%; transform:translateY(-50%); width:8px; height:2px; background:var(--gold); }
     .section-title { font-size:2.1rem; font-weight:800; letter-spacing:-1px; margin-bottom:.4rem; color:var(--dark); line-height:1.15; }
     .section-title span { color:var(--gold); }
     .service-subtitle { font-size:1rem; color:var(--muted); margin-bottom:1rem; }
     .service-desc { color:var(--muted); line-height:1.8; margin-bottom:1rem; font-size:.93rem; }
-
-    /* ── INCLUDED LIST ── */
     .included-title { font-size:.85rem; font-weight:700; color:var(--dark); margin-bottom:.7rem; }
     .service-content ul { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:.6rem; margin-bottom:1.5rem; }
     .service-content li { background:var(--gold-xlight); padding:.65rem 1rem; border-radius:var(--radius-pill); font-weight:500; color:var(--dark); transition:var(--transition); border:1px solid transparent; display:flex; align-items:center; gap:.4rem; font-size:.87rem; }
     .service-content li::before { content:'✓'; font-weight:800; color:var(--gold); flex-shrink:0; }
     .service-content li:hover { background:var(--gold); color:white; transform:translateY(-2px); }
     .service-content li:hover::before { color:white; }
-
-    /* ── BOOK BUTTON ── */
-    .btn-book {
-      display:inline-flex; align-items:center; gap:.5rem;
-      background:linear-gradient(135deg,var(--gold),var(--gold-light));
-      color:white; font-weight:700; padding:.8rem 2rem; border-radius:var(--radius-pill);
-      cursor:pointer; border:none; font-family:inherit; font-size:.95rem;
-      box-shadow:var(--shadow-gold); transition:var(--transition); margin-bottom:1.2rem;
-    }
+    .btn-book { display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:white; font-weight:700; padding:.8rem 2rem; border-radius:var(--radius-pill); cursor:pointer; border:none; font-family:inherit; font-size:.95rem; box-shadow:var(--shadow-gold); transition:var(--transition); margin-bottom:1.2rem; }
     .btn-book:hover { background:linear-gradient(135deg,var(--gold-dark),var(--gold)); transform:translateY(-3px) scale(1.02); }
-    .btn-book:active { transform:scale(.98); }
-
-    /* ── SERVICE CARD (price highlight) ── */
     .price-card { background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:var(--radius-md); padding:1.5rem; color:white; margin-bottom:1.5rem; }
     .price-card h4 { font-size:.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; opacity:.85; margin-bottom:.8rem; }
     .price-item { display:flex; justify-content:space-between; align-items:center; padding:.4rem 0; border-bottom:1px solid rgba(255,255,255,.2); font-size:.88rem; }
     .price-item:last-child { border-bottom:none; }
     .price-item .price-val { font-weight:700; font-size:.9rem; }
-
-    /* ── FORM SECTION ── */
     .form-section { display:none; margin-top:1.8rem; border-top:2px dashed rgba(136,105,2,.3); padding-top:1.8rem; }
     .form-section.open { display:block; animation:fadeInUp .35s ease; }
     .form-section h3 { font-size:1.15rem; font-weight:800; margin-bottom:1.3rem; color:var(--dark); }
     .form-section h3 span { color:var(--gold); }
-
-    /* Two-column form layout */
     .form-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:.9rem 1.2rem; }
     .form-grid-2 .span2 { grid-column:1/-1; }
     .fg { display:flex; flex-direction:column; gap:.35rem; }
@@ -119,23 +81,10 @@
     .fg input:focus, .fg select:focus, .fg textarea:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px var(--gold-xlight); }
     .field-error { border-color:#e24b4a !important; box-shadow:0 0 0 3px rgba(226,75,74,.15) !important; }
     .error-msg { color:#e24b4a; font-size:.72rem; margin-top:.15rem; }
-
-    .radio-group { display:flex; flex-wrap:wrap; gap:.6rem 1.2rem; background:var(--gold-xlight); padding:.7rem 1rem; border-radius:var(--radius-md); border:1px dashed rgba(136,105,2,.25); }
-    .radio-group label { display:flex; align-items:center; gap:.35rem; font-weight:500; cursor:pointer; font-size:.87rem; }
-    .radio-group input[type=radio] { width:auto; accent-color:var(--gold); margin:0; }
-
-    .submit-btn {
-      background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:white; border:none;
-      padding:.9rem 2rem; font-size:.95rem; font-weight:700; border-radius:var(--radius-pill);
-      cursor:pointer; transition:var(--transition); box-shadow:var(--shadow-gold); width:100%;
-      letter-spacing:.5px; margin-top:1.2rem; font-family:inherit;
-      display:flex; align-items:center; justify-content:center; gap:.5rem;
-    }
+    .submit-btn { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:white; border:none; padding:.9rem 2rem; font-size:.95rem; font-weight:700; border-radius:var(--radius-pill); cursor:pointer; transition:var(--transition); box-shadow:var(--shadow-gold); width:100%; letter-spacing:.5px; margin-top:1.2rem; font-family:inherit; display:flex; align-items:center; justify-content:center; gap:.5rem; }
     .submit-btn:hover:not(:disabled) { background:linear-gradient(135deg,var(--gold-dark),var(--gold)); transform:translateY(-2px); }
     .submit-btn:disabled { opacity:.65; cursor:not-allowed; }
     .spinner { width:17px; height:17px; border:2.5px solid rgba(255,255,255,.3); border-top-color:white; border-radius:50%; animation:spin .8s linear infinite; }
-
-    /* ── SUCCESS PANEL ── */
     .success-panel { display:none; text-align:center; padding:2.5rem 1.5rem; background:linear-gradient(135deg,#e8f5ed,#f0faf2); border-radius:var(--radius-md); border:1px solid #a8d8b5; margin-top:1.5rem; }
     .success-panel.show { display:block; animation:fadeInUp .4s ease; }
     .success-icon { font-size:3.5rem; margin-bottom:.8rem; animation:float 3s ease-in-out infinite; }
@@ -148,18 +97,38 @@
     .btn-reset { display:inline-flex; align-items:center; gap:.5rem; background:white; color:var(--gold); border:2px solid var(--gold); padding:.7rem 1.8rem; border-radius:var(--radius-pill); font-weight:700; cursor:pointer; transition:var(--transition); font-family:inherit; margin-top:.8rem; }
     .btn-reset:hover { background:var(--gold); color:white; transform:translateY(-2px); }
 
-    /* ── WHATSAPP & FOOTER ── */
+    /* ── CALENDAR ── */
+    .cal-container { margin-top:.5rem; background:var(--cream); border:1.5px solid var(--cream-border); border-radius:var(--radius-sm); padding:1rem; }
+    .cal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:.8rem; }
+    .cal-header h4 { font-size:.9rem; font-weight:700; color:var(--dark); }
+    .cal-nav { display:flex; gap:.4rem; }
+    .cal-nav button { width:30px; height:30px; border-radius:50%; border:1.5px solid var(--cream-border); background:white; color:var(--muted); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:.8rem; transition:var(--transition); }
+    .cal-nav button:hover { border-color:var(--gold); color:var(--gold); background:var(--gold-xlight); }
+    .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+    .cal-label { text-align:center; font-size:.62rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; padding:.4rem 0; }
+    .cal-day { aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:500; border-radius:8px; cursor:default; color:#ccc; transition:all .2s; }
+    .cal-day.current-month { color:var(--muted); }
+    .cal-day.available { color:var(--dark); font-weight:600; cursor:pointer; background:rgba(136,105,2,0.06); border:1.5px solid transparent; }
+    .cal-day.available:hover { background:var(--gold-xlight); border-color:var(--gold); transform:scale(1.1); box-shadow:0 2px 8px rgba(136,105,2,.15); }
+    .cal-day.selected { background:linear-gradient(135deg,var(--gold),var(--gold-light)) !important; color:white !important; font-weight:700; border-color:var(--gold) !important; box-shadow:0 4px 12px rgba(136,105,2,.3); transform:scale(1.08); }
+    .cal-day.today { border:1.5px solid var(--gold); }
+    .cal-day.unavailable { color:#d4d0c8; cursor:not-allowed; text-decoration:line-through; }
+    .cal-legend { display:flex; gap:1rem; margin-top:.7rem; justify-content:center; flex-wrap:wrap; }
+    .cal-legend-item { display:flex; align-items:center; gap:.3rem; font-size:.68rem; color:var(--muted); font-weight:500; }
+    .cal-legend-dot { width:10px; height:10px; border-radius:3px; }
+    .cal-legend-dot.avail { background:rgba(136,105,2,.15); border:1px solid var(--gold); }
+    .cal-legend-dot.sel { background:var(--gold); }
+    .cal-legend-dot.unav { background:#eee; border:1px solid #ddd; }
+    .cal-selected-display { margin-top:.7rem; padding:.6rem 1rem; background:white; border-radius:var(--radius-sm); border-left:3px solid var(--gold); display:none; align-items:center; gap:.5rem; font-size:.85rem; font-weight:600; color:var(--dark); }
+    .cal-selected-display.show { display:flex; }
+    .cal-selected-display i { color:var(--gold); }
+
     .whatsapp-float { position:fixed; bottom:1.5rem; right:1.5rem; background:linear-gradient(135deg,#25D366,#1da851); color:white; width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; box-shadow:0 8px 20px rgba(37,211,102,.4); text-decoration:none; transition:var(--transition); z-index:300; animation:float 4s ease-in-out infinite; }
     .whatsapp-float:hover { transform:scale(1.18); }
     .footer-dark { text-align:center; padding:1.8rem 5%; background:var(--dark-footer); color:rgba(255,255,255,.4); font-size:.85rem; }
     .footer-dark a { color:var(--gold); text-decoration:none; }
 
-    /* ── MOBILE ── */
-    @media (max-width:900px) {
-      .service-grid { grid-template-columns:1fr; }
-      .service-image { order:-1; }
-      .service-image img { height:220px; }
-    }
+    @media (max-width:900px) { .service-grid { grid-template-columns:1fr; } .service-image { order:-1; } .service-image img { height:220px; } }
     @media (max-width:768px) {
       html, body { overflow-x:hidden; max-width:100vw; }
       .back-home { font-size:.8rem; padding:.55rem 1rem; top:.7rem; left:.7rem; }
@@ -176,11 +145,9 @@
       .fg input, .fg select, .fg textarea { font-size:.85rem; padding:.65rem .9rem; }
       .price-item { font-size:.82rem; }
       .whatsapp-float { width:46px; height:46px; font-size:1.3rem; bottom:1rem; right:1rem; }
+      .cal-day { font-size:.72rem; }
     }
-    @media (max-width:480px) {
-      .service-content ul { grid-template-columns:1fr; }
-      .section-title { font-size:1.4rem; }
-    }
+    @media (max-width:480px) { .service-content ul { grid-template-columns:1fr; } .section-title { font-size:1.4rem; } }
   </style>
 </head>
 <body>
@@ -220,9 +187,9 @@
             <div class="fg"><label><i class="fas fa-home"></i>Service type *</label>
               <select id="r1-servicio"><option value="">— Select —</option><option value="residential-1bed">1 Bedroom Apartment</option><option value="residential-2bed">2 Bedroom House</option><option value="residential-3bed">3 Bedroom House</option><option value="residential-general">General Home Cleaning</option><option value="residential-onetime">One-Time Refresh</option></select>
               <span class="error-msg" id="err-r1-servicio"></span></div>
-            <div class="fg"><label><i class="fas fa-calendar-alt"></i>Date *</label><input type="date" id="r1-fecha"><span class="error-msg" id="err-r1-fecha"></span></div>
-            <div class="fg span2"><label><i class="fas fa-clock"></i>Preferred time *</label>
-              <div class="radio-group"><label><input type="radio" name="r1-time" value="Morning" checked> Morning (8am–12pm)</label><label><input type="radio" name="r1-time" value="Afternoon"> Afternoon (12pm–5pm)</label><label><input type="radio" name="r1-time" value="Evening"> Evening (5pm–8pm)</label></div></div>
+            <div class="fg span2"><label><i class="fas fa-calendar-alt"></i>Select available date *</label>
+              <div class="cal-container" id="cal-r1" data-category="Residential Cleaning"></div>
+              <input type="hidden" id="r1-fecha"><span class="error-msg" id="err-r1-fecha"></span></div>
             <div class="fg span2"><label><i class="fas fa-map-marker-alt"></i>Address *</label><input type="text" id="r1-direccion" placeholder="Street, city, region"><span class="error-msg" id="err-r1-direccion"></span></div>
             <div class="fg span2"><label><i class="fas fa-comment"></i>Notes</label><textarea id="r1-notas" rows="2" placeholder="Special instructions..."></textarea></div>
           </div>
@@ -255,9 +222,9 @@
             <div class="fg"><label><i class="fab fa-whatsapp"></i>WhatsApp *</label><input type="tel" id="r2-telefono" placeholder="+592 123 4567"></div>
             <div class="fg"><label><i class="fas fa-home"></i>Property size *</label>
               <select id="r2-servicio"><option value="">— Select —</option><option value="deep-1bed">1 Bedroom</option><option value="deep-2bed">2 Bedrooms</option><option value="deep-3bed">3 Bedrooms</option><option value="deep-4bed">4+ Bedrooms</option></select></div>
-            <div class="fg"><label><i class="fas fa-calendar-alt"></i>Date *</label><input type="date" id="r2-fecha"></div>
-            <div class="fg span2"><label><i class="fas fa-clock"></i>Preferred time</label>
-              <div class="radio-group"><label><input type="radio" name="r2-time" value="Morning" checked> Morning</label><label><input type="radio" name="r2-time" value="Afternoon"> Afternoon</label><label><input type="radio" name="r2-time" value="Evening"> Evening</label></div></div>
+            <div class="fg span2"><label><i class="fas fa-calendar-alt"></i>Select available date *</label>
+              <div class="cal-container" id="cal-r2" data-category="Deep Cleaning"></div>
+              <input type="hidden" id="r2-fecha"></div>
             <div class="fg span2"><label><i class="fas fa-map-marker-alt"></i>Address *</label><input type="text" id="r2-direccion" placeholder="Street, city, region"></div>
             <div class="fg span2"><label><i class="fas fa-comment"></i>Notes</label><textarea id="r2-notas" rows="2" placeholder="Areas of concern, access instructions..."></textarea></div>
           </div>
@@ -265,7 +232,7 @@
           <div class="success-panel" id="success-r2"></div>
         </div>
       </div>
-      <div class="service-image"><img src="segunda.jpg" alt="Deep cleaning" loading="lazy"></div>
+      <div class="service-image"><img src="segunda.jpeg" alt="Deep cleaning" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -290,9 +257,9 @@
             <div class="fg"><label><i class="fab fa-whatsapp"></i>WhatsApp *</label><input type="tel" id="r3-telefono" placeholder="+592 123 4567"></div>
             <div class="fg"><label><i class="fas fa-building"></i>Office size *</label>
               <select id="r3-servicio"><option value="">— Select —</option><option value="commercial-small">Small Office (up to 500 sq ft)</option><option value="commercial-medium">Medium Office (500–1,500 sq ft)</option><option value="commercial-large">Large Office (1,500+ sq ft)</option><option value="commercial-retail">Retail Store</option><option value="commercial-warehouse">Warehouse/Industrial</option></select></div>
-            <div class="fg"><label><i class="fas fa-calendar-alt"></i>Start date *</label><input type="date" id="r3-fecha"></div>
-            <div class="fg span2"><label><i class="fas fa-clock"></i>Preferred time</label>
-              <div class="radio-group"><label><input type="radio" name="r3-time" value="Morning" checked> Morning</label><label><input type="radio" name="r3-time" value="Afternoon"> Afternoon</label><label><input type="radio" name="r3-time" value="After Hours"> After Hours</label></div></div>
+            <div class="fg span2"><label><i class="fas fa-calendar-alt"></i>Select available date *</label>
+              <div class="cal-container" id="cal-r3" data-category="Commercial Cleaning"></div>
+              <input type="hidden" id="r3-fecha"></div>
             <div class="fg span2"><label><i class="fas fa-map-marker-alt"></i>Address *</label><input type="text" id="r3-direccion" placeholder="Business address"></div>
             <div class="fg span2"><label><i class="fas fa-comment"></i>Notes</label><textarea id="r3-notas" rows="2" placeholder="Business hours, frequency..."></textarea></div>
           </div>
@@ -300,7 +267,7 @@
           <div class="success-panel" id="success-r3"></div>
         </div>
       </div>
-      <div class="service-image"><img src="commercialCleaning.jpg" alt="Commercial cleaning" loading="lazy"></div>
+      <div class="service-image"><img src="commercialCleaning.jpeg" alt="Commercial cleaning" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -337,20 +304,17 @@
                 <optgroup label="Vehicles"><option value="car">Car Interior (mats) — $12,000</option><option value="suv">SUV Interior (mats) — $16,000</option></optgroup>
                 <optgroup label="Chairs"><option value="office-chairs">Office Chair — $2,500/each</option><option value="dining-chairs">Dining Chair — $2,000/each</option></optgroup>
               </select></div>
-            <div class="fg"><label><i class="fas fa-sort-numeric-up"></i>Quantity</label><input type="number" id="r4-cantidad" min="1" max="20" value="1"></div>
-            <div class="fg"><label><i class="fas fa-calendar-alt"></i>Date *</label><input type="date" id="r4-fecha"></div>
-            <div class="fg span2"><label><i class="fas fa-clock"></i>Preferred time</label>
-              <div class="radio-group"><label><input type="radio" name="r4-time" value="Morning" checked> Morning</label><label><input type="radio" name="r4-time" value="Afternoon"> Afternoon</label><label><input type="radio" name="r4-time" value="Evening"> Evening</label></div></div>
+            <div class="fg span2"><label><i class="fas fa-calendar-alt"></i>Select available date *</label>
+              <div class="cal-container" id="cal-r4" data-category="Steam Cleaning"></div>
+              <input type="hidden" id="r4-fecha"></div>
             <div class="fg span2"><label><i class="fas fa-map-marker-alt"></i>Address *</label><input type="text" id="r4-direccion" placeholder="Street, city, region"></div>
-            <div class="fg span2"><label><i class="fas fa-truck"></i>Carpet pickup</label>
-              <div class="radio-group"><label><input type="radio" name="r4-pickup" value="West Coast/Georgetown/West Bank ($2,000)"> West Coast / Georgetown / West Bank — $2,000</label><label><input type="radio" name="r4-pickup" value="Linden/New Amsterdam ($3,000)"> Linden &amp; New Amsterdam — $3,000</label><label><input type="radio" name="r4-pickup" value="None" checked> No pickup needed</label></div></div>
             <div class="fg span2"><label><i class="fas fa-comment"></i>Notes</label><textarea id="r4-notas" rows="2" placeholder="Stain types, fabric details..."></textarea></div>
           </div>
           <button class="submit-btn" id="btn-r4" onclick="submitForm('r4','Steam Cleaning & Sanitization')"><i class="fas fa-paper-plane"></i><span>Book Steam Cleaning</span></button>
           <div class="success-panel" id="success-r4"></div>
         </div>
       </div>
-      <div class="service-image"><img src="cleaningSanitization.jpg" alt="Steam cleaning" loading="lazy"></div>
+      <div class="service-image"><img src="cleaningSanitization.jpeg" alt="Steam cleaning" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -375,11 +339,9 @@
             <div class="fg"><label><i class="fab fa-whatsapp"></i>WhatsApp *</label><input type="tel" id="r5-telefono" placeholder="+592 123 4567"></div>
             <div class="fg"><label><i class="fas fa-home"></i>Property size *</label>
               <select id="r5-servicio"><option value="">— Select —</option><option value="movein-1bed">1 Bedroom Apartment</option><option value="movein-2bed">2 Bedroom House</option><option value="movein-3bed">3 Bedroom House</option><option value="movein-4bed">4+ Bedroom House</option></select></div>
-            <div class="fg span2"><label><i class="fas fa-exchange-alt"></i>Type *</label>
-              <div class="radio-group"><label><input type="radio" name="r5-movetype" value="Move-In" checked> Move-In</label><label><input type="radio" name="r5-movetype" value="Move-Out"> Move-Out</label><label><input type="radio" name="r5-movetype" value="Both"> Both</label></div></div>
-            <div class="fg"><label><i class="fas fa-calendar-alt"></i>Date *</label><input type="date" id="r5-fecha"></div>
-            <div class="fg span2"><label><i class="fas fa-clock"></i>Preferred time</label>
-              <div class="radio-group"><label><input type="radio" name="r5-time" value="Morning" checked> Morning</label><label><input type="radio" name="r5-time" value="Afternoon"> Afternoon</label><label><input type="radio" name="r5-time" value="Evening"> Evening</label></div></div>
+            <div class="fg span2"><label><i class="fas fa-calendar-alt"></i>Select available date *</label>
+              <div class="cal-container" id="cal-r5" data-category="Move In/Out"></div>
+              <input type="hidden" id="r5-fecha"></div>
             <div class="fg span2"><label><i class="fas fa-map-marker-alt"></i>Address *</label><input type="text" id="r5-direccion" placeholder="Street, city, region"></div>
             <div class="fg span2"><label><i class="fas fa-comment"></i>Notes</label><textarea id="r5-notas" rows="2" placeholder="Property condition, access details..."></textarea></div>
           </div>
@@ -412,10 +374,9 @@
             <div class="fg"><label><i class="fab fa-whatsapp"></i>WhatsApp *</label><input type="tel" id="r6-telefono" placeholder="+592 123 4567"></div>
             <div class="fg"><label><i class="fas fa-water"></i>Surface type *</label>
               <select id="r6-servicio"><option value="">— Select —</option><option value="pressure-driveway">Driveway &amp; Walkway</option><option value="pressure-patio">Patio / Terrace</option><option value="pressure-building">Building Exterior (per floor)</option><option value="pressure-fence">Fence Cleaning</option><option value="pressure-parking">Parking Lot</option></select></div>
-            <div class="fg"><label><i class="fas fa-ruler-combined"></i>Approx. sq ft</label><input type="number" id="r6-sqft" min="0" placeholder="e.g., 200"></div>
-            <div class="fg"><label><i class="fas fa-calendar-alt"></i>Date *</label><input type="date" id="r6-fecha"></div>
-            <div class="fg span2"><label><i class="fas fa-clock"></i>Preferred time</label>
-              <div class="radio-group"><label><input type="radio" name="r6-time" value="Morning" checked> Morning</label><label><input type="radio" name="r6-time" value="Afternoon"> Afternoon</label><label><input type="radio" name="r6-time" value="Evening"> Evening</label></div></div>
+            <div class="fg span2"><label><i class="fas fa-calendar-alt"></i>Select available date *</label>
+              <div class="cal-container" id="cal-r6" data-category="Pressure Washing"></div>
+              <input type="hidden" id="r6-fecha"></div>
             <div class="fg span2"><label><i class="fas fa-map-marker-alt"></i>Address *</label><input type="text" id="r6-direccion" placeholder="Street, city, region"></div>
             <div class="fg span2"><label><i class="fas fa-comment"></i>Notes</label><textarea id="r6-notas" rows="2" placeholder="Surface material, stain type..."></textarea></div>
           </div>
@@ -423,7 +384,7 @@
           <div class="success-panel" id="success-r6"></div>
         </div>
       </div>
-      <div class="service-image"><img src="pressureWashing.jpg" alt="Pressure washing" loading="lazy"></div>
+      <div class="service-image"><img src="pressureWashing.jpeg" alt="Pressure washing" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -432,7 +393,8 @@
 <footer class="footer-dark"><p>&copy; 2026 <a href="index.html">Livity Projects Inc.</a> &middot; All rights reserved &middot; <a href="https://wa.me/5926437296">+592 643-7296</a></p></footer>
 
 <script>
-const WEBHOOK='https://alcide-app-n8n-cloud.app.n8n.cloud/webhook/booking';
+const WEBHOOK='https://n8n-n8n.7toway.easypanel.host/webhook/0e6a220e-8739-4db7-9770-cd6f4a4c35f4';
+
 const SVC={
   'residential-1bed':{name:'Residential – 1 Bedroom Apartment',price:'Quote on visit',category:'Residential Cleaning'},
   'residential-2bed':{name:'Residential – 2 Bedroom House',price:'Quote on visit',category:'Residential Cleaning'},
@@ -473,139 +435,265 @@ const SVC={
   'pressure-parking':{name:'Pressure Washing – Parking Lot',price:'$30/sq ft',category:'Pressure Washing'}
 };
 
-function showToast(msg,type,dur){dur=dur||4500;const t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.className='toast show '+(type||'info');setTimeout(function(){t.classList.remove('show');},dur);}
+// ══════════════════════════════════════
+// AVAILABLE DATES PER CATEGORY
+// Update these arrays with your real available dates
+// Format: 'YYYY-M-D' (no leading zeros, matching your Google Sheet)
+// ══════════════════════════════════════
+const availableDates = {
+  'Steam Cleaning':      ['2026-3-28','2026-3-29','2026-3-30'],
+  'Carpet Cleaning':     ['2026-3-28','2026-3-29','2026-3-30'],
+  'Pressure Washing':    ['2026-3-28','2026-3-29','2026-3-30'],
+  'Residential Cleaning':['2026-3-28','2026-3-29','2026-3-30'],
+  'Deep Cleaning':       ['2026-3-28','2026-3-29','2026-3-30'],
+  'Commercial Cleaning': ['2026-3-28','2026-3-29','2026-3-30'],
+  'Move In/Out':         ['2026-3-28','2026-3-29','2026-3-30']
+};
 
-function toggleForm(id){
-  var f=document.getElementById(id);
-  if(!f)return;
-  var isOpen=f.classList.contains('open');
-  document.querySelectorAll('.form-section.open').forEach(function(x){x.classList.remove('open');});
-  if(!isOpen){
+// Calendar state per form prefix
+var calStates = {};
+
+function initCalendar(containerId) {
+  var now = new Date();
+  calStates[containerId] = { month: now.getMonth(), year: now.getFullYear(), selected: null };
+  renderCalendar(containerId);
+}
+
+function renderCalendar(containerId) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+  var state = calStates[containerId];
+  var category = container.getAttribute('data-category');
+  var catDates = (category && availableDates[category]) || [];
+  var availSet = new Set(catDates);
+  var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var today = new Date(); today.setHours(0,0,0,0);
+  var firstDay = new Date(state.year, state.month, 1).getDay();
+  var daysInMonth = new Date(state.year, state.month + 1, 0).getDate();
+  // Extract prefix from containerId (cal-r1 -> r1)
+  var prefix = containerId.replace('cal-', '');
+
+  var html = '<div class="cal-header">';
+  html += '<div class="cal-nav"><button type="button" onclick="calPrev(\''+containerId+'\')"><i class="fas fa-chevron-left"></i></button></div>';
+  html += '<h4>' + monthNames[state.month] + ' ' + state.year + '</h4>';
+  html += '<div class="cal-nav"><button type="button" onclick="calNext(\''+containerId+'\')"><i class="fas fa-chevron-right"></i></button></div>';
+  html += '</div><div class="cal-grid">';
+
+  for (var i = 0; i < 7; i++) {
+    html += '<div class="cal-label">' + dayNames[i] + '</div>';
+  }
+  for (var i = 0; i < firstDay; i++) {
+    html += '<div class="cal-day"></div>';
+  }
+  for (var d = 1; d <= daysInMonth; d++) {
+    var cellDate = new Date(state.year, state.month, d);
+    cellDate.setHours(0,0,0,0);
+    var dateStr = state.year + '-' + (state.month + 1) + '-' + d;
+    var classes = 'cal-day current-month';
+    var onclick = '';
+
+    if (cellDate.getTime() === today.getTime()) classes += ' today';
+
+    if (cellDate < today) {
+      classes += ' unavailable';
+    } else if (availSet.has(dateStr)) {
+      classes += ' available';
+      onclick = ' onclick="selectCalDate(\''+containerId+'\',\''+dateStr+'\',\''+prefix+'\')"';
+    } else {
+      classes += ' unavailable';
+    }
+
+    if (state.selected === dateStr) {
+      classes += ' selected';
+      classes = classes.replace(' unavailable', '');
+    }
+
+    html += '<div class="' + classes + '"' + onclick + '>' + d + '</div>';
+  }
+
+  html += '</div>';
+  html += '<div class="cal-legend">';
+  html += '<div class="cal-legend-item"><div class="cal-legend-dot avail"></div> Available</div>';
+  html += '<div class="cal-legend-item"><div class="cal-legend-dot sel"></div> Selected</div>';
+  html += '<div class="cal-legend-item"><div class="cal-legend-dot unav"></div> Unavailable</div>';
+  html += '</div>';
+  html += '<div class="cal-selected-display' + (state.selected ? ' show' : '') + '" id="caldisp-' + prefix + '">';
+  if (state.selected) {
+    var parts = state.selected.split('-');
+    var dateObj = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+    var fullDayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    html += '<i class="fas fa-check-circle"></i> ' + fullDayNames[dateObj.getDay()] + ', ' + monthNames[dateObj.getMonth()] + ' ' + parts[2] + ', ' + parts[0];
+  }
+  html += '</div>';
+
+  container.innerHTML = html;
+}
+
+function selectCalDate(containerId, dateStr, prefix) {
+  calStates[containerId].selected = dateStr;
+  var parts = dateStr.split('-');
+  var isoDate = parts[0] + '-' + parts[1].padStart(2,'0') + '-' + parts[2].padStart(2,'0');
+  document.getElementById(prefix + '-fecha').value = isoDate;
+  renderCalendar(containerId);
+}
+
+function calPrev(containerId) {
+  var s = calStates[containerId];
+  s.month--;
+  if (s.month < 0) { s.month = 11; s.year--; }
+  renderCalendar(containerId);
+}
+
+function calNext(containerId) {
+  var s = calStates[containerId];
+  s.month++;
+  if (s.month > 11) { s.month = 0; s.year++; }
+  renderCalendar(containerId);
+}
+
+function showToast(msg, type, dur) {
+  dur = dur || 4500;
+  var t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.className = 'toast show ' + (type || 'info');
+  setTimeout(function() { t.classList.remove('show'); }, dur);
+}
+
+function toggleForm(id) {
+  var f = document.getElementById(id);
+  if (!f) return;
+  var isOpen = f.classList.contains('open');
+  document.querySelectorAll('.form-section.open').forEach(function(x) { x.classList.remove('open'); });
+  if (!isOpen) {
     f.classList.add('open');
-    setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'start'});},150);
+    // Init calendar for this form
+    var calId = 'cal-' + id.replace('form-', '');
+    if (!calStates[calId]) initCalendar(calId);
+    setTimeout(function() { f.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
   }
 }
 
-function getRadio(name){var c=document.querySelector('input[name="'+name+'"]:checked');return c?c.value:'';}
+function getVal(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 
-function getVal(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+function validateForm(p) {
+  var ok = true;
+  document.querySelectorAll('.field-error').forEach(function(el) { el.classList.remove('field-error'); });
+  document.querySelectorAll('.error-msg').forEach(function(el) { el.textContent = ''; });
 
-function validateForm(p){
-  var ok=true;
-  // clear
-  document.querySelectorAll('[id^="r'+p.slice(1)+'"]').forEach(function(el){el.classList.remove('field-error');});
-  document.querySelectorAll('.error-msg').forEach(function(el){el.textContent='';});
+  function err(id, msg) {
+    var el = document.getElementById(id);
+    if (el) el.classList.add('field-error');
+    var em = document.getElementById('err-' + id);
+    if (em) em.textContent = msg;
+    ok = false;
+  }
 
-  function err(id,msg){var el=document.getElementById(id);if(el){el.classList.add('field-error');}var em=document.getElementById('err-'+id);if(em){em.textContent=msg;}ok=false;}
+  var n = getVal(p + '-nombre');
+  var e = getVal(p + '-email');
+  var t = getVal(p + '-telefono');
+  var s = getVal(p + '-servicio');
+  var f = getVal(p + '-fecha');
+  var d = getVal(p + '-direccion');
 
-  var n=getVal(p+'-nombre');
-  var e=getVal(p+'-email');
-  var t=getVal(p+'-telefono');
-  var s=getVal(p+'-servicio');
-  var f=getVal(p+'-fecha');
-  var d=getVal(p+'-direccion');
-
-  if(!n)err(p+'-nombre','Name is required.');
-  if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))err(p+'-email','Valid email required.');
-  if(!t||!/^[\+]?[\d\s\-\(\)]{7,15}$/.test(t.replace(/\s/g,'')))err(p+'-telefono','Valid phone required.');
-  if(!s)err(p+'-servicio','Please select a service.');
-  if(!f)err(p+'-fecha','Date is required.');
-  else{var sel=new Date(f);var tod=new Date(new Date().toDateString());if(sel<tod)err(p+'-fecha','Select today or a future date.');}
-  if(!d)err(p+'-direccion','Address is required.');
+  if (!n) err(p + '-nombre', 'Name is required.');
+  if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) err(p + '-email', 'Valid email required.');
+  if (!t || !/^[\+]?[\d\s\-\(\)]{7,15}$/.test(t.replace(/\s/g, ''))) err(p + '-telefono', 'Valid phone required.');
+  if (!s) err(p + '-servicio', 'Please select a service.');
+  if (!f) { err(p + '-fecha', 'Please select a date from the calendar.'); showToast('Please select an available date.', 'error'); }
+  if (!d) err(p + '-direccion', 'Address is required.');
   return ok;
 }
 
-async function submitForm(prefix,serviceName){
-  if(!validateForm(prefix)){showToast('Please fill in all required fields.','error');return;}
-  var btn=document.getElementById('btn-'+prefix);
-  if(!btn)return;
-  btn.disabled=true;
-  btn.innerHTML='<div class="spinner"></div> Sending...';
+async function submitForm(prefix, serviceName) {
+  if (!validateForm(prefix)) { showToast('Please fill in all required fields.', 'error'); return; }
+  var btn = document.getElementById('btn-' + prefix);
+  if (!btn) return;
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div> Sending...';
 
-  var sk=getVal(prefix+'-servicio');
-  var svcEl=document.getElementById(prefix+'-servicio');
-  var svcText=svcEl&&svcEl.options[svcEl.selectedIndex]?svcEl.options[svcEl.selectedIndex].text:sk;
-  var sd=SVC[sk]||{};
-  var fecha=getVal(prefix+'-fecha');
-  var horario=getRadio(prefix+'-time')||'';
-  var tmap={Morning:'09:00',Afternoon:'13:00',Evening:'17:00'};
+  var sk = getVal(prefix + '-servicio');
+  var svcEl = document.getElementById(prefix + '-servicio');
+  var svcText = svcEl && svcEl.options[svcEl.selectedIndex] ? svcEl.options[svcEl.selectedIndex].text : sk;
+  var sd = SVC[sk] || {};
+  var fecha = getVal(prefix + '-fecha');
 
-  var payload={
-    nombre:getVal(prefix+'-nombre'),
-    email:getVal(prefix+'-email'),
-    telefono:getVal(prefix+'-telefono'),
-    servicioKey:sk,
-    servicio:sd.name||svcText,
-    categoria:sd.category||serviceName,
-    precio:sd.price||'Quote on visit',
-    fecha:fecha,
-    horario:horario,
-    fechaHora:fecha&&horario?fecha+'T'+(tmap[horario]||'09:00'):fecha,
-    direccion:getVal(prefix+'-direccion'),
-    notas:getVal(prefix+'-notas'),
-    cantidad:getVal(prefix+'-cantidad')||null,
-    sqft:getVal(prefix+'-sqft')||null,
-    pickup:getRadio(prefix+'-pickup')||null,
-    tipoMudanza:getRadio(prefix+'-movetype')||null,
-    timestamp:new Date().toISOString(),
-    source:'standardhomecleaning.html'
+  var payload = {
+    nombre: getVal(prefix + '-nombre'),
+    email: getVal(prefix + '-email'),
+    telefono: getVal(prefix + '-telefono'),
+    servicioKey: sk,
+    servicio: sd.name || svcText,
+    categoria: sd.category || serviceName,
+    precio: sd.price || 'Quote on visit',
+    fecha: fecha,
+    horario: '09:00',
+    fechaHora: fecha + 'T09:00',
+    direccion: getVal(prefix + '-direccion'),
+    notas: getVal(prefix + '-notas'),
+    cantidad: null,
+    sqft: null,
+    pickup: null,
+    tipoMudanza: null,
+    timestamp: new Date().toISOString(),
+    source: 'standardhomecleaning.html'
   };
 
-  try{
-    await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-  }catch(e){console.error('Webhook error:',e);}
+  try {
+    await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+  } catch (e) { console.error('Webhook error:', e); }
 
-  showSuccessPanel(prefix,payload);
-  showToast("Booking sent! We'll confirm via WhatsApp soon.",'success',6000);
-  btn.disabled=false;
-  btn.innerHTML='<i class="fas fa-paper-plane"></i><span>Book Again</span>';
+  showSuccessPanel(prefix, payload);
+  showToast("Booking sent! We'll confirm via WhatsApp soon.", 'success', 6000);
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Book Again</span>';
 }
 
-function showSuccessPanel(prefix,data){
-  var panel=document.getElementById('success-'+prefix);
-  if(!panel)return;
-  var fmt=data.fecha?new Date(data.fecha+'T12:00:00').toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'TBD';
-  panel.innerHTML='<div class="success-icon">&#9989;</div>'
-    +'<h3>Booking Request Sent!</h3>'
-    +'<p>Thank you <strong>'+data.nombre+'</strong>! Our team will confirm via WhatsApp.</p>'
-    +'<div class="success-details">'
-    +'<div><span>Service</span><span>'+data.categoria+'</span></div>'
-    +'<div><span>Selected</span><span>'+data.servicio+'</span></div>'
-    +'<div><span>Price</span><span>'+data.precio+'</span></div>'
-    +'<div><span>Date</span><span>'+fmt+' &middot; '+(data.horario||'TBD')+'</span></div>'
-    +'<div><span>Address</span><span>'+data.direccion+'</span></div>'
-    +'<div><span>WhatsApp</span><span>'+data.telefono+'</span></div>'
-    +'</div>'
-    +'<p style="font-size:.83rem;color:#5b6e73;">&#128242; Confirmation to <strong>'+data.telefono+'</strong> &middot; &#128197; Calendar check in progress</p>'
-    +'<button class="btn-reset" onclick="resetForm(\''+prefix+'\')"><i class="fas fa-plus"></i> New Booking</button>';
+function showSuccessPanel(prefix, data) {
+  var panel = document.getElementById('success-' + prefix);
+  if (!panel) return;
+  var fmt = data.fecha ? new Date(data.fecha + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : 'TBD';
+  panel.innerHTML = '<div class="success-icon">&#9989;</div>'
+    + '<h3>Booking Request Sent!</h3>'
+    + '<p>Thank you <strong>' + data.nombre + '</strong>! Our team will confirm via WhatsApp.</p>'
+    + '<div class="success-details">'
+    + '<div><span>Service</span><span>' + data.servicio + '</span></div>'
+    + '<div><span>Price</span><span>' + data.precio + '</span></div>'
+    + '<div><span>Date</span><span>' + fmt + '</span></div>'
+    + '<div><span>Address</span><span>' + data.direccion + '</span></div>'
+    + '<div><span>WhatsApp</span><span>' + data.telefono + '</span></div>'
+    + '</div>'
+    + '<button class="btn-reset" onclick="resetForm(\'' + prefix + '\')"><i class="fas fa-plus"></i> New Booking</button>';
   panel.classList.add('show');
-  setTimeout(function(){panel.scrollIntoView({behavior:'smooth',block:'center'});},200);
+  setTimeout(function() { panel.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200);
 }
 
-function resetForm(prefix){
-  var p=document.getElementById('success-'+prefix);if(p)p.classList.remove('show');
-  document.querySelectorAll('[id^="'+prefix+'-"]').forEach(function(f){if(f.tagName!=='BUTTON')f.value=f.type==='radio'?f.value:'';});
-  document.querySelectorAll('.field-error').forEach(function(e){e.classList.remove('field-error');});
-  document.querySelectorAll('.error-msg').forEach(function(e){e.textContent='';});
+function resetForm(prefix) {
+  var p = document.getElementById('success-' + prefix);
+  if (p) p.classList.remove('show');
+  document.querySelectorAll('[id^="' + prefix + '-"]').forEach(function(f) { if (f.tagName !== 'BUTTON') f.value = f.type === 'radio' ? f.value : ''; });
+  document.querySelectorAll('.field-error').forEach(function(e) { e.classList.remove('field-error'); });
+  document.querySelectorAll('.error-msg').forEach(function(e) { e.textContent = ''; });
+  var calId = 'cal-' + prefix;
+  if (calStates[calId]) { calStates[calId].selected = null; renderCalendar(calId); }
 }
 
-document.addEventListener('DOMContentLoaded',function(){
-  var today=new Date().toISOString().split('T')[0];
-  document.querySelectorAll('input[type="date"]').forEach(function(el){el.min=today;});
-  var sections=document.querySelectorAll('.service-section');
-  var links=document.querySelectorAll('.quick-nav a');
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        links.forEach(function(l){l.classList.remove('active');});
-        var lnk=document.querySelector('.quick-nav a[href="#'+e.target.id+'"]');
-        if(lnk)lnk.classList.add('active');
+document.addEventListener('DOMContentLoaded', function() {
+  var sections = document.querySelectorAll('.service-section');
+  var links = document.querySelectorAll('.quick-nav a');
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        var lnk = document.querySelector('.quick-nav a[href="#' + e.target.id + '"]');
+        if (lnk) lnk.classList.add('active');
       }
     });
-  },{threshold:0.35});
-  sections.forEach(function(s){obs.observe(s);});
-  var hash=window.location.hash;
-  if(hash){var tgt=document.querySelector(hash);if(tgt)setTimeout(function(){tgt.scrollIntoView({behavior:'smooth',block:'start'});},300);}
+  }, { threshold: 0.35 });
+  sections.forEach(function(s) { obs.observe(s); });
+  var hash = window.location.hash;
+  if (hash) { var tgt = document.querySelector(hash); if (tgt) setTimeout(function() { tgt.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300); }
 });
 </script>
 </body>
