@@ -65,13 +65,22 @@
     .contact-details span { display:inline-flex; align-items:center; gap:0.45rem; }
     .contact-details i { color:var(--gold); }
 
-    /* ── NAVBAR ── */
+    /* ── NAVBAR (FIXED) ── */
     .main-nav-bar {
-      position:sticky; top:0;
+      position:fixed; top:0; left:0; right:0;
       background:rgba(254,252,245,0.95); backdrop-filter:blur(18px);
       border-bottom:1px solid rgba(234,226,214,0.7);
       padding:0 5%; height:68px; display:flex; align-items:center;
       justify-content:space-between; z-index:2000; width:100%;
+    }
+    /* Ajuste para compensar el navbar fijo en el contenido */
+    body {
+      padding-top: 68px;
+    }
+    /* El top-header ahora también necesita desplazamiento */
+    .top-header {
+      position: relative;
+      z-index: 1999;
     }
     .main-nav-bar.scrolled { background:rgba(30,43,46,0.97); border-bottom-color:rgba(136,105,2,0.3); box-shadow:0 8px 32px rgba(0,0,0,0.25); }
     .main-nav-bar.scrolled .nav-links a { color:rgba(255,255,255,0.8); }
@@ -277,6 +286,9 @@
       .nav-links.show { display:flex; }
       .menu-toggle { display:block; }
       .nav-links a { font-size:0.95rem; padding:0.7rem 1rem; }
+      
+      /* Ajuste padding body para móvil */
+      body { padding-top: 58px; }
 
       /* Hero */
       .hero { flex-direction:column; text-align:center; padding:3.5rem 4% 3rem; min-height:auto; background-attachment:scroll; }
@@ -422,7 +434,7 @@
             <div class="step-card-body"><h3>Standard Home Cleaning</h3><p>Fresh and organized with regular dusting, mopping and surface care.</p></div>
           </div>
           <div class="step-card animate-on-scroll fade-up" style="transition-delay:.1s" data-section="section2">
-            <div class="step-icon"><img src="segunda.jpg" alt="Deep Cleaning"></div>
+            <div class="step-icon"><img src="segunda.jpeg" alt="Deep Cleaning"></div>
             <div class="step-card-body"><h3>Deep Cleaning</h3><p>Intensive cleaning for kitchens, bathrooms and overlooked areas.</p></div>
           </div>
           <div class="step-card animate-on-scroll fade-up" style="transition-delay:.2s" data-section="section5">
@@ -430,23 +442,23 @@
             <div class="step-card-body"><h3>Move-In/Move-Out</h3><p>Ensure your new beginning or final handover is spotless.</p></div>
           </div>
           <div class="step-card animate-on-scroll fade-up" style="transition-delay:.3s" data-section="section1">
-            <div class="step-icon"><img src="residentialCleaning.jpg" alt="Residential"></div>
+            <div class="step-icon"><img src="residentialCleaning.jpeg" alt="Residential"></div>
             <div class="step-card-body"><h3>Residential Cleaning</h3><p>Complete home cleaning tailored to your family's needs.</p></div>
           </div>
           <div class="step-card animate-on-scroll fade-up" style="transition-delay:.4s" data-section="section3">
-            <div class="step-icon"><img src="commercialCleaning.jpg" alt="Commercial"></div>
+            <div class="step-icon"><img src="commercialCleaning.jpeg" alt="Commercial"></div>
             <div class="step-card-body"><h3>Commercial &amp; Office</h3><p>Professional workplace cleaning for a healthy environment.</p></div>
           </div>
           <div class="step-card animate-on-scroll fade-up" style="transition-delay:.5s" data-section="section4">
-            <div class="step-icon"><img src="cleaningSanitization.jpg" alt="Steam"></div>
+            <div class="step-icon"><img src="cleaningSanitization.jpeg" alt="Steam"></div>
             <div class="step-card-body"><h3>Steam Cleaning</h3><p>High-temperature steam cleaning for deep sanitization.</p></div>
           </div>
           <div class="step-card animate-on-scroll fade-up" style="transition-delay:.6s" data-section="section4">
-            <div class="step-icon"><img src="carpetUpholstery.jpg" alt="Carpet"></div>
+            <div class="step-icon"><img src="carpetUpholstery.jpeg" alt="Carpet"></div>
             <div class="step-card-body"><h3>Carpet &amp; Upholstery</h3><p>Specialized care for carpets, sofas and mattresses.</p></div>
           </div>
           <div class="step-card animate-on-scroll fade-up" style="transition-delay:.7s" data-section="section6">
-            <div class="step-icon"><img src="pressureWashing.jpg" alt="Pressure Wash"></div>
+            <div class="step-icon"><img src="pressureWashing.jpeg" alt="Pressure Wash"></div>
             <div class="step-card-body"><h3>Pressure Washing</h3><p>Exterior cleaning for driveways, patios and walls.</p></div>
           </div>
         </div>
@@ -643,8 +655,7 @@
 
 <button class="scroll-top-float" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 <a href="https://wa.me/5926437296" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
- 
-  </p>
+
 <footer class="footer-dark">
   <div class="footer-content">
     <div class="footer-info">
@@ -662,8 +673,6 @@
       </div>
     </div>
   </div>
-  <p>&copy; 2026 Livity Projects Inc. | 
-    <a href="privacyPolicy.html">Política de Privacidad</a>
   <div class="footer-copyright">&copy; 2026 Livity Projects Inc. All rights reserved.</div>
 </footer>
 
@@ -671,7 +680,7 @@
 (function(){
 "use strict";
 const CONFIG={
-  WEBHOOK_URL:'https://alcide-app-n8n-cloud.app.n8n.cloud/webhook/booking',
+  WEBHOOK_URL:'https://n8n-n8n.7toway.easypanel.host/webhook/0e6a220e-8739-4db7-9770-cd6f4a4c35f4',
   SERVICES_PAGE:'standardhomecleaning.html'
 };
 const servicesData={
@@ -861,3 +870,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </script>
 </body>
 </html>
+
+const CONFIG={
+  WEBHOOK_URL:'https://n8n-n8n.7toway.easypanel.host/webhook/0e6a220e-8739-4db7-9770-cd6f4a4c35f4',
+  SERVICES_PAGE:'standardhomecleaning.html'
+};
