@@ -25,6 +25,7 @@
     body {
       font-family:'Inter',sans-serif; background:var(--cream); color:var(--dark);
       line-height:1.6; overflow-x:hidden; width:100%; max-width:100%;
+      padding-top: 68px;
     }
     img { max-width:100%; height:auto; display:block; }
     .hidden { display:none !important; }
@@ -60,6 +61,7 @@
     .top-header {
       background:linear-gradient(90deg,var(--dark) 0%,#2a3d41 100%);
       padding:0.6rem 5%; display:flex; justify-content:flex-end;
+      position:relative; z-index:1999;
     }
     .contact-details { display:flex; flex-wrap:wrap; gap:1.5rem; font-size:0.82rem; color:rgba(255,255,255,0.85); }
     .contact-details span { display:inline-flex; align-items:center; gap:0.45rem; }
@@ -72,15 +74,6 @@
       border-bottom:1px solid rgba(234,226,214,0.7);
       padding:0 5%; height:68px; display:flex; align-items:center;
       justify-content:space-between; z-index:2000; width:100%;
-    }
-    /* Ajuste para compensar el navbar fijo en el contenido */
-    body {
-      padding-top: 68px;
-    }
-    /* El top-header ahora también necesita desplazamiento */
-    .top-header {
-      position: relative;
-      z-index: 1999;
     }
     .main-nav-bar.scrolled { background:rgba(30,43,46,0.97); border-bottom-color:rgba(136,105,2,0.3); box-shadow:0 8px 32px rgba(0,0,0,0.25); }
     .main-nav-bar.scrolled .nav-links a { color:rgba(255,255,255,0.8); }
@@ -202,6 +195,94 @@
     .btn-gold { background:white; color:var(--gold); border:2px solid var(--gold); display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.8rem 1.8rem; border-radius:var(--radius-pill); font-weight:700; cursor:pointer; font-family:inherit; font-size:0.9rem; transition:var(--transition); }
     .btn-gold:hover { background:var(--gold); color:white; transform:translateY(-3px); }
 
+    /* ── CALENDAR ── */
+    .calendar-container { margin-top:0.5rem; }
+    .calendar-header {
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:1rem; padding:0 0.2rem;
+    }
+    .calendar-header h3 {
+      font-size:1rem; font-weight:700; color:var(--dark);
+    }
+    .calendar-nav {
+      display:flex; gap:0.5rem;
+    }
+    .calendar-nav button {
+      width:34px; height:34px; border-radius:50%; border:1.5px solid var(--border);
+      background:white; color:var(--muted); cursor:pointer; display:flex;
+      align-items:center; justify-content:center; font-size:0.85rem;
+      transition:var(--transition);
+    }
+    .calendar-nav button:hover { border-color:var(--gold); color:var(--gold); background:var(--gold-xlight); }
+    .calendar-grid {
+      display:grid; grid-template-columns:repeat(7,1fr); gap:4px;
+    }
+    .calendar-day-label {
+      text-align:center; font-size:0.68rem; font-weight:700;
+      color:var(--muted); text-transform:uppercase; letter-spacing:0.5px;
+      padding:0.5rem 0;
+    }
+    .calendar-day {
+      aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+      font-size:0.85rem; font-weight:500; border-radius:10px;
+      cursor:default; color:#ccc; transition:all 0.2s;
+      position:relative;
+    }
+    .calendar-day.current-month { color:var(--muted); }
+    .calendar-day.available {
+      color:var(--dark); font-weight:600; cursor:pointer;
+      background:rgba(136,105,2,0.06); border:1.5px solid transparent;
+    }
+    .calendar-day.available:hover {
+      background:var(--gold-xlight); border-color:var(--gold);
+      transform:scale(1.1); box-shadow:0 2px 8px rgba(136,105,2,0.15);
+    }
+    .calendar-day.selected {
+      background:linear-gradient(135deg,var(--gold),var(--gold-light)) !important;
+      color:white !important; font-weight:700;
+      border-color:var(--gold) !important;
+      box-shadow:0 4px 12px rgba(136,105,2,0.3);
+      transform:scale(1.08);
+    }
+    .calendar-day.today {
+      border:1.5px solid var(--gold);
+    }
+    .calendar-day.unavailable {
+      color:#d4d0c8; cursor:not-allowed; text-decoration:line-through;
+    }
+    .calendar-legend {
+      display:flex; gap:1.2rem; margin-top:1rem; padding:0.8rem 0;
+      justify-content:center; flex-wrap:wrap;
+    }
+    .legend-item {
+      display:flex; align-items:center; gap:0.4rem; font-size:0.72rem;
+      color:var(--muted); font-weight:500;
+    }
+    .legend-dot {
+      width:12px; height:12px; border-radius:4px;
+    }
+    .legend-dot.available { background:rgba(136,105,2,0.15); border:1px solid var(--gold); }
+    .legend-dot.selected { background:var(--gold); }
+    .legend-dot.unavailable { background:#eee; border:1px solid #ddd; }
+
+    .selected-date-display {
+      margin-top:1rem; padding:0.8rem 1.2rem;
+      background:var(--cream-mid); border-radius:var(--radius-sm);
+      border-left:3px solid var(--gold);
+      display:none; align-items:center; gap:0.6rem;
+    }
+    .selected-date-display.show { display:flex; }
+    .selected-date-display i { color:var(--gold); font-size:1.1rem; }
+    .selected-date-display .date-text {
+      font-size:0.9rem; font-weight:600; color:var(--dark);
+    }
+
+    .calendar-message {
+      text-align:center; padding:2rem 1rem;
+      color:var(--muted); font-size:0.9rem;
+    }
+    .calendar-message i { display:block; font-size:2rem; color:var(--gold); margin-bottom:0.8rem; }
+
     /* FIELD ERROR */
     .field-error { border-color:#e24b4a !important; box-shadow:0 0 0 3px rgba(226,75,74,0.15) !important; }
     .error-msg { color:#e24b4a; font-size:0.72rem; margin-top:0.2rem; }
@@ -260,20 +341,15 @@
     .footer-copyright { text-align:center; margin-top:2.5rem; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.35); font-size:0.8rem; }
 
     /* ══════════════════════════════════════
-       MOBILE — max-width: 768px
+       RESPONSIVE
     ══════════════════════════════════════ */
     @media (max-width:1024px) {
       .why-choose-grid { grid-template-columns:1fr; gap:2rem; }
     }
     @media (max-width:768px) {
-      /* Prevent ALL horizontal overflow */
       html, body { overflow-x:hidden; max-width:100vw; }
       * { max-width:100%; }
-
-      /* Top bar hide */
       .top-header { display:none; }
-
-      /* Navbar */
       .main-nav-bar { height:58px; padding:0 4%; }
       .logo img { height:38px; }
       .nav-links {
@@ -286,11 +362,7 @@
       .nav-links.show { display:flex; }
       .menu-toggle { display:block; }
       .nav-links a { font-size:0.95rem; padding:0.7rem 1rem; }
-      
-      /* Ajuste padding body para móvil */
       body { padding-top: 58px; }
-
-      /* Hero */
       .hero { flex-direction:column; text-align:center; padding:3.5rem 4% 3rem; min-height:auto; background-attachment:scroll; }
       .hero-tag { font-size:0.62rem; }
       .hero-title { font-size:1.7rem; letter-spacing:-0.8px; margin-bottom:0.9rem; }
@@ -299,13 +371,9 @@
       .features-list li { font-size:0.82rem; margin-bottom:0.4rem; }
       .hero-btn { padding:0.75rem 1.6rem; font-size:0.88rem; }
       .hero::after { height:40px; }
-
-      /* Typography */
       .section-title { font-size:1.55rem; letter-spacing:-0.6px; }
       .section-subtitle { font-size:0.85rem; margin-bottom:1.5rem; }
       .section-tag { font-size:0.62rem; letter-spacing:2px; }
-
-      /* Carousel — KEY FIX: no min-width, fixed flex-basis */
       .how-it-works { padding:2.5rem 0; }
       .how-it-works-inner { padding:0 3%; }
       .carousel-wrapper { gap:0.4rem; margin:1rem 0; }
@@ -317,14 +385,10 @@
       .step-card h3 { font-size:0.78rem; font-weight:700; margin-bottom:0.25rem; }
       .step-card p { font-size:0.68rem; line-height:1.35; }
       .carousel-hint { font-size:0.75rem; }
-
-      /* Stats */
       .stats-section { padding:2rem 4%; }
       .stat-item { flex:1 1 130px; padding:1.2rem 0.8rem; }
       .stat-number { font-size:2rem; }
       .stat-label { font-size:0.68rem; }
-
-      /* Why us */
       .why-choose-section { padding:2.5rem 4%; }
       .why-left h2 { font-size:1.5rem; }
       .why-left p { font-size:0.85rem; margin-bottom:1.2rem; }
@@ -334,8 +398,6 @@
       .feature-icon { font-size:1.1rem; }
       .feature-card h3 { font-size:0.8rem; }
       .feature-card p { font-size:0.72rem; }
-
-      /* Booking */
       .payment-section { padding:2.5rem 4%; }
       .booking-header .section-title { font-size:1.5rem; }
       .steps { margin-bottom:1.5rem; }
@@ -350,33 +412,24 @@
       .pickup-info { padding:0.8rem 1rem; }
       .pickup-row { font-size:0.78rem; }
       .btn-primary { padding:0.85rem 1.5rem; font-size:0.9rem; }
-
-      /* Receipt */
       .receipt { padding:1.1rem; }
       .receipt-row { font-size:0.78rem; padding:0.5rem 0; }
       .badge { font-size:0.68rem; padding:0.28rem 0.7rem; }
-
-      /* CRM */
       .crm-section { padding:0 4% 2.5rem; }
       thead th { font-size:0.62rem; padding:0.65rem 0.7rem; }
       tbody td { padding:0.6rem 0.7rem; font-size:0.75rem; }
-
-      /* About */
       .about-section { padding:1.5rem; margin:1rem; }
       .about-section h2 { font-size:1.3rem; }
       .about-section p { font-size:0.82rem; }
-
-      /* Footer */
       .footer-dark { padding:2rem 4% 1.2rem; }
       .footer-content { gap:1.5rem; }
       .footer-info h3, .footer-social h3 { font-size:1.1rem; margin-bottom:0.8rem; }
       .footer-info p { font-size:0.78rem; }
-
-      /* Floats */
       .whatsapp-float { width:46px; height:46px; font-size:1.3rem; bottom:1rem; right:1rem; }
       .scroll-top-float { width:36px; height:36px; font-size:0.85rem; bottom:4rem; right:1rem; }
+      .calendar-day { font-size:0.75rem; }
+      .calendar-legend { gap:0.8rem; }
     }
-
     @media (max-width:380px) {
       .hero-title { font-size:1.45rem; }
       .step-card { flex:0 0 130px; width:130px; }
@@ -393,7 +446,7 @@
   <div class="top-header">
     <div class="contact-details">
       <span><i class="fas fa-phone-alt"></i> +592 643-7296</span>
-      <span><i class="fas fa-envelope"></i> info@livityprojects.com</span>
+      <span><i class="fas fa-envelope"></i> livityprojectsinc@gmail.com</span>
       <span><i class="fas fa-map-marker-alt"></i> Tuschen Housing Scheme, EBE</span>
     </div>
   </div>
@@ -543,7 +596,7 @@
     <div class="booking-header">
       <div class="section-tag">BOOK NOW</div>
       <h2 class="section-title">Request a Service</h2>
-      <p class="section-subtitle">Fill in your details and we'll confirm your appointment via WhatsApp.</p>
+      <p class="section-subtitle">Select your service, pick an available date, and we'll handle the rest.</p>
     </div>
     <div class="steps" id="stepIndicator">
       <div class="step"><div class="step-dot active" id="dot1">1</div><span>Booking</span></div>
@@ -568,17 +621,43 @@
           <input type="tel" id="telefono" placeholder="+592 123 4567">
         </div>
         <div class="form-group">
-          <label><i class="fas fa-concierge-bell" style="color:var(--gold);margin-right:4px"></i>Service *</label>
-          <select id="servicio"></select>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-calendar-alt" style="color:var(--gold);margin-right:4px"></i>Date and time *</label>
-          <input type="datetime-local" id="fechaHora">
-        </div>
-        <div class="form-group">
           <label><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:4px"></i>Address *</label>
           <input type="text" id="direccion" placeholder="Street, city">
         </div>
+        <div class="form-group full">
+          <label><i class="fas fa-concierge-bell" style="color:var(--gold);margin-right:4px"></i>Service *</label>
+          <select id="servicio"></select>
+        </div>
+
+        <!-- CALENDAR -->
+        <div class="form-group full" id="calendarSection">
+          <label><i class="fas fa-calendar-alt" style="color:var(--gold);margin-right:4px"></i>Select available date *</label>
+          <div class="calendar-container" id="calendarContainer">
+            <div class="calendar-message" id="calendarPlaceholder">
+              <i class="fas fa-hand-pointer"></i>
+              Please select a service first to see available dates.
+            </div>
+            <div id="calendarContent" class="hidden">
+              <div class="calendar-header">
+                <button type="button" class="calendar-nav"><button type="button" id="calPrev"><i class="fas fa-chevron-left"></i></button></div>
+                <h3 id="calMonthYear"></h3>
+                <div class="calendar-nav"><button type="button" id="calNext"><i class="fas fa-chevron-right"></i></button></div>
+              </div>
+              <div class="calendar-grid" id="calendarGrid"></div>
+              <div class="calendar-legend">
+                <div class="legend-item"><div class="legend-dot available"></div> Available</div>
+                <div class="legend-item"><div class="legend-dot selected"></div> Selected</div>
+                <div class="legend-item"><div class="legend-dot unavailable"></div> Unavailable</div>
+              </div>
+              <div class="selected-date-display" id="selectedDateDisplay">
+                <i class="fas fa-check-circle"></i>
+                <span class="date-text" id="selectedDateText"></span>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="fechaSeleccionada" value="">
+        </div>
+
         <div class="form-group full">
           <label><i class="fas fa-comment" style="color:var(--gold);margin-right:4px"></i>Additional notes</label>
           <textarea id="notas" rows="3" placeholder="Any special instructions or details..."></textarea>
@@ -601,7 +680,7 @@
         <div>
           <div class="section-tag">Step 2</div>
           <h2 class="section-title" style="font-size:1.8rem;">Request Sent!</h2>
-          <p style="color:var(--muted);max-width:420px;margin:.5rem auto 0;font-size:0.9rem;">Our team will review availability and confirm via WhatsApp within minutes.</p>
+          <p style="color:var(--muted);max-width:420px;margin:.5rem auto 0;font-size:0.9rem;">Our team will review and confirm via WhatsApp within minutes.</p>
         </div>
         <div class="wa-box">
           <strong style="font-size:0.85rem;">&#128242; Confirmation to:</strong><br>
@@ -610,7 +689,7 @@
         <div class="receipt">
           <div class="receipt-row"><span>Customer</span><span id="reciboNombre2"></span></div>
           <div class="receipt-row"><span>Service</span><span id="reciboServicio2"></span></div>
-          <div class="receipt-row"><span>Date &amp; Time</span><span id="reciboFecha2"></span></div>
+          <div class="receipt-row"><span>Date</span><span id="reciboFecha2"></span></div>
           <div class="receipt-row"><span>Address</span><span id="reciboDireccion2"></span></div>
           <div class="receipt-row"><span>Status</span><span class="pill-pend">&#9203; Pending</span></div>
         </div>
@@ -631,7 +710,7 @@
     <div class="crm-wrap">
       <table>
         <thead>
-          <tr><th>Customer</th><th>Phone</th><th>Service</th><th>Date &amp; Time</th><th>Address</th><th>Status</th></tr>
+          <tr><th>Customer</th><th>Phone</th><th>Service</th><th>Date</th><th>Address</th><th>Status</th></tr>
         </thead>
         <tbody id="crm-body"></tbody>
       </table>
@@ -661,7 +740,7 @@
     <div class="footer-info">
       <h3>Livity Projects Inc.</h3>
       <p><i class="fas fa-phone-alt"></i> +592 643-7296</p>
-      <p><i class="fas fa-envelope"></i> info@livityprojects.com</p>
+      <p><i class="fas fa-envelope"></i> livityprojectsinc@gmail.com</p>
       <p><i class="fas fa-map-marker-alt"></i> 8811 Tuschen Housing Scheme, East Bank Essequibo</p>
     </div>
     <div class="footer-social">
@@ -683,6 +762,7 @@ const CONFIG={
   WEBHOOK_URL:'https://n8n-n8n.7toway.easypanel.host/webhook/0e6a220e-8739-4db7-9770-cd6f4a4c35f4',
   SERVICES_PAGE:'standardhomecleaning.html'
 };
+
 const servicesData={
   'sofa-1seat':{name:'1 Seat Sofa',price:'$6,000',category:'Steam Cleaning'},
   'sofa-2seat':{name:'2 Seat Sofa',price:'$10,000',category:'Steam Cleaning'},
@@ -724,15 +804,146 @@ const servicesData={
   'movein-3bed':{name:'Move-In/Out – 3 Bedroom House',price:'Quote on visit',category:'Move In/Out'},
   'movein-4bed':{name:'Move-In/Out – 4+ Bedroom House',price:'Quote on visit',category:'Move In/Out'}
 };
+
+// ══════════════════════════════════════
+// AVAILABLE DATES PER CATEGORY
+// Update these arrays with dates from your Google Sheet
+// Format: 'YYYY-M-D' (no leading zeros, matching your sheet)
+// ══════════════════════════════════════
+const availableDates = {
+  'Steam Cleaning':     ['2026-3-28','2026-3-30','2026-4-22','2026-4-10','2026-4-12','2026-4-7',],
+  'Carpet Cleaning':    ['2026-3-28','2026-3-29','2026-3-30','2026-4-19','2026-4-15','2026-4-27','2026-4-3',],
+  'Pressure Washing':   ['2026-3-28','2026-3-29','2026-3-30','2026-4-2','2026-4-17','2026-4-12','2026-4-29',],
+  'Residential Cleaning':['2026-3-28','2026-3-29','2026-3-30','2026-4-12','2026-4-18','2026-4-12','2026-4-30',],
+  'Deep Cleaning':      ['2026-3-28','2026-3-29','2026-3-30','2026-4-24','2026-4-8','2026-4-12','2026-4-28',],
+  'Commercial Cleaning':['2026-3-28','2026-3-29','2026-3-30','2026-4-25','2026-4-3','2026-4-12','2026-4-14',],
+  'Move In/Out':        ['2026-3-28','2026-3-29','2026-3-30','2026-4-26','2026-4-9','2026-4-12','2026-4-6',]
+};
+
 let bookings=[];
 try{bookings=JSON.parse(localStorage.getItem('livityBookings')||'[]');}catch(e){bookings=[];}
 let countersStarted=false,submitting=false;
+let calMonth, calYear, selectedDate=null, currentCategory=null;
 
+// ── CALENDAR ──
+function initCalendar(){
+  const now=new Date();
+  calMonth=now.getMonth();
+  calYear=now.getFullYear();
+}
+
+function renderCalendar(){
+  const grid=document.getElementById('calendarGrid');
+  if(!grid)return;
+  grid.innerHTML='';
+
+  const monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('calMonthYear').textContent=monthNames[calMonth]+' '+calYear;
+
+  // Day labels
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d=>{
+    const lbl=document.createElement('div');
+    lbl.className='calendar-day-label';
+    lbl.textContent=d;
+    grid.appendChild(lbl);
+  });
+
+  const firstDay=new Date(calYear,calMonth,1).getDay();
+  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+  const today=new Date();
+  today.setHours(0,0,0,0);
+
+  // Get available dates for current category
+  const catDates=(currentCategory && availableDates[currentCategory])||[];
+  const availSet=new Set(catDates);
+
+  // Empty cells before first day
+  for(let i=0;i<firstDay;i++){
+    const empty=document.createElement('div');
+    empty.className='calendar-day';
+    grid.appendChild(empty);
+  }
+
+  // Day cells
+  for(let d=1;d<=daysInMonth;d++){
+    const cell=document.createElement('div');
+    cell.className='calendar-day current-month';
+    cell.textContent=d;
+
+    const cellDate=new Date(calYear,calMonth,d);
+    cellDate.setHours(0,0,0,0);
+    // Format to match sheet: YYYY-M-D (no leading zeros)
+    const dateStr=calYear+'-'+(calMonth+1)+'-'+d;
+
+    if(cellDate.getTime()===today.getTime()){
+      cell.classList.add('today');
+    }
+
+    if(cellDate<today){
+      cell.classList.add('unavailable');
+    } else if(availSet.has(dateStr)){
+      cell.classList.add('available');
+      cell.addEventListener('click',()=>selectDate(d,dateStr));
+    } else {
+      cell.classList.add('unavailable');
+    }
+
+    // Check if this is the selected date
+    if(selectedDate===dateStr){
+      cell.classList.add('selected');
+      cell.classList.remove('unavailable');
+    }
+
+    grid.appendChild(cell);
+  }
+}
+
+function selectDate(day, dateStr){
+  selectedDate=dateStr;
+  // Store in ISO format for webhook: YYYY-MM-DD
+  const parts=dateStr.split('-');
+  const isoDate=parts[0]+'-'+parts[1].padStart(2,'0')+'-'+parts[2].padStart(2,'0');
+  document.getElementById('fechaSeleccionada').value=isoDate;
+
+  // Show selected date display
+  const display=document.getElementById('selectedDateDisplay');
+  const monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dateObj=new Date(parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2]));
+  const dayNames=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  document.getElementById('selectedDateText').textContent=
+    dayNames[dateObj.getDay()]+', '+monthNames[dateObj.getMonth()]+' '+parts[2]+', '+parts[0];
+  display.classList.add('show');
+
+  renderCalendar();
+}
+
+function onServiceChange(){
+  const sk=document.getElementById('servicio').value;
+  const sd=servicesData[sk];
+  selectedDate=null;
+  document.getElementById('fechaSeleccionada').value='';
+  document.getElementById('selectedDateDisplay').classList.remove('show');
+
+  if(sd){
+    currentCategory=sd.category;
+    document.getElementById('calendarPlaceholder').classList.add('hidden');
+    document.getElementById('calendarContent').classList.remove('hidden');
+    initCalendar();
+    renderCalendar();
+  } else {
+    currentCategory=null;
+    document.getElementById('calendarPlaceholder').classList.remove('hidden');
+    document.getElementById('calendarContent').classList.add('hidden');
+  }
+}
+
+// ── UTILITIES ──
 function showToast(msg,type='info',dur=4000){
   const t=document.getElementById('toast');if(!t)return;
   t.textContent=msg;t.className='toast show '+type;
   setTimeout(()=>t.classList.remove('show'),dur);
 }
+
 function populateSelect(){
   const sel=document.getElementById('servicio');if(!sel)return;
   const cats={};
@@ -743,27 +954,31 @@ function populateSelect(){
     items.forEach(i=>{const o=document.createElement('option');o.value=i.k;o.textContent=i.name+' — '+i.price;g.appendChild(o);});
     sel.appendChild(g);
   }
+  sel.addEventListener('change',onServiceChange);
 }
+
 function clearErrors(){document.querySelectorAll('.field-error').forEach(e=>e.classList.remove('field-error'));document.querySelectorAll('.error-msg').forEach(e=>e.remove());}
 function setError(id,msg){const el=document.getElementById(id);if(!el)return;el.classList.add('field-error');const s=document.createElement('span');s.className='error-msg';s.textContent=msg;el.parentNode.appendChild(s);}
+
 function validateForm(){
   clearErrors();let valid=true;
   const n=document.getElementById('nombre').value.trim();
   const e=document.getElementById('email').value.trim();
   const t=document.getElementById('telefono').value.trim();
   const s=document.getElementById('servicio').value;
-  const f=document.getElementById('fechaHora').value;
+  const f=document.getElementById('fechaSeleccionada').value;
   const d=document.getElementById('direccion').value.trim();
   if(!n){setError('nombre','Full name is required.');valid=false;}
   if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){setError('email','Valid email required.');valid=false;}
   if(!t||!/^[\+]?[\d\s\-\(\)]{7,15}$/.test(t.replace(/\s/g,''))){setError('telefono','Valid phone required.');valid=false;}
   if(!s){setError('servicio','Please select a service.');valid=false;}
-  if(!f){setError('fechaHora','Date and time required.');valid=false;}
-  else if(new Date(f)<=new Date()){setError('fechaHora','Please select a future date.');valid=false;}
+  if(!f){showToast('Please select an available date from the calendar.','error');valid=false;}
   if(!d){setError('direccion','Address is required.');valid=false;}
   return valid;
 }
+
 function saveBooking(data){bookings.unshift(data);try{localStorage.setItem('livityBookings',JSON.stringify(bookings.slice(0,100)));}catch(e){}}
+
 function renderCRM(){
   const tb=document.getElementById('crm-body');if(!tb)return;
   if(!bookings.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">No bookings yet.</td></tr>';return;}
@@ -771,16 +986,18 @@ function renderCRM(){
   bookings.forEach(b=>{
     const st={'pending':'<span style="background:#fff5e6;color:#9a5c00;border:1px solid #ffcc80;padding:.2rem .7rem;border-radius:20px;font-size:.72rem;font-weight:700">⏳ Pending</span>','confirmed':'<span style="background:#e8f5ed;color:#1e7c3a;border:1px solid #a8d8b5;padding:.2rem .7rem;border-radius:20px;font-size:.72rem;font-weight:700">✓ Confirmed</span>'};
     const r=document.createElement('tr');
-    r.innerHTML='<td><strong>'+b.nombre+'</strong></td><td>'+b.telefono+'</td><td>'+b.servicio+'</td><td>'+(b.fechaHora||'').replace('T',' · ')+'</td><td>'+b.direccion+'</td><td>'+(st[b.status]||st['pending'])+'</td>';
+    r.innerHTML='<td><strong>'+b.nombre+'</strong></td><td>'+b.telefono+'</td><td>'+b.servicio+'</td><td>'+b.fecha+'</td><td>'+b.direccion+'</td><td>'+(st[b.status]||st['pending'])+'</td>';
     tb.appendChild(r);
   });
 }
+
 function setStep(n){
   for(let i=1;i<=3;i++){const d=document.getElementById('dot'+i);if(!d)continue;if(i<n){d.className='step-dot done';d.textContent='✓';}else if(i===n){d.className='step-dot active';d.textContent=i;}else{d.className='step-dot';d.textContent=i;}}
   const l1=document.getElementById('line1'),l2=document.getElementById('line2');
   if(l1)l1.className='step-line'+(n>1?' done':'');
   if(l2)l2.className='step-line'+(n>2?' done':'');
 }
+
 async function submitBooking(){
   if(submitting)return;if(!validateForm()){showToast('Please fix the errors above.','error');return;}
   submitting=true;
@@ -790,14 +1007,15 @@ async function submitBooking(){
   btn.disabled=true;if(bt)bt.classList.add('hidden');if(bs)bs.classList.remove('hidden');
   const sk=document.getElementById('servicio').value;
   const sd=servicesData[sk]||{};
+  const fechaVal=document.getElementById('fechaSeleccionada').value;
   const payload={
     nombre:document.getElementById('nombre').value.trim(),
     email:document.getElementById('email').value.trim(),
     telefono:document.getElementById('telefono').value.trim(),
     servicioKey:sk,servicio:sd.name||sk,categoria:sd.category||'',precio:sd.price||'Quote on visit',
-    fechaHora:document.getElementById('fechaHora').value,
-    fecha:document.getElementById('fechaHora').value.split('T')[0]||'',
-    horario:document.getElementById('fechaHora').value.split('T')[1]||'',
+    fechaHora:fechaVal+'T09:00',
+    fecha:fechaVal,
+    horario:'09:00',
     direccion:document.getElementById('direccion').value.trim(),
     notas:document.getElementById('notas')?.value.trim()||'',
     cantidad:null,sqft:null,pickup:null,tipoMudanza:null,
@@ -809,19 +1027,20 @@ async function submitBooking(){
   showSuccess(payload);
   submitting=false;btn.disabled=false;if(bt)bt.classList.remove('hidden');if(bs)bs.classList.add('hidden');
 }
+
 function showSuccess(p){
   document.getElementById('formReserva').classList.add('hidden');
   const pn=document.getElementById('panelEnviado');if(!pn)return;
   pn.classList.remove('hidden');
-  const fmt=(p.fechaHora||'').replace('T',' at ');
   document.getElementById('telefonoMostrar').textContent=p.telefono;
   document.getElementById('reciboNombre2').textContent=p.nombre;
   document.getElementById('reciboServicio2').textContent=p.servicio;
-  document.getElementById('reciboFecha2').textContent=fmt;
+  document.getElementById('reciboFecha2').textContent=p.fecha;
   document.getElementById('reciboDireccion2').textContent=p.direccion;
   setStep(2);
   showToast("Booking submitted! You'll receive a WhatsApp confirmation shortly.",'success',6000);
 }
+
 function animateCounters(){
   document.querySelectorAll('.stat-number[data-target]').forEach(el=>{
     const tgt=parseInt(el.dataset.target),suf=el.dataset.suffix||'';let cur=0;
@@ -829,6 +1048,7 @@ function animateCounters(){
     const ti=setInterval(()=>{cur=Math.min(cur+step,tgt);el.textContent=cur+suf;if(cur>=tgt)clearInterval(ti);},40);
   });
 }
+
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){e.target.classList.add('visible');if(e.target.closest('.stats-section')&&!countersStarted){countersStarted=true;animateCounters();}obs.unobserve(e.target);}
@@ -836,9 +1056,7 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.15});
 
 function init(){
-  populateSelect();renderCRM();setStep(1);
-  const dt=document.getElementById('fechaHora');
-  if(dt){const n=new Date();n.setMinutes(n.getMinutes()-n.getTimezoneOffset());dt.min=n.toISOString().slice(0,16);}
+  populateSelect();renderCRM();setStep(1);initCalendar();
   document.querySelectorAll('.animate-on-scroll').forEach(el=>obs.observe(el));
   document.getElementById('menuToggle')?.addEventListener('click',()=>document.getElementById('navLinks')?.classList.toggle('show'));
   window.addEventListener('scroll',()=>document.getElementById('mainNavBar')?.classList.toggle('scrolled',window.scrollY>0));
@@ -857,21 +1075,26 @@ function init(){
   document.getElementById('btnNewBooking')?.addEventListener('click',()=>{
     document.getElementById('panelEnviado')?.classList.add('hidden');
     document.getElementById('formReserva')?.classList.remove('hidden');
-    ['nombre','email','telefono','servicio','fechaHora','direccion','notas'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    ['nombre','email','telefono','servicio','direccion','notas'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('fechaSeleccionada').value='';
+    selectedDate=null;currentCategory=null;
+    document.getElementById('calendarPlaceholder').classList.remove('hidden');
+    document.getElementById('calendarContent').classList.add('hidden');
+    document.getElementById('selectedDateDisplay').classList.remove('show');
     clearErrors();setStep(1);document.getElementById('paymentSection')?.scrollIntoView({behavior:'smooth'});
   });
   document.getElementById('btnClearCRM')?.addEventListener('click',()=>{if(confirm('Clear all booking history?')){bookings=[];localStorage.removeItem('livityBookings');renderCRM();showToast('History cleared.','info');}});
   document.getElementById('carouselPrev')?.addEventListener('click',()=>document.getElementById('carouselTrack')?.scrollBy({left:-300,behavior:'smooth'}));
   document.getElementById('carouselNext')?.addEventListener('click',()=>document.getElementById('carouselTrack')?.scrollBy({left:300,behavior:'smooth'}));
-  document.querySelectorAll('.step-card').forEach(c=>c.addEventListener('click',()=>{const s=c.dataset.section;if(s)window.location.href=CONFIG.SERVICES_PAGE+'#'+s;}));
+  document.getElementById('calPrev')?.addEventListener('click',()=>{calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCalendar();});
+  document.getElementById('calNext')?.addEventListener('click',()=>{calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCalendar();});
+  document.querySelectorAll('.step-card').forEach(c=>c.addEventListener('click',()=>{const s=c.dataset.section;if(s){document.getElementById('paymentSection')?.scrollIntoView({behavior:'smooth',block:'start'});}}));
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+document.addEventListener('DOMContentLoaded',init);
 })();
 </script>
 </body>
 </html>
 
-const CONFIG={
-  WEBHOOK_URL:'https://n8n-n8n.7toway.easypanel.host/webhook/0e6a220e-8739-4db7-9770-cd6f4a4c35f4',
-  SERVICES_PAGE:'standardhomecleaning.html'
-};
+
+availableDates
